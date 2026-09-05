@@ -1,0 +1,21 @@
+Astra Formula asset provenance
+
+Asphalt Track (diffuse, OpenGL normal, roughness; 1K)
+Dimitrios Savva / Poly Haven — CC0 1.0
+https://polyhaven.com/a/asphalt_track
+
+Sparse Grass (diffuse, OpenGL normal, roughness; 1K)
+Poly Haven — CC0 1.0
+https://polyhaven.com/a/sparse_grass
+
+Sundowner Overlook (1K HDR environment)
+Poly Haven — CC0 1.0
+https://polyhaven.com/a/sundowner_overlook
+
+CC0 legal text: https://creativecommons.org/publicdomain/zero/1.0/
+
+Astra AF-27 car, circuit geometry, sponsor graphics: original project assets.
+The Blender generation script is in scripts/build_car.py. The original livery
+uses system typeface outlines; no font files are distributed.
+
+trees.png: foliage atlas generated for this project with OpenAI image generation.

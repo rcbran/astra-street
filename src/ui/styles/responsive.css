@@ -1,0 +1,685 @@
+@media (min-width: 1700px) {
+  .session-panel {
+    width: 385px;
+    padding: 30px 28px 21px;
+  }
+  .circuit-option {
+    min-height: 86px;
+  }
+  .circuit-label strong {
+    font-size: 1.13rem;
+  }
+  .circuit-label > span {
+    font-size: 0.54rem;
+  }
+  .weather-option {
+    height: 64px;
+    font-size: 0.63rem;
+  }
+  .session-meta {
+    font-size: 0.66rem;
+  }
+  .mode-tabs button {
+    font-size: 0.85rem;
+  }
+  .session-heading {
+    top: 30%;
+  }
+  .session-heading p {
+    font-size: 1rem;
+  }
+  .game-header {
+    top: 38px;
+  }
+}
+@media (max-height: 750px) and (min-width: 801px) {
+  .session-panel {
+    top: 50%;
+    transform: translateY(-44%);
+    padding: 17px 18px 12px;
+    width: 320px;
+  }
+  .panel-heading {
+    margin-bottom: 13px;
+  }
+  .mode-tabs {
+    margin-bottom: 12px;
+  }
+  .circuit-option {
+    min-height: 63px;
+    padding: 9px 10px;
+  }
+  .circuit-preview {
+    width: 55px;
+    height: 55px;
+  }
+  .weather-heading {
+    margin-top: 15px;
+  }
+  .weather-option {
+    height: 49px;
+  }
+  .session-meta {
+    margin: 15px 0 13px;
+  }
+  .start-race {
+    height: 46px !important;
+  }
+  .enter-hint {
+    margin-top: 10px;
+  }
+  .session-heading {
+    top: 28%;
+  }
+  .session-heading h1 {
+    font-size: 5.9vw;
+  }
+  .location-tag {
+    bottom: 101px;
+  }
+  .car-name {
+    bottom: 104px;
+  }
+  .menu-footer {
+    bottom: 18px;
+    padding-top: 15px;
+  }
+}
+@media (max-width: 1050px) {
+  .session-heading h1 {
+    font-size: 5.7vw;
+  }
+  .session-heading p {
+    font-size: 0.75rem;
+  }
+  .session-panel {
+    right: 3%;
+    width: 306px;
+  }
+  .car-name {
+    display: none;
+  }
+  .header-edition {
+    display: none;
+  }
+  .menu-footer > span {
+    font-size: 0.48rem;
+  }
+  .location-tag {
+    gap: 8px;
+  }
+  .location-tag > span:nth-child(2) {
+    font-size: 0.62rem;
+  }
+  .location-tag small {
+    font-size: 0.43rem;
+  }
+  .race-standing {
+    left: 21px;
+    top: 84px;
+    width: 162px;
+  }
+  .leaderboard {
+    margin-top: 10px;
+  }
+  .leaderboard > div {
+    height: 25px;
+    font-size: 0.53rem;
+    gap: 7px;
+  }
+  .timing-panel {
+    right: 20px;
+    top: 88px;
+    width: 200px;
+  }
+  .race-actions {
+    right: 20px;
+    top: 205px;
+  }
+  .mini-map {
+    left: 19px;
+    bottom: 50px;
+    width: 140px;
+  }
+  .mini-map svg {
+    width: 130px;
+    height: 130px;
+  }
+  .speedometer {
+    right: 21px;
+    bottom: 50px;
+    width: 270px;
+  }
+  .speed-readout > strong {
+    font-size: 4rem;
+  }
+  .rpm-lights {
+    gap: 3px;
+  }
+}
+@media (max-width: 800px) {
+  .game-header {
+    left: 22px;
+    right: 22px;
+    top: 22px;
+  }
+  .brand {
+    transform: scale(0.83);
+    transform-origin: left;
+  }
+  .header-controls {
+    gap: 4px;
+  }
+  .header-controls .fps-badge {
+    font-size: 0.53rem;
+    margin-right: 3px;
+    padding: 0 6px;
+  }
+  .session-heading {
+    top: 120px;
+    left: 25px;
+  }
+  .session-heading > .eyebrow {
+    font-size: 0.51rem;
+    margin-bottom: 13px;
+  }
+  .session-heading h1 {
+    font-size: 3.8rem;
+  }
+  .session-heading p {
+    display: none;
+  }
+  .session-panel {
+    width: 300px;
+    right: 24px;
+    top: auto;
+    bottom: 82px;
+    transform: none;
+    padding: 16px;
+  }
+  .panel-heading {
+    margin-bottom: 12px;
+  }
+  .mode-tabs {
+    margin-bottom: 13px;
+  }
+  .circuit-option {
+    min-height: 61px;
+    padding: 10px;
+  }
+  .circuit-preview {
+    height: 54px;
+    width: 54px;
+  }
+  .weather-heading {
+    margin-top: 14px;
+  }
+  .weather-option {
+    height: 48px;
+  }
+  .session-meta {
+    margin: 15px 0;
+  }
+  .enter-hint {
+    display: none;
+  }
+  .session-panel .start-race {
+    height: 43px !important;
+  }
+  .menu-footer > span {
+    display: none;
+  }
+  .menu-footer {
+    left: 24px;
+    right: 24px;
+    bottom: 20px;
+    padding-top: 15px;
+  }
+  .menu-footer > div {
+    gap: 6px;
+  }
+  .menu-footer > div > span {
+    margin-right: 8px;
+    font-size: 0.5rem;
+  }
+  .location-tag {
+    bottom: 101px;
+    left: 25px;
+    flex-wrap: wrap;
+    width: 140px;
+  }
+  .location-line,
+  .local-time {
+    display: none;
+  }
+  .race-bottom-hint {
+    font-size: 0.42rem;
+    gap: 4px;
+  }
+  .race-bottom-hint kbd {
+    font-size: 0.43rem;
+  }
+  .is-racing .game-header {
+    left: 15px;
+    right: 15px;
+  }
+  .is-racing .brand {
+    transform: scale(0.65);
+  }
+  .is-racing .header-controls .fps-badge {
+    display: none;
+  }
+  .lap-readout {
+    top: 21px;
+    padding: 7px 11px;
+    gap: 8px;
+  }
+  .lap-readout > strong {
+    font-size: 1.15rem;
+  }
+  .lap-readout .eyebrow {
+    font-size: 0.5rem;
+  }
+  .timing-panel {
+    width: 165px;
+    padding: 6px 9px;
+  }
+  .timing-panel span {
+    font-size: 0.46rem;
+  }
+  .timing-panel b {
+    font-size: 0.68rem;
+  }
+  .timing-panel > div:first-child b {
+    font-size: 0.9rem;
+  }
+  .race-standing {
+    width: 146px;
+  }
+  .position-readout strong {
+    font-size: 2.2rem;
+  }
+  .leaderboard > div:nth-child(n + 6) {
+    display: none;
+  }
+  .speedometer {
+    width: 236px;
+    right: 13px;
+  }
+  .speed-readout > strong {
+    font-size: 3.5rem;
+  }
+  .gear {
+    width: 39px;
+  }
+  .rpm-lights i {
+    width: 11px;
+  }
+  .boost-readout {
+    font-size: 0.45rem;
+  }
+  .boost-readout kbd {
+    display: none;
+  }
+}
+@media (max-width: 570px) {
+  .game-header {
+    left: 16px;
+    right: 16px;
+    top: 18px;
+  }
+  .header-controls {
+    gap: 2px;
+  }
+  .header-controls button {
+    width: 28px;
+    height: 29px;
+  }
+  .header-controls .fps-badge {
+    display: none;
+  }
+  .session-heading {
+    top: 95px;
+    left: 23px;
+  }
+  .session-heading h1 {
+    font-size: 3rem;
+    line-height: 0.98;
+  }
+  .session-heading > .eyebrow {
+    font-size: 0.45rem;
+    letter-spacing: 0.11em;
+    margin-bottom: 13px;
+  }
+  .session-panel {
+    left: 20px;
+    right: 20px;
+    width: auto;
+    bottom: 64px;
+    padding: 15px;
+    background: #112a23ed;
+  }
+  .panel-heading {
+    margin-bottom: 10px;
+  }
+  .panel-heading .eyebrow {
+    font-size: 0.56rem;
+  }
+  .mode-tabs {
+    height: 34px !important;
+    margin-bottom: 12px;
+  }
+  .mode-tabs button {
+    height: 28px;
+    font-size: 0.69rem;
+  }
+  .circuit-heading {
+    margin-bottom: 7px;
+  }
+  .circuit-list {
+    gap: 5px !important;
+  }
+  .circuit-option {
+    min-height: 53px;
+    padding: 8px 10px;
+  }
+  .circuit-label strong {
+    font-size: 0.9rem;
+  }
+  .circuit-label > span {
+    font-size: 0.43rem;
+  }
+  .circuit-preview {
+    width: 47px;
+    height: 47px;
+    right: 35px;
+  }
+  .circuit-number {
+    padding-bottom: 12px;
+  }
+  .weather-heading {
+    margin: 12px 0 8px;
+  }
+  .weather-option {
+    height: 43px;
+    gap: 3px;
+    font-size: 0.53rem;
+  }
+  .weather-option svg {
+    width: 15px;
+    height: 15px;
+  }
+  .session-meta {
+    margin: 12px 0;
+    font-size: 0.55rem;
+  }
+  .session-panel .start-race {
+    height: 43px !important;
+  }
+  .location-tag {
+    display: none;
+  }
+  .menu-footer {
+    left: 20px;
+    right: 20px;
+    bottom: 14px;
+    padding-top: 13px;
+  }
+  .menu-footer > div {
+    justify-content: space-between;
+    width: 100%;
+  }
+  .menu-shade {
+    background: linear-gradient(180deg, #0d211dbb, transparent 38%, #091e17aa);
+  }
+  .session-heading h1 br {
+    display: none;
+  }
+  .session-heading h1 span {
+    margin-left: 0.1em;
+  }
+  .session-heading h1 {
+    font-size: 2.8rem;
+    white-space: nowrap;
+  }
+  .session-heading p {
+    display: none;
+  }
+  .brand {
+    transform: scale(0.76);
+  }
+  .controls-guide > div {
+    grid-template-columns: auto 1fr;
+  }
+  .settings-dialog,
+  .session-dialog {
+    padding: 24px !important;
+  }
+  .starting-lights {
+    top: 29%;
+  }
+  .starting-lights i {
+    width: 19px;
+    height: 19px;
+  }
+  .starting-lights > div {
+    padding: 15px 19px;
+    gap: 11px;
+  }
+  .race-notice {
+    font-size: 0.61rem;
+    width: 260px;
+    top: 27%;
+    padding: 9px 11px;
+  }
+  .race-notice span {
+    font-size: 0.58rem;
+  }
+  .race-standing {
+    left: 15px;
+    width: 135px;
+  }
+  .leaderboard {
+    display: none;
+  }
+  .position-readout {
+    padding-left: 8px;
+  }
+  .position-readout strong {
+    font-size: 1.8rem;
+  }
+  .position-readout small {
+    font-size: 0.7rem;
+  }
+  .timing-panel {
+    right: 13px;
+    top: 91px;
+    width: 153px;
+  }
+  .timing-panel > div:nth-child(3) {
+    display: none;
+  }
+  .race-actions {
+    right: 14px;
+    top: 163px;
+  }
+  .mini-map {
+    left: 12px;
+    bottom: 60px;
+    width: 105px;
+  }
+  .mini-map svg {
+    width: 99px;
+    height: 99px;
+  }
+  .mini-map > span {
+    font-size: 0.44rem;
+    margin-left: 4px;
+  }
+  .speedometer {
+    width: 217px;
+    bottom: 58px;
+    right: 7px;
+    padding: 8px 10px;
+  }
+  .speed-readout > strong {
+    font-size: 3.2rem;
+  }
+  .speed-readout {
+    gap: 8px;
+  }
+  .gear {
+    height: 47px;
+  }
+  .gear > b {
+    font-size: 2rem;
+  }
+  .gear > span {
+    font-size: 0.42rem;
+  }
+  .speed-unit {
+    font-size: 0.42rem;
+  }
+  .rpm-lights {
+    gap: 3px;
+    margin-bottom: 9px;
+  }
+  .rpm-lights i {
+    width: 10px;
+    height: 3px;
+  }
+  .pedal-bars {
+    margin: 8px 0 10px;
+  }
+  .lap-readout {
+    left: 46%;
+    padding: 7px 9px;
+  }
+  .lap-readout > .eyebrow {
+    display: none;
+  }
+  .race-bottom-hint {
+    display: none;
+  }
+}
+@media (pointer: coarse) {
+  .touch-controls {
+    position: absolute;
+    z-index: 15;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+  }
+  .touch-controls > div {
+    display: flex;
+    gap: 9px;
+  }
+  .touch-controls button {
+    pointer-events: auto;
+    touch-action: none;
+    background: #183225b8;
+    border: 1px solid #d8e2c35c;
+    height: 53px;
+    min-width: 53px;
+    border-radius: 6px;
+    color: #eaf0dc;
+    font-size: 0.68rem;
+    backdrop-filter: blur(5px);
+  }
+  .race-bottom-hint {
+    display: none;
+  }
+  .mini-map,
+  .speedometer {
+    bottom: 92px;
+  }
+}
+@media (max-height: 650px) and (max-width: 800px) and (orientation: landscape) {
+  .session-heading {
+    top: 115px;
+  }
+  .session-heading h1 {
+    font-size: 2.5rem;
+  }
+  .session-panel {
+    width: 285px;
+    right: 20px;
+    left: auto;
+    bottom: 25px;
+    padding: 12px;
+  }
+  .panel-heading,
+  .circuit-heading,
+  .enter-hint,
+  .session-meta {
+    display: none;
+  }
+  .mode-tabs {
+    margin-bottom: 8px;
+  }
+  .circuit-option {
+    min-height: 47px;
+    padding: 7px;
+  }
+  .circuit-preview {
+    width: 42px;
+    height: 42px;
+  }
+  .weather-heading {
+    margin-top: 10px;
+  }
+  .weather-option {
+    height: 40px;
+  }
+  .start-race {
+    margin-top: 10px;
+    height: 38px !important;
+  }
+  .menu-footer {
+    max-width: calc(100% - 345px);
+    bottom: 22px;
+  }
+  .menu-footer > div {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 6px;
+  }
+  .location-tag {
+    display: none;
+  }
+  .game-header {
+    top: 15px;
+  }
+  .race-standing {
+    top: 69px;
+  }
+  .leaderboard {
+    display: none;
+  }
+  .timing-panel {
+    top: 69px;
+  }
+  .race-actions {
+    top: 173px;
+  }
+  .speedometer {
+    bottom: 32px;
+  }
+  .mini-map {
+    bottom: 22px;
+  }
+  .race-bottom-hint {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *:before,
+  *:after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

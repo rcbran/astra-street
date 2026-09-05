@@ -1,0 +1,440 @@
+/* The racing interface is kept clear of the road's vanishing point. */
+.is-racing .game-header {
+  top: 21px;
+  height: 32px;
+  left: 28px;
+  right: 28px;
+}
+.is-racing .brand {
+  opacity: 0.88;
+  transform: scale(0.75);
+  transform-origin: left;
+}
+.is-racing .header-controls {
+  gap: 8px;
+}
+.is-racing .header-controls button {
+  background: #10201c8c;
+}
+.race-hud {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  text-shadow: 0 1px 9px #101b1988;
+}
+.race-hud button {
+  pointer-events: auto;
+}
+.race-standing {
+  position: absolute;
+  top: 94px;
+  left: 32px;
+  width: 199px;
+}
+.position-readout {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border-left: 3px solid #ee7051;
+  padding: 0 0 9px 13px;
+}
+.position-readout .eyebrow {
+  font-size: 0.57rem;
+  color: #d9e1d4;
+}
+.position-readout strong {
+  font-size: 2.9rem;
+  line-height: 1;
+  font-weight: 750;
+  letter-spacing: -0.05em;
+  font-variant-numeric: tabular-nums;
+}
+.position-readout small {
+  font-size: 0.86rem;
+  letter-spacing: 0.05em;
+  font-weight: 400;
+  margin-left: 9px;
+  color: #e3ead9b3;
+}
+.leaderboard {
+  margin-top: 15px;
+  background: linear-gradient(90deg, #10201be0, #10211b33);
+  padding: 5px 0;
+}
+.leaderboard > div {
+  display: flex;
+  align-items: center;
+  height: 29px;
+  gap: 10px;
+  padding: 0 9px;
+  font-size: 0.59rem;
+  color: #e3e9debd;
+}
+.leaderboard > div > span:first-child {
+  width: 9px;
+  font-family: monospace;
+  font-size: 0.66rem;
+  color: #dce6d1b3;
+}
+.leaderboard i {
+  height: 13px;
+  width: 2px;
+}
+.leaderboard b {
+  letter-spacing: 0.04em;
+  font-weight: 500;
+}
+.leaderboard .you {
+  background: #eaf1d3e6;
+  color: #183025;
+}
+.leaderboard .you > span:first-child {
+  color: #183025;
+}
+.you-tag {
+  margin-left: auto;
+  font-size: 0.51rem;
+}
+.lap-readout {
+  position: absolute;
+  top: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #0b211973;
+  border-bottom: 2px solid #d6e0c6aa;
+  padding: 11px 23px 8px;
+  backdrop-filter: blur(8px);
+}
+.lap-readout .eyebrow {
+  font-size: 0.6rem;
+  color: #d8e4c4;
+}
+.lap-readout > strong {
+  font-size: 1.45rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.lap-readout > strong > span {
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: #d4ddc6a8;
+}
+.timing-panel {
+  position: absolute;
+  right: 33px;
+  top: 96px;
+  background: linear-gradient(270deg, #152821b0, #14261c22);
+  padding: 8px 12px;
+  width: 224px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.timing-panel > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.timing-panel span {
+  font-size: 0.53rem;
+  letter-spacing: 0.09em;
+  color: #d0ddc1ac;
+}
+.timing-panel b {
+  font-family: monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.01em;
+  font-weight: 500;
+  color: #eef3e4;
+}
+.timing-panel > div:first-child b {
+  font-size: 1.08rem;
+}
+.timing-panel .best-time {
+  color: #c7edab;
+}
+.race-actions {
+  position: absolute;
+  right: 33px;
+  top: 217px;
+  display: flex;
+  gap: 8px;
+}
+.race-actions button {
+  background: #173024aa;
+  border: 1px solid #e0eacc20;
+  border-radius: 3px;
+  width: 34px;
+  height: 34px;
+}
+.mini-map {
+  position: absolute;
+  left: 34px;
+  bottom: 63px;
+  width: 173px;
+  color: #e3edd1;
+  filter: drop-shadow(0 2px 8px #16231c);
+}
+.mini-map svg {
+  width: 153px;
+  height: 153px;
+  transform: rotate(-9deg);
+}
+.mini-map > span {
+  display: block;
+  font-size: 0.61rem;
+  letter-spacing: 0.12em;
+  margin: 4px 0 0 10px;
+}
+.mini-map b {
+  color: #ee7c58;
+  font-weight: 500;
+  margin-left: 5px;
+}
+.speedometer {
+  position: absolute;
+  right: 38px;
+  bottom: 63px;
+  width: 294px;
+  background: linear-gradient(0deg, #12221bcc, #12241b00);
+  padding: 13px 15px 12px;
+  border-bottom: 1px solid #c1d0b736;
+}
+.rpm-lights {
+  display: flex;
+  gap: 4px;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+.rpm-lights i {
+  width: 13px;
+  height: 4px;
+  background: #d1ddc520;
+  border-radius: 1px;
+}
+.rpm-lights .on {
+  background: var(--rpm-color);
+  box-shadow: 0 0 6px color-mix(in srgb, var(--rpm-color), transparent 40%);
+}
+.speed-readout {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+.gear {
+  width: 50px;
+  height: 65px;
+  border-right: 1px solid #d4e2c952;
+  margin-right: 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding-right: 12px;
+}
+.gear > span {
+  font-size: 0.5rem;
+  letter-spacing: 0.1em;
+  color: #d3ddc4af;
+}
+.gear > b {
+  font-size: 2.55rem;
+  line-height: 1;
+  font-weight: 400;
+}
+.speed-readout > strong {
+  font-size: 4.5rem;
+  line-height: 0.95;
+  font-style: italic;
+  font-weight: 750;
+  letter-spacing: -0.06em;
+  font-variant-numeric: tabular-nums;
+  flex: 1;
+}
+.speed-unit {
+  font-size: 0.54rem;
+  align-self: flex-end;
+  margin-bottom: 8px;
+  letter-spacing: 0.08em;
+  color: #d0dec1b3;
+  writing-mode: vertical-rl;
+}
+.pedal-bars {
+  display: flex;
+  gap: 7px;
+  margin: 12px 0 14px;
+}
+.pedal-bars > div {
+  height: 3px;
+  background: #c4d5b524;
+  flex: 1;
+  overflow: hidden;
+}
+.pedal-bars i {
+  display: block;
+  height: 100%;
+}
+.brake i {
+  background: #ec7050;
+}
+.throttle i {
+  background: #c0eab0;
+}
+.boost-readout {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #d2dfa9;
+  font-size: 0.52rem;
+  letter-spacing: 0.045em;
+}
+.boost-readout > div {
+  flex: 1;
+  height: 4px;
+  background: #bedf9520;
+  margin: 0 4px;
+}
+.boost-readout > div > i {
+  height: 100%;
+  background: #cddc9e;
+  display: block;
+}
+.boost-readout b {
+  font-family: monospace;
+  font-size: 0.59rem;
+  font-weight: 400;
+  width: 25px;
+  text-align: right;
+}
+.boost-readout kbd {
+  font-size: 0.45rem;
+  padding: 3px 4px;
+  color: #b9c5ab;
+  border-color: #d6e8b537;
+  margin-left: 3px;
+}
+.boosting .boost-readout > div > i {
+  background: #f6c380;
+  box-shadow: 0 0 12px #ffc286;
+}
+.boosting .speed-readout > strong {
+  color: #fff4cd;
+}
+.starting-lights {
+  position: absolute;
+  top: 22%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+.starting-lights > div {
+  display: flex;
+  gap: 14px;
+  background: #10231dd9;
+  padding: 19px 23px;
+  border-radius: 5px;
+  border: 1px solid #d7e5ba25;
+}
+.starting-lights i {
+  display: block;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #4c2520;
+  box-shadow: inset 0 2px 4px #000a;
+}
+.starting-lights .lit {
+  background: #ef4c33;
+  box-shadow:
+    0 0 24px #ff563566,
+    inset 0 1px 3px #ffccaa60;
+}
+.starting-lights > span {
+  display: block;
+  margin-top: 16px;
+  font-size: 0.65rem;
+  letter-spacing: 0.13em;
+  color: #f0eddb;
+}
+.starting-lights kbd {
+  font-size: 0.63rem;
+  border-color: #f1e5c672;
+  margin: 0 4px;
+}
+.race-notice {
+  position: absolute;
+  top: 23%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  background: #302c16bf;
+  border-top: 2px solid #e5b968;
+  padding: 11px 22px;
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  color: #efc580;
+}
+.race-notice span {
+  display: block;
+  font-size: 0.63rem;
+  letter-spacing: 0.015em;
+  margin-top: 7px;
+  color: #e6dfc6;
+}
+.race-bottom-hint {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.5rem;
+  letter-spacing: 0.1em;
+  color: #d4e1c7a3;
+  white-space: nowrap;
+}
+.race-bottom-hint kbd {
+  font-size: 0.49rem;
+  border-color: #dbeacc35;
+  color: #d4e1c7b8;
+  padding: 3px 4px;
+}
+.race-bottom-hint > span {
+  margin: 0 5px;
+}
+.metrics-panel {
+  position: absolute;
+  z-index: 40;
+  right: 29px;
+  top: 70px;
+  background: #0e211cea;
+  backdrop-filter: blur(12px);
+  padding: 15px 18px;
+  border: 1px solid #d5e2c54d;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: monospace;
+  font-size: 0.7rem;
+  color: #d3e6c5;
+  pointer-events: none;
+}
+.metrics-panel b {
+  font-size: 0.55rem;
+  letter-spacing: 0.14em;
+  font-weight: 500;
+  color: #a4b98f;
+  margin-bottom: 4px;
+}
+.metrics-panel small {
+  color: #96b282;
+  font-size: 0.6rem;
+  margin-top: 4px;
+}

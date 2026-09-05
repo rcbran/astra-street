@@ -1,0 +1,63 @@
+[
+  {
+    "file": "sparse_grass_diff_1k.jpg",
+    "bytes": 955945,
+    "sha256": "ae94f2b34597b9108eefd88217f55eccaec6d6b382e858a478ee92df90e66617",
+    "source": "https://polyhaven.com/a/sparse_grass",
+    "download": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/sparse_grass/sparse_grass_diff_1k.jpg",
+    "api": "https://api.polyhaven.com/files/sparse_grass",
+    "author": "Amal Kumar",
+    "license": "CC0 1.0 Universal",
+    "license_url": "https://polyhaven.com/license",
+    "source_md5_verified": "5d0aba796e1b5882555161c16b10ee9d"
+  },
+  {
+    "file": "sparse_grass_nor_gl_1k.jpg",
+    "bytes": 1440314,
+    "sha256": "1c840a24807346ddaaf94a5057aee4078fcec3a4cd84bfe45da7d3b480ef460b",
+    "source": "https://polyhaven.com/a/sparse_grass",
+    "download": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/sparse_grass/sparse_grass_nor_gl_1k.jpg",
+    "api": "https://api.polyhaven.com/files/sparse_grass",
+    "author": "Amal Kumar",
+    "license": "CC0 1.0 Universal",
+    "license_url": "https://polyhaven.com/license",
+    "source_md5_verified": "3307e6ce47413c6b4e85885d4b8ae932"
+  },
+  {
+    "file": "sparse_grass_rough_1k.jpg",
+    "bytes": 463340,
+    "sha256": "9ebe6d03a9551c17d1802835c92c1442acb8f5d38d4874ee8c37770f11c4bed1",
+    "source": "https://polyhaven.com/a/sparse_grass",
+    "download": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/sparse_grass/sparse_grass_rough_1k.jpg",
+    "api": "https://api.polyhaven.com/files/sparse_grass",
+    "author": "Amal Kumar",
+    "license": "CC0 1.0 Universal",
+    "license_url": "https://polyhaven.com/license",
+    "source_md5_verified": "acf2fd7e352e7635f67f24ecda01e485"
+  },
+  {
+    "file": "sundowner_overlook_1k.hdr",
+    "bytes": 1677419,
+    "sha256": "e7d80054b4f0fb98104386ffd3765ae94e10221c7ae0cb6ed3566eb7431933f7",
+    "source": "https://polyhaven.com/a/sundowner_overlook",
+    "download": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/sundowner_overlook_1k.hdr",
+    "api": "https://api.polyhaven.com/files/sundowner_overlook",
+    "author": "Dario Barresi",
+    "license": "CC0 1.0 Universal",
+    "license_url": "https://polyhaven.com/license",
+    "source_md5_verified": "d313a75d829a2123b163f7b41d4aa0db"
+  },
+  {
+    "file": "broadleaf_atlas.png",
+    "bytes": 2490543,
+    "sha256": "a189715eaa20c17718acaea1aa31afc093d623baca0ab6fb2abe591f403209ec",
+    "source": "OpenAI built-in imagegen, generated specifically for Astra Formula 2026-09-05",
+    "third_party_license": "No third-party source asset; original AI-generated output",
+    "original_path": "/Users/rcbranham/.codex/generated_images/01a073aa-9339-7a13-b68e-62f5e9e583da/exec-39484745-839b-4bcf-90b5-834fb202e215.png",
+    "dimensions": [
+      1774,
+      887
+    ],
+    "alpha_verified": true
+  }
+]
