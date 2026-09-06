@@ -1,0 +1,15 @@
+{
+  "date": "2026-09-06T03:27:07.886Z",
+  "kind": "emulated multi-touch; not a physical device",
+  "errors": [],
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+  "captureMode": "headless",
+  "inputAfterRelease": {
+    "steer": 0,
+    "throttle": 0,
+    "brake": 0,
+    "boost": false,
+    "handbrake": false
+  },
+  "status": "passed"
+}

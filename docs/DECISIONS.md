@@ -10,3 +10,8 @@
 8. **Personal ownership.** Keep repository-only personal Git author configuration. Reuse the one owner-private Site and credential-free `sites` remote. Tokens stay ephemeral. Source pushes and saved/deployed Site versions are distinct. Public GitHub/license selection is separate.
 9. **Collaboration.** No Orca. No delegation without an active instruction authorizing it; authorized workers must use `gpt-6-astra`. The Site owner alone edits the checkout and handles hosting. The image worker returned assets outside the checkout.
 10. **Accurate resumption context.** Keep handoff/tasks current at milestones. Do not fabricate missing Codex checkpoint refs; the old warning arose before initial Git history and is not corruption.
+
+11. Horizontal input is positive for screen-right. A single simulation-boundary sign conversion maps it to the +Z-forward chassis; keyboard, touch and gamepad share that convention. The benchmark pilot converts back to input space.
+12. Densify scenery with spatially batched solid near trees, atlas-based distant forests and terrain-conforming placement. Reuse the existing generated/CC0 maps; no new external runtime assets.
+13. Headless automation is the user’s requested default. Verify the renderer; keep headless GPU workload measurements distinct from visible-window frame pacing.
+14. The user requested their personal GitHub copy. Create `rcbran/astra-street` privately by default and retain Sites source/hosting in the existing project. Public visibility and licensing are separate choices.

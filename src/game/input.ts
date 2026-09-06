@@ -1,5 +1,6 @@
 import { clamp } from './tracks';
 export interface ControlInput {
+  /** Positive is driver/screen-right for every input device. */
   steer: number;
   throttle: number;
   brake: number;

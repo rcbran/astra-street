@@ -142,7 +142,7 @@ export function buildBuildings(
     emissiveIntensity: night ? 0.38 : 0,
   });
   const transforms = [];
-  for (let i = 0; i < (city ? 190 : 72); i++) {
+  for (let i = 0; i < (city ? 190 : 0); i++) {
     const at = rand() * track.length,
       f = track.sample(at);
     const off =

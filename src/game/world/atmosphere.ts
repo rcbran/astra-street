@@ -4,6 +4,7 @@ import type { Weather } from '../types';
 import { mesh } from './geometry';
 import { noiseTexture } from '../materials';
 import { skyVertex, skyFragment } from '../shaders/sky';
+import { terrainNoise } from './landscape';
 export function makeSky(weather: Weather) {
   const sunset = weather === 'sunset',
     rain = weather === 'rain';
@@ -15,12 +16,12 @@ export function makeSky(weather: Weather) {
       uniforms: {
         top: {
           value: new THREE.Color(
-            rain ? '#050b16' : sunset ? '#417792' : '#3985bd',
+            rain ? '#050b16' : sunset ? '#527d97' : '#287bbb',
           ),
         },
         horizon: {
           value: new THREE.Color(
-            rain ? '#34424f' : sunset ? '#f9c191' : '#dae9eb',
+            rain ? '#34424f' : sunset ? '#edb774' : '#c5dbe5',
           ),
         },
         sunDir: {
@@ -44,7 +45,7 @@ export function buildMountains(
   weather: Weather,
 ) {
   const rand = seeded(77),
-    geo = new THREE.PlaneGeometry(6500, 6500, 128, 128);
+    geo = new THREE.PlaneGeometry(6500, 6500, 196, 196);
   geo.rotateX(-Math.PI / 2);
   const p = geo.getAttribute('position'),
     colors = [];
@@ -61,16 +62,24 @@ export function buildMountains(
     const x = p.getX(i),
       z = p.getZ(i),
       r = Math.hypot(x - 150, z);
-    const edge = THREE.MathUtils.smoothstep(r, 720, 1700);
-    const waves =
-      Math.sin(x * 0.004 + 1) * Math.cos(z * 0.003) +
-      Math.sin(x * 0.011 + z * 0.004) * Math.sin(z * 0.008) * 0.45 +
-      Math.sin(x * 0.035 + Math.sin(z * 0.021)) * 0.14;
-    const ridges = 1 - Math.abs(Math.sin(x * 0.0035 + z * 0.002));
-    let y = -0.5 + edge * Math.max(16, 100 + waves * 65 + ridges * 90);
+    const edge = THREE.MathUtils.smoothstep(r, 820, 1800);
+    const ridges = 1 - Math.abs(terrainNoise(x * 0.0018, z * 0.0018) * 2 - 1);
+    const smaller = 1 - Math.abs(terrainNoise(x * 0.006, z * 0.006) * 2 - 1);
+    let y =
+      -2 +
+      edge *
+        (110 +
+          ridges ** 3 * 680 +
+          smaller ** 2 * 180 +
+          terrainNoise(x * 0.03, z * 0.03) * 30);
     if (track.circuit.id === 'riviera' && x > 520) y = -12;
     p.setY(i, y);
-    const c = base.clone().multiplyScalar(0.7 + rand() * 0.3 + y / 1900);
+    const c = base.clone().multiplyScalar(0.66 + rand() * 0.12 + y / 1600);
+    if (track.circuit.id === 'forest')
+      c.lerp(
+        new THREE.Color('#c4c6bb'),
+        THREE.MathUtils.smoothstep(y, 550, 850) * 0.7,
+      );
     colors.push(c.r, c.g, c.b);
   }
   geo.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));

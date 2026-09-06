@@ -5,9 +5,19 @@ import { hostname } from 'node:os';
 const browser = await chromium.connectOverCDP(
   process.env.ASTRA_CDP ?? 'http://localhost:9224',
 );
-const context =
-  browser.contexts().find((c) => c.pages().length) ?? browser.contexts()[0];
-const page = context.pages()[0] ?? (await context.newPage());
+const context = await browser.newContext({
+  viewport: { width: 1440, height: 900 },
+  deviceScaleFactor: 2,
+  ...(process.env.ASTRA_RECORD_VIDEO === '1'
+    ? {
+        recordVideo: {
+          dir: 'artifacts/control-video',
+          size: { width: 1440, height: 900 },
+        },
+      }
+    : {}),
+});
+const page = await context.newPage();
 await mkdir('artifacts', { recursive: true });
 page.setDefaultTimeout(120_000);
 const errors = [];
@@ -38,6 +48,10 @@ try {
     `${process.env.ASTRA_BASE_URL ?? 'http://localhost:8788'}/?debug=1`,
   );
   await page.bringToFront();
+  report.userAgent = await page.evaluate(() => navigator.userAgent);
+  report.captureMode = /HeadlessChrome/.test(report.userAgent)
+    ? 'headless'
+    : 'visible';
   await page.waitForFunction(
     () => window.__ASTRA__?.telemetry.phase === 'menu',
   );
@@ -70,8 +84,23 @@ try {
   await driveFor(0.4);
   await page.keyboard.up('d');
   assert.ok(
-    (await page.evaluate(() => window.__ASTRA__.player.offset)) > offset + 0.1,
+    (await page.evaluate(() => window.__ASTRA__.player.offset)) < offset - 0.1,
   );
+  report.steering = {
+    rightOffset: await page.evaluate(() => window.__ASTRA__.player.offset),
+  };
+  await page.keyboard.press('r');
+  await driveFor(0.8);
+  const leftStart = await page.evaluate(() => window.__ASTRA__.player.offset);
+  await page.keyboard.down('a');
+  await driveFor(0.4);
+  await page.keyboard.up('a');
+  report.steering.leftOffset = await page.evaluate(
+    () => window.__ASTRA__.player.offset,
+  );
+  assert.ok(report.steering.leftOffset > leftStart + 0.1);
+  await page.keyboard.press('r');
+  await driveFor(0.8);
   await page.keyboard.down('Space');
   await page.keyboard.down('d');
   await driveFor(0.4);
@@ -212,5 +241,6 @@ try {
     'artifacts/browser-check.json',
     JSON.stringify(report, null, 2) + '\n',
   );
+  await context.close();
   await browser.close();
 }

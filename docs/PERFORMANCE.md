@@ -1,6 +1,24 @@
 # Performance evidence
 
-## Current street revision — 2026-09-06
+## Current landscape revision — 2026-09-06
+
+The user requested headless automation off their screen. Chrome 152.0.7977.76 reports **HeadlessChrome with ANGLE/Metal on Apple M4 Max**, using a separate temporary profile. This is a production-build GPU workload sample, **not a visible-window display-pacing benchmark**. The older visible results below remain distinct.
+
+Balanced / chase / assisted pilot, DPR 2 at 1440×900 CSS, measured **1821×1138 drawing buffer** (effective ratio 1.264911). This is roughly 2.07 million pixels under the 1080p pixel-count ceiling, not native Retina or a 1920×1080 framebuffer. Each route ran about 25 seconds; FPS statistics use the final sixteen per-second samples.
+
+| Route / weather     | Observed run | Median FPS | Tenth-percentile FPS | Ending rolling GPU p95 | Highest per-second CPU-submit p95 |
+| ------------------- | -----------: | ---------: | -------------------: | ---------------------: | --------------------------------: |
+| Canyon Run / sunset |      25.43 s |      60.00 |                60.00 |                4.20 ms |                           1.80 ms |
+| Pinecrest / clear   |      25.37 s |      60.00 |                60.00 |                3.53 ms |                           1.90 ms |
+| Harbor City / rain  |      25.32 s |      60.00 |                60.00 |                4.83 ms |                           5.00 ms |
+
+Canyon contains 6,207 trees (1,500 solid roadside conifers), 1,020 rock instances and 6,202 grass clumps. Pinecrest contains 10,853 trees (1,500 solid), 620 rock instances and 6,360 grass clumps. Harbor City gains a mountain backdrop and 78 distant trees. Vegetation is spatially batched; geometry is shared and scene-owned. More triangles are intentional: one ending canyon sample submits about 6.16 million triangles including the shadow pass, while the 1821×1138 cap remains intact.
+
+No captured browser errors. Raw tail samples, capture timestamps/positions, actual framebuffer and renderer are in `evidence/landscape-mac.json`. GPU p95 is the timer's ending rolling window, not whole-run p95 or maximum; CPU submission excludes some simulation/preparation and GPU completion. No thermal, fan/noise, power or physical-device measurements were taken. These short pilot runs do not replace complete races or human driving feedback. Source evidence was captured from the dirty landscape working tree based on `763f684` before committing.
+
+Headless production keyboard checks passed for both left and right movement, drifting/scoring, nitro, service braking, pause/blur and five responsive menu sizes. Emulated multi-touch passed and released all inputs. DPR/quality/fullscreen checks and all nine world builds passed. Three Eco/960×540 resource cycles returned identical counts: Canyon 94 geometries / 18 textures, Pinecrest 89 / 20, Harbor 97 / 25. Those are renderer-accounted uploads in that sequence, not total heap use or a universal leak guarantee. There are 26 passing deterministic tests, including camera-space steering direction and terrain clearance across all paved routes. Current reports use `landscape-` prefixes.
+
+## First street release — 2026-09-06
 
 Visible foreground Chrome 152.0.7977.76 on Apple M4 Max using ANGLE/Metal, production build, Balanced chase camera and an automated pilot. Each route ran about 25 seconds. The owned browser context emulated DPR 2 with a **1440×900 CSS viewport and measured 1821×1138 drawing buffer**, effective ratio 1.264911. That is about 2.07 million pixels under the 1080p pixel-count ceiling; it is neither native Retina nor a 1920×1080 framebuffer.
 

@@ -17,7 +17,7 @@ npm run start -- --port 8788
 
 ## Verification levels
 
-1. `npm test`: 24 deterministic checks for race completion, freeze behavior, control effects, track wrapping, time trial, camera attachment, settings validation, and frame scheduling/resolution budgets.
+1. `npm test`: 26 deterministic checks for race completion, freeze behavior, control effects, track wrapping, time trial, camera attachment, settings validation, and frame scheduling/resolution budgets.
 2. `npm run typecheck` and `npm run lint`: strict TypeScript and owned-source static checks.
 3. `npm run build`: production bundle; it is not a gameplay test.
 4. `scripts/browser-check.mjs`: actual keyboard and UI actions in the dedicated browser, followed by responsive menu bounds and obstruction checks.
@@ -27,28 +27,21 @@ Browser checks cover 390×844, 844×390, 932×430, 1024×600 and 1440×900. They
 
 `scripts/render-check.mjs` checks DPR-only changes, quality pixel ceilings, fullscreen entry/exit, a moving chase camera, all nine circuit/weather world builds and repeated resource cycles. These are functional checks; the nine-world sweep does not run nine full races.
 
-## Visible browser automation
+## Headless browser automation (default)
 
-Performance should be measured in a visible foreground browser, with a stable build and no source edits during the run. Headless browsers and background tabs can have misleading frame pacing. Use a dedicated browser/profile; do not attach to unrelated user sessions.
-
-The benchmark can launch its own visible Chrome:
-
-```sh
-ASTRA_BASE_URL=http://localhost:8788 node scripts/benchmark.mjs
-```
-
-Alternatively, launch a dedicated Chrome with a CDP port and attach both scripts:
-
-```sh
-ASTRA_CDP=http://localhost:9224 ASTRA_BASE_URL=http://localhost:8788 node scripts/benchmark.mjs
-ASTRA_CDP=http://localhost:9224 ASTRA_BASE_URL=http://localhost:8788 node scripts/browser-check.mjs
-```
-
-Launch a dedicated visible browser with the installed Chrome channel:
+The user requests automation off their screen. `scripts/launch-browser.mjs` now defaults to a separate headless browser and temporary profile. On this MacBook it uses installed Chrome; WebGL reports the Apple M4 Max through ANGLE/Metal. Verify the renderer rather than assuming headless implies hardware or software. Never attach to the user's personal browser. Do not open a visible test window without a new request.
 
 ```sh
 node scripts/launch-browser.mjs
+ASTRA_RECORD_VIDEO=1 node scripts/browser-check.mjs
+node scripts/render-check.mjs
+node scripts/touch-check.mjs
+ASTRA_OUTPUT=artifacts/landscape-mac node scripts/scenery-check.mjs
 ```
+
+Run GPU checks sequentially with the build unchanged. The keyboard check can record a WebM under `artifacts/control-video/`. Scenery captures record wall-clock timestamps, simulation time, distance, actual framebuffer, GPU renderer and capture mode. The scenery harness changes routes through the UI, keeping HUD/minimap labels in sync. Each script releases its inputs and closes its owned page/context.
+
+Headless GPU timings describe that renderer workload, not visible-window display pacing or sustained thermals. The historical visible benchmarks remain separate. If the user explicitly requests a visible capture later, `ASTRA_HEADLESS=0 node scripts/launch-browser.mjs` is the opt-in override. Attach `scripts/benchmark.mjs` to the dedicated CDP browser; its standalone path is historical and can open a window.
 
 For gengar-db functional checks, bundled headless Chromium is available. The host exposes no rendering GPU or desktop display; Chromium uses SwiftShader. Missing Ubuntu browser libraries were extracted into the user's cache because this account cannot install system packages:
 
@@ -82,13 +75,13 @@ The formatted generator passed Python syntax compilation after its command-line 
 
 ## Source control
 
-Branch `main` has a normal initial commit. Use the repository's local author settings. Do not alter global Git configuration. No GitHub remote has been added.
+Branch `main` has a normal initial commit. Use the repository's local author settings. Do not alter global Git configuration. The personal private GitHub repository is `https://github.com/rcbran/astra-street` (`origin`). The private Sites source remains `sites`. Push validated source to both; do not change global Git configuration.
 
 Codex once reported a missing `refs/t3/checkpoints/.../turn/0` diff baseline because the folder had no Git repository at the start of the turn. `turn/1` existed and `git fsck` found no corruption. A normal initial commit was saved afterward. Do not fabricate or rewrite internal Codex checkpoint refs to conceal that missing baseline.
 
 ## Street-racing verification
 
-The MacBook uses the installed visible Chrome channel. Run the browser and render checks sequentially, then `ASTRA_OUTPUT=artifacts/street-mac node scripts/scenery-check.mjs` for a 25-second sample per route. The scenery script explicitly emulates DPR 2 at 1440×900 CSS in visible hardware Chrome, records actual framebuffer/renderer/focus, and fails on software renderers. These samples are not full races or a thermal test. It clears its pilot and closes its owned browser context on exit.
+The MacBook uses the installed Chrome channel in headless mode. Run the browser and render checks sequentially, then `ASTRA_OUTPUT=artifacts/street-mac node scripts/scenery-check.mjs` for a 25-second sample per route. The scenery script explicitly emulates DPR 2 at 1440×900 CSS in hardware Chrome, with headless/visible mode recorded, records actual framebuffer/renderer/focus, and fails on software renderers. These samples are not full races or a thermal test. It clears its pilot and closes its owned browser context on exit.
 
 `node scripts/touch-check.mjs` checks simultaneous emulated throttle/steering/handbrake, released input and portrait/landscape views. It closes its owned context afterward; physical touch devices remain untested.
 

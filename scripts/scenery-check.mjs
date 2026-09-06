@@ -4,8 +4,8 @@ import { execFileSync } from 'node:child_process';
 import { hostname } from 'node:os';
 import { chromium } from '@playwright/test';
 
-// Short, visible hardware run after a rendering change. This does not claim
-// full-race coverage. Keep this browser foreground and the build unchanged.
+// Short hardware sample after a rendering change. Record headless/visible mode
+// explicitly; this does not establish full-race coverage or display pacing.
 const browser = await chromium.connectOverCDP(
   process.env.ASTRA_CDP ?? 'http://localhost:9224',
 );
@@ -38,7 +38,22 @@ const report = {
   build: 'production',
   secondsPerCircuit: seconds,
   runs: [],
+  captures: [],
   errors,
+};
+const capture = async (filename) => {
+  const start = await page.evaluate(() => ({
+    at: new Date().toISOString(),
+    monotonicMs: performance.now(),
+    raceTime: window.__ASTRA__.telemetry.raceTime,
+    distance: window.__ASTRA__.player.distance,
+  }));
+  await page.screenshot({ path: `${output}/${filename}` });
+  report.captures.push({
+    filename,
+    ...start,
+    endedAt: new Date().toISOString(),
+  });
 };
 try {
   await page.setViewportSize({ width: 1440, height: 900 });
@@ -54,6 +69,10 @@ try {
       renderer: ext
         ? gl.getParameter(ext.UNMASKED_RENDERER_WEBGL)
         : gl.getParameter(gl.RENDERER),
+      captureMode: /HeadlessChrome/.test(navigator.userAgent)
+        ? 'headless'
+        : 'visible',
+      userAgent: navigator.userAgent,
       visible: document.visibilityState,
       focused: document.hasFocus(),
     };
@@ -74,29 +93,35 @@ try {
     ['forest', 'clear'],
     ['marina', 'rain'],
   ]) {
-    await page.evaluate(
-      async ([circuit, weather]) => {
-        await window.__ASTRA__.configure({ circuit, weather, mode: 'race' });
-        await window.__ASTRA__.start();
-        window.__pilot = setInterval(
-          () => window.__ASTRA__.debugDrive(true),
-          25,
-        );
-      },
-      [circuit, weather],
+    const label = {
+      riviera: 'Canyon Run',
+      forest: 'Pinecrest',
+      marina: 'Harbor City',
+    }[circuit];
+    await page.locator('.circuit-option').filter({ hasText: label }).click();
+    await page.waitForFunction(
+      (circuit) =>
+        window.__ASTRA__.options.circuit === circuit &&
+        window.__ASTRA__.phase === 'menu',
+      circuit,
     );
+    await page.getByRole('button', { name: 'GO RACING', exact: true }).click();
+    await page.evaluate(() => {
+      window.__pilot = setInterval(() => window.__ASTRA__.debugDrive(true), 25);
+    });
     await page.waitForFunction(() => window.__ASTRA__.telemetry.raceTime >= 8);
-    await page.screenshot({ path: `${output}/${circuit}-8s.png` });
+    await capture(`${circuit}-8s.png`);
     await page.waitForFunction(
       (seconds) => window.__ASTRA__.telemetry.raceTime >= seconds,
       seconds,
     );
-    await page.screenshot({ path: `${output}/${circuit}-moving.png` });
+    await capture(`${circuit}-moving.png`);
     const d = await page.evaluate(() => {
       const e = window.__ASTRA__;
       clearInterval(window.__pilot);
       e.debugDrive(false);
       const result = e.diagnostics();
+      result.scenery = e.world.root.userData;
       result.visible = document.visibilityState;
       result.focused = document.hasFocus();
       e.pause();
@@ -127,8 +152,13 @@ try {
       endingRollingGpuP95: d.gpuMs,
       highestCpuSubmitP95: Math.max(...samples.map((s) => s.renderP95)),
       renderer: d.renderer,
+      scenery: d.scenery,
       samples,
     });
+    await page
+      .getByRole('button', { name: 'Back to circuits', exact: true })
+      .click();
+    await page.waitForFunction(() => window.__ASTRA__.phase === 'menu');
     console.log(
       circuit,
       JSON.stringify(report.runs.at(-1), (k, v) =>

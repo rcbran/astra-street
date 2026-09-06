@@ -1,0 +1,663 @@
+{
+  "date": "2026-09-06T03:28:05.428Z",
+  "host": "Mac.lan",
+  "sourceHead": "763f684d7c4e964ea7585431aa1da30add46cd0f",
+  "sourceDirty": true,
+  "browser": "152.0.7977.76",
+  "build": "production",
+  "secondsPerCircuit": 25,
+  "runs": [
+    {
+      "circuit": "riviera",
+      "weather": "sunset",
+      "raceTime": 25.43333333333253,
+      "speed": 174,
+      "fpsMedian": 60.00393468424146,
+      "fpsP10": 59.99803285138188,
+      "endingRollingGpuP95": 4.201124,
+      "highestCpuSubmitP95": 1.7999999821186066,
+      "renderer": {
+        "memory": {
+          "geometries": 208,
+          "textures": 39
+        },
+        "render": {
+          "frame": 1770,
+          "calls": 641,
+          "triangles": 6156768,
+          "points": 384,
+          "lines": 0
+        },
+        "size": [1821, 1138],
+        "cssSize": [1440, 900],
+        "devicePixelRatio": 2,
+        "pixelRatio": 1.2649110640673518,
+        "programs": 27
+      },
+      "scenery": {
+        "rockInstances": 1020,
+        "treeCount": 6207,
+        "solidTreeCount": 1500,
+        "grassClumps": 6202
+      },
+      "samples": [
+        {
+          "phase": "racing",
+          "time": 14.149399999999938,
+          "drawCalls": 435,
+          "triangles": 4787584,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60.00393468424157,
+          "frameP95": 16.700000000000728,
+          "renderP95": 1.300000011920929
+        },
+        {
+          "phase": "racing",
+          "time": 15.149399999999924,
+          "drawCalls": 435,
+          "triangles": 4643554,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60,
+          "frameP95": 16.80000000000109,
+          "renderP95": 1.2999999821186066
+        },
+        {
+          "phase": "racing",
+          "time": 16.165999999999908,
+          "drawCalls": 421,
+          "triangles": 4527404,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60.00393468424168,
+          "frameP95": 16.799999999999272,
+          "renderP95": 1.300000011920929
+        },
+        {
+          "phase": "racing",
+          "time": 17.165999999999887,
+          "drawCalls": 410,
+          "triangles": 4421767,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60,
+          "frameP95": 16.700000000000728,
+          "renderP95": 1.2999999821186066
+        },
+        {
+          "phase": "racing",
+          "time": 18.182499999999838,
+          "drawCalls": 404,
+          "triangles": 4173475,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60.00983767830792,
+          "frameP95": 16.700000000000728,
+          "renderP95": 1.2999999821186066
+        },
+        {
+          "phase": "racing",
+          "time": 19.182499999999806,
+          "drawCalls": 399,
+          "triangles": 3952551,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60,
+          "frameP95": 16.700000000000728,
+          "renderP95": 1.2000000178813934
+        },
+        {
+          "phase": "racing",
+          "time": 20.182499999999813,
+          "drawCalls": 392,
+          "triangles": 3970087,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60,
+          "frameP95": 16.799999999999272,
+          "renderP95": 1.300000011920929
+        },
+        {
+          "phase": "racing",
+          "time": 21.199099999999795,
+          "drawCalls": 453,
+          "triangles": 4543629,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60.00393468424146,
+          "frameP95": 16.700000000000728,
+          "renderP95": 1.300000011920929
+        },
+        {
+          "phase": "racing",
+          "time": 22.215699999999746,
+          "drawCalls": 469,
+          "triangles": 4534691,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60.00393468424168,
+          "frameP95": 16.799999999999272,
+          "renderP95": 1.4000000059604645
+        },
+        {
+          "phase": "racing",
+          "time": 23.232399999999718,
+          "drawCalls": 559,
+          "triangles": 5000910,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 59.99803285138188,
+          "frameP95": 16.799999999999272,
+          "renderP95": 1.4000000059604645
+        },
+        {
+          "phase": "racing",
+          "time": 24.248999999999725,
+          "drawCalls": 607,
+          "triangles": 5640613,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60.00393468424168,
+          "frameP95": 16.799999999999272,
+          "renderP95": 1.5999999940395355
+        },
+        {
+          "phase": "racing",
+          "time": 25.265599999999715,
+          "drawCalls": 641,
+          "triangles": 5778623,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60.00393468424146,
+          "frameP95": 16.700000000000728,
+          "renderP95": 1.5999999940395355
+        },
+        {
+          "phase": "racing",
+          "time": 26.282199999999673,
+          "drawCalls": 677,
+          "triangles": 5822031,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60.00393468424168,
+          "frameP95": 16.799999999999272,
+          "renderP95": 1.7999999821186066
+        },
+        {
+          "phase": "racing",
+          "time": 27.282199999999623,
+          "drawCalls": 658,
+          "triangles": 5966507,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60,
+          "frameP95": 16.700000000000728,
+          "renderP95": 1.699999988079071
+        },
+        {
+          "phase": "racing",
+          "time": 28.282199999999616,
+          "drawCalls": 647,
+          "triangles": 6241049,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60,
+          "frameP95": 16.700000000000728,
+          "renderP95": 1.600000023841858
+        },
+        {
+          "phase": "racing",
+          "time": 29.19869999999962,
+          "drawCalls": 638,
+          "triangles": 6156628,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 32.260145815859055,
+          "frameP95": 16.799999999999272,
+          "renderP95": 1.600000023841858
+        }
+      ]
+    },
+    {
+      "circuit": "forest",
+      "weather": "clear",
+      "raceTime": 25.366666666665868,
+      "speed": 185,
+      "fpsMedian": 60.00393468424168,
+      "fpsP10": 60,
+      "endingRollingGpuP95": 3.534624,
+      "highestCpuSubmitP95": 1.9000000059604645,
+      "renderer": {
+        "memory": {
+          "geometries": 206,
+          "textures": 38
+        },
+        "render": {
+          "frame": 3526,
+          "calls": 392,
+          "triangles": 3226892,
+          "points": 384,
+          "lines": 0
+        },
+        "size": [1821, 1138],
+        "cssSize": [1440, 900],
+        "devicePixelRatio": 2,
+        "pixelRatio": 1.2649110640673518,
+        "programs": 26
+      },
+      "scenery": {
+        "rockInstances": 620,
+        "treeCount": 10853,
+        "solidTreeCount": 1500,
+        "grassClumps": 6360
+      },
+      "samples": [
+        {
+          "phase": "racing",
+          "time": 43.981300000000324,
+          "drawCalls": 391,
+          "triangles": 2956065,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60.00393468424168,
+          "frameP95": 16.80000000000291,
+          "renderP95": 1.4000000059604645
+        },
+        {
+          "phase": "racing",
+          "time": 44.9813000000004,
+          "drawCalls": 351,
+          "triangles": 2609213,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60,
+          "frameP95": 16.700000000004366,
+          "renderP95": 1.5
+        },
+        {
+          "phase": "racing",
+          "time": 45.997900000000456,
+          "drawCalls": 368,
+          "triangles": 2722014,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60.00393468424168,
+          "frameP95": 16.799999999995634,
+          "renderP95": 1.4000000059604645
+        },
+        {
+          "phase": "racing",
+          "time": 47.01450000000051,
+          "drawCalls": 378,
+          "triangles": 2881546,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60.00393468424168,
+          "frameP95": 16.799999999995634,
+          "renderP95": 1.4000000059604645
+        },
+        {
+          "phase": "racing",
+          "time": 48.01450000000058,
+          "drawCalls": 364,
+          "triangles": 2806106,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60,
+          "frameP95": 16.700000000004366,
+          "renderP95": 1.4000000059604645
+        },
+        {
+          "phase": "racing",
+          "time": 49.03110000000066,
+          "drawCalls": 382,
+          "triangles": 2963788,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60.00393468424168,
+          "frameP95": 16.700000000004366,
+          "renderP95": 1.5
+        },
+        {
+          "phase": "racing",
+          "time": 50.031100000000734,
+          "drawCalls": 437,
+          "triangles": 3331304,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60,
+          "frameP95": 16.700000000004366,
+          "renderP95": 1.5
+        },
+        {
+          "phase": "racing",
+          "time": 51.047700000000795,
+          "drawCalls": 447,
+          "triangles": 3431878,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60.003934684241244,
+          "frameP95": 16.799999999995634,
+          "renderP95": 1.5999999940395355
+        },
+        {
+          "phase": "racing",
+          "time": 52.06430000000085,
+          "drawCalls": 451,
+          "triangles": 3382838,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60.00393468424168,
+          "frameP95": 16.80000000000291,
+          "renderP95": 1.5
+        },
+        {
+          "phase": "racing",
+          "time": 53.06430000000093,
+          "drawCalls": 548,
+          "triangles": 3880557,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60,
+          "frameP95": 16.700000000004366,
+          "renderP95": 1.699999988079071
+        },
+        {
+          "phase": "racing",
+          "time": 54.08090000000099,
+          "drawCalls": 623,
+          "triangles": 4232815,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60.00393468424168,
+          "frameP95": 16.700000000004366,
+          "renderP95": 1.9000000059604645
+        },
+        {
+          "phase": "racing",
+          "time": 55.080900000001066,
+          "drawCalls": 600,
+          "triangles": 4271116,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60,
+          "frameP95": 16.700000000004366,
+          "renderP95": 1.9000000059604645
+        },
+        {
+          "phase": "racing",
+          "time": 56.097500000001126,
+          "drawCalls": 557,
+          "triangles": 4088017,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60.00393468424168,
+          "frameP95": 16.799999999995634,
+          "renderP95": 1.7000000178813934
+        },
+        {
+          "phase": "racing",
+          "time": 57.114100000001194,
+          "drawCalls": 452,
+          "triangles": 3664968,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60.00393468424168,
+          "frameP95": 16.700000000004366,
+          "renderP95": 1.5999999940395355
+        },
+        {
+          "phase": "racing",
+          "time": 58.130700000001255,
+          "drawCalls": 408,
+          "triangles": 3459739,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60.003934684241244,
+          "frameP95": 16.799999999995634,
+          "renderP95": 1.5
+        },
+        {
+          "phase": "racing",
+          "time": 58.947300000001306,
+          "drawCalls": 390,
+          "triangles": 3200928,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 30.001363698349955,
+          "frameP95": 16.700000000004366,
+          "renderP95": 1.5
+        }
+      ]
+    },
+    {
+      "circuit": "marina",
+      "weather": "rain",
+      "raceTime": 25.31666666666587,
+      "speed": 122,
+      "fpsMedian": 60,
+      "fpsP10": 60,
+      "endingRollingGpuP95": 4.8315,
+      "highestCpuSubmitP95": 5,
+      "renderer": {
+        "memory": {
+          "geometries": 252,
+          "textures": 43
+        },
+        "render": {
+          "frame": 7025,
+          "calls": 431,
+          "triangles": 838484,
+          "points": 768,
+          "lines": 2200
+        },
+        "size": [1821, 1138],
+        "cssSize": [1440, 900],
+        "devicePixelRatio": 2,
+        "pixelRatio": 1.2649110640673518,
+        "programs": 50
+      },
+      "scenery": {
+        "treeCount": 78,
+        "solidTreeCount": 0,
+        "grassClumps": 0
+      },
+      "samples": [
+        {
+          "phase": "racing",
+          "time": 73.73020000000372,
+          "drawCalls": 546,
+          "triangles": 931964,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60,
+          "frameP95": 16.79999999998836,
+          "renderP95": 4
+        },
+        {
+          "phase": "racing",
+          "time": 74.74680000000396,
+          "drawCalls": 574,
+          "triangles": 936296,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60.003934684241244,
+          "frameP95": 16.70000000001164,
+          "renderP95": 4
+        },
+        {
+          "phase": "racing",
+          "time": 75.74680000000419,
+          "drawCalls": 562,
+          "triangles": 924616,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60,
+          "frameP95": 16.80000000000291,
+          "renderP95": 4
+        },
+        {
+          "phase": "racing",
+          "time": 76.7633000000044,
+          "drawCalls": 488,
+          "triangles": 882234,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60.00983767830792,
+          "frameP95": 16.70000000001164,
+          "renderP95": 3.800000011920929
+        },
+        {
+          "phase": "racing",
+          "time": 77.76330000000463,
+          "drawCalls": 456,
+          "triangles": 857716,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60,
+          "frameP95": 16.70000000001164,
+          "renderP95": 4
+        },
+        {
+          "phase": "racing",
+          "time": 78.76330000000486,
+          "drawCalls": 456,
+          "triangles": 867374,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60,
+          "frameP95": 16.70000000001164,
+          "renderP95": 3.5999999940395355
+        },
+        {
+          "phase": "racing",
+          "time": 79.77990000000509,
+          "drawCalls": 498,
+          "triangles": 865686,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60.003934684242104,
+          "frameP95": 16.80000000000291,
+          "renderP95": 2.0999999940395355
+        },
+        {
+          "phase": "racing",
+          "time": 80.77990000000531,
+          "drawCalls": 540,
+          "triangles": 867558,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60,
+          "frameP95": 16.70000000001164,
+          "renderP95": 2.5
+        },
+        {
+          "phase": "racing",
+          "time": 81.79640000000553,
+          "drawCalls": 591,
+          "triangles": 857022,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60.00983767830792,
+          "frameP95": 16.69999999999709,
+          "renderP95": 3.2999999821186066
+        },
+        {
+          "phase": "racing",
+          "time": 82.79640000000576,
+          "drawCalls": 613,
+          "triangles": 852434,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60,
+          "frameP95": 16.70000000001164,
+          "renderP95": 4.0999999940395355
+        },
+        {
+          "phase": "racing",
+          "time": 83.79640000000599,
+          "drawCalls": 604,
+          "triangles": 851408,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60,
+          "frameP95": 16.70000000001164,
+          "renderP95": 3.5999999940395355
+        },
+        {
+          "phase": "racing",
+          "time": 84.79640000000622,
+          "drawCalls": 572,
+          "triangles": 854850,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60,
+          "frameP95": 16.70000000001164,
+          "renderP95": 3.699999988079071
+        },
+        {
+          "phase": "racing",
+          "time": 85.81300000000645,
+          "drawCalls": 554,
+          "triangles": 848576,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60.003934684241244,
+          "frameP95": 16.70000000001164,
+          "renderP95": 3.5999999940395355
+        },
+        {
+          "phase": "racing",
+          "time": 86.82960000000668,
+          "drawCalls": 452,
+          "triangles": 838924,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60.003934684241244,
+          "frameP95": 16.80000000000291,
+          "renderP95": 5
+        },
+        {
+          "phase": "racing",
+          "time": 87.82960000000689,
+          "drawCalls": 437,
+          "triangles": 837266,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 60,
+          "frameP95": 16.80000000000291,
+          "renderP95": 3.9000000059604645
+        },
+        {
+          "phase": "racing",
+          "time": 88.84620000000709,
+          "drawCalls": 433,
+          "triangles": 840404,
+          "pixelRatio": 1.2649110640673518,
+          "fps": 38.18355379790013,
+          "frameP95": 16.80000000000291,
+          "renderP95": 3.7999999821186066
+        }
+      ]
+    }
+  ],
+  "captures": [
+    {
+      "filename": "riviera-8s.png",
+      "at": "2026-09-06T03:28:17.928Z",
+      "monotonicMs": 12422.299999982119,
+      "raceTime": 8.033333333333518,
+      "distance": 319.0872671438811,
+      "endedAt": "2026-09-06T03:28:18.919Z"
+    },
+    {
+      "filename": "riviera-moving.png",
+      "at": "2026-09-06T03:28:35.643Z",
+      "monotonicMs": 30137.79999998212,
+      "raceTime": 25.116666666665882,
+      "distance": 1182.9883170563605,
+      "endedAt": "2026-09-06T03:28:36.631Z"
+    },
+    {
+      "filename": "forest-8s.png",
+      "at": "2026-09-06T03:28:49.177Z",
+      "monotonicMs": 43671.59999999404,
+      "raceTime": 8.06666666666685,
+      "distance": 271.99666920679016,
+      "endedAt": "2026-09-06T03:28:50.161Z"
+    },
+    {
+      "filename": "forest-moving.png",
+      "at": "2026-09-06T03:29:06.776Z",
+      "monotonicMs": 61271.5,
+      "raceTime": 25.04999999999922,
+      "distance": 1125.7816322234826,
+      "endedAt": "2026-09-06T03:29:07.777Z"
+    },
+    {
+      "filename": "marina-8s.png",
+      "at": "2026-09-06T03:29:20.756Z",
+      "monotonicMs": 75239.39999997616,
+      "raceTime": 8.000000000000187,
+      "distance": 224.86524935851165,
+      "endedAt": "2026-09-06T03:29:21.546Z"
+    },
+    {
+      "filename": "marina-moving.png",
+      "at": "2026-09-06T03:29:38.395Z",
+      "monotonicMs": 92869.5,
+      "raceTime": 25.116666666665882,
+      "distance": 964.0990350022441,
+      "endedAt": "2026-09-06T03:29:39.133Z"
+    }
+  ],
+  "errors": [],
+  "graphics": {
+    "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Max, Unspecified Version)",
+    "captureMode": "headless",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+    "visible": "visible",
+    "focused": true
+  },
+  "status": "passed",
+  "limitations": [
+    "Headless hardware Chrome, not visible-window display pacing or physical-device evidence",
+    "Approximately 25-second pilot samples per route, not complete races or sustained thermals",
+    "FPS percentiles use per-second tail samples; GPU p95 is the ending rolling timer window",
+    "Captured from the landscape working tree before committing; sourceHead is its parent, not the measured unchanged source"
+  ]
+}

@@ -1,53 +1,50 @@
 # Session handoff — Astra Street
 
-**Updated 2026-09-06. Read this first**, then `TASKS.md` and `ARCHITECTURE.md`. The user resumed on the MacBook, supplied the correct private Sites Git repository, shared a Street Heat video and explicitly said **“move toward street racing.”** The former implementation pause is over. Continue the street direction; do not restore the old F1 brief.
+**Updated 2026-09-06. Read this first**, then `TASKS.md` and `ARCHITECTURE.md`.
 
-## Current state
+## Active user intent and workflow
 
-- Checkout: `/Users/rcbranham/git/personal/f1-racing-astra`, Apple M4 Max, Node 24.19.0. The existing project and lockfile are preserved.
-- `main` was fast-forwarded from `0269613` to `a711012` through the `sites` remote. The initially supplied unrelated GitHub repository was never merged.
-- The product is now **Astra Street**: original S9 coupe, Canyon Run / Pinecrest / Harbor City, handbrake slip, drift smoke/skid marks, bankable chains, near-miss bonuses, speed checks and nitro. Two-lap AI races and unlimited time trial remain.
-- Space: handbrake drift; W/A/S/D or arrows: drive/service brake; Shift: nitro. Gamepad and touch have dedicated drift controls. The alternate camera is bonnet view; its internal settings key remains `cockpit`.
-- The video is reference material only. Original Blender car and generated rock/conifer textures are committed with provenance and exact image prompts in `STREET-DIRECTION.md`. No video frame is a runtime asset.
-- This is a first playable interpretation. Car detail, cliff shapes, foliage depth, city composition and flat closed-circuit geometry remain simpler than the reference. Human handling feedback is still needed.
+The user pivoted to street racing, then requested a substantial graphics/landscape improvement, comparison with the Street Heat video, and corrected horizontal steering. They subsequently requested **headless browser automation off their screen** and a copy in their **personal GitHub**. Continue that direction; the F1 brief is historical.
 
-## Engineering and verification
+- Checkout: `/Users/rcbranham/git/personal/f1-racing-astra`, Apple M4 Max, Node 24.19.0.
+- Use a dedicated headless Chrome profile for captures/tests. The installed Chrome channel reports ANGLE/Metal on the M4 Max. Do not open a visible test window without a new request. Headless GPU timing is separate from visible-window display pacing.
+- Nominal 60 FPS; 40–50 FPS under shared GPU load is acceptable. Preserve frame/pixel caps, hidden-tab suspension and input clearing.
+- No Orca and no delegation unless active instructions authorize it; authorized workers must use `gpt-6-astra`. No workers or new image-generation requests were used in this landscape pass.
 
-Simulation, score rules, camera, render budgeting, world building and UI remain separate. Car geometry is immutable/shared. World resources, car effects, the 384-particle spray/smoke pool and 768-segment skid buffer have explicit ownership/disposal. Keep hidden-tab suspension, input clearing and frame/pixel caps. Street best laps use `astra-street-best-v1` so historical Formula records do not mix.
+## Current implementation
 
-The inherited DPR listener missed rapid round-trips when Chrome coalesced media-query events. The render loop now checks the DPR scalar on accepted render frames; it reads layout only when a change occurs. Production resolution/quality/fullscreen checks passed after this fix.
+Astra S9 coupe, Canyon Run / Pinecrest / Harbor City, handbrake slip, drift smoke/skid marks, bankable chains, near misses, speed checks and rechargeable nitro. Two-lap AI races and unlimited time trial remain. Space is drift, W/A/S/D or arrows drive, Shift is nitro; S/down is service braking. The alternate `cockpit` settings key provides bonnet view.
 
-- Strict typecheck, owned-source lint, **24 deterministic tests** and production build pass.
-- Production keyboard/UI check passed, including actual handbrake/score, service braking and unobscured menus at five sizes.
-- Nine route/weather worlds load/render; three repeated resource cycles return stable counts. This does not establish nine full-race completion or universal leak freedom.
-- Emulated multi-touch simultaneously accelerates, steers and drifts, then releases all input. Portrait and landscape captures were inspected; the compact landscape HUD now clears the pedals and map. This is not physical-device evidence.
-- Short visible M4 Max hardware samples are documented in `PERFORMANCE.md`. Read exact framebuffer sizes and limitations before quoting performance. The older full-race Formula and Linux SwiftShader reports are historical.
-- Current portable evidence has `street-` prefixes under `docs/evidence/`. Raw captures remain ignored under `artifacts/`. Evidence gathered before committing honestly records parent `a711012` with a dirty working tree; it is not a benchmark of unchanged upstream source.
+**Steering corrected:** input +1 means screen-right across keyboard, touch and controller. A +Z-forward chassis needs negative world yaw for that movement, so simulation converts the sign once and the benchmark pilot converts back. Camera-space regression and actual keyboard checks cover both directions. Prior tests only checked the internal offset sign and missed the inversion.
 
-## Next refinements
+**Landscape:** a 251×251 height field keeps paved routes clear while lifting surrounding hills. Larger ridged mountains fill the distance. Six reusable fractured cliff profiles form connected walls, ribs, spires and talus. Spatially batched forests mix three solid near-conifer variants/trunks with the two existing far-tree atlases; grass clumps and a seeded road-wear overlay add close detail. Canyon has 6,207 trees including 1,500 solid conifers; Pinecrest has 10,853 including 1,500 solid. Harbor gains a mountain backdrop and 78 distant trees. The original runtime image/GLB files and lockfile are unchanged.
 
-1. User-drive the coupe and tune steering, countersteer/recovery and handbrake timing from feedback. The pilot proves behavior, not fun.
-2. Refine canyon faces, varied roadside composition and coupe materials against the reference, judging moving chase views.
-3. Improve Harbor City's silhouettes and lighting; consider a stronger street-route layout in a separate change.
-4. Test a physical controller, touch devices and Safari. Extend to nine complete route/weather races as practical.
-5. Choose a source license and review contents before public GitHub publication.
+Ownership stays modular. Engine owns shared textures/car geometry; world owns its meshes/materials and generated overlay maps. Spatial batches share immutable geometry within a world. Smoke/spray uses 384 particles and skid marks use a 768-segment ring. Terrain generation happens during configuration, not per frame. The earlier scalar DPR fallback remains intact.
 
-## Hosting and Git
+## Comparison and validation
 
-Reuse `.openai/hosting.json` verbatim: `appgprj_6a9c96484ab081919378a4aa6684a3f3`. Never create a second Site.
+- `FRAME-COMPARISON.md` compares the first release with the new canyon and documents the reference observations. The original video and extracted frames remain ignored under `artifacts/reference-street-heat/`, never in runtime assets. `artifacts/landscape-comparison.html` displays reference / old / new together.
+- Terrain and forest density are substantially higher, but the car remains simple, near trees are stylized, distant trees use crossed cards, cliff profiles repeat and the racing surface is flat. Do not claim video/AAA parity.
+- **26 tests**, strict typecheck, owned-source lint and production build pass. New tests cover camera-space left/right movement and terrain clearance along all paved routes.
+- Production headless keyboard/UI checks cover both steering directions, drift scoring, nitro/braking, pause/blur, restart, time trial and five responsive menu sizes. Recorded WebM: `artifacts/control-video/page@4bd72ca25bb42a6ef024186ab5608bdc.webm`.
+- DPR/quality/fullscreen, moving chase camera, nine route/weather world builds and three stable resource cycles pass. Nine world builds are not nine completed races. Emulated multi-touch passes; physical devices and Safari remain untested.
+- Three short headless M4 Max pilot runs held 60 FPS medians at **1821×1138 drawing buffer**, 1440×900 CSS / DPR 2. They are not native Retina, 1920×1080, visible pacing or thermal measurements. Read `PERFORMANCE.md` for exact GPU/CPU values and limits.
+- Portable evidence uses `docs/evidence/landscape-*`. Timing reports honestly record the dirty working tree based on `763f684`; that parent SHA alone does not describe the measured landscape source. Raw screenshots record timestamps and positions; route changes now go through the UI to keep labels synchronized.
 
-- Remote: `sites`; branch: `main`.
-- URL: `https://git.chatgpt-team.site/55cfd5d9-5d0c-44b9-9b4c-a37c7926c6a7/appgprj_6a9c96484ab081919378a4aa6684a3f3.git`.
-- This is private Sites source Git. No public GitHub remote exists.
-- Access was inspected: personal owner only, no groups or external viewers.
-- Private deployment succeeded on 2026-09-06: https://astra-formula-racing.rbranham.chatgpt.site . The legacy URL slug is retained; the display title is Astra Street.
-- Saved version 1 / deployed source: `9ba6a575977c0ba8bd102d2d7dc74a6a61adb051`. This follow-up documentation commit does not change the deployed application.
-- Version ID: `appgprj_6a9c96484ab081919378a4aa6684a3f3~appgver_27e16fc33d44819191548586f014fc29`; deployment ID: `appgdep_6a9cc433ce1881918ee70dacd2d821f2`.
-- The existing preview tab was navigated to the exact production URL and reached “Sign in required.” The personal owner must sign in. Local production gameplay was verified; authenticated hosted gameplay was not separately replayed.
+## GitHub and hosting
 
-Inspect local changes before fetching. Use a fresh repository-scoped Sites credential as a per-command HTTP header; never persist or print it. Keep repository-local personal author settings; do not change global Git configuration. Preserve the source lockfile.
+- Personal private GitHub repository: **https://github.com/rcbran/astra-street**, remote `origin`. The user authorized this copy; private visibility was the stated default. Public visibility and source licensing remain pending separate choices.
+- Sites source remote: `sites`, branch `main`, URL `https://git.chatgpt-team.site/55cfd5d9-5d0c-44b9-9b4c-a37c7926c6a7/appgprj_6a9c96484ab081919378a4aa6684a3f3.git`.
+- Reuse `.openai/hosting.json` verbatim: `appgprj_6a9c96484ab081919378a4aa6684a3f3`. Never create another Site. Owner-only access was rechecked: one personal owner, no groups or external viewers.
+- Existing private playable URL: **https://astra-formula-racing.rbranham.chatgpt.site**. Legacy URL slug stays; title is Astra Street. Owner sign-in is required.
+- This landscape pass is being committed/pushed to both remotes and privately published. A follow-up documentation commit will record the confirmed deployment and exact source.
+- The prior release is version 1, source `9ba6a575977c0ba8bd102d2d7dc74a6a61adb051`. A GitHub push alone does not update the Site.
 
-## Running and stopping
+Use repository-local personal author settings; never change global Git identity. Sites credentials must be ephemeral per-command headers, never printed, saved in files, or embedded in remotes. GitHub uses the existing authenticated `gh` account `rcbran`. Inspect local changes before pulling; preserve unrelated user work. The originally supplied unrelated GitHub repository was never merged.
+
+## Next refinements and running
+
+Have the user test the corrected controls. Continue improving natural cliff/foliage detail, car materials, city architecture and road elevation from feedback. Headless pilot runs establish behavior, not fun. Extend real-device coverage and full route/weather race coverage as useful, without repeated heavy benchmarks for unchanged rendering.
 
 ```sh
 npm run dev -- --host 0.0.0.0
@@ -56,6 +53,4 @@ npm run start -- --port 8788
 node scripts/launch-browser.mjs
 ```
 
-A new build replaces `dist/`; restart the production server afterward. `DEVELOPMENT.md` documents browser, rendering, short hardware and touch checks. Use a dedicated visible Chrome and run heavy checks sequentially. Normal URLs do not expose the `?debug=1` diagnostic interface. Always clear pilots and held inputs afterward. Session-owned servers/browser are stopped after publishing; inspect current processes rather than reusing old IDs.
-
-Do not use Orca. Do not delegate unless active instructions authorize it; every authorized worker must use `gpt-6-astra`. The Sites skill required one asset worker this session; it returned two generated PNGs outside the checkout and is finished. Only the owner integrated files and performed Site operations.
+The launcher defaults to headless; `DEVELOPMENT.md` documents the sequential checks. A new build replaces `dist/`, so restart a production server afterward. Always release inputs/clear pilots and close owned contexts after checks. Session-owned servers/browser are stopped after publishing. Inspect current processes rather than reusing old session IDs. Normal gameplay URLs do not expose the `?debug=1` diagnostic interface.

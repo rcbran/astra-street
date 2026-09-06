@@ -1,0 +1,74 @@
+{
+  "date": "2026-09-06T03:25:15.806Z",
+  "host": "Mac.lan",
+  "browser": "152.0.7977.76",
+  "build": "production",
+  "menus": [
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "startButton": {
+        "x": 36,
+        "y": 721,
+        "width": 318,
+        "height": 43
+      }
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "startButton": {
+        "x": 552,
+        "y": 314,
+        "width": 259,
+        "height": 38
+      }
+    },
+    {
+      "viewport": [
+        932,
+        430
+      ],
+      "startButton": {
+        "x": 640,
+        "y": 354,
+        "width": 259,
+        "height": 38
+      }
+    },
+    {
+      "viewport": [
+        1024,
+        600
+      ],
+      "startButton": {
+        "x": 732,
+        "y": 524,
+        "width": 259,
+        "height": 38
+      }
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "startButton": {
+        "x": 1071.171875,
+        "y": 712.3106689453125,
+        "width": 292,
+        "height": 51
+      }
+    }
+  ],
+  "errors": [],
+  "steering": {
+    "rightOffset": -1.2000126181103477,
+    "leftOffset": 1.0014347094809437
+  },
+  "status": "passed"
+}

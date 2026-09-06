@@ -152,7 +152,9 @@ export class RaceSession {
     const p = this.player,
       frame = this.track.sample(p.distance),
       wet = this.options.weather === 'rain';
-    p.steer = MathUtils.damp(p.steer, controls.steer, 6.5, dt);
+    // Input +1 means screen-right. With a +Z-forward chassis, positive world
+    // yaw points screen-left from the following camera, so convert once here.
+    p.steer = MathUtils.damp(p.steer, -controls.steer, 6.5, dt);
     this.boosted =
       controls.boost &&
       this.battery > 1 &&
@@ -311,7 +313,7 @@ export class RaceSession {
       (0.36 + 22 / (p.speed + 36)) *
       (this.options.weather === 'rain' ? 0.81 : 1);
     return {
-      steer: clamp(
+      steer: -clamp(
         (f.curvature * p.speed * (settings.assists ? 0.13 : 1) -
           p.offset * 0.06 -
           p.headingError * 1.8) /

@@ -37,7 +37,7 @@ test('handbrake creates a recoverable slide, ordinary steering does not score a 
     );
     grip.step(dt, { ...neutral, throttle: 1, steer: 0.65 }, DEFAULT_SETTINGS);
   }
-  assert.ok(drift.player.slipAngle > 0.25);
+  assert.ok(drift.player.slipAngle < -0.25);
   assert.ok(drift.score.chain > 40);
   assert.equal(grip.player.slipAngle, 0);
   assert.equal(grip.score.chain, 0);

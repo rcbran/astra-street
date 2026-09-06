@@ -65,3 +65,56 @@ export function paintedRunoffMaterial(forest: boolean, wet: boolean) {
     roughness: wet ? 0.5 : 0.95,
   });
 }
+
+/** Sparse cracks, repairs and mottling. One world-owned overlay texture. */
+export function roadWearMaterial(wet: boolean) {
+  const rand = seeded(906);
+  const texture = canvasTexture(1024, 2048, (c) => {
+    c.clearRect(0, 0, 1024, 2048);
+    for (let i = 0; i < 160; i++) {
+      const x = rand() * 1024,
+        y = rand() * 2048,
+        radius = 30 + rand() * 190;
+      const g = c.createRadialGradient(x, y, 0, x, y, radius);
+      g.addColorStop(0, rand() > 0.5 ? '#d8c4a61f' : '#0a090923');
+      g.addColorStop(1, '#77776c00');
+      c.fillStyle = g;
+      c.fillRect(x - radius, y - radius, radius * 2, radius * 2);
+    }
+    for (let i = 0; i < 32; i++) {
+      let x = rand() * 1024,
+        y = rand() * 2048;
+      c.strokeStyle = '#11131499';
+      c.lineWidth = 0.8 + rand() * 1.6;
+      c.beginPath();
+      c.moveTo(x, y);
+      for (let j = 0; j < 8; j++) {
+        x += (rand() - 0.5) * 44;
+        y += 8 + rand() * 18;
+        c.lineTo(x, y);
+        if (rand() < 0.3) {
+          c.moveTo(x, y);
+          c.lineTo(x + (rand() - 0.5) * 65, y + rand() * 35);
+          c.moveTo(x, y);
+        }
+      }
+      c.stroke();
+    }
+    for (let i = 0; i < 22000; i++) {
+      c.fillStyle = rand() > 0.55 ? '#eee2c815' : '#161b1919';
+      c.fillRect(
+        rand() * 1024,
+        rand() * 2048,
+        0.5 + rand() * 2,
+        0.5 + rand() * 3,
+      );
+    }
+  });
+  texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+  return new THREE.MeshBasicMaterial({
+    map: texture,
+    transparent: true,
+    opacity: wet ? 0.32 : 0.75,
+    depthWrite: false,
+  });
+}

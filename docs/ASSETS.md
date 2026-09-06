@@ -37,3 +37,5 @@ Original car authoring scenes/previews and raw asset handoffs are under `/tmp/f1
 ## Current street-racing additions
 
 The active car is the original `models/astra-s9.glb`, approximately 15,210 triangles, generated with `scripts/build_street_car.py`. `textures/cliff-rock.png` (1254×1254 RGB) and `textures/conifers.png` (1536×1024 RGBA) are original built-in OpenAI generated assets. See `STREET-DIRECTION.md` for exact prompts, visual reference and limitations; the manifest records their sizes and hashes. The user’s linked video is research only and never shipped as an asset.
+
+The landscape pass adds original procedural terrain, six fractured cliff profiles, three solid conifer variants, grass clumps, mountain relief and a seeded road-wear overlay. These are repo-native geometry/textures; no new image-generation request, external asset, or runtime download was needed. Existing asset files and their provenance hashes are unchanged.

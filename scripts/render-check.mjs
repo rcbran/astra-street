@@ -251,5 +251,6 @@ try {
     'artifacts/render-check.json',
     JSON.stringify(report, null, 2) + '\n',
   );
+  await page.close();
   await browser.close();
 }

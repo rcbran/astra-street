@@ -2,10 +2,12 @@ import { createWetRoad } from './world/wet-road';
 import { mesh, box, instanced, ribbon, patch } from './world/geometry';
 import { makeSky, buildMountains } from './world/atmosphere';
 import { buildTrees } from './world/vegetation';
+import { Landscape, buildLandscape } from './world/landscape';
 import { buildRockFormations } from './world/rock-formations';
 import { buildBuildings } from './world/buildings';
 import { SPEED_TRAPS } from './street-score';
 import {
+  roadWearMaterial,
   concreteBarrierMaterial,
   paintedRunoffMaterial,
 } from './world/track-surfaces';
@@ -46,12 +48,12 @@ export function buildWorld(
   const hemi = new THREE.HemisphereLight(
     wet ? 0x88a7ce : sunset ? 0xe6d7c1 : 0xd7ecff,
     wet ? 0x39404d : 0x6b7452,
-    wet ? 1.15 : 1.3,
+    wet ? 1.05 : 0.78,
   );
   root.add(hemi);
   const sun = new THREE.DirectionalLight(
     wet ? 0xbdcfea : sunset ? 0xffdbc0 : 0xfff5df,
-    wet ? 1.25 : sunset ? 3.1 : 3.2,
+    wet ? 1.25 : sunset ? 3.5 : 3.2,
   );
   sun.position.set(-150, sunset ? 75 : 260, 210);
   sun.castShadow = true;
@@ -67,30 +69,10 @@ export function buildWorld(
   sun.shadow.bias = -0.00018;
   sun.shadow.normalBias = 0.045;
   root.add(sun, sun.target);
-  const ground = mesh(
-    // End the coastal ground at the shoreline so it cannot cover the water.
-    new THREE.PlaneGeometry(track.circuit.id === 'riviera' ? 3750 : 6500, 6500),
-    new THREE.MeshStandardMaterial({
-      color: wet
-        ? 0x667c7a
-        : track.circuit.id === 'forest'
-          ? 0xd0ddac
-          : 0xdbcdab,
-      map: textures.grass,
-      normalMap: textures.grassNormal,
-      normalScale: new THREE.Vector2(0.3, 0.3),
-      roughnessMap: textures.grassRough,
-      roughness: 1,
-    }),
-    track.circuit.id === 'riviera' ? -1375 : 0,
-    -0.22,
-    0,
-  );
-  ground.rotation.x = -Math.PI / 2;
-  ground.receiveShadow = true;
-  root.add(ground);
+  const landscape = new Landscape(track);
+  buildLandscape(root, landscape, weather, textures);
   buildMountains(root, track, weather);
-  buildRockFormations(root, track, weather, textures.rock);
+  buildRockFormations(root, track, weather, textures.rock, landscape);
   const road = new THREE.MeshStandardMaterial({
     map: textures.color,
     normalMap: textures.normal,
@@ -131,6 +113,15 @@ export function buildWorld(
         ),
       );
   }
+  const wear = ribbon(track, -half, half, 0.021, 0, 512, track.circuit.width);
+  const wearUv = wear.getAttribute('uv');
+  for (let i = 0; i < wearUv.count; i++)
+    wearUv.setXY(
+      i,
+      wearUv.getX(i) + 0.5,
+      (wearUv.getY(i) * track.circuit.width) / 95,
+    );
+  root.add(mesh(wear, roadWearMaterial(wet)));
   const curbRed = new THREE.MeshStandardMaterial({
     color: 0xd74430,
     roughness: wet ? 0.34 : 0.75,
@@ -445,8 +436,14 @@ export function buildWorld(
     root.add(gate);
   }
   if (track.circuit.id !== 'forest') buildBuildings(root, track, weather);
-  if (track.circuit.id !== 'marina')
-    buildTrees(root, track, weather, textures.trees, textures.conifers);
+  buildTrees(
+    root,
+    track,
+    weather,
+    textures.trees,
+    textures.conifers,
+    landscape,
+  );
   // Braking distance boards before stronger corners.
   for (let s = 150; s < track.length; s += 180) {
     const next = track.sample(s + 55);

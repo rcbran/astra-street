@@ -214,8 +214,8 @@ export class RacingEngine {
     this.scene.add(this.world.root);
     const wet = options.weather === 'rain';
     this.scene.fog = new THREE.FogExp2(
-      wet ? 0x344653 : options.weather === 'sunset' ? 0xc9ba9f : 0xafc7cc,
-      wet ? 0.00138 : 0.00055,
+      wet ? 0x344653 : options.weather === 'sunset' ? 0xd3b391 : 0xa9c6d2,
+      wet ? 0.00138 : 0.00038,
     );
     this.scene.environmentIntensity = wet
       ? 0.24

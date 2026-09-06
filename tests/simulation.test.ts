@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
+import { Vector3 } from 'three';
 import { RaceSession, trackGap } from '../src/game/race-session';
 import { RaceCamera } from '../src/game/camera';
 import { CIRCUITS, Track } from '../src/game/tracks';
@@ -114,7 +115,7 @@ test('countdown, throttle, braking, boost, steering and recovery affect driving'
   assert.ok(race.player.speed < faster - 20);
   for (let i = 0; i < 120; i++)
     race.step(dt, { ...neutral, throttle: 1, steer: 1 }, DEFAULT_SETTINGS);
-  assert.ok(race.player.offset > 1);
+  assert.ok(race.player.offset < -1);
   race.player.offset = tracks[0].circuit.width;
   assert.equal(race.offTrack, true);
   race.resetCar();
@@ -198,6 +199,44 @@ test('chase-camera distance does not grow with speed on a straight', () => {
     const f = tracks[0].sample(race.player.distance);
     assert.ok(
       Math.hypot(rig.camera.position.x - f.x, rig.camera.position.z - f.z) < 12,
+    );
+  }
+});
+
+test('right and left input move toward their corresponding side of the chase view', () => {
+  for (const steer of [-1, 1]) {
+    const race = session();
+    race.phase = 'racing';
+    Object.assign(race.player, {
+      distance: 90,
+      speed: 35,
+      offset: 0,
+      headingError: 0,
+    });
+    const rig = new RaceCamera();
+    rig.update(
+      dt,
+      race.player,
+      tracks[0],
+      'racing',
+      DEFAULT_SETTINGS,
+      0,
+      false,
+    );
+    const screenRight = new Vector3(1, 0, 0).applyQuaternion(
+      rig.camera.quaternion,
+    );
+    for (let i = 0; i < 48; i++)
+      race.step(dt, { ...neutral, steer, throttle: 1 }, DEFAULT_SETTINGS);
+    const frame = tracks[0].sample(race.player.distance);
+    const lateral = new Vector3(
+      frame.nx * race.player.offset,
+      0,
+      frame.nz * race.player.offset,
+    );
+    assert.ok(
+      lateral.dot(screenRight) * steer > 0.3,
+      `steer ${steer} must match visible direction`,
     );
   }
 });

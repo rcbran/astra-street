@@ -11,6 +11,7 @@ Code must remain modular and clear for eventual public GitHub publication. The u
 ## Collaboration
 
 - Do not use Orca orchestration.
+- Use a dedicated headless browser/profile for automation and captures; keep it off the user’s screen. Verify the GPU renderer and label headless timing separately.
 - Every delegated subagent MUST use GPT Astra (`gpt-6-astra`); never substitute another model.
 - Main agent owns integration and Site operations. Asset workers return outside-checkout files for review/integration.
 - Do not spawn agents unless the active user/developer instructions authorize delegation.
@@ -28,4 +29,4 @@ Code must remain modular and clear for eventual public GitHub publication. The u
 
 ## Identity and publishing
 
-This is the user's personal project. Repository Git identity is configured locally; do not change global configuration. Do not print or persist credentials. Public GitHub publication remains pending; check the handoff for private Site status. Reuse the project ID in `.openai/hosting.json`; never create a second Site on resumption.
+This is the user's personal project. Repository Git identity is configured locally; do not change global configuration. Do not print or persist credentials. The personal GitHub repository is `rcbran/astra-street`, private by default, with remote `origin`. The private Site source is remote `sites`; check the handoff for release status. Public visibility and source-license selection remain pending. Reuse the project ID in `.openai/hosting.json`; never create a second Site on resumption.

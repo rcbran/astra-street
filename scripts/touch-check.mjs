@@ -26,6 +26,10 @@ try {
     `${process.env.ASTRA_BASE_URL ?? 'http://localhost:8788'}/?debug=1`,
   );
   await p.bringToFront();
+  report.userAgent = await p.evaluate(() => navigator.userAgent);
+  report.captureMode = /HeadlessChrome/.test(report.userAgent)
+    ? 'headless'
+    : 'visible';
   await p.waitForFunction(() => window.__ASTRA__?.phase === 'menu');
   await p.evaluate(() =>
     window.__ASTRA__.updateSettings({

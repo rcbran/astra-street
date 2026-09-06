@@ -2,7 +2,7 @@
 
 An original arcade street racer for the browser. Drive the Astra S9 through coastal canyons, mountain forests and wet city streets. Handbrake drifts, rechargeable nitro, near-miss bonuses and speed checks reward clean racing. Built with TypeScript, React and Three.js.
 
-**Status:** first playable street-racing pass, inspired by the user’s [Street Heat video reference](https://x.com/higgsfield_ai/status/2095916820431827408). Scenery and handling remain work in progress; this does not claim visual parity. Read [the handoff](docs/HANDOFF.md) and [visual direction](docs/STREET-DIRECTION.md).
+**Status:** playable street racer with a denser landscape pass, inspired by the user’s [Street Heat video reference](https://x.com/higgsfield_ai/status/2095916820431827408). Scenery and handling remain work in progress; this does not claim visual parity. Read [the handoff](docs/HANDOFF.md) and [visual direction](docs/STREET-DIRECTION.md).
 
 ## Run locally
 
@@ -22,7 +22,7 @@ npm run build
 npm run start -- --port 8788
 ```
 
-No account, API key, or external service is required for local gameplay. Runtime assets are served from this repository. The [private playable build](https://astra-formula-racing.rbranham.chatgpt.site) requires the personal owner to sign in. The existing Sites project is reused; see the handoff for deployed source and publishing status. Source transfer uses its private Git repository; public GitHub publication remains pending.
+No account, API key, or external service is required for local gameplay. Runtime assets are served from this repository. The [private playable build](https://astra-formula-racing.rbranham.chatgpt.site) requires the personal owner to sign in. The existing Sites project is reused; see the handoff for deployed source and publishing status. Source is also available in the personal private [GitHub repository](https://github.com/rcbran/astra-street). Public visibility remains a separate choice.
 
 ## Play
 
@@ -54,10 +54,11 @@ All three conditions can be selected on each circuit. Layouts, car design, liver
 
 Rendering is capped at 60 FPS during racing, 30 in menus, and 20 when paused or finished. Hidden tabs stop rendering. Balanced caps internal resolution near 1080p; Eco uses a 720p budget and Ultra 1440p. Balanced/Eco can reduce resolution below 42 FPS, preserving visual quality during the user's accepted 40–50 FPS shared-GPU conditions.
 
-The current street build held a 60 FPS median in short 25-second samples on each default route at a measured 1821×1138 drawing buffer on the M4 Max. These are automated pilot samples, not full-race or thermal measurements. Historical Formula results are recorded separately. See [performance evidence and limits](docs/PERFORMANCE.md).
+The current landscape build held a 60 FPS median in short 25-second headless samples on each default route at a measured 1821×1138 drawing buffer using the M4 Max Metal renderer. These are automated GPU workload samples, not visible-window frame-pacing, full-race or thermal measurements. Earlier visible results are recorded separately. See [performance evidence and limits](docs/PERFORMANCE.md).
 
 ## Project guide
 
+- [Frame comparison and visual changes](docs/FRAME-COMPARISON.md)
 - [Handoff and next actions](docs/HANDOFF.md)
 - [Architecture and resource ownership](docs/ARCHITECTURE.md)
 - [Development and verification](docs/DEVELOPMENT.md)
@@ -65,4 +66,4 @@ The current street build held a 60 FPS median in short 25-second samples on each
 - [Task tracker](docs/TASKS.md)
 - [Decisions and constraints](docs/DECISIONS.md)
 
-Third-party runtime scans/HDR lighting are CC0; see [asset notices](public/assets/NOTICE.txt). A repository-wide source license has not yet been selected. Public GitHub publication and licensing remain pending.
+Third-party runtime scans/HDR lighting are CC0; see [asset notices](public/assets/NOTICE.txt). A repository-wide source license has not yet been selected. The GitHub repository is private; public visibility and source licensing remain pending.
