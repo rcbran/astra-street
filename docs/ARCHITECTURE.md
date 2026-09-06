@@ -46,14 +46,14 @@ The HUD receives snapshots about ten times per second. High-frequency simulation
 
 The GLB is Y-up with its nose along +Z. The cockpit eye is approximately `(0, 0.85, -0.20)` in car-local coordinates; the head group is hidden in cockpit mode. The cockpit must move with the chassis: world-space positional damping previously placed the eye inside the engine cover at speed.
 
-The chase rig carries car translation before smoothing its relative pose. This avoids adding `speed / damping` meters to the chase distance. Both behaviors have regression checks. The latest chase correction has passed unit/build checks; a moving production screenshot and short timing check remain to be recorded.
+The chase rig carries car translation before smoothing its relative pose. This avoids adding `speed / damping` meters to the chase distance. Both behaviors have regression checks. The moving production chase view is checked by `scripts/render-check.mjs`; keep software-renderer timing separate from visible hardware benchmarks.
 
 ## Resource ownership
 
 - The engine owns the renderer, input/audio, resize observer, animation callback, HDR-derived environment target, loaded surface textures, shared car asset, current world, car visuals, and spray pool.
 - The source GLB's geometry is immutable and shared by cloned cars. Each visual owns its cloned materials, contact-shadow resources, and brake-light geometry/material. Disposing one car must not dispose shared GLTF geometry.
 - World builders own the geometry/materials/textures they create. Loaded road/grass/tree textures are shared and excluded from world disposal.
-- Wet-road disposal explicitly releases its reflector target and geometry. Tree textures are preloaded; scene construction does not leave asynchronous callbacks capable of reviving disposed worlds.
+- Wet-road disposal explicitly releases its reflector target and geometry. Original concrete and runoff maps in `world/track-surfaces.ts` belong to the world and are disposed with its materials. Tree textures are preloaded; scene construction does not leave asynchronous callbacks capable of reviving disposed worlds.
 - Track changes dispose the previous world/cars before replacing them. Engine disposal cancels animation, unregisters listeners, and releases shared resources.
 
 Measured resource counts returned to the same values over three full track-switch cycles. See `docs/evidence/performance.json`.
@@ -62,7 +62,7 @@ Measured resource counts returned to the same values over three full track-switc
 
 WebGL2 uses ACES tone mapping, bounded pixel ratio, PBR surfaces, a prefiltered HDR environment, hemisphere fill, and one nearby directional shadow map. Scenery and spectators are instanced; repeated geometry is merged where useful. Vegetation uses alpha-tested crossed cards. Wet reflections use a 640×360 target with normal distortion and Fresnel blending; tire spray is one 384-particle draw call.
 
-The frame scheduler retains deadlines across display refresh rates instead of quantizing 144 Hz down to 48 FPS. Resolution budgeting reacts to sustained low frame rates and recovers slowly. GPU timing samples every eighth render without `gl.finish()` or synchronous readback.
+The frame scheduler retains deadlines across display refresh rates instead of quantizing 144 Hz down to 48 FPS. Resolution budgeting reacts to sustained low frame rates and recovers slowly. A re-armed resolution media query catches DPR changes even when the CSS viewport stays the same; the engine removes its listener on disposal. Diagnostics record CSS dimensions, device DPR and effective pixel ratio separately. GPU timing samples every eighth render without `gl.finish()` or synchronous readback.
 
 ## Storage and hosting
 

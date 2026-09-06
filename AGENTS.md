@@ -1,6 +1,6 @@
 # Astra Formula
 
-Read `docs/HANDOFF.md` first when resuming, then `docs/TASKS.md` and `docs/ARCHITECTURE.md`. The latest user request was to pause implementation/publishing and prepare this handoff. Resume substantive work only when the new session asks to continue.
+Read `docs/HANDOFF.md` first when resuming, then `docs/TASKS.md` and `docs/ARCHITECTURE.md`. The user requested a pause, Git push and handoff on 2026-09-06 to resume on the MacBook. Resume substantive work only when the new session asks to continue.
 
 ## User intent
 
@@ -28,4 +28,4 @@ Code must remain modular and clear for eventual public GitHub publication. The u
 
 ## Identity and publishing
 
-This is the user's personal project. Repository Git identity is configured locally; do not change global configuration. Do not print or persist credentials. No GitHub remote or deployed Site exists yet. Reuse the project ID in `.openai/hosting.json`; never create a second Site on resumption.
+This is the user's personal project. Repository Git identity is configured locally; do not change global configuration. Do not print or persist credentials. Public GitHub publication remains pending; check the handoff for private Site status. Reuse the project ID in `.openai/hosting.json`; never create a second Site on resumption.

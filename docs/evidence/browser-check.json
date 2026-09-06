@@ -1,40 +1,68 @@
 {
-  "date": "2026-09-05",
-  "source_baseline": "826ced8a580479e2542df157e10222d854efb1ed",
+  "date": "2026-09-06T00:37:54.058Z",
+  "host": "gengar-db",
+  "browser": "153.0.8010.12",
   "build": "production",
-  "script": "scripts/browser-check.mjs",
-  "status": "failed_on_landscape_menu_bounds",
-  "passed_before_failure": [
-    "Settings modal prevents Enter from starting a race",
-    "Eco drawing buffer stays within the 720p pixel budget",
-    "Time-trial selection and countdown",
-    "Keyboard throttle, steering, boost and braking",
-    "Cockpit camera switch and reset-to-track",
-    "Pause freezes distance, resume continues",
-    "Finish time trial and restart with a new countdown",
-    "Window blur pauses the race",
-    "Camera settings persist after reload",
-    "390x844 portrait start button is visible and within viewport"
-  ],
-  "failure": {
-    "viewport": [844, 390],
-    "start_button_bounds": {
-      "x": 531.6875,
-      "y": 415.4368896484375,
-      "width": 268,
-      "height": 46
+  "menus": [
+    {
+      "viewport": [390, 844],
+      "startButton": {
+        "x": 36,
+        "y": 721,
+        "width": 318,
+        "height": 43
+      }
     },
-    "screenshot": "artifacts/menu-landscape-issue.png",
-    "likely_area": "src/ui/styles/responsive.css; landscape compact rule excludes widths above 800px"
-  },
-  "not_reached": [
-    "Final 1440x900 bounds assertion",
+    {
+      "viewport": [844, 390],
+      "startButton": {
+        "x": 552,
+        "y": 314,
+        "width": 259,
+        "height": 38
+      }
+    },
+    {
+      "viewport": [932, 430],
+      "startButton": {
+        "x": 640,
+        "y": 354,
+        "width": 259,
+        "height": 38
+      }
+    },
+    {
+      "viewport": [1024, 600],
+      "startButton": {
+        "x": 732,
+        "y": 524,
+        "width": 259,
+        "height": 38
+      }
+    },
+    {
+      "viewport": [1440, 900],
+      "startButton": {
+        "x": 1071.171875,
+        "y": 712.3106689453125,
+        "width": 292,
+        "height": 51
+      }
+    }
+  ],
+  "errors": [],
+  "status": "passed",
+  "script": "scripts/browser-check.mjs",
+  "passed_checks": [
+    "Settings dialog guards Enter; Eco pixel ceiling",
+    "Keyboard throttle, steering, boost, braking and camera",
+    "Reset, pause/resume, finish time trial and restart",
+    "Blur pause and camera persistence after reload",
+    "Five responsive viewports: start button bounds and unobscured control centers",
     "Final accumulated page-error assertion"
   ],
-  "not_tested": [
-    "Actual touch device",
-    "Physical controller",
-    "Safari",
-    "Other GPU hardware"
+  "limitations": [
+    "Headless SwiftShader functional check, not hardware performance",
+    "Physical controller, real touch device and Safari untested"
   ]
 }

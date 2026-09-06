@@ -3,6 +3,10 @@ import { mesh, box, instanced, ribbon, patch } from './world/geometry';
 import { makeSky, buildMountains } from './world/atmosphere';
 import { buildTrees } from './world/vegetation';
 import { buildGrandstands, buildBuildings } from './world/buildings';
+import {
+  concreteBarrierMaterial,
+  paintedRunoffMaterial,
+} from './world/track-surfaces';
 import * as THREE from 'three';
 
 import { Track, seeded } from './tracks';
@@ -93,10 +97,7 @@ export function buildWorld(
     color: wet ? 0x8e9aaa : 0xffffff,
     envMapIntensity: wet ? 1.5 : 0.45,
   });
-  const runOff = new THREE.MeshStandardMaterial({
-    color: track.circuit.id === 'forest' ? 0x696953 : 0x458c85,
-    roughness: 0.95,
-  });
+  const runOff = paintedRunoffMaterial(track.circuit.id === 'forest', wet);
   const gravel = new THREE.MeshStandardMaterial({
     color: 0xa99f87,
     roughness: 1,
@@ -243,7 +244,7 @@ export function buildWorld(
   root.add(
     instanced(
       new THREE.BoxGeometry(0.6, 1.3, 4.08),
-      new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.88 }),
+      concreteBarrierMaterial(wet),
       barriers,
       true,
     ),

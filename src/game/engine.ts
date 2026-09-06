@@ -69,6 +69,7 @@ export class RacingEngine {
   private playerVisual: CarVisual | null = null;
   private opponentVisuals: CarVisual[] = [];
   private observer: ResizeObserver;
+  private resolutionQuery: MediaQueryList | null = null;
   private onVisibility: () => void;
   private loadingToken = 0;
   private disposed = false;
@@ -135,9 +136,22 @@ export class RacingEngine {
         'The graphics context was interrupted. Reload to get back on track.',
       );
     });
-    this.resize();
+    this.onPixelDensityChange();
     void this.initialize();
   }
+  // Moving between displays can change DPR without changing the CSS size,
+  // which does not notify ResizeObserver. Re-arm for each new display density.
+  private onPixelDensityChange = () => {
+    this.resolutionQuery?.removeEventListener(
+      'change',
+      this.onPixelDensityChange,
+    );
+    this.resolutionQuery = window.matchMedia(
+      `(resolution: ${window.devicePixelRatio}dppx)`,
+    );
+    this.resolutionQuery.addEventListener('change', this.onPixelDensityChange);
+    this.resize();
+  };
   private async initialize() {
     try {
       const [surfaces, asset, hdr] = await Promise.all([
@@ -535,6 +549,9 @@ export class RacingEngine {
         memory: { ...this.renderer.info.memory },
         render: { ...this.renderer.info.render },
         size: this.renderer.getDrawingBufferSize(new THREE.Vector2()).toArray(),
+        cssSize: [this.container.clientWidth, this.container.clientHeight],
+        devicePixelRatio: window.devicePixelRatio,
+        pixelRatio: this.renderer.getPixelRatio(),
         programs: this.renderer.info.programs?.length,
       },
       carLoaded: !!this.asset,
@@ -553,6 +570,10 @@ export class RacingEngine {
     this.loadingToken++;
     cancelAnimationFrame(this.animation);
     this.observer.disconnect();
+    this.resolutionQuery?.removeEventListener(
+      'change',
+      this.onPixelDensityChange,
+    );
     document.removeEventListener('visibilitychange', this.onVisibility);
     this.input.dispose();
     this.audio.dispose();

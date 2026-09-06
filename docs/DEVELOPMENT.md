@@ -2,7 +2,7 @@
 
 ## Setup
 
-Use Node.js 22.13+ and the committed npm lockfile. The current machine uses Node 24.19.0. Run `npm ci` only when dependencies need installation. Do not scaffold another project over this checkout.
+Use Node.js 22.13+ and the committed npm lockfile. Gengar-db uses Node 24.19.0. Dependencies were installed with `npm ci` without changing the lockfile. Run `npm ci` only when dependencies need installation. Do not scaffold another project over this checkout.
 
 ```sh
 npm run dev -- --host 0.0.0.0
@@ -20,10 +20,12 @@ npm run start -- --port 8788
 1. `npm test`: 19 deterministic checks for race completion, freeze behavior, control effects, track wrapping, time trial, camera attachment, settings validation, and frame scheduling/resolution budgets.
 2. `npm run typecheck` and `npm run lint`: strict TypeScript and owned-source static checks.
 3. `npm run build`: production bundle; it is not a gameplay test.
-4. `scripts/browser-check.mjs`: actual keyboard and UI actions against a visible Chrome browser, followed by responsive menu bounds checks.
+4. `scripts/browser-check.mjs`: actual keyboard and UI actions in the dedicated browser, followed by responsive menu bounds and obstruction checks.
 5. `scripts/benchmark.mjs`: complete races on all three circuits, timing samples, screenshots and repeated scene-resource counts.
 
-The browser checks currently have one known failure at the 844×390 menu layout. Do not weaken the assertion to hide it. The start button sits below the viewport. Fix the layout, then rerun.
+Browser checks cover 390×844, 844×390, 932×430, 1024×600 and 1440×900. They assert start-button bounds and test that menu/header control centers are not obscured. Driving waits use simulation time so the same behavior assertions can run on slow software renderers; they retain finite timeouts. JSON reports and screenshots are written to ignored `artifacts/`.
+
+`scripts/render-check.mjs` checks DPR-only changes, quality pixel ceilings, fullscreen entry/exit, a moving chase camera, all nine circuit/weather world builds and repeated resource cycles. These are functional checks; the nine-world sweep does not run nine full races.
 
 ## Visible browser automation
 
@@ -42,23 +44,23 @@ ASTRA_CDP=http://localhost:9224 ASTRA_BASE_URL=http://localhost:8788 node script
 ASTRA_CDP=http://localhost:9224 ASTRA_BASE_URL=http://localhost:8788 node scripts/browser-check.mjs
 ```
 
-Example dedicated launcher, run with Node from the repository:
+Launch a dedicated visible browser with the installed Chrome channel:
 
-```js
-import { chromium } from '@playwright/test';
-const browser = await chromium.launch({
-  channel: 'chrome',
-  headless: false,
-  args: ['--remote-debugging-port=9224', '--window-size=1440,960'],
-});
-const context = await browser.newContext({
-  viewport: { width: 1440, height: 900 },
-});
-await context.newPage();
-await new Promise((resolve) => browser.on('disconnected', resolve));
+```sh
+node scripts/launch-browser.mjs
 ```
 
-Ensure the chosen port is free. Do not take over an existing browser port blindly. The handoff session's dedicated browser and servers are stopped; old tool session IDs should not be reused.
+For gengar-db functional checks, bundled headless Chromium is available. The host exposes no rendering GPU or desktop display; Chromium uses SwiftShader. Missing Ubuntu browser libraries were extracted into the user's cache because this account cannot install system packages:
+
+```sh
+LD_LIBRARY_PATH=/home/dev/.cache/astra-browser-libs/usr/lib/x86_64-linux-gnu ASTRA_HEADLESS=1 node scripts/launch-browser.mjs
+ASTRA_BASE_URL=http://localhost:8788 node scripts/browser-check.mjs
+ASTRA_BASE_URL=http://localhost:8788 node scripts/render-check.mjs
+```
+
+Run those checks sequentially. Their software-renderer FPS is not comparable to the M4 Max measurements. On another Linux host, use Playwright's normal browser/dependency installation; the cache above is machine-local and is not a project dependency. `ASTRA_BROWSER_CHANNEL` and `ASTRA_CDP_PORT` optionally select another installed channel or free port.
+
+Ensure the chosen port is free. Do not take over an existing browser port blindly. Do not reuse old tool session IDs.
 
 ## Debug interface
 

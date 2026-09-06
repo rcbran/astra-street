@@ -2,7 +2,7 @@
 
 An original open-wheel racing game for the browser. Three fictional circuits, seven AI rivals, two-lap sprints, and a time-trial mode. Built with TypeScript, React, and Three.js.
 
-**Status:** playable and locally tested; still a work in progress. F1 games released since 2020 are the visual reference. The current scenery and material detail do not yet match AAA fidelity. Development is paused for a session handoff. Read [the handoff](docs/HANDOFF.md) before continuing.
+**Status:** playable and locally tested; still a work in progress. F1 games released since 2020 are the visual reference. The current scenery and material detail do not yet match AAA fidelity. Development is paused for a move from gengar-db back to the MacBook. Read [the handoff](docs/HANDOFF.md) before continuing.
 
 ## Run locally
 
@@ -39,7 +39,7 @@ Choose a circuit and conditions, then press **Go racing** or **Enter**. Quick ra
 | Pause          | Escape / P    | Start      |
 | Mute           | M             | —          |
 
-Touch controls are implemented for coarse-pointer devices, but actual touch-device testing is pending. A short landscape menu layout issue is also open. Controller mappings are implemented; a physical controller has not been tested.
+Touch controls are implemented for coarse-pointer devices, but actual touch-device testing is pending. Controller mappings are implemented; a physical controller has not been tested.
 
 | Circuit      | Setting             | Length  | Default conditions |
 | ------------ | ------------------- | ------- | ------------------ |

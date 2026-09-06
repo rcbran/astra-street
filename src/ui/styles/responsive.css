@@ -597,7 +597,7 @@
     bottom: 92px;
   }
 }
-@media (max-height: 650px) and (max-width: 800px) and (orientation: landscape) {
+@media (max-height: 650px) and (orientation: landscape) {
   .session-heading {
     top: 115px;
   }
@@ -608,7 +608,9 @@
     width: 285px;
     right: 20px;
     left: auto;
+    top: auto;
     bottom: 25px;
+    transform: none;
     padding: 12px;
   }
   .panel-heading,
@@ -633,14 +635,23 @@
   }
   .weather-option {
     height: 40px;
+    gap: 3px;
+    font-size: 0.53rem;
   }
-  .start-race {
+  .weather-option svg {
+    width: 15px;
+    height: 15px;
+  }
+  .session-panel .start-race {
     margin-top: 10px;
     height: 38px !important;
   }
   .menu-footer {
     max-width: calc(100% - 345px);
     bottom: 22px;
+  }
+  .menu-footer > span {
+    display: none;
   }
   .menu-footer > div {
     flex-wrap: wrap;
@@ -652,6 +663,20 @@
   }
   .game-header {
     top: 15px;
+  }
+  .in-menu .game-header {
+    right: 325px;
+  }
+  .in-menu .header-controls {
+    position: absolute;
+    left: 0;
+    top: 54px;
+    margin-left: 0;
+    gap: 6px;
+  }
+  .header-edition,
+  .session-heading p {
+    display: none;
   }
   .race-standing {
     top: 69px;
