@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "vinext dev",
     "build": "vinext build",
+    "build:static": "ASTRA_STATIC_EXPORT=1 vinext build && rm -rf out && cp -R dist/client out",
     "start": "wrangler dev --config dist/server/wrangler.json",
     "lint": "oxlint src app vite.config.ts next.config.ts --deny-warnings",
     "format": "oxfmt",

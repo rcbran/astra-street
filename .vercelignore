@@ -1,0 +1,14 @@
+.git
+.github
+.next
+.vinext
+.wrangler
+artifacts
+dist
+docs
+research
+scripts
+tests
+AGENTS.md
+README.md
+*.md
