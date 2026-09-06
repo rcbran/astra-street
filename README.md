@@ -22,7 +22,7 @@ npm run build
 npm run start -- --port 8788
 ```
 
-No account, API key, or external service is required for local gameplay. Runtime assets are served from this repository. The existing owner-private Sites project is reused. See the handoff for publishing status. Source transfer uses its private Git repository; public GitHub publication remains pending.
+No account, API key, or external service is required for local gameplay. Runtime assets are served from this repository. The [private playable build](https://astra-formula-racing.rbranham.chatgpt.site) requires the personal owner to sign in. The existing Sites project is reused; see the handoff for deployed source and publishing status. Source transfer uses its private Git repository; public GitHub publication remains pending.
 
 ## Play
 

@@ -40,7 +40,10 @@ Reuse `.openai/hosting.json` verbatim: `appgprj_6a9c96484ab081919378a4aa6684a3f3
 - URL: `https://git.chatgpt-team.site/55cfd5d9-5d0c-44b9-9b4c-a37c7926c6a7/appgprj_6a9c96484ab081919378a4aa6684a3f3.git`.
 - This is private Sites source Git. No public GitHub remote exists.
 - Access was inspected: personal owner only, no groups or external viewers.
-- Private publishing of this pass is being finalized; a follow-up documentation commit will record the confirmed playable URL and exact deployed source.
+- Private deployment succeeded on 2026-09-06: https://astra-formula-racing.rbranham.chatgpt.site . The legacy URL slug is retained; the display title is Astra Street.
+- Saved version 1 / deployed source: `9ba6a575977c0ba8bd102d2d7dc74a6a61adb051`. This follow-up documentation commit does not change the deployed application.
+- Version ID: `appgprj_6a9c96484ab081919378a4aa6684a3f3~appgver_27e16fc33d44819191548586f014fc29`; deployment ID: `appgdep_6a9cc433ce1881918ee70dacd2d821f2`.
+- The existing preview tab was navigated to the exact production URL and reached “Sign in required.” The personal owner must sign in. Local production gameplay was verified; authenticated hosted gameplay was not separately replayed.
 
 Inspect local changes before fetching. Use a fresh repository-scoped Sites credential as a per-command HTTP header; never persist or print it. Keep repository-local personal author settings; do not change global Git configuration. Preserve the source lockfile.
 

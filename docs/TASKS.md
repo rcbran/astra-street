@@ -17,7 +17,7 @@ Updated 2026-09-06. Active direction: Astra Street, following the user's Street 
 - [x] DPR/quality/fullscreen checks and nine route/weather world builds with stable resource cycles.
 - [x] Corrected-resolution hardware timing: three short visible M4 Max samples at 1821×1138, median 60 FPS.
 - [x] Emulated multi-touch and compact landscape HUD verification.
-- [ ] Private publishing; see handoff for current status.
+- [x] Privately publish version 1 and return the existing preview tab to the production URL; owner sign-in required.
 
 ## Next refinements
 
