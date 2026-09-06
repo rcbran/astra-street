@@ -37,7 +37,9 @@ Ownership stays modular. Engine owns shared textures/car geometry; world owns it
 - Sites source remote: `sites`, branch `main`, URL `https://git.chatgpt-team.site/55cfd5d9-5d0c-44b9-9b4c-a37c7926c6a7/appgprj_6a9c96484ab081919378a4aa6684a3f3.git`.
 - Reuse `.openai/hosting.json` verbatim: `appgprj_6a9c96484ab081919378a4aa6684a3f3`. Never create another Site. Owner-only access was rechecked: one personal owner, no groups or external viewers.
 - Existing private playable URL: **https://astra-formula-racing.rbranham.chatgpt.site**. Legacy URL slug stays; title is Astra Street. Owner sign-in is required.
-- This landscape pass is being committed/pushed to both remotes and privately published. A follow-up documentation commit will record the confirmed deployment and exact source.
+- Landscape source `2ee68509713e7d0a9e42be0bdb131f1014b35635` is pushed to both remotes. `main` now tracks `origin/main`; continue pushing the validated source to `sites/main` before saving a Site version.
+- **Private Site version 2 succeeded** on 2026-09-06, using that exact source. Version ID: `appgprj_6a9c96484ab081919378a4aa6684a3f3~appgver_5e688b40402c81919c2568ab9bc961fa`. Deployment ID: `appgdep_6a9cdf6b04bc8191ad8863f6e3f9206c`.
+- The existing Site preview was returned to the production URL. Local production gameplay was tested headlessly; authenticated hosted gameplay was not separately replayed. This follow-up docs commit does not change the deployed application.
 - The prior release is version 1, source `9ba6a575977c0ba8bd102d2d7dc74a6a61adb051`. A GitHub push alone does not update the Site.
 
 Use repository-local personal author settings; never change global Git identity. Sites credentials must be ephemeral per-command headers, never printed, saved in files, or embedded in remotes. GitHub uses the existing authenticated `gh` account `rcbran`. Inspect local changes before pulling; preserve unrelated user work. The originally supplied unrelated GitHub repository was never merged.

@@ -30,7 +30,7 @@ Updated 2026-09-06. Active direction: Astra Street, following the user's Street 
 - [x] Pass headless keyboard/menu, DPR/fullscreen, nine-world and resource-cycle checks.
 - [x] Create the personal private GitHub repository `rcbran/astra-street`.
 - [x] Short headless GPU samples at 1821×1138: three default routes, 60 FPS median.
-- [ ] Push both source remotes and privately publish this pass.
+- [x] Push validated source to personal private GitHub and Sites; private Site version 2 succeeded.
 
 ## Next refinements
 
