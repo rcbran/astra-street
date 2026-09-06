@@ -37,6 +37,22 @@ ground.position.y = -0.01;
 ground.receiveShadow = true;
 scene.add(ground);
 const assets = await loadTreeAssets();
+// Gallery-only candidate: never changes the game's loaded species or LODs.
+const distantBudget = Number(
+  new URLSearchParams(location.search).get('distantBudget'),
+);
+if ([1800, 2400].includes(distantBudget)) {
+  const { createDistantTree } =
+    await import('../../../src/game/world/distant-tree-geometry.ts');
+  for (const species of assets.species) {
+    if (!/^(fir|pine)_/.test(species.id) || species.lods.length > 3) continue;
+    const model = createDistantTree(species.lods[2], distantBudget);
+    model.traverse((part) => {
+      if (part instanceof THREE.Mesh) assets.geometries.add(part.geometry);
+    });
+    species.lods.push(model);
+  }
+}
 assets.update(12, 1);
 let model;
 let bounds = new THREE.Box3();

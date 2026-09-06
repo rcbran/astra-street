@@ -5,6 +5,10 @@ import { loadRoadTextures } from './materials';
 import { buildWorld, type World } from './world';
 import { loadTreeAssets, type TreeAssets } from './world/tree-assets';
 import {
+  loadCanyonScanAssets,
+  type CanyonScanAssets,
+} from './world/canyon-scan-assets';
+import {
   createCar,
   loadCarAsset,
   updateCar,
@@ -77,6 +81,7 @@ export class RacingEngine {
   private tireMarks: TireMarks | null = null;
   private asset: THREE.Group | null = null;
   private treeAssets: TreeAssets | null = null;
+  private canyonScans: CanyonScanAssets | null = null;
   private surfaces: Awaited<ReturnType<typeof loadRoadTextures>> | null = null;
   private environment: THREE.WebGLRenderTarget | null = null;
   private playerVisual: CarVisual | null = null;
@@ -169,22 +174,42 @@ export class RacingEngine {
   };
   private async initialize() {
     try {
-      const [surfaces, asset, hdr, treeAssets] = await Promise.all([
+      const [s, a, h, t, c] = await Promise.allSettled([
         loadRoadTextures(),
         loadCarAsset(),
         new HDRLoader().loadAsync('/assets/textures/environment.hdr'),
         loadTreeAssets(),
+        loadCanyonScanAssets(),
       ]);
-      if (this.disposed) {
-        Object.values(surfaces).forEach((t) => t.dispose());
-        disposeCarAsset(asset);
-        hdr.dispose();
-        treeAssets.dispose();
-        return;
+      if (
+        this.disposed ||
+        s.status === 'rejected' ||
+        a.status === 'rejected' ||
+        h.status === 'rejected' ||
+        t.status === 'rejected' ||
+        c.status === 'rejected'
+      ) {
+        // A failed library or late teardown must release every completed load.
+        if (s.status === 'fulfilled')
+          Object.values(s.value).forEach((texture) => texture.dispose());
+        if (a.status === 'fulfilled') disposeCarAsset(a.value);
+        if (h.status === 'fulfilled') h.value.dispose();
+        if (t.status === 'fulfilled') t.value.dispose();
+        if (c.status === 'fulfilled') c.value.dispose();
+        if (this.disposed) return;
+        const failure = [s, a, h, t, c].find(
+          (result) => result.status === 'rejected',
+        );
+        throw failure?.reason ?? new Error('Asset loading failed');
       }
+      const surfaces = s.value,
+        asset = a.value,
+        hdr = h.value,
+        treeAssets = t.value;
       this.surfaces = surfaces;
       this.asset = asset;
       this.treeAssets = treeAssets;
+      this.canyonScans = c.value;
       const pmrem = new THREE.PMREMGenerator(this.renderer);
       this.environment = pmrem.fromEquirectangular(hdr);
       this.scene.environment = this.environment.texture;
@@ -205,7 +230,8 @@ export class RacingEngine {
   }
   async configure(options: RaceOptions) {
     this.options = { ...options };
-    if (!this.surfaces || !this.asset || !this.treeAssets) return;
+    if (!this.surfaces || !this.asset || !this.treeAssets || !this.canyonScans)
+      return;
     const token = ++this.loadingToken;
     this.phase = 'loading';
     this.emit();
@@ -230,6 +256,7 @@ export class RacingEngine {
       this.surfaces,
       this.treeAssets,
       this.environment!.texture,
+      this.canyonScans,
     );
     this.scene.add(this.world.root);
     const wet = options.weather === 'rain';
@@ -255,6 +282,7 @@ export class RacingEngine {
     this.cameraRig.reset();
     this.applyQuality();
     this.draw(0);
+    this.presentation.updateSpeedFeedback(0, false, 0);
     this.bindSceneEnvironment();
     this.renderer.compile(this.scene, this.camera);
     this.presentation.render(this.scene, this.camera, this.settings.quality);
@@ -449,6 +477,11 @@ export class RacingEngine {
       this.phase === 'racing' || this.phase === 'countdown',
     );
     this.draw(tick.delta);
+    this.presentation.updateSpeedFeedback(
+      this.phase === 'racing' ? this.player.speed : 0,
+      this.session?.boosted ?? false,
+      tick.delta,
+    );
     const start = performance.now();
     this.renderer.info.reset();
     this.gpuTimer.begin();
@@ -644,6 +677,7 @@ export class RacingEngine {
     if (this.surfaces) Object.values(this.surfaces).forEach((t) => t.dispose());
     if (this.asset) disposeCarAsset(this.asset);
     this.treeAssets?.dispose();
+    this.canyonScans?.dispose();
     this.gpuTimer.dispose();
     this.presentation.dispose();
     this.renderer.dispose();

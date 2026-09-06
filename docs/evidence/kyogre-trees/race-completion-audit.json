@@ -1,0 +1,86 @@
+{
+  "purpose": "Offline corroboration of two completed laps from original nine-race snapshots and unchanged Track code. No new browser run.",
+  "rows": [
+    {
+      "circuit": "riviera",
+      "weather": "sunset",
+      "trackLength": 2840.2921693173753,
+      "finalDistance": 5680.961543985214,
+      "finishOvershoot": 0.3772053504635551,
+      "laps": 2,
+      "phase": "finished"
+    },
+    {
+      "circuit": "riviera",
+      "weather": "clear",
+      "trackLength": 2840.2921693173753,
+      "finalDistance": 5680.693004683922,
+      "finishOvershoot": 0.10866604917100631,
+      "laps": 2,
+      "phase": "finished"
+    },
+    {
+      "circuit": "riviera",
+      "weather": "rain",
+      "trackLength": 2840.2921693173753,
+      "finalDistance": 5680.976333275806,
+      "finishOvershoot": 0.3919946410551347,
+      "laps": 2,
+      "phase": "finished"
+    },
+    {
+      "circuit": "forest",
+      "weather": "sunset",
+      "trackLength": 3428.6640473303396,
+      "finalDistance": 6857.666064271584,
+      "finishOvershoot": 0.3379696109050201,
+      "laps": 2,
+      "phase": "finished"
+    },
+    {
+      "circuit": "forest",
+      "weather": "clear",
+      "trackLength": 3428.6640473303396,
+      "finalDistance": 6857.435479429327,
+      "finishOvershoot": 0.10738476864753466,
+      "laps": 2,
+      "phase": "finished"
+    },
+    {
+      "circuit": "forest",
+      "weather": "rain",
+      "trackLength": 3428.6640473303396,
+      "finalDistance": 6857.424186554731,
+      "finishOvershoot": 0.09609189405182406,
+      "laps": 2,
+      "phase": "finished"
+    },
+    {
+      "circuit": "marina",
+      "weather": "sunset",
+      "trackLength": 3104.658362593391,
+      "finalDistance": 6209.45175926177,
+      "finishOvershoot": 0.13503407498865272,
+      "laps": 2,
+      "phase": "finished"
+    },
+    {
+      "circuit": "marina",
+      "weather": "clear",
+      "trackLength": 3104.658362593391,
+      "finalDistance": 6209.3616429822005,
+      "finishOvershoot": 0.04491779541876895,
+      "laps": 2,
+      "phase": "finished"
+    },
+    {
+      "circuit": "marina",
+      "weather": "rain",
+      "trackLength": 3104.658362593391,
+      "finalDistance": 6209.495341264608,
+      "finishOvershoot": 0.17861607782651845,
+      "laps": 2,
+      "phase": "finished"
+    }
+  ]
+}

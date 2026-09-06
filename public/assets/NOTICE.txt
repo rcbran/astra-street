@@ -11,6 +11,12 @@ https://polyhaven.com/a/pine_tree_01
 Tree Small 02 — Rico Cilliers
 https://polyhaven.com/a/tree_small_02
 
+Namaqualand Cliff 01 — Jenelle van Heerden (photography), Rico Cilliers (modeling)
+https://polyhaven.com/a/namaqualand_cliff_01
+Namaqualand Cliff 02 — Dario Barresi (photography), Rico Cilliers (modeling)
+https://polyhaven.com/a/namaqualand_cliff_02
+Modified scan geometry: about 6,000 triangles each, recentered, original UVs and embedded PBR images.
+
 Cliff Side — James Ray Cock and Dario Barresi (photography), Jenelle van Heerden (processing)
 https://polyhaven.com/a/cliff_side
 Rock Wall 02 — Rob Tuytel

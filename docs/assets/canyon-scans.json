@@ -1,0 +1,217 @@
+{
+  "license": "CC0-1.0",
+  "licenseSource": "https://polyhaven.com/license",
+  "licenseLegalcode": "https://creativecommons.org/publicdomain/zero/1.0/legalcode",
+  "dateAccessed": "2026-09-06",
+  "assets": [
+    {
+      "id": "namaqualand_cliff_01",
+      "sourcePage": "https://polyhaven.com/a/namaqualand_cliff_01",
+      "authors": {
+        "Jenelle van Heerden": "Photography",
+        "Rico Cilliers": "modeling"
+      },
+      "geometry": {
+        "id": "namaqualand_cliff_01",
+        "sourceTriangles": 94369,
+        "triangles": 5999,
+        "sourceDimensionsMetresZUp": [
+          8.279043197631836,
+          4.390133857727051,
+          4.961063385009766
+        ],
+        "sourceOriginOffsetZUp": [
+          0.26743531227111816,
+          1.415467381477356,
+          -0.41918590664863586
+        ],
+        "postSimplificationOffsetZUp": [
+          -0.0030918121337890625,
+          0.0001722574234008789,
+          0.0004398425226099789
+        ],
+        "vertices": 4291,
+        "uvLayers": 1,
+        "materials": 1,
+        "blenderVersion": "5.2.0 LTS",
+        "method": "Blender DECIMATE collapse to 6000 triangles; original scan UVs and PBR maps; translated horizontal center and lowest vertex to origin; exported Y-up metres with tangents."
+      },
+      "derivative": {
+        "id": "namaqualand_cliff_01",
+        "glbBytes": 9262288,
+        "sha256": "066493029bc84fe9f19f704bb57531f21c68eb5a4926a1f421c7e1cae425c3c7",
+        "vertices": 4378,
+        "triangles": 5999,
+        "boundsMinYUp": [
+          -4.136002540588379,
+          0.0,
+          -2.194894790649414
+        ],
+        "boundsMaxYUp": [
+          4.136002540588379,
+          4.964883804321289,
+          2.194894790649414
+        ],
+        "horizontalRadius": 4.528464477172527,
+        "images": [
+          {
+            "name": "namaqualand_cliff_01_nor_gl_2k",
+            "sourceFile": "namaqualand_cliff_01_nor_gl_2k.jpg",
+            "bytes": 3865130,
+            "sha256": "d5d98996e8a1e7e901ccafc98c3c773b3cf628a8686b1bafc13e2b64de5f36c6",
+            "byteIdenticalToSource": true
+          },
+          {
+            "name": "namaqualand_cliff_01_diff_2k",
+            "sourceFile": "namaqualand_cliff_01_diff_2k.jpg",
+            "bytes": 2651260,
+            "sha256": "72501708e40c12e315b24e606555193af0f89bc189d26072bc0021a1ca362ed0",
+            "byteIdenticalToSource": true
+          },
+          {
+            "name": "namaqualand_cliff_01_arm_2k",
+            "sourceFile": "namaqualand_cliff_01_arm_2k.jpg",
+            "bytes": 2497804,
+            "sha256": "0269b15353fefca82f19e642618b91d9943f371373c5ccc9ddaf219a96a64a31",
+            "byteIdenticalToSource": true
+          }
+        ],
+        "material": {
+          "doubleSided": true,
+          "name": "drone_rock_01",
+          "normalTexture": {
+            "index": 0
+          },
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 1
+            },
+            "metallicFactor": 0,
+            "metallicRoughnessTexture": {
+              "index": 2
+            }
+          }
+        },
+        "checks": [
+          "finite position/normal/tangent/UV",
+          "indices in bounds",
+          "one primitive and material",
+          "all original 2K image bytes preserved",
+          "normal/baseColor/metallicRoughness bindings present"
+        ]
+      }
+    },
+    {
+      "id": "namaqualand_cliff_02",
+      "sourcePage": "https://polyhaven.com/a/namaqualand_cliff_02",
+      "authors": {
+        "Dario Barresi": "Photography",
+        "Rico Cilliers": "modeling"
+      },
+      "geometry": {
+        "id": "namaqualand_cliff_02",
+        "sourceTriangles": 194080,
+        "triangles": 6000,
+        "sourceDimensionsMetresZUp": [
+          20.227500915527344,
+          6.593420505523682,
+          7.183821201324463
+        ],
+        "sourceOriginOffsetZUp": [
+          0.4326019287109375,
+          1.1022884845733643,
+          -0.15984418988227844
+        ],
+        "postSimplificationOffsetZUp": [
+          -0.025651931762695312,
+          -0.0027022361755371094,
+          -0.016870636492967606
+        ],
+        "vertices": 5037,
+        "uvLayers": 1,
+        "materials": 1,
+        "blenderVersion": "5.2.0 LTS",
+        "method": "Blender DECIMATE collapse to 6000 triangles; original scan UVs and PBR maps; translated horizontal center and lowest vertex to origin; exported Y-up metres with tangents."
+      },
+      "derivative": {
+        "id": "namaqualand_cliff_02",
+        "glbBytes": 10099400,
+        "sha256": "0e6fe4d1866a48558fa126656835cb6ef31a3893a7932094f08d1ada376ea5a2",
+        "vertices": 5072,
+        "triangles": 6000,
+        "boundsMinYUp": [
+          -10.089678764343262,
+          0.0,
+          -3.3060646057128906
+        ],
+        "boundsMaxYUp": [
+          10.089678764343262,
+          7.194386959075928,
+          3.3060646057128906
+        ],
+        "horizontalRadius": 10.266572934657523,
+        "images": [
+          {
+            "name": "namaqualand_cliff_02_nor_gl_2k",
+            "sourceFile": "namaqualand_cliff_02_nor_gl_2k.jpg",
+            "bytes": 4125317,
+            "sha256": "634bc52174130d6992a7539d1f7bb923c4a103f117ab09966782c0e89eb571f6",
+            "byteIdenticalToSource": true
+          },
+          {
+            "name": "namaqualand_cliff_02_diff_2k",
+            "sourceFile": "namaqualand_cliff_02_diff_2k.jpg",
+            "bytes": 2845716,
+            "sha256": "9618e2a42155b93189e0bac9edebcc46a6af1357f4f6ed56f79ca1714690d4f0",
+            "byteIdenticalToSource": true
+          },
+          {
+            "name": "namaqualand_cliff_02_arm_2k",
+            "sourceFile": "namaqualand_cliff_02_arm_2k.jpg",
+            "bytes": 2846951,
+            "sha256": "3b4d733be37186ab6b62b8ddde90f9dc439f5b42a17293f1b65844a0f0d9e02f",
+            "byteIdenticalToSource": true
+          }
+        ],
+        "material": {
+          "doubleSided": true,
+          "name": "drone_rock_02",
+          "normalTexture": {
+            "index": 0
+          },
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 1
+            },
+            "metallicFactor": 0,
+            "metallicRoughnessTexture": {
+              "index": 2
+            }
+          }
+        },
+        "checks": [
+          "finite position/normal/tangent/UV",
+          "indices in bounds",
+          "one primitive and material",
+          "all original 2K image bytes preserved",
+          "normal/baseColor/metallicRoughness bindings present"
+        ]
+      }
+    }
+  ],
+  "downloadManifest": "../../artifacts/assets/canyon-scan/sources/download-manifest.json",
+  "limitations": [
+    "Scanned faces have open cut boundaries/back areas: embed in terrain or layer overlapping scan pieces, not standalone closed pillars.",
+    "Keep moderate approximately uniform scale; the reference red sandstone palette is not the source gray-brown rock color.",
+    "Decimation preserves original UV maps and exact source JPEG bytes, but small-scale silhouette detail is reduced.",
+    "Preview thumbnails are research-only Poly Haven renders, not runtime assets.",
+    "First runtime scan placement exposed its plain backing through the photographed face; placement acceptance remains open. CPU clearance and ownership are independent of visual acceptance."
+  ],
+  "coordinates": {
+    "up": "+Y",
+    "unit": "metre",
+    "pivot": "final simplified X/Z bounding center; lowest vertex Y=0",
+    "photographedFront": "+Z (confirmed by actual-derivative CPU front/side previews)",
+    "placement": "Orient photographed face toward the road and conceal open boundaries. Placement is under review."
+  }
+}

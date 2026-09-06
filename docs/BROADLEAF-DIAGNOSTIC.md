@@ -1,4 +1,14 @@
-# Remaining broadleaf white/cyan crown issue
+# Broadleaf white/cyan crown diagnosis and correction
+
+## Kyogre correction — 2026-09-06
+
+Reproduced on Arch Linux with a dedicated headless Chromium, ANGLE/Mesa AMD Radeon 780M. Linear filtering without mipmaps removes the defect; retaining mipmaps with nearest mip sampling retains it. UV-aware padding removes the pale crowns while keeping ordinary trilinear mipmaps, linear magnification and anisotropy 8.
+
+`scripts/assets/trees/pad_broadleaf_atlas.py` reads all three broadleaf LODs' UV triangles and protects them with a two-texel margin verified against continuous bilinear support. The bake's unused opaque white pixels cannot be detected by alpha-only dilation. Padding donors are mapped opaque non-white pixels: mapped white fringe pixels remain untouched, but cannot spread into unused space. Every alpha byte and protected RGBA byte is preserved, so alpha coverage at every generated mip remains unchanged. Only unused RGB changes; geometry, other textures and material filtering are unchanged. A continuous triangle/texel-support intersection independently verifies coverage of all 205,436 reachable base-level bilinear texels. Review caught 153 missed taps in the first one-texel raster margin, so the final mask uses two texels and fails if that geometric check finds any misses. Running the script again reproduces the same GLB hash. See `assets/tree_small_02-padding.json`.
+
+`scripts/broadleaf-check.mjs` compares old/new textures in the exact frozen world through the production presentation pipeline, across Pinecrest/Canyon and all three weather choices. The original diagnostic scripts below deliberately bypassed that pipeline. The corrected GLB validates with zero errors and the same six derivative-tangent warnings. Static/distance captures are separate from performance measurements.
+
+## Historical checkpoint investigation
 
 Checkpoint diagnosis, 2026-09-06. No runtime/source/asset edits were made by this worker. Both diagnostic scripts finished successfully and their `finally` blocks closed their owned browser contexts; no worker contexts or running GPU tasks remain.
 
@@ -28,10 +38,10 @@ Selected baseline, nearest/no-mipmap frame, runtime leaf map and texture details
 3. **Changing the broadleaf diffuse texture to NearestFilter for min/mag and disabling mipmaps makes the white crowns green in the exact frozen world.** Thus the issue is concretely sensitive to mip/filter sampling, not just a generic lighting or tint problem. This experiment changes mip usage and filtering together; they have not yet been isolated individually.
 4. The runtime leaf atlas visibly contains white unused regions outside the green leaf islands. Pixel audit found **57,633 fully opaque pixels with every RGB channel>235** in both the runtime canvas dump and prepared authoring PNG. Prior RGB dilation preserved opaque pixels by design, so those white regions remained. The prepared PNG has 295,108 near-white pixels total, many transparent; its runtime canvas dump has 64,730 because canvas serialization zeroes fully transparent RGB. Do not mistake that canvas conversion for a GLB mutation.
 
-## Current hypothesis and next step
+## Historical hypothesis and next step
 
 Mip filtering likely draws opaque white/transparent-white atlas regions into small projected leaf islands. This is a strong hypothesis supported by the filtering A/B and atlas audit, but the precise contribution of unused opaque regions versus mip generation/premultiplication remains unproven.
 
 Next, isolate `LinearFilter` without mipmaps from nearest filtering, then test a corrected atlas candidate outside checkout. Inspect the source alpha/UV islands before modifying it: mask/pad only verified unused white atlas regions, preserve legitimate leaf colors, and use alpha-aware mip filtering or proper edge padding. Compare the candidate in the same frozen world at multiple distances and all three LODs. Avoid treating permanent nearest filtering or an arbitrary dark-green tint as the final fix. Repeat all-angle QA only after an actual asset/material change.
 
-No new filtering or atlas fix has been integrated. Existing final static gallery checks passed but use controlled lighting and large specimens; they do not expose this small-projection world issue.
+At that historical checkpoint, no filtering or atlas fix had been integrated. Its static gallery checks passed under controlled lighting with large specimens and did not expose the small-projection world issue. The kyogre correction at the top supersedes that status.

@@ -58,35 +58,66 @@ export function buildTrees(
   const firs = assets.species.flatMap((s, i) =>
     s.id.startsWith('fir') ? [i] : [],
   );
+  const canyonFirs = assets.species.flatMap((s, i) =>
+    s.id.startsWith('canyon_fir') ? [i] : [],
+  );
+  // Low, broad fir_b crowns lead the Canyon groves; taller fir_a accents
+  // break their outline. Sparse fir_c and high pine crowns suit Pinecrest.
+  const canyonGroves = canyonFirs.flatMap((i) =>
+    assets.species[i].id.endsWith('_b')
+      ? [i, i, i, i]
+      : assets.species[i].id.endsWith('_a')
+        ? [i]
+        : [],
+  );
   const pines = assets.species.flatMap((s, i) =>
     s.id.startsWith('pine') ? [i] : [],
   );
   const broadleaves = assets.species.flatMap((s, i) =>
     s.id.startsWith('broadleaf') ? [i] : [],
   );
-  for (let i = 0; i < (forest ? 20000 : city ? 2000 : 14000); i++) {
+  for (
+    let i = 0;
+    i < (forest ? 20000 : city ? 2000 : coastal ? 8000 : 14000);
+    i++
+  ) {
     const f = track.sample(rand() * track.length);
     const side = rand() > 0.5 ? 1 : -1;
-    const offset = side * (22 + Math.pow(rand(), 1.35) * (city ? 430 : 820));
+    const offset =
+      side *
+      ((coastal ? 18.5 : 22) +
+        Math.pow(rand(), coastal ? 1.5 : 1.35) *
+          (city ? 430 : coastal ? 132 : 820));
     const x = f.x + f.nx * offset,
       z = f.z + f.nz * offset;
     const d = track.nearestDistance(x, z);
-    if (d < 22 || (coastal && x > 465) || (city && d < 280)) continue;
+    if (d < (coastal ? 18.5 : 22) || (coastal && x > 465) || (city && d < 280))
+      continue;
+    // Author only the visible roadside groves and their backing rows. Deep
+    // forest beyond this corridor mostly sits behind the Canyon buttresses.
+    if (coastal && d > 150) continue;
     const stand = terrainNoise(x * 0.017, z * 0.017);
     // Broad stands are punctuated by clearings; roadside trees get breathing
     // room instead of forming one uninterrupted hedge along the tarmac.
-    if (stand < (d < 90 ? 0.34 : 0.22)) continue;
+    if (stand < (coastal ? 0.32 : d < 90 ? 0.34 : 0.22)) continue;
     const y = landscape.height(x, z) - 0.12;
     if (y < -0.75 || y > (forest ? 570 : 390) || landscape.slope(x, z) > 1.25)
       continue;
     const choice = rand();
     const family =
-      choice < (forest ? 0.64 : 0.22)
-        ? firs
-        : choice < (forest ? 0.94 : 0.91)
+      choice < (forest ? 0.64 : coastal ? 0.86 : 0.22)
+        ? coastal && canyonFirs.length
+          ? canyonFirs
+          : firs
+        : choice < (forest ? 0.94 : coastal ? 0.99 : 0.91)
           ? pines
           : broadleaves;
-    const pool = family.length ? family : firs;
+    const pool =
+      coastal && canyonGroves.length
+        ? canyonGroves
+        : family.length
+          ? family
+          : firs;
     const speciesIndex = pool[Math.floor(rand() * pool.length)];
     const species = assets.species[speciesIndex];
     const sapling = rand() < 0.12;
@@ -94,7 +125,7 @@ export function buildTrees(
       ? 5 + rand() * 6
       : sapling
         ? 5 + rand() * 5
-        : (forest ? 15 : 13) + rand() * 13;
+        : (forest ? 15 : coastal ? 12 : 13) + rand() * (coastal ? 8 : 13);
     const scale = height / species.height;
     const radius = species.radius * scale;
     if (!landscape.vegetationClear(x, z, Math.min(12, radius * 0.45))) continue;
@@ -106,7 +137,8 @@ export function buildTrees(
         for (const tree of occupied.get(`${cellX + dx}:${cellZ + dz}`) ?? []) {
           if (
             Math.hypot(tree.x - x, tree.z - z) <
-            2.5 + (tree.radius + radius) * 0.48
+            (coastal ? 3.8 : 2.5) +
+              (tree.radius + radius) * (coastal ? 0.65 : 0.48)
           ) {
             crowded = true;
             break;
@@ -116,7 +148,7 @@ export function buildTrees(
     const bucket = occupied.get(`${cellX}:${cellZ}`) ?? [];
     bucket.push({ x, z, radius });
     occupied.set(`${cellX}:${cellZ}`, bucket);
-    const shade = 0.84 + rand() * 0.16;
+    const shade = coastal ? 0.78 + rand() * 0.14 : 0.84 + rand() * 0.16;
     placements.push({
       x,
       y,
@@ -126,9 +158,9 @@ export function buildTrees(
       yaw: rand() * Math.PI * 2,
       width: 0.9 + rand() * 0.2,
       color: new THREE.Color().setRGB(
-        shade * (0.96 + rand() * 0.04),
+        shade * ((coastal ? 0.78 : 0.96) + rand() * 0.04),
         shade,
-        shade * (0.91 + rand() * 0.07),
+        shade * ((coastal ? 0.74 : 0.91) + rand() * 0.07),
       ),
     });
   }

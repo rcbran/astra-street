@@ -1,0 +1,976 @@
+{
+  "date": "2026-09-06T05:51:23.801Z",
+  "host": "kyogre",
+  "browser": "153.0.8010.12",
+  "resolution": [
+    {
+      "label": "DPR 1",
+      "memory": {
+        "geometries": 164,
+        "textures": 45
+      },
+      "render": {
+        "frame": 39,
+        "calls": 1062,
+        "triangles": 12542681,
+        "points": 384,
+        "lines": 0
+      },
+      "size": [
+        1440,
+        900
+      ],
+      "cssSize": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelRatio": 1,
+      "programs": 56,
+      "quality": "balanced",
+      "drawingBuffer": [
+        1440,
+        900
+      ],
+      "presentation": {
+        "beauty": [
+          1440,
+          900
+        ],
+        "contact": [
+          720,
+          450
+        ],
+        "returnedToCanvas": true
+      }
+    },
+    {
+      "label": "DPR-only change to 2",
+      "memory": {
+        "geometries": 164,
+        "textures": 45
+      },
+      "render": {
+        "frame": 51,
+        "calls": 1062,
+        "triangles": 12542681,
+        "points": 384,
+        "lines": 0
+      },
+      "size": [
+        1821,
+        1138
+      ],
+      "cssSize": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 2,
+      "pixelRatio": 1.2649110640673518,
+      "programs": 56,
+      "quality": "balanced",
+      "drawingBuffer": [
+        1821,
+        1138
+      ],
+      "presentation": {
+        "beauty": [
+          1821,
+          1138
+        ],
+        "contact": [
+          911,
+          569
+        ],
+        "returnedToCanvas": true
+      }
+    },
+    {
+      "label": "DPR 2 Eco",
+      "memory": {
+        "geometries": 164,
+        "textures": 41
+      },
+      "render": {
+        "frame": 54,
+        "calls": 846,
+        "triangles": 6701943,
+        "points": 384,
+        "lines": 0
+      },
+      "size": [
+        1214,
+        758
+      ],
+      "cssSize": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 2,
+      "pixelRatio": 0.8432740427115678,
+      "programs": 76,
+      "quality": "eco",
+      "drawingBuffer": [
+        1214,
+        758
+      ],
+      "presentation": {
+        "beauty": [
+          1214,
+          758
+        ],
+        "contact": [
+          607,
+          379
+        ],
+        "returnedToCanvas": true
+      }
+    },
+    {
+      "label": "DPR 2 Ultra",
+      "memory": {
+        "geometries": 164,
+        "textures": 41
+      },
+      "render": {
+        "frame": 55,
+        "calls": 846,
+        "triangles": 6701943,
+        "points": 384,
+        "lines": 0
+      },
+      "size": [
+        2428,
+        1517
+      ],
+      "cssSize": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 2,
+      "pixelRatio": 1.6865480854231356,
+      "programs": 76,
+      "quality": "ultra",
+      "drawingBuffer": [
+        2428,
+        1517
+      ],
+      "presentation": {
+        "beauty": [
+          2428,
+          1517
+        ],
+        "contact": [
+          1214,
+          759
+        ],
+        "returnedToCanvas": true
+      }
+    },
+    {
+      "label": "1080p CSS at DPR 2",
+      "memory": {
+        "geometries": 164,
+        "textures": 45
+      },
+      "render": {
+        "frame": 61,
+        "calls": 1109,
+        "triangles": 12712705,
+        "points": 384,
+        "lines": 0
+      },
+      "size": [
+        1920,
+        1080
+      ],
+      "cssSize": [
+        1920,
+        1080
+      ],
+      "devicePixelRatio": 2,
+      "pixelRatio": 1,
+      "programs": 79,
+      "quality": "balanced",
+      "drawingBuffer": [
+        1920,
+        1080
+      ],
+      "presentation": {
+        "beauty": [
+          1920,
+          1080
+        ],
+        "contact": [
+          960,
+          540
+        ],
+        "returnedToCanvas": true
+      }
+    },
+    {
+      "label": "1440p CSS at DPR 2",
+      "memory": {
+        "geometries": 164,
+        "textures": 45
+      },
+      "render": {
+        "frame": 70,
+        "calls": 1087,
+        "triangles": 14948274,
+        "points": 384,
+        "lines": 0
+      },
+      "size": [
+        2560,
+        1440
+      ],
+      "cssSize": [
+        2560,
+        1440
+      ],
+      "devicePixelRatio": 2,
+      "pixelRatio": 1,
+      "programs": 79,
+      "quality": "ultra",
+      "drawingBuffer": [
+        2560,
+        1440
+      ],
+      "presentation": {
+        "beauty": [
+          2560,
+          1440
+        ],
+        "contact": [
+          1280,
+          720
+        ],
+        "returnedToCanvas": true
+      }
+    },
+    {
+      "label": "Return to DPR 1",
+      "memory": {
+        "geometries": 164,
+        "textures": 45
+      },
+      "render": {
+        "frame": 88,
+        "calls": 1066,
+        "triangles": 13159556,
+        "points": 384,
+        "lines": 0
+      },
+      "size": [
+        1440,
+        900
+      ],
+      "cssSize": [
+        1440,
+        900
+      ],
+      "devicePixelRatio": 1,
+      "pixelRatio": 1,
+      "programs": 79,
+      "quality": "balanced",
+      "drawingBuffer": [
+        1440,
+        900
+      ],
+      "presentation": {
+        "beauty": [
+          1440,
+          900
+        ],
+        "contact": [
+          720,
+          450
+        ],
+        "returnedToCanvas": true
+      }
+    },
+    {
+      "label": "Fullscreen entry",
+      "memory": {
+        "geometries": 165,
+        "textures": 45
+      },
+      "render": {
+        "frame": 112,
+        "calls": 996,
+        "triangles": 12521965,
+        "points": 384,
+        "lines": 0
+      },
+      "size": [
+        800,
+        600
+      ],
+      "cssSize": [
+        800,
+        600
+      ],
+      "devicePixelRatio": 1,
+      "pixelRatio": 1,
+      "programs": 79,
+      "quality": "balanced",
+      "drawingBuffer": [
+        800,
+        600
+      ],
+      "presentation": {
+        "beauty": [
+          800,
+          600
+        ],
+        "contact": [
+          400,
+          300
+        ],
+        "returnedToCanvas": true
+      }
+    },
+    {
+      "label": "Fullscreen exit",
+      "memory": {
+        "geometries": 165,
+        "textures": 45
+      },
+      "render": {
+        "frame": 118,
+        "calls": 1119,
+        "triangles": 13474319,
+        "points": 384,
+        "lines": 0
+      },
+      "size": [
+        1280,
+        720
+      ],
+      "cssSize": [
+        1280,
+        720
+      ],
+      "devicePixelRatio": 1,
+      "pixelRatio": 1,
+      "programs": 79,
+      "quality": "balanced",
+      "drawingBuffer": [
+        1280,
+        720
+      ],
+      "presentation": {
+        "beauty": [
+          1280,
+          720
+        ],
+        "contact": [
+          640,
+          360
+        ],
+        "returnedToCanvas": true
+      }
+    }
+  ],
+  "worlds": [
+    {
+      "circuit": "riviera",
+      "weather": "clear",
+      "renderer": {
+        "memory": {
+          "geometries": 164,
+          "textures": 41
+        },
+        "render": {
+          "frame": 1151,
+          "calls": 885,
+          "triangles": 6691219,
+          "points": 384,
+          "lines": 0
+        },
+        "size": [
+          960,
+          540
+        ],
+        "cssSize": [
+          960,
+          540
+        ],
+        "devicePixelRatio": 1,
+        "pixelRatio": 1,
+        "programs": 48
+      }
+    },
+    {
+      "circuit": "riviera",
+      "weather": "sunset",
+      "renderer": {
+        "memory": {
+          "geometries": 164,
+          "textures": 41
+        },
+        "render": {
+          "frame": 1155,
+          "calls": 885,
+          "triangles": 6691219,
+          "points": 384,
+          "lines": 0
+        },
+        "size": [
+          960,
+          540
+        ],
+        "cssSize": [
+          960,
+          540
+        ],
+        "devicePixelRatio": 1,
+        "pixelRatio": 1,
+        "programs": 48
+      }
+    },
+    {
+      "circuit": "riviera",
+      "weather": "rain",
+      "renderer": {
+        "memory": {
+          "geometries": 174,
+          "textures": 42
+        },
+        "render": {
+          "frame": 1167,
+          "calls": 1856,
+          "triangles": 14588470,
+          "points": 768,
+          "lines": 2200
+        },
+        "size": [
+          960,
+          540
+        ],
+        "cssSize": [
+          960,
+          540
+        ],
+        "devicePixelRatio": 1,
+        "pixelRatio": 1,
+        "programs": 70
+      }
+    },
+    {
+      "circuit": "forest",
+      "weather": "clear",
+      "renderer": {
+        "memory": {
+          "geometries": 160,
+          "textures": 49
+        },
+        "render": {
+          "frame": 1173,
+          "calls": 1219,
+          "triangles": 14877543,
+          "points": 384,
+          "lines": 0
+        },
+        "size": [
+          960,
+          540
+        ],
+        "cssSize": [
+          960,
+          540
+        ],
+        "devicePixelRatio": 1,
+        "pixelRatio": 1,
+        "programs": 50
+      }
+    },
+    {
+      "circuit": "forest",
+      "weather": "sunset",
+      "renderer": {
+        "memory": {
+          "geometries": 160,
+          "textures": 49
+        },
+        "render": {
+          "frame": 1186,
+          "calls": 1219,
+          "triangles": 14877543,
+          "points": 384,
+          "lines": 0
+        },
+        "size": [
+          960,
+          540
+        ],
+        "cssSize": [
+          960,
+          540
+        ],
+        "devicePixelRatio": 1,
+        "pixelRatio": 1,
+        "programs": 50
+      }
+    },
+    {
+      "circuit": "forest",
+      "weather": "rain",
+      "renderer": {
+        "memory": {
+          "geometries": 163,
+          "textures": 50
+        },
+        "render": {
+          "frame": 1192,
+          "calls": 2495,
+          "triangles": 30517555,
+          "points": 768,
+          "lines": 2200
+        },
+        "size": [
+          960,
+          540
+        ],
+        "cssSize": [
+          960,
+          540
+        ],
+        "devicePixelRatio": 1,
+        "pixelRatio": 1,
+        "programs": 71
+      }
+    },
+    {
+      "circuit": "marina",
+      "weather": "clear",
+      "renderer": {
+        "memory": {
+          "geometries": 163,
+          "textures": 54
+        },
+        "render": {
+          "frame": 1198,
+          "calls": 150,
+          "triangles": 520257,
+          "points": 384,
+          "lines": 0
+        },
+        "size": [
+          960,
+          540
+        ],
+        "cssSize": [
+          960,
+          540
+        ],
+        "devicePixelRatio": 1,
+        "pixelRatio": 1,
+        "programs": 49
+      }
+    },
+    {
+      "circuit": "marina",
+      "weather": "sunset",
+      "renderer": {
+        "memory": {
+          "geometries": 163,
+          "textures": 54
+        },
+        "render": {
+          "frame": 1201,
+          "calls": 150,
+          "triangles": 520257,
+          "points": 384,
+          "lines": 0
+        },
+        "size": [
+          960,
+          540
+        ],
+        "cssSize": [
+          960,
+          540
+        ],
+        "devicePixelRatio": 1,
+        "pixelRatio": 1,
+        "programs": 49
+      }
+    },
+    {
+      "circuit": "marina",
+      "weather": "rain",
+      "renderer": {
+        "memory": {
+          "geometries": 175,
+          "textures": 57
+        },
+        "render": {
+          "frame": 1207,
+          "calls": 322,
+          "triangles": 1041596,
+          "points": 768,
+          "lines": 2200
+        },
+        "size": [
+          960,
+          540
+        ],
+        "cssSize": [
+          960,
+          540
+        ],
+        "devicePixelRatio": 1,
+        "pixelRatio": 1,
+        "programs": 72
+      }
+    }
+  ],
+  "memory": [
+    {
+      "cycle": 0,
+      "circuit": "riviera",
+      "geometries": 164,
+      "textures": 47
+    },
+    {
+      "cycle": 0,
+      "circuit": "forest",
+      "geometries": 160,
+      "textures": 49
+    },
+    {
+      "cycle": 0,
+      "circuit": "marina",
+      "geometries": 175,
+      "textures": 57
+    },
+    {
+      "cycle": 1,
+      "circuit": "riviera",
+      "geometries": 164,
+      "textures": 47
+    },
+    {
+      "cycle": 1,
+      "circuit": "forest",
+      "geometries": 160,
+      "textures": 49
+    },
+    {
+      "cycle": 1,
+      "circuit": "marina",
+      "geometries": 175,
+      "textures": 57
+    },
+    {
+      "cycle": 2,
+      "circuit": "riviera",
+      "geometries": 164,
+      "textures": 47
+    },
+    {
+      "cycle": 2,
+      "circuit": "forest",
+      "geometries": 160,
+      "textures": 49
+    },
+    {
+      "cycle": 2,
+      "circuit": "marina",
+      "geometries": 175,
+      "textures": 57
+    }
+  ],
+  "errors": [],
+  "graphics": {
+    "renderer": "ANGLE (AMD, AMD Radeon 780M Graphics (radeonsi phoenix ACO), OpenGL ES 3.2)",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36"
+  },
+  "chase": {
+    "telemetry": {
+      "phase": "racing",
+      "speed": 229,
+      "gear": 6,
+      "rpm": 0.5482966354590516,
+      "lap": 1,
+      "laps": 2,
+      "lapTime": 6.250000000000156,
+      "lastLap": 0,
+      "bestLap": 0,
+      "raceTime": 8.633333333333484,
+      "position": 8,
+      "racers": 8,
+      "boost": 100,
+      "boosting": false,
+      "score": 0,
+      "chain": 0,
+      "multiplier": 1,
+      "drifting": false,
+      "progress": 0.1257500080415188,
+      "fps": 30,
+      "frameMs": 33.399999999999636,
+      "renderMs": 29.800000000745058,
+      "gpuMs": 24.157539,
+      "pixelRatio": 0.92,
+      "drawCalls": 1244,
+      "triangles": 13418175,
+      "countdown": 0,
+      "offTrack": false,
+      "brake": 0,
+      "throttle": 1,
+      "opponents": [
+        {
+          "progress": 0.13545224025807778,
+          "color": "#dae1d8",
+          "name": "F. MOREAU",
+          "position": 1
+        },
+        {
+          "progress": 0.13406553938763066,
+          "color": "#dfac29",
+          "name": "K. TANAKA",
+          "position": 2
+        },
+        {
+          "progress": 0.13387618189781358,
+          "color": "#388888",
+          "name": "L. WEBER",
+          "position": 3
+        },
+        {
+          "progress": 0.13190240325225533,
+          "color": "#4169a6",
+          "name": "M. SANTOS",
+          "position": 4
+        },
+        {
+          "progress": 0.13085188444450901,
+          "color": "#91bd52",
+          "name": "E. ROSSI",
+          "position": 5
+        },
+        {
+          "progress": 0.12861429495701016,
+          "color": "#917bb7",
+          "name": "J. PARK",
+          "position": 6
+        },
+        {
+          "progress": 0.12805804337182836,
+          "color": "#d87934",
+          "name": "A. COLE",
+          "position": 7
+        }
+      ],
+      "message": "",
+      "quality": "balanced",
+      "finishedPosition": 0,
+      "newBest": false
+    },
+    "settings": {
+      "quality": "balanced",
+      "camera": "chase",
+      "assists": true,
+      "sound": false
+    },
+    "options": {
+      "circuit": "riviera",
+      "weather": "sunset",
+      "mode": "race"
+    },
+    "trackLength": 2840.2921693173753,
+    "position": {
+      "distance": 357.1667631319227,
+      "offset": 0.032497695308766686,
+      "headingError": -0.0006793743450953185
+    },
+    "history": [
+      {
+        "phase": "menu",
+        "time": 1.0332000000000001,
+        "drawCalls": 1115,
+        "triangles": 13423002,
+        "pixelRatio": 1,
+        "fps": 29.21983052499356,
+        "frameP95": 100,
+        "renderP95": 40.09999999962747
+      },
+      {
+        "phase": "countdown",
+        "time": 2.299899999999999,
+        "drawCalls": 1708,
+        "triangles": 19946059,
+        "pixelRatio": 1,
+        "fps": 29.294014256430927,
+        "frameP95": 116.59999999999991,
+        "renderP95": 27.90000000037253
+      },
+      {
+        "phase": "countdown",
+        "time": 3.299899999999996,
+        "drawCalls": 1708,
+        "triangles": 19946059,
+        "pixelRatio": 1,
+        "fps": 30,
+        "frameP95": 33.399999999999636,
+        "renderP95": 23.300000000745058
+      },
+      {
+        "phase": "countdown",
+        "time": 4.333199999999995,
+        "drawCalls": 1708,
+        "triangles": 19946059,
+        "pixelRatio": 1,
+        "fps": 30.000967773153967,
+        "frameP95": 33.400000000000546,
+        "renderP95": 30
+      },
+      {
+        "phase": "racing",
+        "time": 5.366500000000001,
+        "drawCalls": 1717,
+        "triangles": 19968930,
+        "pixelRatio": 1,
+        "fps": 30.000967773153967,
+        "frameP95": 33.400000000000546,
+        "renderP95": 30.5
+      },
+      {
+        "phase": "racing",
+        "time": 6.3998000000000035,
+        "drawCalls": 1722,
+        "triangles": 19852202,
+        "pixelRatio": 1,
+        "fps": 29.033194619181284,
+        "frameP95": 50,
+        "renderP95": 33.19999999925494
+      },
+      {
+        "phase": "racing",
+        "time": 7.433000000000006,
+        "drawCalls": 1790,
+        "triangles": 18875101,
+        "pixelRatio": 1,
+        "fps": 23.228803716608578,
+        "frameP95": 66.70000000000073,
+        "renderP95": 52.29999999888241
+      },
+      {
+        "phase": "racing",
+        "time": 8.433000000000009,
+        "drawCalls": 1753,
+        "triangles": 19026689,
+        "pixelRatio": 1,
+        "fps": 23,
+        "frameP95": 66.60000000000036,
+        "renderP95": 44
+      },
+      {
+        "phase": "racing",
+        "time": 9.383000000000008,
+        "drawCalls": 1737,
+        "triangles": 21674918,
+        "pixelRatio": 1,
+        "fps": 20.3232362334269,
+        "frameP95": 100,
+        "renderP95": 70.70000000111759
+      },
+      {
+        "phase": "racing",
+        "time": 10.416300000000014,
+        "drawCalls": 1638,
+        "triangles": 17341184,
+        "pixelRatio": 0.92,
+        "fps": 26.12987515726311,
+        "frameP95": 50,
+        "renderP95": 36
+      },
+      {
+        "phase": "racing",
+        "time": 11.449500000000015,
+        "drawCalls": 1530,
+        "triangles": 15782869,
+        "pixelRatio": 0.92,
+        "fps": 24.19432884931774,
+        "frameP95": 66.70000000000073,
+        "renderP95": 46.19999999925494
+      },
+      {
+        "phase": "racing",
+        "time": 12.449500000000015,
+        "drawCalls": 1398,
+        "triangles": 15635455,
+        "pixelRatio": 0.92,
+        "fps": 31,
+        "frameP95": 33.5,
+        "renderP95": 32
+      },
+      {
+        "phase": "racing",
+        "time": 13.482700000000017,
+        "drawCalls": 1281,
+        "triangles": 13518993,
+        "pixelRatio": 0.92,
+        "fps": 30.003871467286082,
+        "frameP95": 33.399999999999636,
+        "renderP95": 29.800000000745058
+      }
+    ],
+    "renderer": {
+      "memory": {
+        "geometries": 228,
+        "textures": 59
+      },
+      "render": {
+        "frame": 1141,
+        "calls": 1244,
+        "triangles": 13418175,
+        "points": 384,
+        "lines": 0
+      },
+      "size": [
+        1177,
+        662
+      ],
+      "cssSize": [
+        1280,
+        720
+      ],
+      "devicePixelRatio": 1,
+      "pixelRatio": 0.92,
+      "programs": 66
+    },
+    "carLoaded": true,
+    "gpuMs": 24.157539,
+    "cameraHorizontalDistance": 10.328919556811227,
+    "cameraHeight": 2.9512853433445025
+  },
+  "ownership": {
+    "before": {
+      "trees": 0,
+      "surfaces": 0,
+      "environment": 0,
+      "beauty": 13,
+      "contact": 13
+    },
+    "after": {
+      "trees": 121,
+      "surfaces": 15,
+      "environment": 1,
+      "beauty": 14,
+      "contact": 14
+    },
+    "repeated": {
+      "trees": 121,
+      "surfaces": 15,
+      "environment": 1,
+      "beauty": 14,
+      "contact": 14
+    },
+    "expectedTrees": 121,
+    "expectedSurfaces": 15
+  },
+  "status": "passed"
+}

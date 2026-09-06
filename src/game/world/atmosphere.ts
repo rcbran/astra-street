@@ -15,12 +15,12 @@ export function makeSky(weather: Weather) {
       uniforms: {
         top: {
           value: new THREE.Color(
-            rain ? '#050b16' : sunset ? '#527d97' : '#287bbb',
+            rain ? '#050b16' : sunset ? '#b88e67' : '#287bbb',
           ),
         },
         horizon: {
           value: new THREE.Color(
-            rain ? '#34424f' : sunset ? '#edb774' : '#c5dbe5',
+            rain ? '#34424f' : sunset ? '#f5c68f' : '#c5dbe5',
           ),
         },
         sunDir: {

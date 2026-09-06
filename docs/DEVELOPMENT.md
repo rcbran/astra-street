@@ -29,6 +29,16 @@ Browser checks cover 390×844, 844×390, 932×430, 1024×600 and 1440×900. They
 
 ## Headless browser automation (default)
 
+On **kyogre / Arch Linux**, the dedicated bundled Chromium renderer was verified as **AMD Radeon 780M Graphics (radeonsi phoenix ACO)** through ANGLE/OpenGL ES. Launch it with Mesa EGL explicitly selected:
+
+```sh
+ASTRA_BROWSER_ANGLE=gl-egl node scripts/launch-browser.mjs
+```
+
+This is a separate temporary profile on port 9224. Inspect ports/process working directories first; stop stale Astra servers, and leave other projects' agents and browsers alone. Shared-machine timing is not an isolated GPU result.
+
+`scripts/broadleaf-check.mjs` captures Pinecrest/Canyon at a fixed early driving position in all three weather modes, using the real presentation pipeline. It verifies trilinear mipmaps and anisotropy remain enabled. Set `ASTRA_BASELINE_GLB` to an older broadleaf GLB for frozen before/after texture comparisons, and optionally `ASTRA_CANDIDATE_GLB` to review a file outside the checkout. It requires the dev server and writes to `artifacts/broadleaf-check` (or `ASTRA_OUTPUT`). Unlike performance runs, these captures intentionally freeze animation.
+
 The user requests automation off their screen. `scripts/launch-browser.mjs` now defaults to a separate headless browser and temporary profile. On this MacBook it uses installed Chrome; WebGL reports the Apple M4 Max through ANGLE/Metal. Verify the renderer rather than assuming headless implies hardware or software. Never attach to the user's personal browser. Do not open a visible test window without a new request.
 
 ```sh
@@ -90,3 +100,5 @@ The MacBook uses the installed Chrome channel in headless mode. Run the browser 
 `node scripts/touch-check.mjs` checks simultaneous emulated throttle/steering/handbrake, released input and portrait/landscape views. It closes its owned context afterward; physical touch devices remain untested.
 
 Browser control checks now cover Space handbrake/score and S service braking. The alternate camera uses a bonnet view. `tests/street-score.test.ts` verifies slide recovery, banking, contact losses, near misses, gate thresholds and finish/reset behavior. Regenerate the original S9 with `blender -b --python scripts/build_street_car.py`; reviewed output belongs at `public/assets/models/astra-s9.glb`.
+
+To repeat only one affected production race after a relevant change, keep `ASTRA_ALL_WEATHER=1` and add `ASTRA_CIRCUIT=forest ASTRA_WEATHER=rain` to the benchmark command. Route IDs are `riviera`, `forest`, `marina`; weather IDs are `sunset`, `clear`, `rain`. Use a new `ASTRA_OUTPUT` directory. Filters are validated and leave the default sweep unchanged.

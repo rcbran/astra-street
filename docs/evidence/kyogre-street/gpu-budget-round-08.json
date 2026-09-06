@@ -1,0 +1,2506 @@
+{
+  "at": "2026-09-06T18:26:20.744Z",
+  "build": "round08-conifer-lod-bins",
+  "buildSource": {
+    "at": "2026-09-06T18:25:59.572Z",
+    "head": "8d30b17b4e2a696646b353a787e48ad4011822b5",
+    "scope": "Runtime source, public assets, dependency manifests, and Vite/Next configuration. Captured immediately after the labeled build.",
+    "sha256": "190576c7deda82aba2962a8d5b407d2497ef1a965c1349673eb35fcfbb5532ec",
+    "files": [
+      {
+        "path": "app/globals.css",
+        "bytes": 2228,
+        "sha256": "7e7d8370c4fe366e4deb8f4fa05bcc556ede11cb9986113275071ba9d383ebc8"
+      },
+      {
+        "path": "app/layout.tsx",
+        "bytes": 508,
+        "sha256": "41d4b5a9d05902cf9751e8f3ec83cbadd25f96ec8e5a2f2ee98cb48d95333f19"
+      },
+      {
+        "path": "app/page.tsx",
+        "bytes": 110,
+        "sha256": "6b57eb7173d7ece2661fb09fa212493b2c87ab16f274915db38ca8fe7f90858a"
+      },
+      {
+        "path": "next.config.ts",
+        "bytes": 104,
+        "sha256": "d063bebef3a4878ae82f9f9547c2c9675b8b6945ab23702932dcb63a011a9fc9"
+      },
+      {
+        "path": "package-lock.json",
+        "bytes": 369129,
+        "sha256": "632a1cf4a0042679c3f7e662b9b53597ad9e610a719eba0eceabe938c39008f5"
+      },
+      {
+        "path": "package.json",
+        "bytes": 1701,
+        "sha256": "991f10c48ac519f22ea66002185abadaf6a486b7b040ef09b5b268e0d1f77223"
+      },
+      {
+        "path": "public/assets/NOTICE.txt",
+        "bytes": 1804,
+        "sha256": "4c348de9423462d8c76f060bb2d53c538cce2f90a2be6c20748a2103b2670823"
+      },
+      {
+        "path": "public/assets/models/astra-formula.glb",
+        "bytes": 1208760,
+        "sha256": "7b54bd629e7707274af0f01859d10c8ed48b7b3eb60b4390219ad36c80dbdcc0"
+      },
+      {
+        "path": "public/assets/models/astra-s9.glb",
+        "bytes": 1009472,
+        "sha256": "6f4cc18b1e7812630089101198c28b74a604dc3435ebbc54e530185777bc79b9"
+      },
+      {
+        "path": "public/assets/models/rocks/namaqualand_cliff_01.glb",
+        "bytes": 9262288,
+        "sha256": "066493029bc84fe9f19f704bb57531f21c68eb5a4926a1f421c7e1cae425c3c7"
+      },
+      {
+        "path": "public/assets/models/rocks/namaqualand_cliff_02.glb",
+        "bytes": 10099400,
+        "sha256": "0e6fe4d1866a48558fa126656835cb6ef31a3893a7932094f08d1ada376ea5a2"
+      },
+      {
+        "path": "public/assets/models/trees/fir_tree_01.glb",
+        "bytes": 11097264,
+        "sha256": "14a6d7696c7550e99f2d858c2a1f204661441e1bec7e0b1e338a6d65b871e073"
+      },
+      {
+        "path": "public/assets/models/trees/pine_tree_01.glb",
+        "bytes": 11697304,
+        "sha256": "be32206a9244f3eaedc5305622c0cbb45fa91323debc778686f1c1ed0df0aab4"
+      },
+      {
+        "path": "public/assets/models/trees/tree_small_02.glb",
+        "bytes": 5702788,
+        "sha256": "2581f4739d4e2cccbdfeb966b344105a73f21426c09b8aea2ef0911270937a73"
+      },
+      {
+        "path": "public/assets/textures/asphalt_track_diff_1k.jpg",
+        "bytes": 858925,
+        "sha256": "05c4e79cd99160075969d37bfc6ef72be262153a410bb45510b2c23f7303894c"
+      },
+      {
+        "path": "public/assets/textures/asphalt_track_nor_gl_1k.jpg",
+        "bytes": 832851,
+        "sha256": "18caf02427a7cd9cd577ceae5aa9daa7bb3ffba60598e2df8aaf75d1925a8a94"
+      },
+      {
+        "path": "public/assets/textures/asphalt_track_rough_1k.jpg",
+        "bytes": 459197,
+        "sha256": "0646d0cfbe6bf9ea4a8a9e43aec826e7ec32a10b8aff61bf5a4ec02b1bc3c363"
+      },
+      {
+        "path": "public/assets/textures/cliff_side-diff.jpg",
+        "bytes": 1076956,
+        "sha256": "71879ed4adfa4bcf4031de73cedf5c85b248b20299550a07e4e18ff10e2716dc"
+      },
+      {
+        "path": "public/assets/textures/cliff_side-normal.jpg",
+        "bytes": 623967,
+        "sha256": "0439253b3a9107015f5dda4ca2d1fa07c59477935a6774bee46cd92895955f19"
+      },
+      {
+        "path": "public/assets/textures/cliff_side-roughness.jpg",
+        "bytes": 108630,
+        "sha256": "05aaca1b2d1a4b462493465f4a6258fdcd565e6d766fb1e3712e535aad694a0b"
+      },
+      {
+        "path": "public/assets/textures/environment.hdr",
+        "bytes": 1677419,
+        "sha256": "e7d80054b4f0fb98104386ffd3765ae94e10221c7ae0cb6ed3566eb7431933f7"
+      },
+      {
+        "path": "public/assets/textures/forrest_ground_01-diff.jpg",
+        "bytes": 1469800,
+        "sha256": "84fa8b602cd05212b02647920fbdd827aeee8e9c4230ad254283b8659faf68f5"
+      },
+      {
+        "path": "public/assets/textures/forrest_ground_01-normal.jpg",
+        "bytes": 1313995,
+        "sha256": "1a8a6a09b66793485ef22aa4d8bf6dc5c65311cf8edd354053ceb56175dd432b"
+      },
+      {
+        "path": "public/assets/textures/forrest_ground_01-roughness.jpg",
+        "bytes": 167127,
+        "sha256": "2b371fb6821b06a3b7c7e455494808e83c675fcfb9c3d68f932c9c001a0e4322"
+      },
+      {
+        "path": "public/assets/textures/rock_wall_02-diff.jpg",
+        "bytes": 1258402,
+        "sha256": "c4048bf1a5afc2de3c191d036dbd1b8e5917bb5bc6f0ca3dc4643c6a1d703022"
+      },
+      {
+        "path": "public/assets/textures/rock_wall_02-normal.jpg",
+        "bytes": 402210,
+        "sha256": "4c531139f322badca24d511a0407664a2efe2c564ddd959756fa4198a406066d"
+      },
+      {
+        "path": "public/assets/textures/rock_wall_02-roughness.jpg",
+        "bytes": 296279,
+        "sha256": "b1c4ac5f142d6610f99b7115eeae1a8ec9fda7205eb5476053ea900fac26f1ee"
+      },
+      {
+        "path": "public/assets/textures/sparse_grass_diff_1k.jpg",
+        "bytes": 955945,
+        "sha256": "ae94f2b34597b9108eefd88217f55eccaec6d6b382e858a478ee92df90e66617"
+      },
+      {
+        "path": "public/assets/textures/sparse_grass_nor_gl_1k.jpg",
+        "bytes": 1440314,
+        "sha256": "1c840a24807346ddaaf94a5057aee4078fcec3a4cd84bfe45da7d3b480ef460b"
+      },
+      {
+        "path": "public/assets/textures/sparse_grass_rough_1k.jpg",
+        "bytes": 463340,
+        "sha256": "9ebe6d03a9551c17d1802835c92c1442acb8f5d38d4874ee8c37770f11c4bed1"
+      },
+      {
+        "path": "public/favicon.svg",
+        "bytes": 184,
+        "sha256": "8cd13d0bbc0fbb5394f27e3337773c1743a4cf232e807b09c238e52c31324a19"
+      },
+      {
+        "path": "src/game/audio.ts",
+        "bytes": 3672,
+        "sha256": "1f4d1614ee227ebcfd8f09dccf9f9b72da03fe9d47d2a1792a986c70ac2d490d"
+      },
+      {
+        "path": "src/game/camera.ts",
+        "bytes": 3625,
+        "sha256": "36dabb46b7dfe57842539fc156b712d52c5c467c3cdc545ee9f5e28f698fe625"
+      },
+      {
+        "path": "src/game/engine.ts",
+        "bytes": 22730,
+        "sha256": "94fc5058683dc7dcc4a6455c5b8aa370e153ca762fcbd3a8414d3b602d5d14ba"
+      },
+      {
+        "path": "src/game/environment-lighting.ts",
+        "bytes": 1290,
+        "sha256": "eaf5661440ef8b51e07649501145b91391e2f4b4648accfe2e21823a07a6b603"
+      },
+      {
+        "path": "src/game/gpu-timer.ts",
+        "bytes": 2124,
+        "sha256": "c31d27d8989589b6e07afc6778ae677016da2afd0b3ed2d1a1f9206f02527735"
+      },
+      {
+        "path": "src/game/input.ts",
+        "bytes": 3413,
+        "sha256": "0b73ef9f1b390195101a55b2f81c22bf8353e8ecd6d322457d8e8e692771ef88"
+      },
+      {
+        "path": "src/game/materials.ts",
+        "bytes": 5819,
+        "sha256": "140dd68f63168e8e848ba3885d8eb81b6e35d49a4c2263563155e74e94135522"
+      },
+      {
+        "path": "src/game/race-session.ts",
+        "bytes": 10408,
+        "sha256": "f7735cead2464a15f0845c983132bd5775ff979f27172d55dfeec08185e70033"
+      },
+      {
+        "path": "src/game/render-loop.ts",
+        "bytes": 3824,
+        "sha256": "f4ea2b2c4589e8b42b78a45b12d2704fc4ae12c8c48a2b32f2a022fb11a860e6"
+      },
+      {
+        "path": "src/game/scene-presentation.ts",
+        "bytes": 10418,
+        "sha256": "ef8edf7ff6ff11881be5844e14fcd21a3e72d86140187495c4427aff73e2d09a"
+      },
+      {
+        "path": "src/game/settings.ts",
+        "bytes": 735,
+        "sha256": "72415489dcdc9bbf7a0b67e9ef08a21c88af7745eb99b8ba9ce6e04f7b67d314"
+      },
+      {
+        "path": "src/game/shaders/sky.ts",
+        "bytes": 1469,
+        "sha256": "5079456af92d7d1af736bb72b6c3468d7fb2d45df623b1f48b20d75046ccf29b"
+      },
+      {
+        "path": "src/game/street-score.ts",
+        "bytes": 1632,
+        "sha256": "00b74d1543225435e0741ce43c7a8830dd077b7915dbd856bb8ada59b1cb6eb8"
+      },
+      {
+        "path": "src/game/tire-marks.ts",
+        "bytes": 2539,
+        "sha256": "868821e90bfc610a16b6e7de30791664a88747577cdbed41b680b9dd16480d3b"
+      },
+      {
+        "path": "src/game/tire-spray.ts",
+        "bytes": 7378,
+        "sha256": "dd95c462abd894bd85264b672b4757735763574210dd8fd84765b67a5ed2c9b5"
+      },
+      {
+        "path": "src/game/tracks.ts",
+        "bytes": 5702,
+        "sha256": "7ee53d23168df2ed25035e08638f4c331062d2167e0cfd9afe2afdaa1fa06f1c"
+      },
+      {
+        "path": "src/game/types.ts",
+        "bytes": 2243,
+        "sha256": "6761d54ac2ba7fc9cf228dc9d34262788eaff9f9641ee27a6684c1bb4b0b35c7"
+      },
+      {
+        "path": "src/game/vehicle.ts",
+        "bytes": 7359,
+        "sha256": "b8c9236ec2d178bcc1bba36838f97486dc44f4c4e31abbbc4401eb1eb0dfc18e"
+      },
+      {
+        "path": "src/game/world.ts",
+        "bytes": 18655,
+        "sha256": "59ba3593f36b09c8e55ae13b8cf9c73c01d876bae8b81eb491889be9b9e05aaf"
+      },
+      {
+        "path": "src/game/world/atmosphere.ts",
+        "bytes": 6400,
+        "sha256": "f7c7de7858ae6ec8e3f3519c527b9a929462cc0a59d8a915cf355c5aa02a25b6"
+      },
+      {
+        "path": "src/game/world/buildings.ts",
+        "bytes": 7225,
+        "sha256": "0a17fdda553a70fa4491e035f90c3da8193f3e3da7c1d9cb746d0f7ee73589c8"
+      },
+      {
+        "path": "src/game/world/canyon-roadside.ts",
+        "bytes": 11166,
+        "sha256": "014ec20e23e787f4e3cf7d2f2bd69eec075a6e387764c7d159bd8e4ad8d9a485"
+      },
+      {
+        "path": "src/game/world/canyon-rock.ts",
+        "bytes": 12750,
+        "sha256": "3e34aebd61bd3d836e4d35d7d77b1b9885ba81177022d0e55e518d4bb3bfef56"
+      },
+      {
+        "path": "src/game/world/canyon-scan-assets.ts",
+        "bytes": 4189,
+        "sha256": "31f07943abe7d14af93704e17df4a94fcbcc6c16895ca862219f0b2158672374"
+      },
+      {
+        "path": "src/game/world/canyon-scan-formations.ts",
+        "bytes": 5824,
+        "sha256": "d35ead0e2c03136653b60cad258514091141d2f159e679f84edc5dffc9b373c0"
+      },
+      {
+        "path": "src/game/world/canyon-scan-shell.ts",
+        "bytes": 3661,
+        "sha256": "3a96440fb987cf01d7c58405779391354317ce27910ce66698ac272e7b0b9948"
+      },
+      {
+        "path": "src/game/world/clustered-groundcover.ts",
+        "bytes": 2972,
+        "sha256": "1714f8a62b722516ccf03dcfa718e057de2518558d84df91178453488122ea0f"
+      },
+      {
+        "path": "src/game/world/conifer-shape.ts",
+        "bytes": 2466,
+        "sha256": "4bf740682d79cb834546d7a8e8e22c94ee466e8c8664174bf504baeca3fb014a"
+      },
+      {
+        "path": "src/game/world/distant-tree-geometry.ts",
+        "bytes": 8003,
+        "sha256": "2616cf79615b493047eaaac5c3cbcb73cfab522145ab14122f2ca82a23fb5b88"
+      },
+      {
+        "path": "src/game/world/geometry.ts",
+        "bytes": 2613,
+        "sha256": "e484dbfa168c6a7abbeadb15773d648c568d3e6057f0496978c3d968b0d43bb6"
+      },
+      {
+        "path": "src/game/world/landscape.ts",
+        "bytes": 12249,
+        "sha256": "90ee204aa010de48bbf1880c47de7452739e14f929c386ddf1d16ba0ef8a7d25"
+      },
+      {
+        "path": "src/game/world/rock-formations.ts",
+        "bytes": 10386,
+        "sha256": "4bdf4ccb3e38708213abce1f11ee927a0372e535ddbe62127f99c2847e962d8f"
+      },
+      {
+        "path": "src/game/world/rural-roadside.ts",
+        "bytes": 8336,
+        "sha256": "f4faf0e917a1f1b5256c6ca03b44cfc28555d3eff0d40588b5e4b41379505e30"
+      },
+      {
+        "path": "src/game/world/track-surfaces.ts",
+        "bytes": 3631,
+        "sha256": "f39394c09e0655a340502a16c7a1d0df86c7596134a2e48d66b28a77db8a39ef"
+      },
+      {
+        "path": "src/game/world/tree-assets.ts",
+        "bytes": 10211,
+        "sha256": "7f166000a14eb96310aa297ebdd7be78117950a80d6531acf55c3f1fa31f1389"
+      },
+      {
+        "path": "src/game/world/tree-batches.ts",
+        "bytes": 8109,
+        "sha256": "0f827d5b3732b272632b3166d2a81a430308845b2ed33bb505dce8c8715bf239"
+      },
+      {
+        "path": "src/game/world/undergrowth-geometry.ts",
+        "bytes": 9181,
+        "sha256": "97dbcb335abc4d336c1e164de767056787f10aac73af7510dc3b472c99ee2753"
+      },
+      {
+        "path": "src/game/world/vegetation.ts",
+        "bytes": 6601,
+        "sha256": "645b2e1657654fd150fdd7793226baee4df2d84f2b5b298c131c7ef1f7df2ca7"
+      },
+      {
+        "path": "src/game/world/wet-road.ts",
+        "bytes": 2461,
+        "sha256": "619ffb41130a1012723dc23d9624570331277207c26dac278f5da06c2690dc60"
+      },
+      {
+        "path": "src/ui/GameSettings.tsx",
+        "bytes": 3847,
+        "sha256": "e1e826c4d7353e90f1116ac18c742c5530bff755808261df3249d9ca6655c327"
+      },
+      {
+        "path": "src/ui/RaceHUD.tsx",
+        "bytes": 6056,
+        "sha256": "0faa7845b01dec44cb8129a0cff589c6b564419a0224d94a528c7f4c2b8978f8"
+      },
+      {
+        "path": "src/ui/RaceMenu.tsx",
+        "bytes": 5717,
+        "sha256": "c351211b75ea9da53628876b773b705786e0e4b6e72c945668800817873f2b02"
+      },
+      {
+        "path": "src/ui/RacingGame.tsx",
+        "bytes": 8585,
+        "sha256": "74b867d9b2487e9835b40d03a9c09a06c0e0a105f3ed41799f942373a34703c4"
+      },
+      {
+        "path": "src/ui/SessionOverlay.tsx",
+        "bytes": 2932,
+        "sha256": "dd5deb81d442b41b3911b3700ce9f808323ed3abd902e51f18b4846221e790d9"
+      },
+      {
+        "path": "src/ui/TouchControls.tsx",
+        "bytes": 2259,
+        "sha256": "2b21187cf2195abdffc5d0c195d32dd1d868bb9a42ec8c95508d477b90baa407"
+      },
+      {
+        "path": "src/ui/TrackMap.tsx",
+        "bytes": 1388,
+        "sha256": "67b3d77963e594ecc37b955b3b509eea72597737844f851d5d7fde74d6359f29"
+      },
+      {
+        "path": "src/ui/map-data.ts",
+        "bytes": 1168,
+        "sha256": "3660f9579e6ab9bdb35d5e66277bc9ad64f8cfe8462ff004855df212335fcc1f"
+      },
+      {
+        "path": "src/ui/styles/dialogs.css",
+        "bytes": 4229,
+        "sha256": "a8be6b46a3ee47bd12e67d15320c82a5ccf3c07cfa30321699534e93f8ddb6fb"
+      },
+      {
+        "path": "src/ui/styles/hud.css",
+        "bytes": 8094,
+        "sha256": "14a492a2d4d4e1278b1852fba6099225cdefb08e3e8f306c23a44213fea66e02"
+      },
+      {
+        "path": "src/ui/styles/menu.css",
+        "bytes": 10160,
+        "sha256": "6b888bcbefdf0030100ee2b31f3eb45d3417bf3ff6de2aec5ac299a4c24b8cd3"
+      },
+      {
+        "path": "src/ui/styles/race-layout.css",
+        "bytes": 5937,
+        "sha256": "9b1d9355f4c6ffb018b0d305de8b34e12062f5b2db6ab6dec564e182070b4916"
+      },
+      {
+        "path": "src/ui/styles/responsive.css",
+        "bytes": 11592,
+        "sha256": "dceca45df367589a2ec0a17df43803f032fec430d5fd42a01ad9f33cc5c3f72a"
+      },
+      {
+        "path": "src/ui/styles/street.css",
+        "bytes": 4238,
+        "sha256": "e86c03f89a5f0f0c0ecd288a1e6b3bf41d7138b4148276e909ad05995731e9ec"
+      },
+      {
+        "path": "vite.config.ts",
+        "bytes": 1829,
+        "sha256": "7183c338ee9f0f2820097551f9690f9f5ea3e3ce86da86ffd89430c1b9df12a6"
+      }
+    ]
+  },
+  "purpose": "Frozen GPU ablations at identical pixels and pose, recording off. Shared hardware; not a race benchmark or visual equivalence claim.",
+  "runs": [
+    {
+      "circuit": "riviera",
+      "weather": "sunset",
+      "renderer": "ANGLE (AMD, AMD Radeon 780M Graphics (radeonsi phoenix ACO), OpenGL ES 3.2)",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
+      "framebuffer": [
+        1821,
+        1138
+      ],
+      "samples": [
+        {
+          "mode": "baseline",
+          "gpuMs": 29.099809,
+          "cpuMs": 6.399999999906868,
+          "frame": 87,
+          "calls": 398,
+          "triangles": 8480174,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "cached-shadow",
+          "gpuMs": 23.112072,
+          "cpuMs": 3.8999999999068677,
+          "frame": 90,
+          "calls": 213,
+          "triangles": 4001392,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "no-tree-shadows",
+          "gpuMs": 26.817272,
+          "cpuMs": 7.100000000093132,
+          "frame": 93,
+          "calls": 254,
+          "triangles": 4417370,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "no-trees",
+          "gpuMs": 21.483578,
+          "cpuMs": 2.7999999998137355,
+          "frame": 96,
+          "calls": 154,
+          "triangles": 1263555,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "no-groundcover",
+          "gpuMs": 29.922973,
+          "cpuMs": 3.3999999999068677,
+          "frame": 99,
+          "calls": 375,
+          "triangles": 8241173,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "direct",
+          "gpuMs": 20.832581,
+          "cpuMs": 7.400000000372529,
+          "frame": 100,
+          "calls": 396,
+          "triangles": 8480172,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "direct",
+          "gpuMs": 23.58465,
+          "cpuMs": 4.7000000001862645,
+          "frame": 101,
+          "calls": 396,
+          "triangles": 8480172,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "no-groundcover",
+          "gpuMs": 30.262819,
+          "cpuMs": 8.900000000372529,
+          "frame": 104,
+          "calls": 375,
+          "triangles": 8241173,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "no-trees",
+          "gpuMs": 21.191383,
+          "cpuMs": 5.5,
+          "frame": 107,
+          "calls": 154,
+          "triangles": 1263555,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "no-tree-shadows",
+          "gpuMs": 27.652539,
+          "cpuMs": 3.5,
+          "frame": 110,
+          "calls": 254,
+          "triangles": 4417370,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "cached-shadow",
+          "gpuMs": 22.33736,
+          "cpuMs": 7.2000000001862645,
+          "frame": 113,
+          "calls": 213,
+          "triangles": 4001392,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "baseline",
+          "gpuMs": 28.328103,
+          "cpuMs": 6,
+          "frame": 116,
+          "calls": 398,
+          "triangles": 8480174,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "baseline",
+          "gpuMs": 28.704258,
+          "cpuMs": 5.2000000001862645,
+          "frame": 119,
+          "calls": 398,
+          "triangles": 8480174,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "cached-shadow",
+          "gpuMs": 21.730287,
+          "cpuMs": 6.600000000093132,
+          "frame": 122,
+          "calls": 213,
+          "triangles": 4001392,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "no-tree-shadows",
+          "gpuMs": 27.143172,
+          "cpuMs": 3.7999999998137355,
+          "frame": 125,
+          "calls": 254,
+          "triangles": 4417370,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "no-trees",
+          "gpuMs": 20.703496,
+          "cpuMs": 5.800000000279397,
+          "frame": 128,
+          "calls": 154,
+          "triangles": 1263555,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "no-groundcover",
+          "gpuMs": 28.362128,
+          "cpuMs": 3.8999999999068677,
+          "frame": 131,
+          "calls": 375,
+          "triangles": 8241173,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "direct",
+          "gpuMs": 20.976174,
+          "cpuMs": 10,
+          "frame": 132,
+          "calls": 396,
+          "triangles": 8480172,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "direct",
+          "gpuMs": 21.772287,
+          "cpuMs": 5.199999999720603,
+          "frame": 133,
+          "calls": 396,
+          "triangles": 8480172,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "no-groundcover",
+          "gpuMs": 30.559422,
+          "cpuMs": 6.2999999998137355,
+          "frame": 136,
+          "calls": 375,
+          "triangles": 8241173,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "no-trees",
+          "gpuMs": 20.809858,
+          "cpuMs": 3.3999999999068677,
+          "frame": 139,
+          "calls": 154,
+          "triangles": 1263555,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "no-tree-shadows",
+          "gpuMs": 26.619256,
+          "cpuMs": 4.100000000093132,
+          "frame": 142,
+          "calls": 254,
+          "triangles": 4417370,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "cached-shadow",
+          "gpuMs": 23.956116,
+          "cpuMs": 6.399999999906868,
+          "frame": 145,
+          "calls": 213,
+          "triangles": 4001392,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "baseline",
+          "gpuMs": 28.912333,
+          "cpuMs": 9.600000000093132,
+          "frame": 148,
+          "calls": 398,
+          "triangles": 8480174,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "baseline",
+          "gpuMs": 29.083418,
+          "cpuMs": 7.199999999720603,
+          "frame": 151,
+          "calls": 398,
+          "triangles": 8480174,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "cached-shadow",
+          "gpuMs": 29.529626,
+          "cpuMs": 7.199999999720603,
+          "frame": 154,
+          "calls": 213,
+          "triangles": 4001392,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "no-tree-shadows",
+          "gpuMs": 26.651598,
+          "cpuMs": 3.900000000372529,
+          "frame": 157,
+          "calls": 254,
+          "triangles": 4417370,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "no-trees",
+          "gpuMs": 21.672016,
+          "cpuMs": 6,
+          "frame": 160,
+          "calls": 154,
+          "triangles": 1263555,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "no-groundcover",
+          "gpuMs": 30.049494,
+          "cpuMs": 5.300000000279397,
+          "frame": 163,
+          "calls": 375,
+          "triangles": 8241173,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "direct",
+          "gpuMs": 21.751327,
+          "cpuMs": 5.100000000093132,
+          "frame": 164,
+          "calls": 396,
+          "triangles": 8480172,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "direct",
+          "gpuMs": 20.987796,
+          "cpuMs": 4.800000000279397,
+          "frame": 165,
+          "calls": 396,
+          "triangles": 8480172,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "no-groundcover",
+          "gpuMs": 30.954132,
+          "cpuMs": 6.699999999720603,
+          "frame": 168,
+          "calls": 375,
+          "triangles": 8241173,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "no-trees",
+          "gpuMs": 21.106863,
+          "cpuMs": 4.7000000001862645,
+          "frame": 171,
+          "calls": 154,
+          "triangles": 1263555,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "no-tree-shadows",
+          "gpuMs": 27.793527,
+          "cpuMs": 4.2999999998137355,
+          "frame": 174,
+          "calls": 254,
+          "triangles": 4417370,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "cached-shadow",
+          "gpuMs": 21.62641,
+          "cpuMs": 5.899999999906868,
+          "frame": 177,
+          "calls": 213,
+          "triangles": 4001392,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "baseline",
+          "gpuMs": 31.240637,
+          "cpuMs": 8.100000000093132,
+          "frame": 180,
+          "calls": 398,
+          "triangles": 8480174,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "baseline",
+          "gpuMs": 28.86316,
+          "cpuMs": 8.200000000186265,
+          "frame": 183,
+          "calls": 398,
+          "triangles": 8480174,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "cached-shadow",
+          "gpuMs": 21.698507,
+          "cpuMs": 7.5,
+          "frame": 186,
+          "calls": 213,
+          "triangles": 4001392,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "no-tree-shadows",
+          "gpuMs": 28.246588,
+          "cpuMs": 3.5,
+          "frame": 189,
+          "calls": 254,
+          "triangles": 4417370,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "no-trees",
+          "gpuMs": 20.400841,
+          "cpuMs": 5.899999999906868,
+          "frame": 192,
+          "calls": 154,
+          "triangles": 1263555,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "no-groundcover",
+          "gpuMs": 31.413405,
+          "cpuMs": 5.199999999720603,
+          "frame": 195,
+          "calls": 375,
+          "triangles": 8241173,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "direct",
+          "gpuMs": 21.855405,
+          "cpuMs": 7.399999999906868,
+          "frame": 196,
+          "calls": 396,
+          "triangles": 8480172,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "direct",
+          "gpuMs": 24.090411,
+          "cpuMs": 5,
+          "frame": 197,
+          "calls": 396,
+          "triangles": 8480172,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "no-groundcover",
+          "gpuMs": 29.174271,
+          "cpuMs": 3.8999999999068677,
+          "frame": 200,
+          "calls": 375,
+          "triangles": 8241173,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "no-trees",
+          "gpuMs": 21.071676,
+          "cpuMs": 4.2999999998137355,
+          "frame": 203,
+          "calls": 154,
+          "triangles": 1263555,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "no-tree-shadows",
+          "gpuMs": 27.048472,
+          "cpuMs": 5.300000000279397,
+          "frame": 206,
+          "calls": 254,
+          "triangles": 4417370,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "cached-shadow",
+          "gpuMs": 22.8739,
+          "cpuMs": 6.7999999998137355,
+          "frame": 209,
+          "calls": 213,
+          "triangles": 4001392,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "baseline",
+          "gpuMs": 30.506843,
+          "cpuMs": 5.5,
+          "frame": 212,
+          "calls": 398,
+          "triangles": 8480174,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "baseline",
+          "gpuMs": 28.106482,
+          "cpuMs": 5.100000000093132,
+          "frame": 215,
+          "calls": 398,
+          "triangles": 8480174,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "cached-shadow",
+          "gpuMs": 22.244905,
+          "cpuMs": 6.7999999998137355,
+          "frame": 218,
+          "calls": 213,
+          "triangles": 4001392,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "no-tree-shadows",
+          "gpuMs": 26.994249,
+          "cpuMs": 3.900000000372529,
+          "frame": 221,
+          "calls": 254,
+          "triangles": 4417370,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "no-trees",
+          "gpuMs": 20.53718,
+          "cpuMs": 5.899999999906868,
+          "frame": 224,
+          "calls": 154,
+          "triangles": 1263555,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "no-groundcover",
+          "gpuMs": 28.44769,
+          "cpuMs": 4.100000000093132,
+          "frame": 227,
+          "calls": 375,
+          "triangles": 8241173,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "direct",
+          "gpuMs": 21.394409,
+          "cpuMs": 5.5,
+          "frame": 228,
+          "calls": 396,
+          "triangles": 8480172,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "direct",
+          "gpuMs": 21.387115,
+          "cpuMs": 4.100000000093132,
+          "frame": 229,
+          "calls": 396,
+          "triangles": 8480172,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "no-groundcover",
+          "gpuMs": 28.330628,
+          "cpuMs": 4.2999999998137355,
+          "frame": 232,
+          "calls": 375,
+          "triangles": 8241173,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "no-trees",
+          "gpuMs": 20.840396,
+          "cpuMs": 5.5,
+          "frame": 235,
+          "calls": 154,
+          "triangles": 1263555,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "no-tree-shadows",
+          "gpuMs": 26.59505,
+          "cpuMs": 4.199999999720603,
+          "frame": 238,
+          "calls": 254,
+          "triangles": 4417370,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "cached-shadow",
+          "gpuMs": 22.52644,
+          "cpuMs": 7,
+          "frame": 241,
+          "calls": 213,
+          "triangles": 4001392,
+          "points": 384,
+          "lines": 0
+        },
+        {
+          "mode": "baseline",
+          "gpuMs": 28.077186,
+          "cpuMs": 4.399999999906868,
+          "frame": 244,
+          "calls": 398,
+          "triangles": 8480174,
+          "points": 384,
+          "lines": 0
+        }
+      ],
+      "categories": {
+        "shadow: bounded scanned cliff": {
+          "calls": 13,
+          "triangles": 396640
+        },
+        "shadow: Canyon boundary bollards:-1:0": {
+          "calls": 1,
+          "triangles": 372
+        },
+        "shadow: Canyon boundary bollards:0:-1": {
+          "calls": 1,
+          "triangles": 144
+        },
+        "shadow: Canyon boundary bollards:0:0": {
+          "calls": 1,
+          "triangles": 420
+        },
+        "shadow: Canyon boundary bollards:-1:1": {
+          "calls": 1,
+          "triangles": 108
+        },
+        "shadow: Canyon boundary bollards:0:1": {
+          "calls": 1,
+          "triangles": 924
+        },
+        "shadow: Canyon boundary bollards:1:0": {
+          "calls": 1,
+          "triangles": 948
+        },
+        "shadow: Canyon boundary bollards:1:-1": {
+          "calls": 1,
+          "triangles": 828
+        },
+        "shadow: Canyon light poles:0:0": {
+          "calls": 1,
+          "triangles": 96
+        },
+        "shadow: Canyon light poles:-1:0": {
+          "calls": 1,
+          "triangles": 96
+        },
+        "shadow: Canyon light poles:1:-1": {
+          "calls": 1,
+          "triangles": 192
+        },
+        "shadow: tree LOD1": {
+          "calls": 100,
+          "triangles": 1739760
+        },
+        "shadow: tree LOD0": {
+          "calls": 44,
+          "triangles": 2323044
+        },
+        "shadow: S9_sculpted_body": {
+          "calls": 1,
+          "triangles": 2022
+        },
+        "shadow: S9_sculpted_body_1": {
+          "calls": 1,
+          "triangles": 384
+        },
+        "shadow: S9_sculpted_body_2": {
+          "calls": 1,
+          "triangles": 4020
+        },
+        "shadow: S9_sculpted_body_3": {
+          "calls": 1,
+          "triangles": 940
+        },
+        "shadow: S9_sculpted_body_4": {
+          "calls": 1,
+          "triangles": 376
+        },
+        "shadow: S9_sculpted_body_5": {
+          "calls": 1,
+          "triangles": 188
+        },
+        "shadow: Torus": {
+          "calls": 1,
+          "triangles": 960
+        },
+        "shadow: Torus_1": {
+          "calls": 1,
+          "triangles": 672
+        },
+        "shadow: Torus_2": {
+          "calls": 1,
+          "triangles": 188
+        },
+        "shadow: Torus002": {
+          "calls": 1,
+          "triangles": 960
+        },
+        "shadow: Torus002_1": {
+          "calls": 1,
+          "triangles": 672
+        },
+        "shadow: Torus002_2": {
+          "calls": 1,
+          "triangles": 188
+        },
+        "shadow: Torus004": {
+          "calls": 1,
+          "triangles": 960
+        },
+        "shadow: Torus004_1": {
+          "calls": 1,
+          "triangles": 672
+        },
+        "shadow: Torus004_2": {
+          "calls": 1,
+          "triangles": 188
+        },
+        "shadow: Torus006": {
+          "calls": 1,
+          "triangles": 960
+        },
+        "shadow: Torus006_1": {
+          "calls": 1,
+          "triangles": 672
+        },
+        "shadow: Torus006_2": {
+          "calls": 1,
+          "triangles": 188
+        },
+        "beauty: tree LOD0": {
+          "calls": 20,
+          "triangles": 1401357
+        },
+        "beauty: tree LOD1": {
+          "calls": 56,
+          "triangles": 959462
+        },
+        "beauty: tree LOD2": {
+          "calls": 16,
+          "triangles": 761796
+        },
+        "beauty: tree LOD3": {
+          "calls": 8,
+          "triangles": 31200
+        },
+        "beauty: bounded scanned cliff": {
+          "calls": 10,
+          "triangles": 316620
+        },
+        "beauty: other": {
+          "calls": 24,
+          "triangles": 7626
+        },
+        "beauty: sculpted landscape": {
+          "calls": 1,
+          "triangles": 125000
+        },
+        "beauty: eroded mountain ranges": {
+          "calls": 1,
+          "triangles": 135200
+        },
+        "beauty: Canyon light poles:0:0": {
+          "calls": 1,
+          "triangles": 96
+        },
+        "beauty: Canyon boundary bollards:0:0": {
+          "calls": 1,
+          "triangles": 420
+        },
+        "beauty: Canyon boundary bollards:-1:0": {
+          "calls": 1,
+          "triangles": 372
+        },
+        "beauty: Canyon light poles:-1:0": {
+          "calls": 1,
+          "triangles": 96
+        },
+        "beauty: Canyon boundary bollards:-1:1": {
+          "calls": 1,
+          "triangles": 108
+        },
+        "beauty: Canyon boundary bollards:0:1": {
+          "calls": 1,
+          "triangles": 924
+        },
+        "beauty: Canyon boundary bollards:1:1": {
+          "calls": 1,
+          "triangles": 1032
+        },
+        "beauty: Canyon light poles:0:1": {
+          "calls": 1,
+          "triangles": 240
+        },
+        "beauty: Canyon boundary bollards:1:2": {
+          "calls": 1,
+          "triangles": 96
+        },
+        "beauty: Canyon light poles:1:2": {
+          "calls": 1,
+          "triangles": 48
+        },
+        "beauty: Canyon boundary bollards:0:2": {
+          "calls": 1,
+          "triangles": 108
+        },
+        "beauty: Canyon bollard reflectors:0:0": {
+          "calls": 1,
+          "triangles": 420
+        },
+        "beauty: Canyon bollard reflectors:-1:0": {
+          "calls": 1,
+          "triangles": 372
+        },
+        "beauty: Canyon bollard reflectors:-1:1": {
+          "calls": 1,
+          "triangles": 108
+        },
+        "beauty: Canyon bollard reflectors:0:1": {
+          "calls": 1,
+          "triangles": 924
+        },
+        "beauty: Canyon bollard reflectors:1:1": {
+          "calls": 1,
+          "triangles": 1032
+        },
+        "beauty: Canyon bollard reflectors:1:2": {
+          "calls": 1,
+          "triangles": 96
+        },
+        "beauty: Canyon bollard reflectors:0:2": {
+          "calls": 1,
+          "triangles": 108
+        },
+        "beauty: Canyon red and white curb": {
+          "calls": 5,
+          "triangles": 640
+        },
+        "beauty: Canyon lamp lenses:0:0": {
+          "calls": 1,
+          "triangles": 24
+        },
+        "beauty: Canyon lamp lenses:-1:0": {
+          "calls": 1,
+          "triangles": 24
+        },
+        "beauty: Canyon lamp lenses:0:1": {
+          "calls": 1,
+          "triangles": 60
+        },
+        "beauty: Canyon lamp lenses:1:2": {
+          "calls": 1,
+          "triangles": 12
+        },
+        "beauty: Canyon speed check approach": {
+          "calls": 1,
+          "triangles": 2
+        },
+        "beauty: curved roadside grasses": {
+          "calls": 13,
+          "triangles": 175721
+        },
+        "beauty: branched understory shrubs": {
+          "calls": 10,
+          "triangles": 63280
+        },
+        "beauty: S9_sculpted_body": {
+          "calls": 1,
+          "triangles": 2022
+        },
+        "beauty: S9_sculpted_body_1": {
+          "calls": 1,
+          "triangles": 384
+        },
+        "beauty: S9_sculpted_body_2": {
+          "calls": 1,
+          "triangles": 4020
+        },
+        "beauty: Torus004_1": {
+          "calls": 1,
+          "triangles": 672
+        },
+        "beauty: Torus006_1": {
+          "calls": 1,
+          "triangles": 672
+        },
+        "beauty: S9_sculpted_body_3": {
+          "calls": 1,
+          "triangles": 940
+        },
+        "beauty: Torus_1": {
+          "calls": 1,
+          "triangles": 672
+        },
+        "beauty: Torus002_1": {
+          "calls": 1,
+          "triangles": 672
+        },
+        "beauty: S9_sculpted_body_4": {
+          "calls": 1,
+          "triangles": 376
+        },
+        "beauty: S9_sculpted_body_5": {
+          "calls": 1,
+          "triangles": 188
+        },
+        "beauty: Torus004": {
+          "calls": 1,
+          "triangles": 960
+        },
+        "beauty: Torus006": {
+          "calls": 1,
+          "triangles": 960
+        },
+        "beauty: Torus": {
+          "calls": 1,
+          "triangles": 960
+        },
+        "beauty: Torus002": {
+          "calls": 1,
+          "triangles": 960
+        },
+        "beauty: Torus004_2": {
+          "calls": 1,
+          "triangles": 188
+        },
+        "beauty: Torus006_2": {
+          "calls": 1,
+          "triangles": 188
+        },
+        "beauty: Torus_2": {
+          "calls": 1,
+          "triangles": 188
+        },
+        "beauty: Torus002_2": {
+          "calls": 1,
+          "triangles": 188
+        },
+        "beauty: Canyon lamp halos:1:2": {
+          "calls": 1,
+          "triangles": 2
+        },
+        "beauty: Canyon lamp halos:0:1": {
+          "calls": 1,
+          "triangles": 10
+        },
+        "beauty: Canyon lamp halos:-1:0": {
+          "calls": 1,
+          "triangles": 4
+        },
+        "beauty: Canyon lamp halos:0:0": {
+          "calls": 1,
+          "triangles": 4
+        }
+      },
+      "world": {
+        "rockInstances": 53,
+        "canyonScanTriangles": 950348,
+        "canyonRoadside": {
+          "curbSections": 1424,
+          "bollards": 712,
+          "lamps": 42,
+          "wayfindingGantries": 2,
+          "speedCheckStencils": 3
+        },
+        "treeCount": 1289,
+        "solidTreeCount": 1289,
+        "grassClumps": 9371,
+        "fernCount": 0,
+        "shrubCount": 173,
+        "treeSpecies": [
+          "fir_a",
+          "fir_b",
+          "fir_c",
+          "pine_a",
+          "pine_b",
+          "pine_c",
+          "broadleaf_a",
+          "canyon_fir_a",
+          "canyon_fir_b",
+          "canyon_fir_c"
+        ],
+        "treeLodCounts": [
+          74,
+          216,
+          666,
+          333
+        ]
+      },
+      "baselineDraw": {
+        "frame": 36,
+        "calls": 398,
+        "triangles": 8480174,
+        "points": 384,
+        "lines": 0
+      },
+      "summary": {
+        "baseline": {
+          "medianGpuMs": 28.912333,
+          "medianCpuMs": 6.399999999906868,
+          "triangles": 8480174,
+          "calls": 398
+        },
+        "cached-shadow": {
+          "medianGpuMs": 22.52644,
+          "medianCpuMs": 6.7999999998137355,
+          "triangles": 4001392,
+          "calls": 213
+        },
+        "no-tree-shadows": {
+          "medianGpuMs": 27.048472,
+          "medianCpuMs": 4.100000000093132,
+          "triangles": 4417370,
+          "calls": 254
+        },
+        "no-trees": {
+          "medianGpuMs": 21.071676,
+          "medianCpuMs": 5.5,
+          "triangles": 1263555,
+          "calls": 154
+        },
+        "no-groundcover": {
+          "medianGpuMs": 30.049494,
+          "medianCpuMs": 5.199999999720603,
+          "triangles": 8241173,
+          "calls": 375
+        },
+        "direct": {
+          "medianGpuMs": 21.751327,
+          "medianCpuMs": 5.199999999720603,
+          "triangles": 8480172,
+          "calls": 396
+        }
+      }
+    },
+    {
+      "circuit": "forest",
+      "weather": "rain",
+      "renderer": "ANGLE (AMD, AMD Radeon 780M Graphics (radeonsi phoenix ACO), OpenGL ES 3.2)",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
+      "framebuffer": [
+        1821,
+        1138
+      ],
+      "samples": [
+        {
+          "mode": "baseline",
+          "gpuMs": 35.327802,
+          "cpuMs": 31.300000000279397,
+          "frame": 325,
+          "calls": 1552,
+          "triangles": 27103152,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "cached-shadow",
+          "gpuMs": 31.420258,
+          "cpuMs": 27.799999999813735,
+          "frame": 329,
+          "calls": 1253,
+          "triangles": 20924337,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "no-tree-shadows",
+          "gpuMs": 29.861697,
+          "cpuMs": 25.300000000279397,
+          "frame": 333,
+          "calls": 1286,
+          "triangles": 21009147,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "no-trees",
+          "gpuMs": 14.542751,
+          "cpuMs": 10.700000000186265,
+          "frame": 337,
+          "calls": 287,
+          "triangles": 4261126,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "no-groundcover",
+          "gpuMs": 40.35816,
+          "cpuMs": 71.5,
+          "frame": 341,
+          "calls": 1464,
+          "triangles": 23701730,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "direct",
+          "gpuMs": 35.176715,
+          "cpuMs": 76.5,
+          "frame": 343,
+          "calls": 1550,
+          "triangles": 27103150,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "direct",
+          "gpuMs": 36.84785,
+          "cpuMs": 86.5,
+          "frame": 345,
+          "calls": 1550,
+          "triangles": 27103150,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "no-groundcover",
+          "gpuMs": 43.948041,
+          "cpuMs": 81.39999999990687,
+          "frame": 349,
+          "calls": 1464,
+          "triangles": 23701730,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "no-trees",
+          "gpuMs": 16.424246,
+          "cpuMs": 32.5,
+          "frame": 353,
+          "calls": 287,
+          "triangles": 4261126,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "no-tree-shadows",
+          "gpuMs": 37.881615,
+          "cpuMs": 59.39999999990687,
+          "frame": 357,
+          "calls": 1286,
+          "triangles": 21009147,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "cached-shadow",
+          "gpuMs": 35.032121,
+          "cpuMs": 58.5,
+          "frame": 361,
+          "calls": 1253,
+          "triangles": 20924337,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "baseline",
+          "gpuMs": 43.436048,
+          "cpuMs": 57.5,
+          "frame": 365,
+          "calls": 1552,
+          "triangles": 27103152,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "baseline",
+          "gpuMs": 41.442139,
+          "cpuMs": 44.6999999997206,
+          "frame": 369,
+          "calls": 1552,
+          "triangles": 27103152,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "cached-shadow",
+          "gpuMs": 33.477286,
+          "cpuMs": 29.699999999720603,
+          "frame": 373,
+          "calls": 1253,
+          "triangles": 20924337,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "no-tree-shadows",
+          "gpuMs": 35.077886,
+          "cpuMs": 46.60000000009313,
+          "frame": 377,
+          "calls": 1286,
+          "triangles": 21009147,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "no-trees",
+          "gpuMs": 14.894539,
+          "cpuMs": 19,
+          "frame": 381,
+          "calls": 287,
+          "triangles": 4261126,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "no-groundcover",
+          "gpuMs": 39.140106,
+          "cpuMs": 49.10000000009313,
+          "frame": 385,
+          "calls": 1464,
+          "triangles": 23701730,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "direct",
+          "gpuMs": 37.451798,
+          "cpuMs": 68.39999999990687,
+          "frame": 387,
+          "calls": 1550,
+          "triangles": 27103150,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "direct",
+          "gpuMs": 33.243201,
+          "cpuMs": 58.89999999990687,
+          "frame": 389,
+          "calls": 1550,
+          "triangles": 27103150,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "no-groundcover",
+          "gpuMs": 38.104318,
+          "cpuMs": 56,
+          "frame": 393,
+          "calls": 1464,
+          "triangles": 23701730,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "no-trees",
+          "gpuMs": 14.730828,
+          "cpuMs": 18.699999999720603,
+          "frame": 397,
+          "calls": 287,
+          "triangles": 4261126,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "no-tree-shadows",
+          "gpuMs": 35.663721,
+          "cpuMs": 46.1999999997206,
+          "frame": 401,
+          "calls": 1286,
+          "triangles": 21009147,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "cached-shadow",
+          "gpuMs": 37.307003,
+          "cpuMs": 51.10000000009313,
+          "frame": 405,
+          "calls": 1253,
+          "triangles": 20924337,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "baseline",
+          "gpuMs": 42.185312,
+          "cpuMs": 54.39999999990687,
+          "frame": 409,
+          "calls": 1552,
+          "triangles": 27103152,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "baseline",
+          "gpuMs": 36.666305,
+          "cpuMs": 36.10000000009313,
+          "frame": 413,
+          "calls": 1552,
+          "triangles": 27103152,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "cached-shadow",
+          "gpuMs": 30.64262,
+          "cpuMs": 32.39999999990687,
+          "frame": 417,
+          "calls": 1253,
+          "triangles": 20924337,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "no-tree-shadows",
+          "gpuMs": 30.171926,
+          "cpuMs": 29.600000000093132,
+          "frame": 421,
+          "calls": 1286,
+          "triangles": 21009147,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "no-trees",
+          "gpuMs": 12.767378,
+          "cpuMs": 13.100000000093132,
+          "frame": 425,
+          "calls": 287,
+          "triangles": 4261126,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "no-groundcover",
+          "gpuMs": 38.238853,
+          "cpuMs": 39.89999999990687,
+          "frame": 429,
+          "calls": 1464,
+          "triangles": 23701730,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "direct",
+          "gpuMs": 31.543572,
+          "cpuMs": 53.5,
+          "frame": 431,
+          "calls": 1550,
+          "triangles": 27103150,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "direct",
+          "gpuMs": 30.577617,
+          "cpuMs": 49.39999999990687,
+          "frame": 433,
+          "calls": 1550,
+          "triangles": 27103150,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "no-groundcover",
+          "gpuMs": 36.149884,
+          "cpuMs": 42.5,
+          "frame": 437,
+          "calls": 1464,
+          "triangles": 23701730,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "no-trees",
+          "gpuMs": 14.763891,
+          "cpuMs": 20.399999999906868,
+          "frame": 441,
+          "calls": 287,
+          "triangles": 4261126,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "no-tree-shadows",
+          "gpuMs": 33.921851,
+          "cpuMs": 39.89999999990687,
+          "frame": 445,
+          "calls": 1286,
+          "triangles": 21009147,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "cached-shadow",
+          "gpuMs": 32.646869,
+          "cpuMs": 42.3000000002794,
+          "frame": 449,
+          "calls": 1253,
+          "triangles": 20924337,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "baseline",
+          "gpuMs": 36.409417,
+          "cpuMs": 38.799999999813735,
+          "frame": 453,
+          "calls": 1552,
+          "triangles": 27103152,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "baseline",
+          "gpuMs": 35.438172,
+          "cpuMs": 34.10000000009313,
+          "frame": 457,
+          "calls": 1552,
+          "triangles": 27103152,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "cached-shadow",
+          "gpuMs": 28.999058,
+          "cpuMs": 24.100000000093132,
+          "frame": 461,
+          "calls": 1253,
+          "triangles": 20924337,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "no-tree-shadows",
+          "gpuMs": 28.761607,
+          "cpuMs": 24.700000000186265,
+          "frame": 465,
+          "calls": 1286,
+          "triangles": 21009147,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "no-trees",
+          "gpuMs": 12.12107,
+          "cpuMs": 14.100000000093132,
+          "frame": 469,
+          "calls": 287,
+          "triangles": 4261126,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "no-groundcover",
+          "gpuMs": 33.42106,
+          "cpuMs": 33.3000000002794,
+          "frame": 473,
+          "calls": 1464,
+          "triangles": 23701730,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "direct",
+          "gpuMs": 26.143993,
+          "cpuMs": 31.09999999962747,
+          "frame": 475,
+          "calls": 1550,
+          "triangles": 27103150,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "direct",
+          "gpuMs": 30.055745,
+          "cpuMs": 28.699999999720603,
+          "frame": 477,
+          "calls": 1550,
+          "triangles": 27103150,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "no-groundcover",
+          "gpuMs": 33.68973,
+          "cpuMs": 34.5,
+          "frame": 481,
+          "calls": 1464,
+          "triangles": 23701730,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "no-trees",
+          "gpuMs": 12.195531,
+          "cpuMs": 13.799999999813735,
+          "frame": 485,
+          "calls": 287,
+          "triangles": 4261126,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "no-tree-shadows",
+          "gpuMs": 30.093778,
+          "cpuMs": 27.40000000037253,
+          "frame": 489,
+          "calls": 1286,
+          "triangles": 21009147,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "cached-shadow",
+          "gpuMs": 34.752068,
+          "cpuMs": 41.200000000186265,
+          "frame": 493,
+          "calls": 1253,
+          "triangles": 20924337,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "baseline",
+          "gpuMs": 40.834385,
+          "cpuMs": 49,
+          "frame": 497,
+          "calls": 1552,
+          "triangles": 27103152,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "baseline",
+          "gpuMs": 43.332131,
+          "cpuMs": 54.200000000186265,
+          "frame": 501,
+          "calls": 1552,
+          "triangles": 27103152,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "cached-shadow",
+          "gpuMs": 35.833162,
+          "cpuMs": 65.3000000002794,
+          "frame": 505,
+          "calls": 1253,
+          "triangles": 20924337,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "no-tree-shadows",
+          "gpuMs": 37.007915,
+          "cpuMs": 78.59999999962747,
+          "frame": 509,
+          "calls": 1286,
+          "triangles": 21009147,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "no-trees",
+          "gpuMs": 15.845786,
+          "cpuMs": 22.200000000186265,
+          "frame": 513,
+          "calls": 287,
+          "triangles": 4261126,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "no-groundcover",
+          "gpuMs": 40.52115,
+          "cpuMs": 55.799999999813735,
+          "frame": 517,
+          "calls": 1464,
+          "triangles": 23701730,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "direct",
+          "gpuMs": 33.705881,
+          "cpuMs": 72,
+          "frame": 519,
+          "calls": 1550,
+          "triangles": 27103150,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "direct",
+          "gpuMs": 35.09524,
+          "cpuMs": 65,
+          "frame": 521,
+          "calls": 1550,
+          "triangles": 27103150,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "no-groundcover",
+          "gpuMs": 41.549423,
+          "cpuMs": 81.8000000002794,
+          "frame": 525,
+          "calls": 1464,
+          "triangles": 23701730,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "no-trees",
+          "gpuMs": 14.878669,
+          "cpuMs": 20.800000000279397,
+          "frame": 529,
+          "calls": 287,
+          "triangles": 4261126,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "no-tree-shadows",
+          "gpuMs": 36.795751,
+          "cpuMs": 55.10000000009313,
+          "frame": 533,
+          "calls": 1286,
+          "triangles": 21009147,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "cached-shadow",
+          "gpuMs": 34.730868,
+          "cpuMs": 40.5,
+          "frame": 537,
+          "calls": 1253,
+          "triangles": 20924337,
+          "points": 768,
+          "lines": 2200
+        },
+        {
+          "mode": "baseline",
+          "gpuMs": 42.300771,
+          "cpuMs": 66.09999999962747,
+          "frame": 541,
+          "calls": 1552,
+          "triangles": 27103152,
+          "points": 768,
+          "lines": 2200
+        }
+      ],
+      "categories": {
+        "shadow: eroded rock buttresses": {
+          "calls": 3,
+          "triangles": 14848
+        },
+        "shadow: fractured talus boulders": {
+          "calls": 4,
+          "triangles": 11840
+        },
+        "shadow: Rural guardrail hardware:-1:0": {
+          "calls": 1,
+          "triangles": 21120
+        },
+        "shadow: Rural guardrail hardware:0:0": {
+          "calls": 1,
+          "triangles": 5856
+        },
+        "shadow: Rural guardrail hardware:-1:1": {
+          "calls": 1,
+          "triangles": 3648
+        },
+        "shadow: Rural guardrail hardware:0:1": {
+          "calls": 1,
+          "triangles": 8352
+        },
+        "shadow: Road delineators:-1:0": {
+          "calls": 1,
+          "triangles": 2112
+        },
+        "shadow: Road delineators:0:0": {
+          "calls": 1,
+          "triangles": 624
+        },
+        "shadow: Road delineators:-1:1": {
+          "calls": 1,
+          "triangles": 336
+        },
+        "shadow: Road delineators:0:1": {
+          "calls": 1,
+          "triangles": 864
+        },
+        "shadow: tree LOD0": {
+          "calls": 152,
+          "triangles": 4589758
+        },
+        "shadow: tree LOD1": {
+          "calls": 114,
+          "triangles": 1504247
+        },
+        "shadow: S9_sculpted_body": {
+          "calls": 1,
+          "triangles": 2022
+        },
+        "shadow: S9_sculpted_body_1": {
+          "calls": 1,
+          "triangles": 384
+        },
+        "shadow: S9_sculpted_body_2": {
+          "calls": 1,
+          "triangles": 4020
+        },
+        "shadow: S9_sculpted_body_3": {
+          "calls": 1,
+          "triangles": 940
+        },
+        "shadow: S9_sculpted_body_4": {
+          "calls": 1,
+          "triangles": 376
+        },
+        "shadow: S9_sculpted_body_5": {
+          "calls": 1,
+          "triangles": 188
+        },
+        "shadow: Torus": {
+          "calls": 1,
+          "triangles": 960
+        },
+        "shadow: Torus_1": {
+          "calls": 1,
+          "triangles": 672
+        },
+        "shadow: Torus_2": {
+          "calls": 1,
+          "triangles": 188
+        },
+        "shadow: Torus002": {
+          "calls": 1,
+          "triangles": 960
+        },
+        "shadow: Torus002_1": {
+          "calls": 1,
+          "triangles": 672
+        },
+        "shadow: Torus002_2": {
+          "calls": 1,
+          "triangles": 188
+        },
+        "shadow: Torus004": {
+          "calls": 1,
+          "triangles": 960
+        },
+        "shadow: Torus004_1": {
+          "calls": 1,
+          "triangles": 672
+        },
+        "shadow: Torus004_2": {
+          "calls": 1,
+          "triangles": 188
+        },
+        "shadow: Torus006": {
+          "calls": 1,
+          "triangles": 960
+        },
+        "shadow: Torus006_1": {
+          "calls": 1,
+          "triangles": 672
+        },
+        "shadow: Torus006_2": {
+          "calls": 1,
+          "triangles": 188
+        },
+        "beauty: tree LOD0": {
+          "calls": 104,
+          "triangles": 3418792
+        },
+        "beauty: tree LOD1": {
+          "calls": 330,
+          "triangles": 3283516
+        },
+        "beauty: tree LOD2": {
+          "calls": 197,
+          "triangles": 5557713
+        },
+        "beauty: tree LOD3": {
+          "calls": 368,
+          "triangles": 4488000
+        },
+        "beauty: other": {
+          "calls": 49,
+          "triangles": 16296
+        },
+        "beauty: sculpted landscape": {
+          "calls": 2,
+          "triangles": 250000
+        },
+        "beauty: eroded mountain ranges": {
+          "calls": 2,
+          "triangles": 270400
+        },
+        "beauty: fractured talus boulders": {
+          "calls": 11,
+          "triangles": 17600
+        },
+        "beauty: eroded rock buttresses": {
+          "calls": 12,
+          "triangles": 51968
+        },
+        "beauty: Rural guardrail:-1:0": {
+          "calls": 2,
+          "triangles": 7072
+        },
+        "beauty: Rural guardrail hardware:-1:0": {
+          "calls": 2,
+          "triangles": 42240
+        },
+        "beauty: Rural guardrail:0:0": {
+          "calls": 2,
+          "triangles": 1920
+        },
+        "beauty: Rural guardrail hardware:0:0": {
+          "calls": 2,
+          "triangles": 11712
+        },
+        "beauty: Rural guardrail:-1:1": {
+          "calls": 2,
+          "triangles": 1216
+        },
+        "beauty: Rural guardrail hardware:-1:1": {
+          "calls": 2,
+          "triangles": 7296
+        },
+        "beauty: Rural guardrail:0:1": {
+          "calls": 2,
+          "triangles": 2848
+        },
+        "beauty: Rural guardrail hardware:0:1": {
+          "calls": 2,
+          "triangles": 16704
+        },
+        "beauty: Rural guardrail:1:2": {
+          "calls": 2,
+          "triangles": 1472
+        },
+        "beauty: Rural guardrail hardware:1:2": {
+          "calls": 2,
+          "triangles": 8832
+        },
+        "beauty: Rural guardrail hardware:0:2": {
+          "calls": 2,
+          "triangles": 19584
+        },
+        "beauty: Rural guardrail:0:2": {
+          "calls": 2,
+          "triangles": 3264
+        },
+        "beauty: Road delineators:-1:0": {
+          "calls": 2,
+          "triangles": 4224
+        },
+        "beauty: Road delineators:0:0": {
+          "calls": 2,
+          "triangles": 1248
+        },
+        "beauty: Road delineators:-1:1": {
+          "calls": 2,
+          "triangles": 672
+        },
+        "beauty: Road delineators:0:1": {
+          "calls": 2,
+          "triangles": 1728
+        },
+        "beauty: Road delineators:1:2": {
+          "calls": 2,
+          "triangles": 864
+        },
+        "beauty: Road delineators:0:2": {
+          "calls": 2,
+          "triangles": 1920
+        },
+        "beauty: Worn centre paint:-1:0": {
+          "calls": 2,
+          "triangles": 136
+        },
+        "beauty: Worn centre paint:-1:1": {
+          "calls": 2,
+          "triangles": 32
+        },
+        "beauty: Worn centre paint:0:1": {
+          "calls": 2,
+          "triangles": 52
+        },
+        "beauty: Worn centre paint:1:2": {
+          "calls": 2,
+          "triangles": 32
+        },
+        "beauty: Worn centre paint:0:2": {
+          "calls": 2,
+          "triangles": 68
+        },
+        "beauty: curved roadside grasses": {
+          "calls": 36,
+          "triangles": 891982
+        },
+        "beauty: branched understory shrubs": {
+          "calls": 24,
+          "triangles": 298320
+        },
+        "beauty: forest floor ferns": {
+          "calls": 28,
+          "triangles": 2211120
+        },
+        "beauty: S9_sculpted_body": {
+          "calls": 2,
+          "triangles": 4044
+        },
+        "beauty: S9_sculpted_body_1": {
+          "calls": 2,
+          "triangles": 768
+        },
+        "beauty: S9_sculpted_body_2": {
+          "calls": 2,
+          "triangles": 8040
+        },
+        "beauty: Torus004_1": {
+          "calls": 2,
+          "triangles": 1344
+        },
+        "beauty: Torus006_1": {
+          "calls": 2,
+          "triangles": 1344
+        },
+        "beauty: S9_sculpted_body_3": {
+          "calls": 2,
+          "triangles": 1880
+        },
+        "beauty: Torus_1": {
+          "calls": 2,
+          "triangles": 1344
+        },
+        "beauty: Torus002_1": {
+          "calls": 2,
+          "triangles": 1344
+        },
+        "beauty: S9_sculpted_body_4": {
+          "calls": 2,
+          "triangles": 752
+        },
+        "beauty: S9_sculpted_body_5": {
+          "calls": 2,
+          "triangles": 376
+        },
+        "beauty: Torus004": {
+          "calls": 2,
+          "triangles": 1920
+        },
+        "beauty: Torus006": {
+          "calls": 2,
+          "triangles": 1920
+        },
+        "beauty: Torus": {
+          "calls": 2,
+          "triangles": 1920
+        },
+        "beauty: Torus002": {
+          "calls": 2,
+          "triangles": 1920
+        },
+        "beauty: Torus004_2": {
+          "calls": 2,
+          "triangles": 376
+        },
+        "beauty: Torus006_2": {
+          "calls": 2,
+          "triangles": 376
+        },
+        "beauty: Torus_2": {
+          "calls": 2,
+          "triangles": 376
+        },
+        "beauty: Torus002_2": {
+          "calls": 2,
+          "triangles": 376
+        }
+      },
+      "world": {
+        "rockInstances": 390,
+        "ruralRoadside": {
+          "guardrailSections": 1716,
+          "posts": 1716,
+          "delineators": 344,
+          "centreDashes": 284
+        },
+        "treeCount": 6896,
+        "solidTreeCount": 6896,
+        "grassClumps": 22008,
+        "fernCount": 2003,
+        "shrubCount": 378,
+        "treeSpecies": [
+          "fir_a",
+          "fir_b",
+          "fir_c",
+          "pine_a",
+          "pine_b",
+          "pine_c",
+          "broadleaf_a",
+          "canyon_fir_a",
+          "canyon_fir_b",
+          "canyon_fir_c"
+        ],
+        "treeLodCounts": [
+          115,
+          538,
+          1987,
+          4256
+        ]
+      },
+      "baselineDraw": {
+        "frame": 255,
+        "calls": 1552,
+        "triangles": 27103152,
+        "points": 768,
+        "lines": 2200
+      },
+      "summary": {
+        "baseline": {
+          "medianGpuMs": 41.442139,
+          "medianCpuMs": 49,
+          "triangles": 27103152,
+          "calls": 1552
+        },
+        "cached-shadow": {
+          "medianGpuMs": 34.730868,
+          "medianCpuMs": 41.200000000186265,
+          "triangles": 20924337,
+          "calls": 1253
+        },
+        "no-tree-shadows": {
+          "medianGpuMs": 35.077886,
+          "medianCpuMs": 46.1999999997206,
+          "triangles": 21009147,
+          "calls": 1286
+        },
+        "no-trees": {
+          "medianGpuMs": 14.763891,
+          "medianCpuMs": 19,
+          "triangles": 4261126,
+          "calls": 287
+        },
+        "no-groundcover": {
+          "medianGpuMs": 39.140106,
+          "medianCpuMs": 55.799999999813735,
+          "triangles": 23701730,
+          "calls": 1464
+        },
+        "direct": {
+          "medianGpuMs": 33.705881,
+          "medianCpuMs": 65,
+          "triangles": 27103150,
+          "calls": 1550
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "status": "passed"
+}

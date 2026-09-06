@@ -1,0 +1,603 @@
+{
+  "at": "2026-09-06T05:53:19.273Z",
+  "purpose": "Frozen production presentation cost A/B; shared GPU, not full-race or display pacing.",
+  "runs": [
+    {
+      "weather": "clear",
+      "renderer": "ANGLE (AMD, AMD Radeon 780M Graphics (radeonsi phoenix ACO), OpenGL ES 3.2)",
+      "framebuffer": [
+        1821,
+        1138
+      ],
+      "samples": [
+        {
+          "mode": "direct",
+          "cpuMs": 15.800000000745058,
+          "gpuMs": 32.93714,
+          "drawCalls": 1992,
+          "triangles": 28118105
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 17.100000001490116,
+          "gpuMs": 41.312694,
+          "drawCalls": 1994,
+          "triangles": 28118107
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 16.200000001117587,
+          "gpuMs": 39.913635,
+          "drawCalls": 1994,
+          "triangles": 28118107
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 17,
+          "gpuMs": 33.932632,
+          "drawCalls": 1992,
+          "triangles": 28118105
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 15.300000000745058,
+          "gpuMs": 36.76858,
+          "drawCalls": 1992,
+          "triangles": 28118105
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 19.199999999254942,
+          "gpuMs": 43.839975,
+          "drawCalls": 1994,
+          "triangles": 28118107
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 16.5,
+          "gpuMs": 41.140086,
+          "drawCalls": 1994,
+          "triangles": 28118107
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 17.699999999254942,
+          "gpuMs": 34.475864,
+          "drawCalls": 1992,
+          "triangles": 28118105
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 17,
+          "gpuMs": 33.439454,
+          "drawCalls": 1992,
+          "triangles": 28118105
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 18.799999998882413,
+          "gpuMs": 38.220539,
+          "drawCalls": 1994,
+          "triangles": 28118107
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 15.400000000372529,
+          "gpuMs": 40.101913,
+          "drawCalls": 1994,
+          "triangles": 28118107
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 16.90000000037253,
+          "gpuMs": 33.483618,
+          "drawCalls": 1992,
+          "triangles": 28118105
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 15.5,
+          "gpuMs": 36.639374,
+          "drawCalls": 1992,
+          "triangles": 28118105
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 19.59999999962747,
+          "gpuMs": 43.310449,
+          "drawCalls": 1994,
+          "triangles": 28118107
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 17.700000001117587,
+          "gpuMs": 41.588498,
+          "drawCalls": 1994,
+          "triangles": 28118107
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 16.600000001490116,
+          "gpuMs": 34.910449,
+          "drawCalls": 1992,
+          "triangles": 28118105
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 16.800000000745058,
+          "gpuMs": 37.690291,
+          "drawCalls": 1992,
+          "triangles": 28118105
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 16.600000001490116,
+          "gpuMs": 43.453722,
+          "drawCalls": 1994,
+          "triangles": 28118107
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 16.40000000037253,
+          "gpuMs": 40.782246,
+          "drawCalls": 1994,
+          "triangles": 28118107
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 17.5,
+          "gpuMs": 34.521751,
+          "drawCalls": 1992,
+          "triangles": 28118105
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 16.59999999962747,
+          "gpuMs": 33.545336,
+          "drawCalls": 1992,
+          "triangles": 28118105
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 17.09999999962747,
+          "gpuMs": 38.387536,
+          "drawCalls": 1994,
+          "triangles": 28118107
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 17.40000000037253,
+          "gpuMs": 39.112714,
+          "drawCalls": 1994,
+          "triangles": 28118107
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 17.300000000745058,
+          "gpuMs": 33.809077,
+          "drawCalls": 1992,
+          "triangles": 28118105
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 16.5,
+          "gpuMs": 37.169261,
+          "drawCalls": 1992,
+          "triangles": 28118105
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 16.800000000745058,
+          "gpuMs": 43.066786,
+          "drawCalls": 1994,
+          "triangles": 28118107
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 16.100000001490116,
+          "gpuMs": 40.505239,
+          "drawCalls": 1994,
+          "triangles": 28118107
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 17.299999998882413,
+          "gpuMs": 34.778278,
+          "drawCalls": 1992,
+          "triangles": 28118105
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 16.09999999962747,
+          "gpuMs": 37.394689,
+          "drawCalls": 1992,
+          "triangles": 28118105
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 17.5,
+          "gpuMs": 43.404348,
+          "drawCalls": 1994,
+          "triangles": 28118107
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 18.799999998882413,
+          "gpuMs": 41.613585,
+          "drawCalls": 1994,
+          "triangles": 28118107
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 18,
+          "gpuMs": 35.047269,
+          "drawCalls": 1992,
+          "triangles": 28118105
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 16.40000000037253,
+          "gpuMs": 37.893036,
+          "drawCalls": 1992,
+          "triangles": 28118105
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 17.200000001117587,
+          "gpuMs": 44.801122,
+          "drawCalls": 1994,
+          "triangles": 28118107
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 15.799999998882413,
+          "gpuMs": 45.486384,
+          "drawCalls": 1994,
+          "triangles": 28118107
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 17,
+          "gpuMs": 41.862939,
+          "drawCalls": 1992,
+          "triangles": 28118105
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 16.09999999962747,
+          "gpuMs": 39.060014,
+          "drawCalls": 1992,
+          "triangles": 28118105
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 17.90000000037253,
+          "gpuMs": 43.924256,
+          "drawCalls": 1994,
+          "triangles": 28118107
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 16.800000000745058,
+          "gpuMs": 40.71059,
+          "drawCalls": 1994,
+          "triangles": 28118107
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 18.399999998509884,
+          "gpuMs": 34.617653,
+          "drawCalls": 1992,
+          "triangles": 28118105
+        }
+      ],
+      "contact": {
+        "gpuMedianMs": 41.588498,
+        "gpuP95Ms": 45.486384
+      },
+      "direct": {
+        "gpuMedianMs": 34.910449,
+        "gpuP95Ms": 41.862939
+      }
+    },
+    {
+      "weather": "rain",
+      "renderer": "ANGLE (AMD, AMD Radeon 780M Graphics (radeonsi phoenix ACO), OpenGL ES 3.2)",
+      "framebuffer": [
+        1821,
+        1138
+      ],
+      "samples": [
+        {
+          "mode": "direct",
+          "cpuMs": 32.20000000111759,
+          "gpuMs": 37.635828,
+          "drawCalls": 3646,
+          "triangles": 46491822
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 34.30000000074506,
+          "gpuMs": 45.168259,
+          "drawCalls": 3648,
+          "triangles": 46491824
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 35.5,
+          "gpuMs": 46.457148,
+          "drawCalls": 3648,
+          "triangles": 46491824
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 31.699999999254942,
+          "gpuMs": 38.575172,
+          "drawCalls": 3646,
+          "triangles": 46491822
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 39.80000000074506,
+          "gpuMs": 44.564672,
+          "drawCalls": 3646,
+          "triangles": 46491822
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 35.30000000074506,
+          "gpuMs": 45.407273,
+          "drawCalls": 3648,
+          "triangles": 46491824
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 33.79999999888241,
+          "gpuMs": 46.303737,
+          "drawCalls": 3648,
+          "triangles": 46491824
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 33.100000001490116,
+          "gpuMs": 39.131269,
+          "drawCalls": 3646,
+          "triangles": 46491822
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 33.59999999962747,
+          "gpuMs": 38.42112,
+          "drawCalls": 3646,
+          "triangles": 46491822
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 35.19999999925494,
+          "gpuMs": 44.805249,
+          "drawCalls": 3648,
+          "triangles": 46491824
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 34.29999999888241,
+          "gpuMs": 44.533934,
+          "drawCalls": 3648,
+          "triangles": 46491824
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 32.40000000037253,
+          "gpuMs": 39.773489,
+          "drawCalls": 3646,
+          "triangles": 46491822
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 32.40000000037253,
+          "gpuMs": 38.487606,
+          "drawCalls": 3646,
+          "triangles": 46491822
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 34.90000000037253,
+          "gpuMs": 45.289129,
+          "drawCalls": 3648,
+          "triangles": 46491824
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 37.79999999888241,
+          "gpuMs": 46.58948,
+          "drawCalls": 3648,
+          "triangles": 46491824
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 32.19999999925494,
+          "gpuMs": 39.713014,
+          "drawCalls": 3646,
+          "triangles": 46491822
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 32.09999999962747,
+          "gpuMs": 38.341849,
+          "drawCalls": 3646,
+          "triangles": 46491822
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 35.19999999925494,
+          "gpuMs": 45.286123,
+          "drawCalls": 3648,
+          "triangles": 46491824
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 34.30000000074506,
+          "gpuMs": 46.27403,
+          "drawCalls": 3648,
+          "triangles": 46491824
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 33.40000000037253,
+          "gpuMs": 39.467989,
+          "drawCalls": 3646,
+          "triangles": 46491822
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 33.5,
+          "gpuMs": 38.419396,
+          "drawCalls": 3646,
+          "triangles": 46491822
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 35.40000000037253,
+          "gpuMs": 44.551247,
+          "drawCalls": 3648,
+          "triangles": 46491824
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 35.30000000074506,
+          "gpuMs": 44.404889,
+          "drawCalls": 3648,
+          "triangles": 46491824
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 33,
+          "gpuMs": 40.509528,
+          "drawCalls": 3646,
+          "triangles": 46491822
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 32.69999999925494,
+          "gpuMs": 38.482797,
+          "drawCalls": 3646,
+          "triangles": 46491822
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 35.5,
+          "gpuMs": 44.877306,
+          "drawCalls": 3648,
+          "triangles": 46491824
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 35.09999999962747,
+          "gpuMs": 44.638132,
+          "drawCalls": 3648,
+          "triangles": 46491824
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 31.59999999962747,
+          "gpuMs": 37.40547,
+          "drawCalls": 3646,
+          "triangles": 46491822
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 33,
+          "gpuMs": 38.076785,
+          "drawCalls": 3646,
+          "triangles": 46491822
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 35.69999999925494,
+          "gpuMs": 44.901072,
+          "drawCalls": 3648,
+          "triangles": 46491824
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 34.5,
+          "gpuMs": 46.819517,
+          "drawCalls": 3648,
+          "triangles": 46491824
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 32.399999998509884,
+          "gpuMs": 38.994649,
+          "drawCalls": 3646,
+          "triangles": 46491822
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 32.30000000074506,
+          "gpuMs": 37.651658,
+          "drawCalls": 3646,
+          "triangles": 46491822
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 38.20000000111759,
+          "gpuMs": 45.264402,
+          "drawCalls": 3648,
+          "triangles": 46491824
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 35.40000000037253,
+          "gpuMs": 44.934134,
+          "drawCalls": 3648,
+          "triangles": 46491824
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 33.30000000074506,
+          "gpuMs": 40.020529,
+          "drawCalls": 3646,
+          "triangles": 46491822
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 37,
+          "gpuMs": 38.474581,
+          "drawCalls": 3646,
+          "triangles": 46491822
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 35.100000001490116,
+          "gpuMs": 46.160745,
+          "drawCalls": 3648,
+          "triangles": 46491824
+        },
+        {
+          "mode": "contact",
+          "cpuMs": 34.59999999962747,
+          "gpuMs": 46.16335,
+          "drawCalls": 3648,
+          "triangles": 46491824
+        },
+        {
+          "mode": "direct",
+          "cpuMs": 32.5,
+          "gpuMs": 39.323073,
+          "drawCalls": 3646,
+          "triangles": 46491822
+        }
+      ],
+      "contact": {
+        "gpuMedianMs": 45.286123,
+        "gpuP95Ms": 46.819517
+      },
+      "direct": {
+        "gpuMedianMs": 38.575172,
+        "gpuP95Ms": 44.564672
+      }
+    }
+  ],
+  "errors": []
+}

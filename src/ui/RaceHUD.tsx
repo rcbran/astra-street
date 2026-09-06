@@ -19,15 +19,17 @@ export function RaceHUD({
   const circuit = CIRCUITS.find((c) => c.id === options.circuit)!;
   return (
     <div className="race-hud">
-      <div className="race-standing">
-        <div className="position-readout">
-          <span className="eyebrow">POSITION</span>
-          <strong>
-            {String(data.position).padStart(2, '0')}
-            <small>/ {String(data.racers).padStart(2, '0')}</small>
-          </strong>
+      {options.mode === 'race' && (
+        <div className="race-standing">
+          <div className="position-readout">
+            <span className="eyebrow">POSITION</span>
+            <strong>
+              {String(data.position).padStart(2, '0')}
+              <small>/ {String(data.racers).padStart(2, '0')}</small>
+            </strong>
+          </div>
         </div>
-      </div>
+      )}
       <div className={`street-score ${data.drifting ? 'is-drifting' : ''}`}>
         <span className="eyebrow">STREET SCORE</span>
         <strong>{data.score.toLocaleString('en-US')}</strong>
@@ -46,6 +48,14 @@ export function RaceHUD({
               ? 'HOLD IT CLEAN TO BANK'
               : 'SPACE + STEER TO DRIFT'}
         </small>
+        <div className="boost-readout">
+          <Zap size={11} />
+          <span>NITRO</span>
+          <div>
+            <i style={{ width: `${data.boost}%` }} />
+          </div>
+          <b>{Math.round(data.boost)}%</b>
+        </div>
       </div>
       {data.message && !data.offTrack && (
         <output className="score-event" aria-live="polite">
@@ -115,6 +125,17 @@ export function RaceHUD({
         <span>{circuit.name.toUpperCase()}</span>
       </div>
       <div className={`speedometer ${data.boosting ? 'boosting' : ''}`}>
+        <svg className="speed-gauge" viewBox="0 0 100 100" aria-hidden="true">
+          <circle className="speed-gauge-track" cx="50" cy="50" r="42" />
+          <circle
+            className="speed-gauge-value"
+            cx="50"
+            cy="50"
+            r="42"
+            pathLength="100"
+            strokeDasharray={`${Math.min(75, (data.speed / 340) * 75)} 100`}
+          />
+        </svg>
         <div className="rpm-lights">
           {Array.from({ length: 15 }, (_, i) => (
             <i
@@ -144,15 +165,6 @@ export function RaceHUD({
           <div className="throttle">
             <i style={{ width: `${data.throttle * 100}%` }} />
           </div>
-        </div>
-        <div className="boost-readout">
-          <Zap size={13} />
-          <span>NITRO</span>
-          <div>
-            <i style={{ width: `${data.boost}%` }} />
-          </div>
-          <b>{Math.round(data.boost)}%</b>
-          <kbd>SHIFT</kbd>
         </div>
       </div>
       {data.phase === 'countdown' && (

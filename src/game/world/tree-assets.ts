@@ -1,5 +1,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { lowerConiferCrown } from './conifer-shape';
+import { createDistantTree } from './distant-tree-geometry';
 
 export interface TreeSpecies {
   id: string;
@@ -161,6 +163,15 @@ export async function loadTreeAssets(): Promise<TreeAssets> {
           });
           return group;
         });
+        if (/^(fir|pine)_/.test(id)) {
+          // Accepted all-angle conifer candidate; the broadleaf keeps its
+          // existing LOD2 because further branch reduction produced spikes.
+          const distant = createDistantTree(lods[2], 2400);
+          distant.traverse((part) => {
+            if (part instanceof THREE.Mesh) geometries.add(part.geometry);
+          });
+          lods.push(distant);
+        }
         const box = new THREE.Box3().setFromObject(lods[0]);
         const size = box.getSize(new THREE.Vector3());
         let radius = 0;
@@ -184,6 +195,49 @@ export async function loadTreeAssets(): Promise<TreeAssets> {
       sourceGeometry.forEach((geometry) => {
         geometry.dispose();
         geometries.delete(geometry);
+      });
+    }
+    // Canyon uses low-crowned firs. Share all source textures/materials; only
+    // immutable geometry differs. Original forest/city species stay untouched.
+    for (const source of species.filter((tree) => tree.id.startsWith('fir'))) {
+      let crownBase = Infinity;
+      source.lods[0].traverse((part) => {
+        if (
+          !(part instanceof THREE.Mesh) ||
+          Array.isArray(part.material) ||
+          !(part.material instanceof THREE.MeshStandardMaterial) ||
+          part.material.alphaTest <= 0
+        )
+          return;
+        part.geometry.computeBoundingBox();
+        crownBase = Math.min(crownBase, part.geometry.boundingBox!.min.y);
+      });
+      if (!Number.isFinite(crownBase) || crownBase <= 0) continue;
+      const lods = source.lods.map((lod) => {
+        const group = new THREE.Group();
+        group.name = `canyon_${lod.name}`;
+        lod.traverse((part) => {
+          if (!(part instanceof THREE.Mesh)) return;
+          const geometry = part.geometry.clone();
+          geometries.add(geometry);
+          const foliage =
+            !Array.isArray(part.material) &&
+            part.material instanceof THREE.MeshStandardMaterial &&
+            part.material.alphaTest > 0;
+          lowerConiferCrown(geometry, source.height, crownBase, foliage);
+          const mesh = new THREE.Mesh(geometry, part.material);
+          mesh.name = `canyon_${part.name}`;
+          group.add(mesh);
+        });
+        return group;
+      });
+      // Horizontal geometry is unchanged, including all coarse-LOD extents.
+      const box = new THREE.Box3().setFromObject(lods[0]);
+      species.push({
+        id: `canyon_${source.id}`,
+        lods,
+        height: box.max.y,
+        radius: source.radius,
       });
     }
     if (!species.length)

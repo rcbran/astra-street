@@ -42,10 +42,15 @@ export function createCar(
         const material = original.clone();
         if (
           material instanceof THREE.MeshStandardMaterial &&
-          material.name === 'Livery' &&
-          !player
-        )
-          material.color.set(color);
+          material.name === 'Livery'
+        ) {
+          material.color.set(player ? '#34383b' : color);
+          if (player) {
+            material.metalness = 0.8;
+            material.roughness = 0.19;
+            material.envMapIntensity = 1.25;
+          }
+        }
         materials.set(original, material);
       }
       return materials.get(original)!;
@@ -66,23 +71,68 @@ export function createCar(
   shadow.rotation.x = -Math.PI / 2;
   shadow.position.set(0, 0.028, 0);
   const brakeGeometry = new THREE.BoxGeometry(1.62, 0.07, 0.035),
-    brakeMaterial = new THREE.MeshBasicMaterial({ color: 0xff442e });
+    brakeMaterial = new THREE.MeshBasicMaterial({
+      color: 0xff160b,
+      toneMapped: false,
+    });
   const brakeLight = new THREE.Mesh(brakeGeometry, brakeMaterial);
   brakeLight.position.set(0, 0.67, -2.25);
   const nitro = new THREE.Group();
-  const flameGeometry = new THREE.ConeGeometry(0.075, 0.95, 7);
+  // Local origin stays at the exhaust when the flame length pulses.
+  nitro.position.z = -2.25;
+  const flameGeometry = new THREE.ConeGeometry(0.15, 1.8, 12, 1, true);
   flameGeometry.rotateX(-Math.PI / 2);
-  const flameMaterial = new THREE.MeshBasicMaterial({
-    color: 0x85e7ff,
+  flameGeometry.translate(0, 0, -0.9);
+  const flameMaterial = new THREE.ShaderMaterial({
+    transparent: true,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false,
+    side: THREE.DoubleSide,
+    uniforms: { time: { value: 0 } },
+    vertexShader: /* glsl */ `
+      varying vec3 viewNormal;
+      varying vec3 viewDirection;
+      varying float along;
+      void main() {
+        vec4 view = modelViewMatrix * vec4(position, 1.0);
+        viewNormal = normalize(normalMatrix * normal);
+        viewDirection = -view.xyz;
+        along = clamp(-position.z / 1.8, 0.0, 1.0);
+        gl_Position = projectionMatrix * view;
+      }
+    `,
+    fragmentShader: /* glsl */ `
+      uniform float time;
+      varying vec3 viewNormal;
+      varying vec3 viewDirection;
+      varying float along;
+      void main() {
+        float facing = abs(dot(normalize(viewNormal), normalize(viewDirection)));
+        float core = smoothstep(0.1, 0.8, facing);
+        vec3 color = mix(vec3(0.12, 0.44, 1.0), vec3(1.8, 1.35, 0.45), core);
+        float pulse = 0.85 + 0.15 * sin(along * 30.0 - time * 53.0);
+        float alpha = (1.0 - smoothstep(0.55, 1.0, along)) * pulse * 0.85;
+        gl_FragColor = vec4(color, alpha);
+        #include <colorspace_fragment>
+      }
+    `,
+  });
+  const coreMaterial = new THREE.MeshBasicMaterial({
+    color: 0xffe99a,
     transparent: true,
     opacity: 0.85,
     blending: THREE.AdditiveBlending,
     depthWrite: false,
+    side: THREE.DoubleSide,
+    toneMapped: false,
   });
   for (const x of [-0.6, 0.6]) {
     const flame = new THREE.Mesh(flameGeometry, flameMaterial);
-    flame.position.set(x, 0.35, -2.7);
-    nitro.add(flame);
+    flame.position.set(x, 0.35, 0);
+    const core = new THREE.Mesh(flameGeometry, coreMaterial);
+    core.position.copy(flame.position);
+    core.scale.set(0.52, 0.52, 0.74);
+    nitro.add(flame, core);
   }
   nitro.visible = false;
   group.add(model, shadow, brakeLight, nitro);
@@ -107,6 +157,7 @@ export function createCar(
       brakeMaterial.dispose();
       flameGeometry.dispose();
       flameMaterial.dispose();
+      coreMaterial.dispose();
     },
   };
 }
@@ -151,6 +202,11 @@ export function updateCar(
     );
   if (visual.head) visual.head.visible = !cockpit;
   visual.brakeLight.visible = wet || brake > 0.1;
+  const flame = visual.nitro.children[0] as THREE.Mesh<
+    THREE.BufferGeometry,
+    THREE.ShaderMaterial
+  >;
+  flame.material.uniforms.time.value = time;
   visual.nitro.scale.z = 0.9 + Math.sin(time * 47) * 0.14;
 }
 export function disposeCarAsset(asset: THREE.Group) {

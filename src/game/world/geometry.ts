@@ -43,6 +43,8 @@ export function instanced(
   cast = false,
 ) {
   const m = new THREE.InstancedMesh(geo, mat, transforms.length);
+  // The batch's local transform is fixed; only its instance matrices differ.
+  m.matrixAutoUpdate = false;
   transforms.forEach((t, i) => {
     _obj.position.set(t.x, t.y, t.z);
     _obj.rotation.set(t.rx ?? 0, t.ry ?? 0, t.rz ?? 0);

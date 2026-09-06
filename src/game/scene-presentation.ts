@@ -56,10 +56,26 @@ varying vec2 vUv;
 uniform sampler2D tBeauty;
 uniform sampler2D tAO;
 uniform vec2 aoTexel;
+uniform float speedStreak;
 ${depthHelpers}
 void main() {
   vec4 beauty = texture2D(tBeauty, vUv);
   float distance = -viewPosition(vUv).z;
+  // Keep the central chase car / bonnet road sharp and distant sky stable.
+  float peripheral = smoothstep(0.16, 0.42, abs(vUv.x - 0.5));
+  float scenery = smoothstep(4.0, 16.0, distance) * (1.0 - smoothstep(120.0, 260.0, distance));
+  float streak = speedStreak * peripheral * scenery;
+  if (streak > 0.001) {
+    vec2 ray = (vUv - vec2(0.5, 0.57)) * (0.045 * streak);
+    vec3 trail = beauty.rgb;
+    // Four extra taps inside the existing output pass. Sampling toward the
+    // vanishing point smears scenery outward without temporal history.
+    for (int i = 1; i <= 4; i++) {
+      vec2 uv = clamp(vUv - ray * (float(i) * 0.25), depthTexel * 0.5, vec2(1.0) - depthTexel * 0.5);
+      trail += texture2D(tBeauty, uv).rgb;
+    }
+    beauty.rgb = mix(beauty.rgb, trail * 0.2, 0.7 * streak);
+  }
   float sum = 0.0, weights = 0.0;
   // Depth-aware cross filter smooths the half-resolution AO without bleeding
   // it from trunks onto the sky or between cars and the road behind them.
@@ -75,7 +91,7 @@ void main() {
   #include <colorspace_fragment>
 }`;
 
-/** Optional depth-derived contact shading. Owns only targets/fullscreen resources. */
+/** Optional contact shading and boost streaks. Owns only targets/fullscreen resources. */
 export class ScenePresentation {
   private readonly beauty: THREE.WebGLRenderTarget;
   private readonly ao: THREE.WebGLRenderTarget;
@@ -146,6 +162,7 @@ export class ScenePresentation {
         tBeauty: { value: this.beauty.texture },
         tAO: { value: this.ao.texture },
         aoTexel: { value: new THREE.Vector2(1, 1) },
+        speedStreak: { value: 0 },
       },
       depthTest: false,
       depthWrite: false,
@@ -174,6 +191,23 @@ export class ScenePresentation {
     this.aoMaterial.uniforms.texel.value.set(1 / width, 1 / height);
     this.aoMaterial.uniforms.depthTexel.value.set(1 / width, 1 / height);
     this.composite.uniforms.aoTexel.value.set(1 / aw, 1 / ah);
+  }
+
+  /** Speed is m/s. A zero speed clears feedback immediately outside racing. */
+  updateSpeedFeedback(speed: number, boosted: boolean, delta: number) {
+    const uniform = this.composite.uniforms.speedStreak;
+    if (!Number.isFinite(speed) || speed <= 0) {
+      uniform.value = 0;
+      return;
+    }
+    const ramp = THREE.MathUtils.clamp((speed - 50) / 35, 0, 1);
+    const target = boosted ? ramp * ramp * (3 - 2 * ramp) : 0;
+    const dt = Number.isFinite(delta)
+      ? THREE.MathUtils.clamp(delta, 0, 0.1)
+      : 0;
+    const rate = target > uniform.value ? 12 : 6;
+    uniform.value += (target - uniform.value) * (1 - Math.exp(-rate * dt));
+    if (target === 0 && uniform.value < 0.001) uniform.value = 0;
   }
 
   render(scene: THREE.Scene, camera: THREE.Camera, quality: Quality) {

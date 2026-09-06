@@ -108,8 +108,10 @@ try {
     : species;
   assert.ok(targets.length, 'At least one requested species must exist');
   const allLods = process.env.ASTRA_ALL_LODS === '1';
+  const requestedLods = process.env.ASTRA_LODS?.split(',').map(Number);
   for (const species of targets) {
     for (let lod = 0; lod < (allLods ? species.lods : 1); lod++) {
+      if (requestedLods && !requestedLods.includes(lod)) continue;
       const specimen = await page.evaluate(
         ({ id, lod }) => window.__TREE_QA__.select(id, lod),
         { id: species.id, lod },

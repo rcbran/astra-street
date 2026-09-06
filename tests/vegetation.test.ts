@@ -27,7 +27,8 @@ test('forest batches keep every tree exactly once and release only owned instanc
   );
   let geometryDisposed = 0,
     materialDisposed = 0,
-    instancesDisposed = 0;
+    instancesDisposed = 0,
+    instancesCreated = 0;
   geometry.addEventListener('dispose', () => geometryDisposed++);
   material.addEventListener('dispose', () => materialDisposed++);
   const assets = {
@@ -50,8 +51,10 @@ test('forest batches keep every tree exactly once and release only owned instanc
     })),
   );
   root.traverse((o) => {
-    if (o instanceof THREE.InstancedMesh)
+    if (o instanceof THREE.InstancedMesh) {
+      instancesCreated++;
       o.addEventListener('dispose', () => instancesDisposed++);
+    }
   });
   const count = () => {
     let total = 0;
@@ -69,7 +72,7 @@ test('forest batches keep every tree exactly once and release only owned instanc
   assert.equal(count(), 3);
   forest.dispose();
   assert.equal(root.children.length, 0);
-  assert.equal(instancesDisposed, 9);
+  assert.equal(instancesDisposed, instancesCreated);
   assert.equal(geometryDisposed, 0);
   assert.equal(materialDisposed, 0);
   geometry.dispose();

@@ -6,6 +6,7 @@
 @import '../src/ui/styles/dialogs.css';
 @import '../src/ui/styles/responsive.css';
 @import '../src/ui/styles/street.css';
+@import '../src/ui/styles/race-layout.css';
 @custom-variant dark (&:is(.dark *));
 @theme inline {
   --color-background: var(--background);

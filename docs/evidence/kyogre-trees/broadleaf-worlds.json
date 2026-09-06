@@ -1,0 +1,137 @@
+{
+  "at": "2026-09-06T06:23:38.329Z",
+  "sourceHead": "8d30b17b4e2a696646b353a787e48ad4011822b5",
+  "sourceDirty": true,
+  "assetSha256": "2581f4739d4e2cccbdfeb966b344105a73f21426c09b8aea2ef0911270937a73",
+  "baselineSha256": "df43f1ae17a7dc187de957f430f18ff221ede9be202d49ab5b2efcacca757034",
+  "purpose": "Frozen driving/weather texture comparison; not a timing benchmark.",
+  "captures": [
+    {
+      "circuit": "forest",
+      "weather": "clear",
+      "at": "2026-09-06T06:23:55.797Z",
+      "raceTime": 5.050000000000041,
+      "distance": 81.38724974047102,
+      "framebuffer": [
+        1675,
+        1047
+      ],
+      "renderer": "ANGLE (AMD, AMD Radeon 780M Graphics (radeonsi phoenix ACO), OpenGL ES 3.2)",
+      "headless": true,
+      "mapSettings": [
+        {
+          "minFilter": 1008,
+          "magFilter": 1006,
+          "anisotropy": 8,
+          "generateMipmaps": true
+        }
+      ]
+    },
+    {
+      "circuit": "forest",
+      "weather": "sunset",
+      "at": "2026-09-06T06:24:13.627Z",
+      "raceTime": 5.050000000000041,
+      "distance": 81.3836288553441,
+      "framebuffer": [
+        1675,
+        1047
+      ],
+      "renderer": "ANGLE (AMD, AMD Radeon 780M Graphics (radeonsi phoenix ACO), OpenGL ES 3.2)",
+      "headless": true,
+      "mapSettings": [
+        {
+          "minFilter": 1008,
+          "magFilter": 1006,
+          "anisotropy": 8,
+          "generateMipmaps": true
+        }
+      ]
+    },
+    {
+      "circuit": "forest",
+      "weather": "rain",
+      "at": "2026-09-06T06:24:31.838Z",
+      "raceTime": 5.000000000000038,
+      "distance": 76.71747310359696,
+      "framebuffer": [
+        1675,
+        1047
+      ],
+      "renderer": "ANGLE (AMD, AMD Radeon 780M Graphics (radeonsi phoenix ACO), OpenGL ES 3.2)",
+      "headless": true,
+      "mapSettings": [
+        {
+          "minFilter": 1008,
+          "magFilter": 1006,
+          "anisotropy": 8,
+          "generateMipmaps": true
+        }
+      ]
+    },
+    {
+      "circuit": "riviera",
+      "weather": "clear",
+      "at": "2026-09-06T06:24:47.641Z",
+      "raceTime": 5.016666666666706,
+      "distance": 133.26347341952098,
+      "framebuffer": [
+        1821,
+        1138
+      ],
+      "renderer": "ANGLE (AMD, AMD Radeon 780M Graphics (radeonsi phoenix ACO), OpenGL ES 3.2)",
+      "headless": true,
+      "mapSettings": [
+        {
+          "minFilter": 1008,
+          "magFilter": 1006,
+          "anisotropy": 8,
+          "generateMipmaps": true
+        }
+      ]
+    },
+    {
+      "circuit": "riviera",
+      "weather": "sunset",
+      "at": "2026-09-06T06:25:03.027Z",
+      "raceTime": 5.133333333333378,
+      "distance": 140.59853344710623,
+      "framebuffer": [
+        1821,
+        1138
+      ],
+      "renderer": "ANGLE (AMD, AMD Radeon 780M Graphics (radeonsi phoenix ACO), OpenGL ES 3.2)",
+      "headless": true,
+      "mapSettings": [
+        {
+          "minFilter": 1008,
+          "magFilter": 1006,
+          "anisotropy": 8,
+          "generateMipmaps": true
+        }
+      ]
+    },
+    {
+      "circuit": "riviera",
+      "weather": "rain",
+      "at": "2026-09-06T06:25:19.127Z",
+      "raceTime": 5.050000000000041,
+      "distance": 121.69525461018608,
+      "framebuffer": [
+        1821,
+        1138
+      ],
+      "renderer": "ANGLE (AMD, AMD Radeon 780M Graphics (radeonsi phoenix ACO), OpenGL ES 3.2)",
+      "headless": true,
+      "mapSettings": [
+        {
+          "minFilter": 1008,
+          "magFilter": 1006,
+          "anisotropy": 8,
+          "generateMipmaps": true
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

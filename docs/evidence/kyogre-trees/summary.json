@@ -1,0 +1,169 @@
+[
+  {
+    "route": "Canyon Run",
+    "weather": "Golden hour",
+    "wallSeconds": 113.28604037500001,
+    "fpsMedian": 30.00096777315389,
+    "fpsP10": 29.997000299970047,
+    "framebuffers": [
+      [
+        1821,
+        1138
+      ]
+    ],
+    "endingRollingGpuP95": 32.42633,
+    "highestCpuSubmitP95": 55.80000000074506
+  },
+  {
+    "route": "Canyon Run",
+    "weather": "Clear sky",
+    "wallSeconds": 113.012849375,
+    "fpsMedian": 30.000967773153466,
+    "fpsP10": 30,
+    "framebuffers": [
+      [
+        1821,
+        1138
+      ]
+    ],
+    "endingRollingGpuP95": 29.212744,
+    "highestCpuSubmitP95": 33.19999999925494
+  },
+  {
+    "route": "Canyon Run",
+    "weather": "Wet night",
+    "wallSeconds": 113.95967260299999,
+    "fpsMedian": 30,
+    "fpsP10": 26.55911863072897,
+    "framebuffers": [
+      [
+        1675,
+        1047
+      ],
+      [
+        1821,
+        1138
+      ]
+    ],
+    "endingRollingGpuP95": 34.481314,
+    "highestCpuSubmitP95": 57.09999999962747
+  },
+  {
+    "route": "Pinecrest",
+    "weather": "Golden hour",
+    "wallSeconds": 140.96483246099996,
+    "fpsMedian": 30,
+    "fpsP10": 25.162102003290713,
+    "framebuffers": [
+      [
+        1530,
+        956
+      ],
+      [
+        1675,
+        1047
+      ],
+      [
+        1821,
+        1138
+      ]
+    ],
+    "endingRollingGpuP95": 39.741308,
+    "highestCpuSubmitP95": 59.30000000074506
+  },
+  {
+    "route": "Pinecrest",
+    "weather": "Clear sky",
+    "wallSeconds": 145.896938883,
+    "fpsMedian": 30,
+    "fpsP10": 25.575447570333065,
+    "framebuffers": [
+      [
+        1675,
+        1047
+      ],
+      [
+        1821,
+        1138
+      ]
+    ],
+    "endingRollingGpuP95": 40.007013,
+    "highestCpuSubmitP95": 55.20000000111759
+  },
+  {
+    "route": "Pinecrest",
+    "weather": "Wet night",
+    "wallSeconds": 136.64842862799998,
+    "fpsMedian": 26.55911863073049,
+    "fpsP10": 22.857142857142858,
+    "framebuffers": [
+      [
+        1275,
+        796
+      ],
+      [
+        1384,
+        865
+      ],
+      [
+        1530,
+        956
+      ],
+      [
+        1675,
+        1047
+      ],
+      [
+        1821,
+        1138
+      ]
+    ],
+    "endingRollingGpuP95": 45.843943,
+    "highestCpuSubmitP95": 52.19999999925494
+  },
+  {
+    "route": "Harbor City",
+    "weather": "Golden hour",
+    "wallSeconds": 137.93005897899997,
+    "fpsMedian": 30,
+    "fpsP10": 30,
+    "framebuffers": [
+      [
+        1821,
+        1138
+      ]
+    ],
+    "endingRollingGpuP95": 18.933493,
+    "highestCpuSubmitP95": 6.900000000372529
+  },
+  {
+    "route": "Harbor City",
+    "weather": "Clear sky",
+    "wallSeconds": 137.97821932000002,
+    "fpsMedian": 30.00096777315262,
+    "fpsP10": 30,
+    "framebuffers": [
+      [
+        1821,
+        1138
+      ]
+    ],
+    "endingRollingGpuP95": 18.277166,
+    "highestCpuSubmitP95": 32.40000000037253
+  },
+  {
+    "route": "Harbor City",
+    "weather": "Wet night",
+    "wallSeconds": 131.98548211600001,
+    "fpsMedian": 30.00096777315262,
+    "fpsP10": 30,
+    "framebuffers": [
+      [
+        1821,
+        1138
+      ]
+    ],
+    "endingRollingGpuP95": 22.139384,
+    "highestCpuSubmitP95": 55.90000000037253
+  }
+]

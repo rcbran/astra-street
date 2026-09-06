@@ -3,6 +3,7 @@ import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js
 import { Track, seeded } from '../tracks';
 import type { Weather } from '../types';
 import { canvasTexture } from '../materials';
+import { buildCanyonRoadside } from './canyon-roadside';
 
 interface Placement {
   x: number;
@@ -112,9 +113,13 @@ export function buildRuralRoadside(
   weather: Weather,
 ) {
   if (track.circuit.id === 'marina') return;
+  if (track.circuit.id === 'riviera') {
+    buildCanyonRoadside(root, track, weather);
+    return;
+  }
   const wet = weather === 'rain';
   const half = track.circuit.width / 2;
-  const random = seeded(track.circuit.id === 'forest' ? 7931 : 8931);
+  const random = seeded(7931);
   const steelMap = canvasTexture(128, 128, (context) => {
     context.fillStyle = '#969d9e';
     context.fillRect(0, 0, 128, 128);
@@ -239,7 +244,7 @@ export function buildRuralRoadside(
   });
   const paint = new THREE.MeshStandardMaterial({
     map: paintMap,
-    color: track.circuit.id === 'forest' ? 0xd6d4b8 : 0xcbb36e,
+    color: 0xd6d4b8,
     alphaTest: 0.4,
     roughness: wet ? 0.48 : 0.94,
     metalness: 0,

@@ -6,6 +6,8 @@ import { buildRuralRoadside } from './world/rural-roadside';
 import type { TreeAssets } from './world/tree-assets';
 import { Landscape, buildLandscape } from './world/landscape';
 import { buildRockFormations } from './world/rock-formations';
+import { buildCanyonScanFormations } from './world/canyon-scan-formations';
+import type { CanyonScanAssets } from './world/canyon-scan-assets';
 import { buildBuildings } from './world/buildings';
 import { SPEED_TRAPS } from './street-score';
 import {
@@ -48,6 +50,7 @@ export function buildWorld(
   textures: SurfaceTextures,
   treeAssets: TreeAssets,
   sharedEnvironment: THREE.Texture,
+  canyonScans: CanyonScanAssets,
 ): World {
   const root = new THREE.Group(),
     wet = weather === 'rain',
@@ -58,14 +61,14 @@ export function buildWorld(
   const sky = makeSky(weather);
   root.add(sky);
   const hemi = new THREE.HemisphereLight(
-    wet ? 0x88a7ce : sunset ? 0xe6d7c1 : 0xd7ecff,
-    wet ? 0x39404d : 0x6b7452,
-    wet ? 1.05 : 0.78,
+    wet ? 0x88a7ce : sunset ? 0xd9e4e8 : 0xd7ecff,
+    wet ? 0x39404d : sunset ? 0xb3926d : 0x6b7452,
+    wet ? 1.05 : sunset ? 1.65 : 0.98,
   );
   root.add(hemi);
   const sun = new THREE.DirectionalLight(
-    wet ? 0xbdcfea : sunset ? 0xffdbc0 : 0xfff5df,
-    wet ? 1.25 : sunset ? 3.5 : 3.2,
+    wet ? 0xbdcfea : sunset ? 0xffcd95 : 0xfff5df,
+    wet ? 1.25 : sunset ? 4.1 : 3.2,
   );
   sun.position.set(-150, sunset ? 75 : 260, 210);
   sun.castShadow = true;
@@ -84,13 +87,17 @@ export function buildWorld(
   const landscape = new Landscape(track);
   buildLandscape(root, landscape, weather, textures);
   buildMountains(root, track, weather);
-  buildRockFormations(
-    root,
-    track,
-    weather,
-    rockSurfaces(textures, landscape.forest),
-    landscape,
-  );
+  const scanFormations = landscape.coastal
+    ? buildCanyonScanFormations(root, track, landscape, canyonScans)
+    : null;
+  if (!scanFormations)
+    buildRockFormations(
+      root,
+      track,
+      weather,
+      rockSurfaces(textures, landscape.forest),
+      landscape,
+    );
   const road = new THREE.MeshStandardMaterial({
     map: textures.color,
     normalMap: textures.normal,
@@ -101,6 +108,9 @@ export function buildWorld(
     color: wet ? 0x8e9aaa : 0xffffff,
     envMapIntensity: wet ? 1.5 : 0.45,
   });
+  // Sun-faded Canyon pavement keeps the scanned wear while lifting the very
+  // dark source albedo toward the reference's dusty warm gray.
+  if (landscape.coastal && !wet) road.color.setRGB(2.8, 2.5, 2.1);
   const runOff = city
     ? paintedRunoffMaterial(false, wet)
     : new THREE.MeshStandardMaterial({
@@ -112,7 +122,7 @@ export function buildWorld(
       });
   const floor = groundSurfaces(textures, landscape.forest);
   const gravel = new THREE.MeshStandardMaterial({
-    color: city ? 0xa99f87 : landscape.forest ? 0x99ae7a : 0xe5dfcf,
+    color: city ? 0xa99f87 : landscape.forest ? 0x99ae7a : 0xc7a779,
     roughness: 1,
     map: city ? textures.color : floor.color,
     normalMap: city ? null : floor.normal,
@@ -142,7 +152,14 @@ export function buildWorld(
     for (const edge of [-half + 0.12, half - 0.12])
       root.add(
         mesh(
-          ribbon(track, edge - 0.065, edge + 0.065, 0.019, s, s + 64),
+          ribbon(
+            track,
+            edge - (landscape.coastal ? 0.11 : 0.065),
+            edge + (landscape.coastal ? 0.11 : 0.065),
+            0.019,
+            s,
+            s + 64,
+          ),
           white,
         ),
       );
@@ -565,6 +582,7 @@ export function buildWorld(
       if (disposed) return;
       disposed = true;
       vegetation.dispose();
+      scanFormations?.dispose();
       wetRoad?.mesh.removeFromParent();
       wetRoad?.dispose();
       const geometries = new Set<THREE.BufferGeometry>(),

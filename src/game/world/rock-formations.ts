@@ -3,6 +3,7 @@ import { Track, seeded } from '../tracks';
 import type { Weather } from '../types';
 import { instanced } from './geometry';
 import { Landscape, terrainNoise } from './landscape';
+import { buildCanyonRockFormations } from './canyon-rock';
 
 type Transform = Parameters<typeof instanced>[2][number];
 
@@ -170,6 +171,10 @@ export function buildRockFormations(
   landscape: Landscape,
 ) {
   if (track.circuit.id === 'marina') return;
+  if (track.circuit.id === 'riviera') {
+    buildCanyonRockFormations(root, track, weather, textures, landscape);
+    return;
+  }
   const coastal = landscape.coastal,
     rand = seeded(coastal ? 842 : 247);
   const material = new THREE.MeshStandardMaterial({

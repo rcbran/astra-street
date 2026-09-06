@@ -1,0 +1,31 @@
+{
+  "purpose": "Reference-only visual material for Astra Street review; excluded from runtime assets and source publication.",
+  "post": {
+    "url": "https://x.com/higgsfield_ai/status/2095916820431827408",
+    "author": "@higgsfield_ai",
+    "published_at": "2026-09-04T16:48:04.000Z",
+    "retrieved_at": "2026-09-06T17:55:00Z",
+    "caption_source": "Public X post HTML metadata"
+  },
+  "media": {
+    "tweet_media_id": "2095915630633603074",
+    "url": "https://video.twimg.com/amplify_video/2095915630633603074/vid/avc1/1920x1080/hKc3US_h5e8104jP.mp4?tag=29",
+    "filename": "street-heat.mp4",
+    "bytes": 40501679,
+    "sha256": "03ee95633a224394f1afdc1c11973494d6373edbef2bf4590d761525a5bd57a2",
+    "width": 1920,
+    "height": 1080,
+    "duration_seconds": 28.63,
+    "video_fps": 60,
+    "container": "MP4",
+    "codec": "H.264 High"
+  },
+  "extractions": {
+    "frames": ["frame-00.png", "frame-04.png", "frame-08.png", "frame-12.png", "frame-16.png", "frame-20.png", "frame-24.png", "frame-28.png"],
+    "timestamps_seconds": [0, 4, 8, 12, 16, 20, 24, 28],
+    "frame_dimensions": "1920x1080",
+    "contact_sheet": "contact-sheet.jpg",
+    "tool": "imageio-ffmpeg isolated virtual environment",
+    "notes": "Frames are single decoded full-resolution images sampled at the named timestamps. The video and images are research/reference artifacts only."
+  }
+}

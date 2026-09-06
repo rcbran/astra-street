@@ -1,12 +1,53 @@
 # Performance evidence
 
-## Current tree overhaul — not yet production-benchmarked
+## Current checkpoint — round 10, 2026-09-06
 
-The migration checkpoint changes the target to **30 FPS** and integrates substantially heavier full-3D trees, new terrain/materials, 4096² shadows and a contact-shading trial. **31 tests, typecheck, lint and production build pass**, but final production full-race timing and resource-cycle validation have not run. The modernized `scripts/benchmark.mjs` supports `ASTRA_ALL_WEATHER=1` for nine complete races and owns a dedicated headless context.
+The measured round-10 runtime fingerprint is `bd6bcd102b66ac159f08053dac0b59e9e6056a638f86e9f33eec5430ba0585d1`; the current source was verified identical for runtime files, with only a public notice correction afterward. Dedicated HeadlessChrome 153.0.8010.12 on the Radeon 780M completed a focused wet Pinecrest race at **29.51 FPS median / 21.64 FPS tenth percentile**, 1275×796 through 1821×1138, with 43.59 ms ending rolling GPU p95 and 124.8 ms highest CPU-submit p95. Two laps, frozen results/all-driver state, three resource cycles and zero browser errors passed. This remains headless shared-PC evidence, not visible-display pacing; the 30 FPS target is still open. [Race report](evidence/kyogre-street/round10-wet-pinecrest-race.json).
 
-Static shape QA captured 434 tree views and 90 undergrowth views in headless Chrome152 on ANGLE/Metal Apple M4 Max with no errors. Static images are not timing evidence. Short development driving captures displayed 30 FPS at CSS1440×900/DPR1; an A/B used an1821×1138 framebuffer at CSS1440×900/DPR2. Neither establishes sustained production performance. Selected evidence is in `evidence/trees-wip/`; reports record the dirty source based on `b647678`, not a clean measured release.
+The paired frozen GPU budget report passed at the same hardware/pixel setup: Canyon sunset baseline **29.78 ms GPU / 4.70 ms CPU** and wet Pinecrest baseline **37.65 ms / 20.40 ms**; direct presentation measured 23.66 ms and 29.46 ms. These are fixed-pose ablations, not full-race FPS or visual-equivalence claims. [GPU report](evidence/kyogre-street/gpu-budget-round-10.json).
 
-A separate broadleaf atlas filtering defect remains unresolved. See `HANDOFF.md`. Re-measure after that fix and final visual acceptance. The user is migrating to a mini PC: identify its real GPU and distinguish hardware from software rendering. M4 Max figures must not be presented as mini PC performance.
+## Reference iteration — kyogre, 2026-09-06
+
+The round-08 production build adds per-LOD tree bins, a 2,400-triangle fourth conifer model, tighter occupied bounds, the terrain soil sampling branch, reduced Canyon groves and closed CC0 cliff scans. Runtime fingerprint: `190576c7deda82aba2962a8d5b407d2497ef1a965c1349673eb35fcfbb5532ec`. Subsequent wider cliff placement is not represented by these timings.
+
+Dedicated hardware HeadlessChrome on the same Radeon 780M, frozen pose, Balanced quality, 1440×900 CSS/DPR2 and **1821×1138 internal pixels**, no video recording. Each mode has ten retained samples after two warmups, alternating order. CPU/GPU activity from other projects was not isolated. The comparison with round 03 includes several geometry/layout changes and separate runs; it does not isolate the contribution of one optimization.
+
+| Route/weather | Round 03 median GPU | Round 08 median GPU | Round 08 CPU submission median | Submitted triangles | Draw calls |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Canyon / sunset | 38.37 ms | 28.91 ms | 6.40 ms | 8.48 million | 398 |
+| Pinecrest / rain | 46.63 ms | 41.44 ms | 49.00 ms | 27.10 million | 1,552 |
+
+Canyon is within the 33.3 ms GPU frame budget in this frozen sample. Wet Pinecrest still exceeds it and has substantial CPU submission time. These are not full-race FPS or visible pacing results. The CPU figure includes submission stalls; it is not a profile assigning all time to JavaScript. Full mode samples, exact source file hashes, renderer and category counts are in [the round-08 report](evidence/kyogre-street/gpu-budget-round-08.json). A subsequent full production wet-Pinecrest two-lap race completed in 143.89 seconds at **21.00 FPS median / 11.80 FPS tenth percentile**. Frozen results, all-driver state and three resource cycles passed with zero browser errors. This remains below target. The complete headless run, adaptive framebuffer samples and exact limitations are in [the race report](evidence/kyogre-street/round08-wet-pinecrest-race.json). Final production keyboard/UI, emulated touch and all-nine-world resource checks passed on the round-10 runtime; see `round10-{browser,render,touch}-check.json` in the same evidence directory. The first launch without the explicit dedicated CDP endpoint selected software rendering and failed the hardware assertion before race measurement; that discarded attempt is not performance evidence.
+
+## Earlier broadleaf correction — kyogre, 2026-09-06
+
+**Nine complete two-lap production races, frozen results and three repeated route/weather resource cycles passed.** The 30 FPS target is preserved. Eight of nine median FPS values round to 30. **Wet Pinecrest falls below target: 26.56 FPS median and 22.86 FPS tenth percentile**, despite adaptive resolution. The target is not met everywhere on this GPU.
+
+Host: **kyogre, Arch Linux 7.2.3-arch1-2, AMD Ryzen 7 8745H / Radeon 780M**. Dedicated HeadlessChrome 153.0.8010.12 reports `ANGLE (AMD, AMD Radeon 780M Graphics (radeonsi phoenix ACO), OpenGL ES 3.2)` using `ASTRA_BROWSER_ANGLE=gl-egl`. Other agents/projects may use the PC; GPU load was not isolated. These are headless renderer workloads, not visible-display pacing, thermals, power or human driving feedback. Node 26.8.1 built and served the existing lockfile.
+
+Balanced quality, chase camera, assisted pilot, 1440×900 CSS/DPR2. The maximum internal framebuffer is **1821×1138** (about 2.07 million pixels), not a 1920×1080 framebuffer or native DPR2. Adaptation remains enabled. Ranges show the smallest/largest actual racing framebuffer, including warm-up; not every intervening resolution was used.
+
+| Route / weather | Observed run (s) | Median FPS | Tenth-percentile FPS | Internal framebuffer range | Ending rolling GPU p95 |
+| --- | ---: | ---: | ---: | --- | ---: |
+| Canyon Run / Golden hour | 113.3 | 30.00 | 30.00 | 1821×1138 | 32.43 ms |
+| Canyon Run / Clear sky | 113.0 | 30.00 | 30.00 | 1821×1138 | 29.21 ms |
+| Canyon Run / Wet night | 114.0 | 30.00 | 26.56 | 1675×1047 → 1821×1138 | 34.48 ms |
+| Pinecrest / Golden hour | 141.0 | 30.00 | 25.16 | 1530×956 → 1821×1138 | 39.74 ms |
+| Pinecrest / Clear sky | 145.9 | 30.00 | 25.58 | 1675×1047 → 1821×1138 | 40.01 ms |
+| Pinecrest / Wet night | 136.6 | 26.56 | 22.86 | 1275×796 → 1821×1138 | 45.84 ms |
+| Harbor City / Golden hour | 137.9 | 30.00 | 30.00 | 1821×1138 | 18.93 ms |
+| Harbor City / Clear sky | 138.0 | 30.00 | 30.00 | 1821×1138 | 18.28 ms |
+| Harbor City / Wet night | 132.0 | 30.00 | 30.00 | 1821×1138 | 22.14 ms |
+
+Observed run duration includes countdown and up to about one second of finish polling latency. Two completed laps are corroborated by every run’s lap telemetry and final distance exceeding twice its route length; the original harness asserted finish and best lap, and now also asserts the lap count and finish distance explicitly. The nine-run freeze check covers player distance, race clock and finishing position after 1.1 seconds; the extended harness also checks all drivers and a compact result state. FPS percentiles summarize one-second racing windows, excluding each race's first six windows. They are not per-frame 1% lows. GPU p95 is the last racing snapshot's rolling query window, not whole-race p95 or maximum. The report’s highest rolling GPU p95 can include warm-up or a preceding world within its rolling query window; it is not a race-only maximum. Full per-second telemetry, frame-interval/submission p95 samples, framebuffers observed at roughly one-second intervals, asset hashes, timestamps, frozen-result assertions and all 27 resource-cycle rows are in [the raw report](evidence/kyogre-trees/full-races.json). CPU submission is distinct from GPU completion and excludes some preparation work. No browser/shader errors were captured.
+
+The broadleaf atlas correction preserves alpha, mapped colors and geometry, and adds no runtime pass. Six exact frozen route/weather A/B pairs and 62 broadleaf angle/LOD views passed. **31 deterministic tests, typecheck, lint, build, production keyboard/responsive UI, emulated touch, DPR/quality/fullscreen, moving-camera and nine-world checks passed.** Presentation targets track the physical framebuffer. Shared tree/surface/HDR resources survive world rebuilds and release once at engine teardown; renderer-accounted counts are not a JavaScript heap audit.
+
+The retained contact-shading trial costs about **6.7 ms** on this GPU in fixed Pinecrest views at 1821×1138: clear 34.91 ms direct / 41.59 ms contact-shaded; rain 38.58 / 45.29 ms. These are medians of 20 retained asynchronous samples per mode, alternating order after warm-up, with the same Balanced scene/shadows/camera. The difference includes MSAA4 half-float presentation and both fullscreen passes, not just the shading shader. They are separate from racing FPS. See [presentation cost](evidence/kyogre-trees/presentation-cost.json). The trial remains a candidate for performance tuning; its full-game resource lifecycle now passes.
+
+Measured source is the dirty tree based on `8d30b17`, with broadleaf GLB SHA256 `28bbaeba0b58df18cfb50291a201a415431b8fe086d90e85ce497e7969c4a93b`. That parent SHA alone does not identify the corrected source. Rendering was unchanged during the complete-race sweep. A subsequent padding-margin correction preserves additional valid bilinear taps; the current GLB hash is `2581f4739d4e2cccbdfeb966b344105a73f21426c09b8aea2ef0911270937a73`. It changes RGB only, preserving alpha, geometry, materials and rendering workload. These nine timing runs belong to the earlier hash; final-asset visual checks and a focused wet Pinecrest production repeat are recorded separately. The overhaul is not deployed; live private Site version 2 still uses the older landscape. The unrun inherited benchmark initially stopped before racing on a weather-radio selector; the selector was corrected before these nine runs.
+
+The focused final-asset wet Pinecrest repeat completed two laps in 138.2 observed seconds: **22.62 FPS median / 18.69 FPS tenth percentile**, with racing framebuffers 1275×796 through 1821×1138 and ending rolling GPU p95 50.37 ms. It passed the stronger finish-distance, all-driver/result freeze and three world-cycle checks with no browser errors. This is a separate shared-PC run, not a controlled performance comparison between the two atlas margins; the cause of the timing difference was not isolated. See [final-asset repeat](evidence/kyogre-trees/final-wet-pinecrest.json).
 
 Everything below is historical unless explicitly headed **Current budget policy**.
 

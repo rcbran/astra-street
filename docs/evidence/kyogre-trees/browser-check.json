@@ -1,0 +1,76 @@
+{
+  "date": "2026-09-06T05:50:42.044Z",
+  "host": "kyogre",
+  "browser": "153.0.8010.12",
+  "build": "production",
+  "menus": [
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "startButton": {
+        "x": 36,
+        "y": 721,
+        "width": 318,
+        "height": 43
+      }
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "startButton": {
+        "x": 552,
+        "y": 314,
+        "width": 259,
+        "height": 38
+      }
+    },
+    {
+      "viewport": [
+        932,
+        430
+      ],
+      "startButton": {
+        "x": 640,
+        "y": 354,
+        "width": 259,
+        "height": 38
+      }
+    },
+    {
+      "viewport": [
+        1024,
+        600
+      ],
+      "startButton": {
+        "x": 732,
+        "y": 524,
+        "width": 259,
+        "height": 38
+      }
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "startButton": {
+        "x": 1071.171875,
+        "y": 712.3106689453125,
+        "width": 292,
+        "height": 51
+      }
+    }
+  ],
+  "errors": [],
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
+  "captureMode": "headless",
+  "steering": {
+    "rightOffset": -0.7549414255751058,
+    "leftOffset": 0.7642035359756189
+  },
+  "status": "passed"
+}

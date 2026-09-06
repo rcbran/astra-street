@@ -18,13 +18,15 @@ All gameplay assets are served locally from `public/assets/`. The complete file 
 
 Poly Haven's [asset license](https://polyhaven.com/license) is [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/). Keep the bundled [asset notices](../public/assets/NOTICE.txt) with redistributed assets. The repository-wide source license and public GitHub visibility are separate, undecided choices.
 
+Two CC0 Namaqualand cliff meshes are also integrated for Canyon Run; their placement is still under visual review. Source authors, original texture checksums and derived geometry are recorded in [canyon scan notes](assets/canyon-scans.md).
+
 ## Tree preparation and visual limits
 
-The seven tree variants each have three levels of real branch and distributed foliage geometry. None uses a whole-tree image or crossed whole-tree cards. Individual needle sprays and leaves use alpha-tested surfaces at many positions and orientations inside the crown, a normal real-time foliage technique; they are not individual modeled needles. The tree family GLBs share embedded textures across variants and levels. Full processing/provenance is in [tree asset notes](assets/trees.md), with authoring tools in `scripts/assets/trees/`.
+The seven source tree variants each have three authored levels of real branch and distributed foliage geometry. Runtime adds a fourth level to the six conifers; the broadleaf retains three. Canyon also adds three four-level low-crown fir derivatives. The source GLBs remain three-level files. None uses a whole-tree image or crossed whole-tree cards. Individual needle sprays and leaves use alpha-tested surfaces at many positions and orientations inside the crown, a normal real-time foliage technique; they are not individual modeled needles. The tree family GLBs share embedded textures across variants and levels. Full processing/provenance is in [tree asset notes](assets/trees.md), with authoring tools in `scripts/assets/trees/`.
 
 The source fir UV data required conversion before export. Incorrect source mask colors were removed. Near wood budgets were increased after simplification produced triangular fins. Far foliage now keeps complete source components rather than collapsing leaf shapes. Pine/broadleaf transparent-edge RGB is extended from opaque foliage to reduce white mipmap fringes, while every alpha value and opaque color is preserved. Runtime uses explicit cutouts with hardware MSAA; alpha-to-coverage was rejected after it thinned and brightened needle sprays.
 
-**Migration limitation:** some broadleaf crowns still show white/cyan contamination when mip-filtered in the full world. The current edge correction does not alter opaque unused white atlas areas. The diagnostic A/B and next corrective work are recorded in `HANDOFF.md`; this is not considered visually resolved.
+The broadleaf white/cyan mipmap defect is corrected with UV-aware RGB padding that preserves alpha and all mapped colors. See `BROADLEAF-DIAGNOSTIC.md` for the current checks and remaining LOD limits.
 
 Far variants remain less detailed and broadleaf coverage is lower than near coverage. They are used only at distance; exact LOD thresholds vary with quality. Native broadleaf height is approximately 4.7 m, so its world placement stays roughly 5–11 m. Conifers are generally 13–28 m, with smaller sapling accents. The broadleaf is a visual accent for fictional places, not a claim about native species.
 

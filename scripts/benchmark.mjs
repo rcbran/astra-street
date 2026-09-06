@@ -23,10 +23,22 @@ const weatherLabels = {
   clear: 'Clear sky',
   rain: 'Wet night',
 };
-const combinations = circuits.flatMap((circuit) =>
-  (allWeather ? Object.keys(weatherLabels) : [circuit.weather]).map(
-    (weather) => ({ ...circuit, weather }),
-  ),
+const combinations = circuits
+  .flatMap((circuit) =>
+    (allWeather ? Object.keys(weatherLabels) : [circuit.weather]).map(
+      (weather) => ({ ...circuit, weather }),
+    ),
+  )
+  .filter(
+    (circuit) =>
+      (!process.env.ASTRA_CIRCUIT ||
+        circuit.id === process.env.ASTRA_CIRCUIT) &&
+      (!process.env.ASTRA_WEATHER ||
+        circuit.weather === process.env.ASTRA_WEATHER),
+  );
+assert.ok(
+  combinations.length,
+  'Requested route/weather must exist in this sweep',
 );
 const errors = [];
 const report = {
@@ -34,6 +46,9 @@ const report = {
   host: hostname(),
   origin,
   build: process.env.ASTRA_BUILD_LABEL ?? 'production',
+  buildSource: process.env.ASTRA_SOURCE_MANIFEST
+    ? JSON.parse(await readFile(process.env.ASTRA_SOURCE_MANIFEST, 'utf8'))
+    : null,
   sourceHead: execFileSync('git', ['rev-parse', 'HEAD'], {
     encoding: 'utf8',
   }).trim(),
@@ -79,6 +94,24 @@ const stopPilot = async () => {
     await page.keyboard.up(key).catch(() => {});
   }
 };
+const finishedState = () =>
+  page.evaluate(() => {
+    const e = window.__ASTRA__,
+      t = e.telemetry;
+    return {
+      player: { ...e.player },
+      opponents: e.opponents.map((driver) => ({ ...driver })),
+      phase: e.phase,
+      raceTime: t.raceTime,
+      lap: t.lap,
+      laps: t.laps,
+      bestLap: t.bestLap,
+      lastLap: t.lastLap,
+      finishedPosition: t.finishedPosition,
+      boost: t.boost,
+      score: t.score,
+    };
+  });
 const capture = async (filename) => {
   const before = await page.evaluate(() => ({
     at: new Date().toISOString(),
@@ -118,10 +151,16 @@ const selectCircuit = async ({ id, label, weather }) => {
     },
     { id, weather },
   );
-  await page
-    .getByRole('radio', { name: weatherLabels[weather], exact: true })
-    .isChecked()
-    .then((checked) => assert.ok(checked));
+  // The styled radio span is visually clipped; query it inside the visible
+  // weather label rather than relying on getByRole's accessibility filtering.
+  assert.equal(
+    await page
+      .locator('.weather-option')
+      .filter({ hasText: weatherLabels[weather] })
+      .locator('[role="radio"]')
+      .getAttribute('aria-checked'),
+    'true',
+  );
 };
 const percentile = (values, fraction) => {
   const sorted = [...values].sort((a, b) => a - b);
@@ -324,6 +363,8 @@ try {
       // framebuffer separately from the finished-state snapshot.
       framebuffer: racingSnapshots.at(-1)?.renderer.size,
       result: final.telemetry,
+      trackLength: final.trackLength,
+      finalPosition: final.position,
       finalRenderer: final.renderer,
       scenery: await page.evaluate(() => window.__ASTRA__.world.root.userData),
       samples,
@@ -333,7 +374,14 @@ try {
     report.races.push(race);
     delete report.activeRun;
     assert.equal(final.telemetry.phase, 'finished');
+    assert.equal(final.telemetry.laps, 2);
+    assert.equal(final.telemetry.lap, 2);
+    assert.ok(
+      final.position.distance >= final.trackLength * 2,
+      'Two complete laps',
+    );
     assert.ok(final.telemetry.bestLap > 20);
+    const finishedBefore = await finishedState();
     await capture(`${key}-results.png`);
     await page.waitForTimeout(1100);
     const frozen = await page.evaluate(() => window.__ASTRA__.diagnostics());
@@ -351,6 +399,13 @@ try {
       frozen.telemetry.finishedPosition,
       final.telemetry.finishedPosition,
     );
+    const finishedAfter = await finishedState();
+    assert.deepEqual(
+      finishedAfter,
+      finishedBefore,
+      'Finished drivers and results stay frozen',
+    );
+    race.frozenState = finishedAfter;
     race.frozenResultVerified = true;
     await page
       .getByRole('button', { name: 'Back to circuits', exact: true })

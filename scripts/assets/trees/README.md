@@ -20,6 +20,13 @@ blender -b -t 4 --python /tmp/astra-tree-assets/export_trees.py -- tree_small_02
 ```
 
 4. Run `python3 /tmp/astra-tree-assets/finalize_glb.py` to set explicit foliage alpha masks and normalize texture-coordinate selections.
+   Then pad the broadleaf atlas **after export/repacking** (also works on an existing runtime GLB):
+
+   ```sh
+   python3 scripts/assets/trees/pad_broadleaf_atlas.py /tmp/astra-tree-assets/output/tree_small_02.glb /tmp/astra-tree-review/tree_small_02.glb
+   ```
+
+   Review that candidate before integration. This portable step uses UV coverage from all three LODs, with a two-texel margin verified against continuous bilinear support, to identify protected pixels. Only RGB outside that region changes; padding comes from mapped opaque non-white pixels. All alpha values, protected source colors, geometry and other image payloads remain byte-identical. The original bake contains opaque white unused regions, so alpha-only edge dilation is insufficient. A `.padding.json` invariant/hash report and `.atlas.png` accompany the candidate. Running it again is byte-idempotent. Do not run the old foliage repacker after this step, which would restore the unpadded image.
 5. Optionally install `gltf-validator` under `/tmp/astra-tree-assets/validator/node_modules/`, then run `node /tmp/astra-tree-assets/validate.cjs`.
 6. Optional CPU studio review: `blender -b -t 4 --python /tmp/astra-tree-assets/render_preview.py -- pine_tree_01 2` renders the first variant at the selected LOD from four horizontal angles.
 

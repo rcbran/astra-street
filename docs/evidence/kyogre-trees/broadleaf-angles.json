@@ -1,0 +1,1243 @@
+{
+  "at": "2026-09-06T06:26:01.697Z",
+  "sourceHead": "8d30b17b4e2a696646b353a787e48ad4011822b5",
+  "sourceDirty": true,
+  "browser": "153.0.8010.12",
+  "purpose": "Static all-angle shape/material QA. Not a performance benchmark.",
+  "specimens": [
+    {
+      "id": "broadleaf_a",
+      "lod": 0,
+      "bounds": {
+        "min": [
+          -1.4219778776168823,
+          0,
+          -1.4771302938461304
+        ],
+        "max": [
+          1.6790183782577515,
+          4.7406589317834005,
+          2.878847599029541
+        ],
+        "size": [
+          3.100996255874634,
+          4.7406589317834005,
+          4.355977892875671
+        ]
+      },
+      "triangles": 54399,
+      "geometries": 3,
+      "materials": 3,
+      "silhouetteMinMaxAreaRatio": 0.7347030833927506,
+      "silhouetteAveragePixels": 125372.875,
+      "silhouetteAssessment": "Descriptive only: low ratios flag an angle for visual review; natural asymmetric crowns can legitimately differ."
+    },
+    {
+      "id": "broadleaf_a",
+      "lod": 1,
+      "bounds": {
+        "min": [
+          -1.3020548820495605,
+          0,
+          -1.4726219177246094
+        ],
+        "max": [
+          1.5443952083587646,
+          4.745230077649467,
+          2.929264545440674
+        ],
+        "size": [
+          2.846450090408325,
+          4.745230077649467,
+          4.401886463165283
+        ]
+      },
+      "triangles": 14197,
+      "geometries": 3,
+      "materials": 3,
+      "silhouetteMinMaxAreaRatio": 0.7993351048532744,
+      "silhouetteAveragePixels": 81124.25,
+      "coverageRelativeToNear": 0.6470638086587709,
+      "silhouetteAssessment": "Descriptive only: low ratios flag an angle for visual review; natural asymmetric crowns can legitimately differ."
+    },
+    {
+      "id": "broadleaf_a",
+      "lod": 2,
+      "bounds": {
+        "min": [
+          -1.2130365371704102,
+          0,
+          -1.391526460647583
+        ],
+        "max": [
+          1.7482863664627075,
+          4.7455390396062285,
+          2.8178791999816895
+        ],
+        "size": [
+          2.9613229036331177,
+          4.7455390396062285,
+          4.2094056606292725
+        ]
+      },
+      "triangles": 8697,
+      "geometries": 3,
+      "materials": 3,
+      "silhouetteMinMaxAreaRatio": 0.7625532760913056,
+      "silhouetteAveragePixels": 71586.5,
+      "coverageRelativeToNear": 0.5709887405868295,
+      "silhouetteAssessment": "Descriptive only: low ratios flag an angle for visual review; natural asymmetric crowns can legitimately differ."
+    }
+  ],
+  "captures": [
+    {
+      "species": "broadleaf_a",
+      "lod": 0,
+      "filename": "broadleaf_a-lod0-a0-e0.png",
+      "at": "2026-09-06T06:26:02.181Z",
+      "monotonicMs": 450.5,
+      "azimuth": 0,
+      "elevation": 0,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 54401,
+      "captureEndedAt": "2026-09-06T06:26:02.260Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 0,
+      "filename": "broadleaf_a-lod0-a30-e0.png",
+      "at": "2026-09-06T06:26:02.262Z",
+      "monotonicMs": 531.9000000003725,
+      "azimuth": 30,
+      "elevation": 0,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 54401,
+      "captureEndedAt": "2026-09-06T06:26:02.349Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 0,
+      "filename": "broadleaf_a-lod0-a60-e0.png",
+      "at": "2026-09-06T06:26:02.351Z",
+      "monotonicMs": 620.8000000007451,
+      "azimuth": 60,
+      "elevation": 0,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 54401,
+      "captureEndedAt": "2026-09-06T06:26:02.435Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 0,
+      "filename": "broadleaf_a-lod0-a90-e0.png",
+      "at": "2026-09-06T06:26:02.436Z",
+      "monotonicMs": 706,
+      "azimuth": 90,
+      "elevation": 0,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 54401,
+      "captureEndedAt": "2026-09-06T06:26:02.520Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 0,
+      "filename": "broadleaf_a-lod0-a120-e0.png",
+      "at": "2026-09-06T06:26:02.521Z",
+      "monotonicMs": 790.6999999992549,
+      "azimuth": 120,
+      "elevation": 0,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 54401,
+      "captureEndedAt": "2026-09-06T06:26:02.600Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 0,
+      "filename": "broadleaf_a-lod0-a150-e0.png",
+      "at": "2026-09-06T06:26:02.602Z",
+      "monotonicMs": 872.0999999996275,
+      "azimuth": 150,
+      "elevation": 0,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 54401,
+      "captureEndedAt": "2026-09-06T06:26:02.684Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 0,
+      "filename": "broadleaf_a-lod0-a180-e0.png",
+      "at": "2026-09-06T06:26:02.686Z",
+      "monotonicMs": 955.5,
+      "azimuth": 180,
+      "elevation": 0,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 54401,
+      "captureEndedAt": "2026-09-06T06:26:02.769Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 0,
+      "filename": "broadleaf_a-lod0-a210-e0.png",
+      "at": "2026-09-06T06:26:02.771Z",
+      "monotonicMs": 1040.5,
+      "azimuth": 210,
+      "elevation": 0,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 54401,
+      "captureEndedAt": "2026-09-06T06:26:02.854Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 0,
+      "filename": "broadleaf_a-lod0-a240-e0.png",
+      "at": "2026-09-06T06:26:02.855Z",
+      "monotonicMs": 1125,
+      "azimuth": 240,
+      "elevation": 0,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 54401,
+      "captureEndedAt": "2026-09-06T06:26:02.937Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 0,
+      "filename": "broadleaf_a-lod0-a270-e0.png",
+      "at": "2026-09-06T06:26:02.939Z",
+      "monotonicMs": 1208.699999999255,
+      "azimuth": 270,
+      "elevation": 0,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 54401,
+      "captureEndedAt": "2026-09-06T06:26:03.021Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 0,
+      "filename": "broadleaf_a-lod0-a300-e0.png",
+      "at": "2026-09-06T06:26:03.022Z",
+      "monotonicMs": 1292.199999999255,
+      "azimuth": 300,
+      "elevation": 0,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 54401,
+      "captureEndedAt": "2026-09-06T06:26:03.101Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 0,
+      "filename": "broadleaf_a-lod0-a330-e0.png",
+      "at": "2026-09-06T06:26:03.102Z",
+      "monotonicMs": 1372,
+      "azimuth": 330,
+      "elevation": 0,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 54401,
+      "captureEndedAt": "2026-09-06T06:26:03.176Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 0,
+      "filename": "broadleaf_a-lod0-a0-e-12.png",
+      "at": "2026-09-06T06:26:03.177Z",
+      "monotonicMs": 1447,
+      "azimuth": 0,
+      "elevation": -12,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 54401,
+      "captureEndedAt": "2026-09-06T06:26:03.237Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 0,
+      "filename": "broadleaf_a-lod0-a0-e32.png",
+      "at": "2026-09-06T06:26:03.238Z",
+      "monotonicMs": 1508.199999999255,
+      "azimuth": 0,
+      "elevation": 32,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 54401,
+      "captureEndedAt": "2026-09-06T06:26:03.310Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 0,
+      "filename": "broadleaf_a-lod0-a90-e-12.png",
+      "at": "2026-09-06T06:26:03.311Z",
+      "monotonicMs": 1580.699999999255,
+      "azimuth": 90,
+      "elevation": -12,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 54401,
+      "captureEndedAt": "2026-09-06T06:26:03.396Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 0,
+      "filename": "broadleaf_a-lod0-a90-e32.png",
+      "at": "2026-09-06T06:26:03.397Z",
+      "monotonicMs": 1666.5999999996275,
+      "azimuth": 90,
+      "elevation": 32,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 54401,
+      "captureEndedAt": "2026-09-06T06:26:03.491Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 0,
+      "filename": "broadleaf_a-lod0-a180-e-12.png",
+      "at": "2026-09-06T06:26:03.492Z",
+      "monotonicMs": 1762,
+      "azimuth": 180,
+      "elevation": -12,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 54401,
+      "captureEndedAt": "2026-09-06T06:26:03.556Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 0,
+      "filename": "broadleaf_a-lod0-a180-e32.png",
+      "at": "2026-09-06T06:26:03.557Z",
+      "monotonicMs": 1826.800000000745,
+      "azimuth": 180,
+      "elevation": 32,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 54401,
+      "captureEndedAt": "2026-09-06T06:26:03.633Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 0,
+      "filename": "broadleaf_a-lod0-a270-e-12.png",
+      "at": "2026-09-06T06:26:03.634Z",
+      "monotonicMs": 1904,
+      "azimuth": 270,
+      "elevation": -12,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 54401,
+      "captureEndedAt": "2026-09-06T06:26:03.714Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 0,
+      "filename": "broadleaf_a-lod0-a270-e32.png",
+      "at": "2026-09-06T06:26:03.715Z",
+      "monotonicMs": 1985.199999999255,
+      "azimuth": 270,
+      "elevation": 32,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 54401,
+      "captureEndedAt": "2026-09-06T06:26:03.802Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 0,
+      "filename": "broadleaf_a-lod0-a0-e0-silhouette.png",
+      "at": "2026-09-06T06:26:03.816Z",
+      "monotonicMs": 2085.9000000003725,
+      "azimuth": 0,
+      "elevation": 0,
+      "silhouette": true,
+      "light": "clear",
+      "calls": 3,
+      "triangles": 54399,
+      "silhouetteCoverage": {
+        "pixels": 100982,
+        "fraction": 0.10685925925925926,
+        "bounds": [
+          213,
+          168,
+          659,
+          935
+        ]
+      },
+      "captureEndedAt": "2026-09-06T06:26:03.856Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 0,
+      "filename": "broadleaf_a-lod0-a45-e0-silhouette.png",
+      "at": "2026-09-06T06:26:03.865Z",
+      "monotonicMs": 2134.9000000003725,
+      "azimuth": 45,
+      "elevation": 0,
+      "silhouette": true,
+      "light": "clear",
+      "calls": 3,
+      "triangles": 54399,
+      "silhouetteCoverage": {
+        "pixels": 128095,
+        "fraction": 0.13555026455026456,
+        "bounds": [
+          103,
+          163,
+          818,
+          927
+        ]
+      },
+      "captureEndedAt": "2026-09-06T06:26:03.913Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 0,
+      "filename": "broadleaf_a-lod0-a90-e0-silhouette.png",
+      "at": "2026-09-06T06:26:03.921Z",
+      "monotonicMs": 2191.4000000003725,
+      "azimuth": 90,
+      "elevation": 0,
+      "silhouette": true,
+      "light": "clear",
+      "calls": 3,
+      "triangles": 54399,
+      "silhouetteCoverage": {
+        "pixels": 137446,
+        "fraction": 0.14544550264550266,
+        "bounds": [
+          113,
+          146,
+          817,
+          890
+        ]
+      },
+      "captureEndedAt": "2026-09-06T06:26:03.964Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 0,
+      "filename": "broadleaf_a-lod0-a135-e0-silhouette.png",
+      "at": "2026-09-06T06:26:03.972Z",
+      "monotonicMs": 2241.800000000745,
+      "azimuth": 135,
+      "elevation": 0,
+      "silhouette": true,
+      "light": "clear",
+      "calls": 3,
+      "triangles": 54399,
+      "silhouetteCoverage": {
+        "pixels": 124546,
+        "fraction": 0.131794708994709,
+        "bounds": [
+          201,
+          123,
+          737,
+          893
+        ]
+      },
+      "captureEndedAt": "2026-09-06T06:26:04.007Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 0,
+      "filename": "broadleaf_a-lod0-a180-e0-silhouette.png",
+      "at": "2026-09-06T06:26:04.015Z",
+      "monotonicMs": 2284.9000000003725,
+      "azimuth": 180,
+      "elevation": 0,
+      "silhouette": true,
+      "light": "clear",
+      "calls": 3,
+      "triangles": 54399,
+      "silhouetteCoverage": {
+        "pixels": 121828,
+        "fraction": 0.12891851851851852,
+        "bounds": [
+          157,
+          109,
+          709,
+          924
+        ]
+      },
+      "captureEndedAt": "2026-09-06T06:26:04.059Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 0,
+      "filename": "broadleaf_a-lod0-a225-e0-silhouette.png",
+      "at": "2026-09-06T06:26:04.067Z",
+      "monotonicMs": 2336.800000000745,
+      "azimuth": 225,
+      "elevation": 0,
+      "silhouette": true,
+      "light": "clear",
+      "calls": 3,
+      "triangles": 54399,
+      "silhouetteCoverage": {
+        "pixels": 135517,
+        "fraction": 0.1434042328042328,
+        "bounds": [
+          64,
+          115,
+          720,
+          938
+        ]
+      },
+      "captureEndedAt": "2026-09-06T06:26:04.113Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 0,
+      "filename": "broadleaf_a-lod0-a270-e0-silhouette.png",
+      "at": "2026-09-06T06:26:04.121Z",
+      "monotonicMs": 2390.9000000003725,
+      "azimuth": 270,
+      "elevation": 0,
+      "silhouette": true,
+      "light": "clear",
+      "calls": 3,
+      "triangles": 54399,
+      "silhouetteCoverage": {
+        "pixels": 135254,
+        "fraction": 0.14312592592592593,
+        "bounds": [
+          116,
+          136,
+          817,
+          921
+        ]
+      },
+      "captureEndedAt": "2026-09-06T06:26:04.163Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 0,
+      "filename": "broadleaf_a-lod0-a315-e0-silhouette.png",
+      "at": "2026-09-06T06:26:04.171Z",
+      "monotonicMs": 2441.199999999255,
+      "azimuth": 315,
+      "elevation": 0,
+      "silhouette": true,
+      "light": "clear",
+      "calls": 3,
+      "triangles": 54399,
+      "silhouetteCoverage": {
+        "pixels": 119315,
+        "fraction": 0.12625925925925927,
+        "bounds": [
+          183,
+          157,
+          751,
+          916
+        ]
+      },
+      "captureEndedAt": "2026-09-06T06:26:04.210Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 0,
+      "filename": "broadleaf_a-lod0-a45-e8-sunset.png",
+      "at": "2026-09-06T06:26:04.211Z",
+      "monotonicMs": 2481.300000000745,
+      "azimuth": 45,
+      "elevation": 8,
+      "silhouette": false,
+      "light": "sunset",
+      "calls": 4,
+      "triangles": 54401,
+      "captureEndedAt": "2026-09-06T06:26:04.279Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 0,
+      "filename": "broadleaf_a-lod0-a225-e8-rain.png",
+      "at": "2026-09-06T06:26:04.280Z",
+      "monotonicMs": 2550.0999999996275,
+      "azimuth": 225,
+      "elevation": 8,
+      "silhouette": false,
+      "light": "rain",
+      "calls": 4,
+      "triangles": 54401,
+      "captureEndedAt": "2026-09-06T06:26:04.362Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 1,
+      "filename": "broadleaf_a-lod1-a0-e0.png",
+      "at": "2026-09-06T06:26:04.374Z",
+      "monotonicMs": 2644.4000000003725,
+      "azimuth": 0,
+      "elevation": 0,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 14199,
+      "captureEndedAt": "2026-09-06T06:26:04.431Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 1,
+      "filename": "broadleaf_a-lod1-a45-e0.png",
+      "at": "2026-09-06T06:26:04.432Z",
+      "monotonicMs": 2702.0999999996275,
+      "azimuth": 45,
+      "elevation": 0,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 14199,
+      "captureEndedAt": "2026-09-06T06:26:04.507Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 1,
+      "filename": "broadleaf_a-lod1-a90-e0.png",
+      "at": "2026-09-06T06:26:04.508Z",
+      "monotonicMs": 2778,
+      "azimuth": 90,
+      "elevation": 0,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 14199,
+      "captureEndedAt": "2026-09-06T06:26:04.573Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 1,
+      "filename": "broadleaf_a-lod1-a135-e0.png",
+      "at": "2026-09-06T06:26:04.574Z",
+      "monotonicMs": 2844.4000000003725,
+      "azimuth": 135,
+      "elevation": 0,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 14199,
+      "captureEndedAt": "2026-09-06T06:26:04.635Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 1,
+      "filename": "broadleaf_a-lod1-a180-e0.png",
+      "at": "2026-09-06T06:26:04.636Z",
+      "monotonicMs": 2905.699999999255,
+      "azimuth": 180,
+      "elevation": 0,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 14199,
+      "captureEndedAt": "2026-09-06T06:26:04.705Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 1,
+      "filename": "broadleaf_a-lod1-a225-e0.png",
+      "at": "2026-09-06T06:26:04.706Z",
+      "monotonicMs": 2976,
+      "azimuth": 225,
+      "elevation": 0,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 14199,
+      "captureEndedAt": "2026-09-06T06:26:04.773Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 1,
+      "filename": "broadleaf_a-lod1-a270-e0.png",
+      "at": "2026-09-06T06:26:04.774Z",
+      "monotonicMs": 3044.199999999255,
+      "azimuth": 270,
+      "elevation": 0,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 14199,
+      "captureEndedAt": "2026-09-06T06:26:04.840Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 1,
+      "filename": "broadleaf_a-lod1-a315-e0.png",
+      "at": "2026-09-06T06:26:04.841Z",
+      "monotonicMs": 3110.800000000745,
+      "azimuth": 315,
+      "elevation": 0,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 14199,
+      "captureEndedAt": "2026-09-06T06:26:04.904Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 1,
+      "filename": "broadleaf_a-lod1-a0-e0-silhouette.png",
+      "at": "2026-09-06T06:26:04.913Z",
+      "monotonicMs": 3182.800000000745,
+      "azimuth": 0,
+      "elevation": 0,
+      "silhouette": true,
+      "light": "clear",
+      "calls": 3,
+      "triangles": 14197,
+      "silhouetteCoverage": {
+        "pixels": 69487,
+        "fraction": 0.07353121693121693,
+        "bounds": [
+          235,
+          172,
+          646,
+          948
+        ]
+      },
+      "captureEndedAt": "2026-09-06T06:26:04.961Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 1,
+      "filename": "broadleaf_a-lod1-a45-e0-silhouette.png",
+      "at": "2026-09-06T06:26:04.968Z",
+      "monotonicMs": 3238.199999999255,
+      "azimuth": 45,
+      "elevation": 0,
+      "silhouette": true,
+      "light": "clear",
+      "calls": 3,
+      "triangles": 14197,
+      "silhouetteCoverage": {
+        "pixels": 80431,
+        "fraction": 0.0851121693121693,
+        "bounds": [
+          124,
+          167,
+          782,
+          946
+        ]
+      },
+      "captureEndedAt": "2026-09-06T06:26:05.014Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 1,
+      "filename": "broadleaf_a-lod1-a90-e0-silhouette.png",
+      "at": "2026-09-06T06:26:05.021Z",
+      "monotonicMs": 3290.5999999996275,
+      "azimuth": 90,
+      "elevation": 0,
+      "silhouette": true,
+      "light": "clear",
+      "calls": 3,
+      "triangles": 14197,
+      "silhouetteCoverage": {
+        "pixels": 85803,
+        "fraction": 0.0907968253968254,
+        "bounds": [
+          115,
+          149,
+          809,
+          906
+        ]
+      },
+      "captureEndedAt": "2026-09-06T06:26:05.063Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 1,
+      "filename": "broadleaf_a-lod1-a135-e0-silhouette.png",
+      "at": "2026-09-06T06:26:05.069Z",
+      "monotonicMs": 3339.0999999996275,
+      "azimuth": 135,
+      "elevation": 0,
+      "silhouette": true,
+      "light": "clear",
+      "calls": 3,
+      "triangles": 14197,
+      "silhouetteCoverage": {
+        "pixels": 81194,
+        "fraction": 0.08591957671957672,
+        "bounds": [
+          220,
+          126,
+          724,
+          896
+        ]
+      },
+      "captureEndedAt": "2026-09-06T06:26:05.108Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 1,
+      "filename": "broadleaf_a-lod1-a180-e0-silhouette.png",
+      "at": "2026-09-06T06:26:05.115Z",
+      "monotonicMs": 3384.9000000003725,
+      "azimuth": 180,
+      "elevation": 0,
+      "silhouette": true,
+      "light": "clear",
+      "calls": 3,
+      "triangles": 14197,
+      "silhouetteCoverage": {
+        "pixels": 81269,
+        "fraction": 0.0859989417989418,
+        "bounds": [
+          183,
+          113,
+          691,
+          914
+        ]
+      },
+      "captureEndedAt": "2026-09-06T06:26:05.161Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 1,
+      "filename": "broadleaf_a-lod1-a225-e0-silhouette.png",
+      "at": "2026-09-06T06:26:05.167Z",
+      "monotonicMs": 3436.9000000003725,
+      "azimuth": 225,
+      "elevation": 0,
+      "silhouette": true,
+      "light": "clear",
+      "calls": 3,
+      "triangles": 14197,
+      "silhouetteCoverage": {
+        "pixels": 86744,
+        "fraction": 0.09179259259259259,
+        "bounds": [
+          98,
+          119,
+          703,
+          924
+        ]
+      },
+      "captureEndedAt": "2026-09-06T06:26:05.216Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 1,
+      "filename": "broadleaf_a-lod1-a270-e0-silhouette.png",
+      "at": "2026-09-06T06:26:05.222Z",
+      "monotonicMs": 3492,
+      "azimuth": 270,
+      "elevation": 0,
+      "silhouette": true,
+      "light": "clear",
+      "calls": 3,
+      "triangles": 14197,
+      "silhouetteCoverage": {
+        "pixels": 86931,
+        "fraction": 0.09199047619047619,
+        "bounds": [
+          125,
+          140,
+          803,
+          907
+        ]
+      },
+      "captureEndedAt": "2026-09-06T06:26:05.263Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 1,
+      "filename": "broadleaf_a-lod1-a315-e0-silhouette.png",
+      "at": "2026-09-06T06:26:05.269Z",
+      "monotonicMs": 3539.300000000745,
+      "azimuth": 315,
+      "elevation": 0,
+      "silhouette": true,
+      "light": "clear",
+      "calls": 3,
+      "triangles": 14197,
+      "silhouetteCoverage": {
+        "pixels": 77135,
+        "fraction": 0.08162433862433863,
+        "bounds": [
+          195,
+          162,
+          735,
+          929
+        ]
+      },
+      "captureEndedAt": "2026-09-06T06:26:05.313Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 2,
+      "filename": "broadleaf_a-lod2-a0-e0.png",
+      "at": "2026-09-06T06:26:05.324Z",
+      "monotonicMs": 3594.300000000745,
+      "azimuth": 0,
+      "elevation": 0,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 8699,
+      "captureEndedAt": "2026-09-06T06:26:05.380Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 2,
+      "filename": "broadleaf_a-lod2-a45-e0.png",
+      "at": "2026-09-06T06:26:05.381Z",
+      "monotonicMs": 3651.199999999255,
+      "azimuth": 45,
+      "elevation": 0,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 8699,
+      "captureEndedAt": "2026-09-06T06:26:05.453Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 2,
+      "filename": "broadleaf_a-lod2-a90-e0.png",
+      "at": "2026-09-06T06:26:05.454Z",
+      "monotonicMs": 3723.699999999255,
+      "azimuth": 90,
+      "elevation": 0,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 8699,
+      "captureEndedAt": "2026-09-06T06:26:05.519Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 2,
+      "filename": "broadleaf_a-lod2-a135-e0.png",
+      "at": "2026-09-06T06:26:05.520Z",
+      "monotonicMs": 3790.4000000003725,
+      "azimuth": 135,
+      "elevation": 0,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 8699,
+      "captureEndedAt": "2026-09-06T06:26:05.582Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 2,
+      "filename": "broadleaf_a-lod2-a180-e0.png",
+      "at": "2026-09-06T06:26:05.583Z",
+      "monotonicMs": 3853.199999999255,
+      "azimuth": 180,
+      "elevation": 0,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 8699,
+      "captureEndedAt": "2026-09-06T06:26:05.655Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 2,
+      "filename": "broadleaf_a-lod2-a225-e0.png",
+      "at": "2026-09-06T06:26:05.656Z",
+      "monotonicMs": 3925.5,
+      "azimuth": 225,
+      "elevation": 0,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 8699,
+      "captureEndedAt": "2026-09-06T06:26:05.718Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 2,
+      "filename": "broadleaf_a-lod2-a270-e0.png",
+      "at": "2026-09-06T06:26:05.719Z",
+      "monotonicMs": 3989.199999999255,
+      "azimuth": 270,
+      "elevation": 0,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 8699,
+      "captureEndedAt": "2026-09-06T06:26:05.790Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 2,
+      "filename": "broadleaf_a-lod2-a315-e0.png",
+      "at": "2026-09-06T06:26:05.791Z",
+      "monotonicMs": 4060.9000000003725,
+      "azimuth": 315,
+      "elevation": 0,
+      "silhouette": false,
+      "light": "clear",
+      "calls": 4,
+      "triangles": 8699,
+      "captureEndedAt": "2026-09-06T06:26:05.849Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 2,
+      "filename": "broadleaf_a-lod2-a0-e0-silhouette.png",
+      "at": "2026-09-06T06:26:05.856Z",
+      "monotonicMs": 4126,
+      "azimuth": 0,
+      "elevation": 0,
+      "silhouette": true,
+      "light": "clear",
+      "calls": 3,
+      "triangles": 8697,
+      "silhouetteCoverage": {
+        "pixels": 61368,
+        "fraction": 0.06493968253968253,
+        "bounds": [
+          205,
+          157,
+          656,
+          974
+        ]
+      },
+      "captureEndedAt": "2026-09-06T06:26:05.888Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 2,
+      "filename": "broadleaf_a-lod2-a45-e0-silhouette.png",
+      "at": "2026-09-06T06:26:05.894Z",
+      "monotonicMs": 4164,
+      "azimuth": 45,
+      "elevation": 0,
+      "silhouette": true,
+      "light": "clear",
+      "calls": 3,
+      "triangles": 8697,
+      "silhouetteCoverage": {
+        "pixels": 70994,
+        "fraction": 0.07512592592592593,
+        "bounds": [
+          85,
+          155,
+          793,
+          963
+        ]
+      },
+      "captureEndedAt": "2026-09-06T06:26:05.925Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 2,
+      "filename": "broadleaf_a-lod2-a90-e0-silhouette.png",
+      "at": "2026-09-06T06:26:05.930Z",
+      "monotonicMs": 4200.300000000745,
+      "azimuth": 90,
+      "elevation": 0,
+      "silhouette": true,
+      "light": "clear",
+      "calls": 3,
+      "triangles": 8697,
+      "silhouetteCoverage": {
+        "pixels": 72253,
+        "fraction": 0.07645820105820106,
+        "bounds": [
+          115,
+          138,
+          813,
+          918
+        ]
+      },
+      "captureEndedAt": "2026-09-06T06:26:05.981Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 2,
+      "filename": "broadleaf_a-lod2-a135-e0-silhouette.png",
+      "at": "2026-09-06T06:26:05.987Z",
+      "monotonicMs": 4256.5999999996275,
+      "azimuth": 135,
+      "elevation": 0,
+      "silhouette": true,
+      "light": "clear",
+      "calls": 3,
+      "triangles": 8697,
+      "silhouetteCoverage": {
+        "pixels": 70445,
+        "fraction": 0.07454497354497354,
+        "bounds": [
+          221,
+          112,
+          751,
+          899
+        ]
+      },
+      "captureEndedAt": "2026-09-06T06:26:06.026Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 2,
+      "filename": "broadleaf_a-lod2-a180-e0-silhouette.png",
+      "at": "2026-09-06T06:26:06.033Z",
+      "monotonicMs": 4303.0999999996275,
+      "azimuth": 180,
+      "elevation": 0,
+      "silhouette": true,
+      "light": "clear",
+      "calls": 3,
+      "triangles": 8697,
+      "silhouetteCoverage": {
+        "pixels": 73098,
+        "fraction": 0.07735238095238095,
+        "bounds": [
+          163,
+          92,
+          708,
+          921
+        ]
+      },
+      "captureEndedAt": "2026-09-06T06:26:06.080Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 2,
+      "filename": "broadleaf_a-lod2-a225-e0-silhouette.png",
+      "at": "2026-09-06T06:26:06.087Z",
+      "monotonicMs": 4356.9000000003725,
+      "azimuth": 225,
+      "elevation": 0,
+      "silhouette": true,
+      "light": "clear",
+      "calls": 3,
+      "triangles": 8697,
+      "silhouetteCoverage": {
+        "pixels": 80477,
+        "fraction": 0.08516084656084656,
+        "bounds": [
+          82,
+          94,
+          739,
+          943
+        ]
+      },
+      "captureEndedAt": "2026-09-06T06:26:06.127Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 2,
+      "filename": "broadleaf_a-lod2-a270-e0-silhouette.png",
+      "at": "2026-09-06T06:26:06.134Z",
+      "monotonicMs": 4404,
+      "azimuth": 270,
+      "elevation": 0,
+      "silhouette": true,
+      "light": "clear",
+      "calls": 3,
+      "triangles": 8697,
+      "silhouetteCoverage": {
+        "pixels": 78014,
+        "fraction": 0.08255449735449735,
+        "bounds": [
+          112,
+          116,
+          826,
+          930
+        ]
+      },
+      "captureEndedAt": "2026-09-06T06:26:06.181Z"
+    },
+    {
+      "species": "broadleaf_a",
+      "lod": 2,
+      "filename": "broadleaf_a-lod2-a315-e0-silhouette.png",
+      "at": "2026-09-06T06:26:06.187Z",
+      "monotonicMs": 4457,
+      "azimuth": 315,
+      "elevation": 0,
+      "silhouette": true,
+      "light": "clear",
+      "calls": 3,
+      "triangles": 8697,
+      "silhouetteCoverage": {
+        "pixels": 66043,
+        "fraction": 0.06988677248677248,
+        "bounds": [
+          191,
+          141,
+          721,
+          956
+        ]
+      },
+      "captureEndedAt": "2026-09-06T06:26:06.226Z"
+    }
+  ],
+  "errors": [],
+  "assetHashes": [
+    {
+      "path": "public/assets/models/trees/fir_tree_01.glb",
+      "bytes": 11097264,
+      "sha256": "14a6d7696c7550e99f2d858c2a1f204661441e1bec7e0b1e338a6d65b871e073"
+    },
+    {
+      "path": "public/assets/models/trees/pine_tree_01.glb",
+      "bytes": 11697304,
+      "sha256": "be32206a9244f3eaedc5305622c0cbb45fa91323debc778686f1c1ed0df0aab4"
+    },
+    {
+      "path": "public/assets/models/trees/tree_small_02.glb",
+      "bytes": 5702788,
+      "sha256": "2581f4739d4e2cccbdfeb966b344105a73f21426c09b8aea2ef0911270937a73"
+    }
+  ],
+  "graphics": {
+    "renderer": "ANGLE (AMD, AMD Radeon 780M Graphics (radeonsi phoenix ACO), OpenGL ES 3.2)",
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.12 Safari/537.36",
+    "captureMode": "headless",
+    "viewport": [
+      900,
+      1050
+    ],
+    "framebuffer": [
+      900,
+      1050
+    ]
+  },
+  "contactSheets": [
+    "broadleaf_a-lod0-eye-level-sheet.png",
+    "broadleaf_a-lod0-silhouettes-sheet.png",
+    "broadleaf_a-lod0-elevations-weather-sheet.png",
+    "broadleaf_a-lod1-eye-level-sheet.png",
+    "broadleaf_a-lod1-silhouettes-sheet.png",
+    "broadleaf_a-lod2-eye-level-sheet.png",
+    "broadleaf_a-lod2-silhouettes-sheet.png"
+  ],
+  "status": "passed"
+}

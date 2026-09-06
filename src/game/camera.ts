@@ -68,12 +68,12 @@ export class RaceCamera {
       this.camera.fov = 65;
     } else {
       const ahead = track.sample(
-        driver.distance + Math.max(8, driver.speed * 0.35),
+        driver.distance + Math.max(6, driver.speed * 0.14),
       );
       this.targetPosition
         .copy(this.origin)
-        .addScaledVector(this.forward, -9.2 - driver.speed * 0.018);
-      this.targetPosition.y += 2.7 + driver.speed * 0.004;
+        .addScaledVector(this.forward, -20.8 - driver.speed * 0.02);
+      this.targetPosition.y += 5.2 + driver.speed * 0.004;
       this.targetLook.set(
         ahead.x + ahead.nx * driver.offset * 0.75,
         1.02,

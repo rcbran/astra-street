@@ -8,7 +8,13 @@ const browser = await chromium.launch({
     process.env.ASTRA_BROWSER_CHANNEL ||
     (process.platform === 'darwin' ? 'chrome' : undefined),
   headless,
-  args: [`--remote-debugging-port=${port}`, '--window-size=1440,960'],
+  args: [
+    `--remote-debugging-port=${port}`,
+    '--window-size=1440,960',
+    ...(process.env.ASTRA_BROWSER_ANGLE
+      ? ['--use-gl=angle', `--use-angle=${process.env.ASTRA_BROWSER_ANGLE}`]
+      : []),
+  ],
 });
 process.once('SIGINT', () => void browser.close());
 process.once('SIGTERM', () => void browser.close());

@@ -43,8 +43,8 @@
   },
   {
     "file": "models/trees/tree_small_02.glb",
-    "bytes": 6015076,
-    "sha256": "df43f1ae17a7dc187de957f430f18ff221ede9be202d49ab5b2efcacca757034",
+    "bytes": 5702788,
+    "sha256": "2581f4739d4e2cccbdfeb966b344105a73f21426c09b8aea2ef0911270937a73",
     "source": "https://polyhaven.com/a/tree_small_02",
     "license": "CC0 1.0 Universal",
     "license_url": "https://polyhaven.com/license",
@@ -222,5 +222,35 @@
     "license": "CC0 1.0 Universal",
     "license_url": "https://polyhaven.com/license",
     "source_md5_verified": "acf2fd7e352e7635f67f24ecda01e485"
+  },
+  {
+    "file": "models/rocks/namaqualand_cliff_01.glb",
+    "bytes": 9262288,
+    "sha256": "066493029bc84fe9f19f704bb57531f21c68eb5a4926a1f421c7e1cae425c3c7",
+    "source": "https://polyhaven.com/a/namaqualand_cliff_01",
+    "authors": {
+      "Jenelle van Heerden": "Photography",
+      "Rico Cilliers": "modeling"
+    },
+    "license": "CC0 1.0 Universal",
+    "license_url": "https://polyhaven.com/license",
+    "preparation": "scripts/assets/canyon-scans/",
+    "notes": "docs/assets/canyon-scans.json",
+    "triangles": 5999
+  },
+  {
+    "file": "models/rocks/namaqualand_cliff_02.glb",
+    "bytes": 10099400,
+    "sha256": "0e6fe4d1866a48558fa126656835cb6ef31a3893a7932094f08d1ada376ea5a2",
+    "source": "https://polyhaven.com/a/namaqualand_cliff_02",
+    "authors": {
+      "Dario Barresi": "Photography",
+      "Rico Cilliers": "modeling"
+    },
+    "license": "CC0 1.0 Universal",
+    "license_url": "https://polyhaven.com/license",
+    "preparation": "scripts/assets/canyon-scans/",
+    "notes": "docs/assets/canyon-scans.json",
+    "triangles": 6000
   }
 ]

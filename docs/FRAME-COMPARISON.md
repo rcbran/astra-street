@@ -2,7 +2,17 @@
 
 The user asked for a substantial graphics/landscape increase and comparison with the [Street Heat reference](https://x.com/higgsfield_ai/status/2095916820431827408). We inspected the supplied clip at four-second intervals and its full-resolution 8-second frame. Reference files remain ignored in `artifacts/reference-street-heat/`; no frame is a runtime asset.
 
-## Tree overhaul checkpoint — unfinished
+## Broadleaf correction on kyogre — 2026-09-06
+
+The white/cyan broadleaf crowns are corrected by padding unused atlas RGB from UV-verified source colors. Alpha, mapped colors, geometry, trilinear mipmaps and anisotropy are preserved. This exact frozen Pinecrest clear-weather comparison uses the normal contact-shading pipeline at 1675×1047 internal pixels, 1440×900 CSS/DPR2, in dedicated headless Chromium on the Radeon 780M. Screenshot dimensions include emulated DPR; they are not the internal rendering resolution.
+
+| Original atlas | Padded atlas |
+| --- | --- |
+| ![White crowns before padding](evidence/kyogre-trees/broadleaf-before.png) | ![Green crowns after padding](evidence/kyogre-trees/broadleaf-after.png) |
+
+Six frozen rural route/weather pairs and 62 broadleaf angle/LOD views passed without browser errors. The close model retains its asymmetry and crown gaps; far broadleaf coverage remains about 57% of near coverage in the static fixture, so the earlier density transition remains. See `BROADLEAF-DIAGNOSTIC.md` and `evidence/kyogre-trees/`. Static comparisons do not establish FPS, motion quality or reference parity.
+
+## Historical migration checkpoint
 
 The latest migration checkpoint replaces whole-tree cards with seven 3D tree variants and all-3D LODs, adds scanned rock and forest-floor surfaces, broad terraced cliffs, lower layered mountains and detailed steel roadside furniture. These early development frames show the current source; they are not final release acceptance and are not camera/position-matched to the historical benchmark frames below.
 
@@ -10,7 +20,7 @@ The latest migration checkpoint replaces whole-tree cards with seven 3D tree var
 | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
 | ![Forest work in progress](evidence/trees-wip/forest-driving.png) | ![Canyon work in progress](evidence/trees-wip/canyon-driving.png) |
 
-Near/mid/far crown volume passed controlled all-angle inspection. Some in-world broadleaf crowns still become white/cyan at driving distance because of a mipmap/filtering-sensitive atlas defect; see `HANDOFF.md` and `evidence/trees-wip/broadleaf-bleed-baseline.png`. Ground/cliff composition and the contact-shading trial still require final motion/weather review. The car/city remain simple and the racing surface is flat. No reference parity is claimed.
+Near/mid/far crown volume passed controlled all-angle inspection. This earlier checkpoint still had white/cyan in-world broadleaf crowns; the correction above supersedes that defect. The car/city remain simple and the racing surface is flat. No reference parity is claimed.
 
 ## Historical version2 comparison
 

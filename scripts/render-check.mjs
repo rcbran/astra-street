@@ -3,14 +3,12 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { hostname } from 'node:os';
 import { chromium } from '@playwright/test';
 
-// Functional render checks. Timing from headless/software rendering is not a
-// hardware performance benchmark; use benchmark.mjs in a visible GPU browser.
+// Functional render checks; use benchmark.mjs for headless full-race timing.
 const browser = await chromium.connectOverCDP(
   process.env.ASTRA_CDP ?? 'http://localhost:9224',
 );
-const context =
-  browser.contexts().find((c) => c.pages().length) ?? browser.contexts()[0];
-const page = context.pages()[0] ?? (await context.newPage());
+const context = await browser.newContext();
+const page = await context.newPage();
 page.setDefaultTimeout(120_000);
 const cdp = await page.context().newCDPSession(page);
 const errors = [];
@@ -74,9 +72,20 @@ const resolution = async (label, quality) => {
       ...e.diagnostics().renderer,
       quality: e.settings.quality,
       drawingBuffer: [gl.drawingBufferWidth, gl.drawingBufferHeight],
+      presentation: {
+        beauty: [e.presentation.beauty.width, e.presentation.beauty.height],
+        contact: [e.presentation.ao.width, e.presentation.ao.height],
+        returnedToCanvas: e.renderer.getRenderTarget() === null,
+      },
     };
   }, label);
   assert.deepEqual(row.size, row.drawingBuffer);
+  assert.deepEqual(row.presentation.beauty, row.drawingBuffer);
+  assert.deepEqual(
+    row.presentation.contact,
+    row.drawingBuffer.map((n) => Math.ceil(n / 2)),
+  );
+  assert.equal(row.presentation.returnedToCanvas, true);
   const ceiling =
     quality === 'eco'
       ? 1280 * 720
@@ -93,6 +102,45 @@ try {
   );
   await page.bringToFront();
   await page.waitForFunction(() => window.__ASTRA__?.phase === 'menu');
+  await page.evaluate(() => {
+    const e = window.__ASTRA__;
+    window.__ownership = {
+      trees: 0,
+      scans: 0,
+      surfaces: 0,
+      environment: 0,
+      beauty: 0,
+      contact: 0,
+    };
+    for (const collection of [
+      e.treeAssets.geometries,
+      e.treeAssets.materials,
+      e.treeAssets.textures,
+    ])
+      for (const resource of collection)
+        resource.addEventListener('dispose', () => window.__ownership.trees++);
+    for (const collection of [
+      e.canyonScans.geometries,
+      e.canyonScans.materials,
+      e.canyonScans.textures,
+    ])
+      for (const resource of collection)
+        resource.addEventListener('dispose', () => window.__ownership.scans++);
+    for (const texture of Object.values(e.surfaces))
+      texture.addEventListener('dispose', () => window.__ownership.surfaces++);
+    e.environment.addEventListener(
+      'dispose',
+      () => window.__ownership.environment++,
+    );
+    e.presentation.beauty.addEventListener(
+      'dispose',
+      () => window.__ownership.beauty++,
+    );
+    e.presentation.ao.addEventListener(
+      'dispose',
+      () => window.__ownership.contact++,
+    );
+  });
   report.graphics = await page.evaluate(() => {
     const gl = window.__ASTRA__.renderer.getContext(),
       ext = gl.getExtension('WEBGL_debug_renderer_info');
@@ -168,8 +216,8 @@ try {
   });
   assert.ok(report.chase.telemetry.speed > 130);
   assert.ok(
-    report.chase.cameraHorizontalDistance > 8 &&
-      report.chase.cameraHorizontalDistance < 13,
+    report.chase.cameraHorizontalDistance > 20 &&
+      report.chase.cameraHorizontalDistance < 26,
   );
   console.log(
     'PASS: moving chase camera distance at',
@@ -227,6 +275,50 @@ try {
     assert.equal(rows[1].textures, rows[2].textures);
   }
   assert.deepEqual(errors, []);
+  report.ownership = await page.evaluate(() => {
+    const e = window.__ASTRA__,
+      before = { ...window.__ownership };
+    const expectedTrees =
+      e.treeAssets.geometries.size +
+      e.treeAssets.materials.size +
+      e.treeAssets.textures.size;
+    const expectedSurfaces = Object.values(e.surfaces).length;
+    const expectedScans =
+      e.canyonScans.geometries.size +
+      e.canyonScans.materials.size +
+      e.canyonScans.textures.size;
+    e.dispose();
+    const after = { ...window.__ownership };
+    e.dispose();
+    return {
+      before,
+      after,
+      repeated: { ...window.__ownership },
+      expectedTrees,
+      expectedSurfaces,
+      expectedScans,
+    };
+  });
+  assert.equal(report.ownership.before.trees, 0);
+  assert.equal(report.ownership.before.scans, 0);
+  assert.equal(report.ownership.before.surfaces, 0);
+  assert.equal(report.ownership.before.environment, 0);
+  assert.equal(report.ownership.after.trees, report.ownership.expectedTrees);
+  assert.equal(report.ownership.after.scans, report.ownership.expectedScans);
+  assert.equal(
+    report.ownership.after.surfaces,
+    report.ownership.expectedSurfaces,
+  );
+  assert.equal(report.ownership.after.environment, 1);
+  assert.equal(
+    report.ownership.after.beauty,
+    report.ownership.before.beauty + 1,
+  );
+  assert.equal(
+    report.ownership.after.contact,
+    report.ownership.before.contact + 1,
+  );
+  assert.deepEqual(report.ownership.repeated, report.ownership.after);
   report.status = 'passed';
   console.log(
     'PASS: nine circuit/weather worlds, resource cycles and no browser errors.',
@@ -251,6 +343,6 @@ try {
     'artifacts/render-check.json',
     JSON.stringify(report, null, 2) + '\n',
   );
-  await page.close();
+  await context.close();
   await browser.close();
 }

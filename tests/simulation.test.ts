@@ -208,7 +208,7 @@ test('chase-camera distance does not grow with speed on a straight', () => {
     );
     const f = tracks[0].sample(race.player.distance);
     assert.ok(
-      Math.hypot(rig.camera.position.x - f.x, rig.camera.position.z - f.z) < 12,
+      Math.hypot(rig.camera.position.x - f.x, rig.camera.position.z - f.z) < 26,
     );
   }
 });

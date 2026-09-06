@@ -1,0 +1,36 @@
+{
+  "inputSha256": "df43f1ae17a7dc187de957f430f18ff221ede9be202d49ab5b2efcacca757034",
+  "outputSha256": "2581f4739d4e2cccbdfeb966b344105a73f21426c09b8aea2ef0911270937a73",
+  "inputBytes": 6015076,
+  "outputBytes": 5702788,
+  "image": "tree_small_02_leaves_diff",
+  "imageSha256": "534c4bb8f4d64d036fa9490b49c002731ba4a3536ac77bf721321bfa3a97b81c",
+  "meshes": [
+    {
+      "name": "BezierCurve.007",
+      "triangles": 41999,
+      "uniqueUvTriangles": 618
+    },
+    {
+      "name": "BezierCurve.010",
+      "triangles": 9500,
+      "uniqueUvTriangles": 618
+    },
+    {
+      "name": "BezierCurve.013",
+      "triangles": 5999,
+      "uniqueUvTriangles": 615
+    }
+  ],
+  "protectedUvPixels": 223742,
+  "bilinearMarginTexels": 2,
+  "bilinearSupportTexelsConservative": 205436,
+  "missingBilinearSupportTexels": 0,
+  "changedRgbPixels": 689857,
+  "unusedWhitePixelsBefore": 287576,
+  "unusedWhitePixelsAfter": 0,
+  "allAlphaBytesPreserved": true,
+  "allProtectedUvBytesPreserved": true,
+  "geometryAndOtherImagesByteIdentical": true,
+  "filtering": "Runtime trilinear mipmaps and anisotropy unchanged"
+}

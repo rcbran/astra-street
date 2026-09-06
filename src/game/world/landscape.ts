@@ -181,10 +181,14 @@ export function buildLandscape(
   const rockColor = new THREE.Color().setRGB(0.86, 0.87, 0.83);
   const base = landscape.forest
     ? new THREE.Color().setRGB(0.34, 0.42, 0.24)
-    : new THREE.Color().setRGB(0.88, 0.9, 0.83);
+    : landscape.coastal
+      ? new THREE.Color().setRGB(1.65, 1.2, 0.74)
+      : new THREE.Color().setRGB(0.88, 0.9, 0.83);
   const leaf = landscape.forest
     ? new THREE.Color().setRGB(0.22, 0.31, 0.16)
-    : new THREE.Color().setRGB(0.74, 0.81, 0.68);
+    : landscape.coastal
+      ? new THREE.Color().setRGB(1.4, 0.97, 0.6)
+      : new THREE.Color().setRGB(0.74, 0.81, 0.68);
   for (let i = 0; i < positions.count; i++) {
     const x = positions.getX(i),
       z = positions.getZ(i),
@@ -260,37 +264,50 @@ export function buildLandscape(
       .replace(
         '#include <map_fragment>',
         `#include <map_fragment>
-        vec3 terrainWeights = pow(abs(normalize(vTerrainNormal)), vec3(4.0));
-        terrainWeights /= max(dot(terrainWeights, vec3(1.0)), 0.0001);
         vec3 terrainP = vTerrainPosition / 24.0;
-        vec3 terrainStone = texture2D(terrainRockMap, terrainP.yz).rgb * terrainWeights.x
-          + texture2D(terrainRockMap, terrainP.xz).rgb * terrainWeights.y
-          + texture2D(terrainRockMap, terrainP.xy).rgb * terrainWeights.z;
-        diffuseColor.rgb = mix(diffuseColor.rgb, diffuse * terrainStone, vTerrainRock);`,
+        // Derivatives must be evaluated outside the varying rock branch so
+        // mixed ground/rock fragment quads retain the same texture footprint.
+        vec3 terrainDx = dFdx(terrainP);
+        vec3 terrainDy = dFdy(terrainP);
+        vec3 terrainWeights = vec3(0.0);
+        if (vTerrainRock != 0.0) {
+          terrainWeights = pow(abs(normalize(vTerrainNormal)), vec3(4.0));
+          terrainWeights /= max(dot(terrainWeights, vec3(1.0)), 0.0001);
+          vec3 terrainStone = textureGrad(terrainRockMap, terrainP.yz, terrainDx.yz, terrainDy.yz).rgb * terrainWeights.x
+            + textureGrad(terrainRockMap, terrainP.xz, terrainDx.xz, terrainDy.xz).rgb * terrainWeights.y
+            + textureGrad(terrainRockMap, terrainP.xy, terrainDx.xy, terrainDy.xy).rgb * terrainWeights.z;
+          diffuseColor.rgb = mix(diffuseColor.rgb, diffuse * terrainStone, vTerrainRock);
+        }`,
       )
       .replace(
         '#include <normal_fragment_maps>',
         `#include <normal_fragment_maps>
-        vec3 stoneNX = texture2D(terrainRockNormal, terrainP.yz).xyz * 2.0 - 1.0;
-        vec3 stoneNY = texture2D(terrainRockNormal, terrainP.xz).xyz * 2.0 - 1.0;
-        vec3 stoneNZ = texture2D(terrainRockNormal, terrainP.xy).xyz * 2.0 - 1.0;
-        stoneNX.xy *= 0.65; stoneNY.xy *= 0.65; stoneNZ.xy *= 0.65;
-        vec3 stoneNormal = normalize(
-          vec3(stoneNX.z * sign(vTerrainNormal.x), stoneNX.x, stoneNX.y) * terrainWeights.x +
-          vec3(stoneNY.x, stoneNY.z * sign(vTerrainNormal.y), stoneNY.y) * terrainWeights.y +
-          vec3(stoneNZ.x, stoneNZ.y, stoneNZ.z * sign(vTerrainNormal.z)) * terrainWeights.z);
-        normal = normalize(mix(normal, mat3(viewMatrix) * stoneNormal, vTerrainRock));`,
+        if (vTerrainRock != 0.0) {
+          vec3 stoneNX = textureGrad(terrainRockNormal, terrainP.yz, terrainDx.yz, terrainDy.yz).xyz * 2.0 - 1.0;
+          vec3 stoneNY = textureGrad(terrainRockNormal, terrainP.xz, terrainDx.xz, terrainDy.xz).xyz * 2.0 - 1.0;
+          vec3 stoneNZ = textureGrad(terrainRockNormal, terrainP.xy, terrainDx.xy, terrainDy.xy).xyz * 2.0 - 1.0;
+          stoneNX.xy *= 0.65; stoneNY.xy *= 0.65; stoneNZ.xy *= 0.65;
+          vec3 stoneNormal = normalize(
+            vec3(stoneNX.z * sign(vTerrainNormal.x), stoneNX.x, stoneNX.y) * terrainWeights.x +
+            vec3(stoneNY.x, stoneNY.z * sign(vTerrainNormal.y), stoneNY.y) * terrainWeights.y +
+            vec3(stoneNZ.x, stoneNZ.y, stoneNZ.z * sign(vTerrainNormal.z)) * terrainWeights.z);
+          normal = mix(normal, mat3(viewMatrix) * stoneNormal, vTerrainRock);
+        }
+        // The original shader normalized even at zero rock weight.
+        normal = normalize(normal);`,
       )
       .replace(
         '#include <roughnessmap_fragment>',
         `#include <roughnessmap_fragment>
-        float stoneRoughness = texture2D(terrainRockRough, terrainP.yz).r * terrainWeights.x +
-          texture2D(terrainRockRough, terrainP.xz).r * terrainWeights.y +
-          texture2D(terrainRockRough, terrainP.xy).r * terrainWeights.z;
-        roughnessFactor = mix(roughnessFactor, max(0.55, stoneRoughness) * roughness, vTerrainRock);`,
+        if (vTerrainRock != 0.0) {
+          float stoneRoughness = textureGrad(terrainRockRough, terrainP.yz, terrainDx.yz, terrainDy.yz).r * terrainWeights.x +
+            textureGrad(terrainRockRough, terrainP.xz, terrainDx.xz, terrainDy.xz).r * terrainWeights.y +
+            textureGrad(terrainRockRough, terrainP.xy, terrainDx.xy, terrainDy.xy).r * terrainWeights.z;
+          roughnessFactor = mix(roughnessFactor, max(0.55, stoneRoughness) * roughness, vTerrainRock);
+        }`,
       );
   };
-  material.customProgramCacheKey = () => 'astra-terrain-triplanar-v2';
+  material.customProgramCacheKey = () => 'astra-terrain-triplanar-v3';
   const ground = new THREE.Mesh(geometry, material);
   ground.receiveShadow = true;
   ground.name = 'sculpted landscape';

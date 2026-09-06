@@ -1,0 +1,17 @@
+{
+  "blender": "5.2.0 LTS fbe6228777e7",
+  "files": [
+    {
+      "file": "namaqualand_cliff_01.glb",
+      "runtimeSha256": "066493029bc84fe9f19f704bb57531f21c68eb5a4926a1f421c7e1cae425c3c7",
+      "reproducedSha256": "066493029bc84fe9f19f704bb57531f21c68eb5a4926a1f421c7e1cae425c3c7",
+      "byteIdentical": true
+    },
+    {
+      "file": "namaqualand_cliff_02.glb",
+      "runtimeSha256": "0e6fe4d1866a48558fa126656835cb6ef31a3893a7932094f08d1ada376ea5a2",
+      "reproducedSha256": "0e6fe4d1866a48558fa126656835cb6ef31a3893a7932094f08d1ada376ea5a2",
+      "byteIdentical": true
+    }
+  ]
+}

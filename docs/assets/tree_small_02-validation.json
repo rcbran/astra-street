@@ -2,7 +2,7 @@
   "uri": "tree_small_02.glb",
   "mimeType": "model/gltf-binary",
   "validatorVersion": "2.0.0-dev.3.10",
-  "validatedAt": "2026-09-06T04:41:22.763Z",
+  "validatedAt": "2026-09-06T06:23:39.407Z",
   "issues": {
     "numErrors": 0,
     "numWarnings": 6,
@@ -56,7 +56,7 @@
         "pointer": "/buffers/0",
         "mimeType": "application/gltf-buffer",
         "storage": "glb",
-        "byteLength": 5999540
+        "byteLength": 5687252
       },
       {
         "pointer": "/images/0",
