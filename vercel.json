@@ -1,5 +1,16 @@
 {
   "framework": null,
   "buildCommand": "npm run build:static",
-  "outputDirectory": "out"
+  "outputDirectory": "out",
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noimageindex"
+        }
+      ]
+    }
+  ]
 }

@@ -1,0 +1,4 @@
+# Crawlers must be able to read the noindex response header and page metadata.
+# Disallowing all crawling here could leave linked URLs in search results.
+User-agent: *
+Allow: /

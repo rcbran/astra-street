@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   description:
     'Drive the Astra S9 through coastal canyons, mountain forests and city nights. Drift, build your score and hit the nitro.',
   icons: { icon: '/favicon.svg' },
+  robots: { index: false, follow: false, noimageindex: true },
 };
 export default function RootLayout({
   children,
