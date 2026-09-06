@@ -1,25 +1,27 @@
-# Astra Formula — project context
+# Project context
 
-Updated: 2026-09-05
+Updated 2026-09-05. **Implementation and publishing are paused at the user's request for a new-session handoff. Start with `docs/HANDOFF.md`.**
 
-## Objective
-A personal, high-fidelity browser open-wheel racer. AAA F1 2020+ screenshots are visual targets, not a claim that this prototype already matches them. Approachable controls, short races, three environments, different weather, and 60 FPS with restrained resource usage.
+## Objective and preferences
 
-## Machine
-MacBook Pro, Apple M4 Max (14 CPU / 32 GPU cores), 36 GB RAM, internal Retina display. Native physical pixels are expensive; Balanced caps render area near 1080p and renders at 60 Hz. No thermal claim without a sustained measurement.
+Create a high-fidelity browser open-wheel racer inspired by screenshots of AAA F1 games from 2020 onward. Gameplay should be simple and fun, with several distinct environments/weather choices. Target 60 FPS without unnecessary laptop heat; user accepts 40–50 FPS while other agents use the GPU. Maintain modular, clear code suitable for an eventual public GitHub repository.
 
-## Scope and first implementation
-Working title: ASTRA / FORMULA. Three fictional circuits: Riviera (coast / sunset), Black Forest (forest / daylight), and Marina (city / wet night). Keyboard and gamepad, automatic gearbox, two-lap sprint against seven opponents, time trial, boost, chase and cockpit cameras. Settings expose Balanced/Eco/Ultra and sound.
+Use this checkout and native collaboration only. Do not use Orca orchestration. Every subagent, if explicitly delegated, must use GPT Astra (`gpt-6-astra`). Earlier documentation deferral was superseded by the user's request to update all docs and write a handoff before pausing.
 
-## Architecture
-Sites/Vinext React shell; imperative Three.js WebGL2 game loop outside React. Fixed simulation steps; low-frequency HUD snapshots. Track-coordinate arcade model with heading/lateral dynamics. Swept track geometry with curbs, barriers, fencing, race furniture. Instancing and merged geometry, PBR asphalt, prefiltered static environment, one tight shadow light, atmospheric fog, inexpensive wet-surface lighting.
+## Current implementation
 
-## Current state
-Playable modular Three.js game implemented. Original Blender AF-27 GLB; three circuits, three weather choices, quick race/time trial, seven AI opponents, boost, sound, chase/cockpit cameras, touch/gamepad/keyboard input, pause/results/settings. React UI uses accessible shared primitives. Source modules split simulation, rendering, camera, vehicle, input/audio, world components and UI. Public documentation is deferred at the user's request.
+Astra Formula is playable with three original circuits, a detailed Blender-generated car, seven AI rivals, two-lap races, time trial, boost, automatic gears, chase/cockpit cameras, weather, synthesized sound, keyboard/gamepad/touch input, and a React racing UI. Architecture and disposal responsibilities are documented in `ARCHITECTURE.md`.
 
-Native Astra workers supplied the original Blender car, licensed/generated environment assets, and read-only code review. User explicitly prohibited Orca orchestration; do not use it. User accepts 40–50 FPS while other agents use this laptop GPU. Cap remains 60; adaptive resolution acts below 42 FPS. Menus 30, pause/results 20, hidden rendering off.
+19 regression checks pass. Production build, TypeScript, owned-source lint and dependency audit pass. Three full production race runs measured a 60 FPS median over 384 seconds total; repeated track switches showed stable geometry/texture counts and no browser errors. Measurement conditions and caveats are in `PERFORMANCE.md`.
 
-18 simulation/render-budget regression checks pass. Production build, strict TypeScript, owned-source lint, and dependency audit pass (zero known vulnerabilities). A moving cockpit camera lag bug and SVG-title hydration mismatch were fixed. Full production browser races and GPU-resource cycling are underway. Evidence is in ignored artifacts/; benchmark script is scripts/benchmark.mjs.
+Actual keyboard/UI checks passed through driving, boost/braking, camera, reset, pause/resume, blur, restart, time trial and settings persistence. Portrait menu at 390×844 passed visibility/bounds checks. The same script fails at 844×390 because the start button is below the viewport; this is the first concrete follow-up.
 
-## Resuming
-Read TASKS/DECISIONS/ASSETS. `npm run dev -- --host 0.0.0.0`; use the printed URL. `npm run build`, `npm run typecheck`, `npm run lint`, `npm test`. Development browser debug interface is opt-in through `?debug=1`. A real visible Chrome process is used for performance timing; headless and background tabs are unsuitable. Publishing uses the existing private Site in .openai/hosting.json; never create a second Site. No GitHub remote has been created.
+The latest chase-camera translation fix passed regression/static/build checks but needs a new moving screenshot and short timing check. Overall scenery/material fidelity still falls short of the AAA visual reference. Do not treat the current playable build as the final visual result.
+
+## Saved state
+
+Source is committed on `main`; initial code commit `826ced8`. No GitHub remote, source push, saved Site version or deployment. `.openai/hosting.json` contains the one existing private Site ID. Use that project rather than creating another.
+
+The local Codex CLI and private Site owner were verified as the user's personal account. Repository-only Git author settings use the personal email; global settings were left unchanged. No credentials were written into project files.
+
+Local development/production servers and the dedicated test Chrome were stopped for handoff. The embedded preview's engine was disposed. Screenshots and complete raw timings remain in ignored `artifacts/` on this machine. Internal summaries, tests, code and runtime assets are committed. See `DEVELOPMENT.md` to restart.

@@ -1,0 +1,40 @@
+{
+  "date": "2026-09-05",
+  "source_baseline": "826ced8a580479e2542df157e10222d854efb1ed",
+  "build": "production",
+  "script": "scripts/browser-check.mjs",
+  "status": "failed_on_landscape_menu_bounds",
+  "passed_before_failure": [
+    "Settings modal prevents Enter from starting a race",
+    "Eco drawing buffer stays within the 720p pixel budget",
+    "Time-trial selection and countdown",
+    "Keyboard throttle, steering, boost and braking",
+    "Cockpit camera switch and reset-to-track",
+    "Pause freezes distance, resume continues",
+    "Finish time trial and restart with a new countdown",
+    "Window blur pauses the race",
+    "Camera settings persist after reload",
+    "390x844 portrait start button is visible and within viewport"
+  ],
+  "failure": {
+    "viewport": [844, 390],
+    "start_button_bounds": {
+      "x": 531.6875,
+      "y": 415.4368896484375,
+      "width": 268,
+      "height": 46
+    },
+    "screenshot": "artifacts/menu-landscape-issue.png",
+    "likely_area": "src/ui/styles/responsive.css; landscape compact rule excludes widths above 800px"
+  },
+  "not_reached": [
+    "Final 1440x900 bounds assertion",
+    "Final accumulated page-error assertion"
+  ],
+  "not_tested": [
+    "Actual touch device",
+    "Physical controller",
+    "Safari",
+    "Other GPU hardware"
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-09-05T23:18:29.770Z",
+  "browser": "152.0.7977.76",
+  "viewport": {
+    "width": 1440,
+    "height": 900,
+    "dpr": 2
+  },
+  "races": [
+    {
+      "circuit": "riviera",
+      "seconds": 115.033,
+      "fpsMedian": 60,
+      "fpsP10": 59.94604855629935,
+      "gpuP95": 1.74725,
+      "cpuSubmitP95Max": 1.800000011920929,
+      "framebuffer": [1440, 900],
+      "raceTime": 110.85000000003429,
+      "bestLap": 52.50833333337029,
+      "finishedPosition": 1
+    },
+    {
+      "circuit": "forest",
+      "seconds": 137.153,
+      "fpsMedian": 60,
+      "fpsP10": 59.99213217938528,
+      "gpuP95": 2.091791,
+      "cpuSubmitP95Max": 2.2000000178813934,
+      "framebuffer": [1821, 1138],
+      "raceTime": 132.95833333337674,
+      "bestLap": 63.99166666670912,
+      "finishedPosition": 1
+    },
+    {
+      "circuit": "marina",
+      "seconds": 132.11,
+      "fpsMedian": 60,
+      "fpsP10": 59.98200539838118,
+      "gpuP95": 2.102833,
+      "cpuSubmitP95Max": 5,
+      "framebuffer": [1821, 1138],
+      "raceTime": 127.4500000000475,
+      "bestLap": 59.35833333338057,
+      "finishedPosition": 1
+    }
+  ],
+  "memory": [
+    {
+      "cycle": 0,
+      "circuit": "riviera",
+      "geometries": 93,
+      "textures": 17
+    },
+    {
+      "cycle": 0,
+      "circuit": "forest",
+      "geometries": 95,
+      "textures": 18
+    },
+    {
+      "cycle": 0,
+      "circuit": "marina",
+      "geometries": 113,
+      "textures": 22
+    },
+    {
+      "cycle": 1,
+      "circuit": "riviera",
+      "geometries": 93,
+      "textures": 17
+    },
+    {
+      "cycle": 1,
+      "circuit": "forest",
+      "geometries": 95,
+      "textures": 18
+    },
+    {
+      "cycle": 1,
+      "circuit": "marina",
+      "geometries": 113,
+      "textures": 22
+    },
+    {
+      "cycle": 2,
+      "circuit": "riviera",
+      "geometries": 93,
+      "textures": 17
+    },
+    {
+      "cycle": 2,
+      "circuit": "forest",
+      "geometries": 95,
+      "textures": 18
+    },
+    {
+      "cycle": 2,
+      "circuit": "marina",
+      "geometries": 113,
+      "textures": 22
+    }
+  ],
+  "errors": []
+}

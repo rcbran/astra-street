@@ -1,16 +1,31 @@
-# Astra Formula environment asset handoff
+# Environment implementation notes
 
-Recommended runtime bundle: 7,027,561 bytes (7.03 MB / 6.70 MiB), five files in this folder. Do not copy research/ into the game build. Exact download provenance, author, CC0 terms and SHA256 hashes are in provenance.json.
+This describes the integrated runtime bundle, superseding the initial worker handoff. Provenance and hashes are in `environment-provenance.json`; source links and notices are in `ASSETS.md` and `public/assets/NOTICE.txt`.
 
-- sparse_grass_diff_1k.jpg: 1024x1024, sRGB base color. Natural sparse grassy soil, approximately 2m scan width. Tile rather than stretching; normal scale approximately 0.25–0.5 is a sensible starting point.
-- sparse_grass_nor_gl_1k.jpg: 1024x1024, OpenGL tangent-space normal. Linear/non-color texture.
-- sparse_grass_rough_1k.jpg: 1024x1024 scalar roughness. Linear/non-color texture; material metalness 0.
-- sundowner_overlook_1k.hdr: 1024x512 RGBE environment. Clear coastal late-afternoon low sun; blue sky and ocean with warm grassy coastal hill. Good for PMREM environment lighting/reflections; the horizon includes a small cafe, so a procedural sky background is more controllable. Decode via RGBELoader, use equirectangular reflection mapping, generate PMREM once, then dispose HDR texture. HDR preview in research/ was only a basic inspection conversion, not calibrated tonemapping.
-- broadleaf_atlas.png: generated original summer broadleaf tree cutout, 1774x887 RGBA, genuine alpha verified (633,041 completely transparent pixels; foliage mostly alpha 249–252). Use alphaTest around 0.4–0.5, transparent false, depthWrite true, sRGB color, DoubleSide and mipmaps. Two instanced crossed quads per tree or camera-facing billboards. Avoid too many overlapping cards. No generated ground or shadows.
+## Surface maps
 
-Atlas framing: generation did not evenly split trees at u=0.5. Center empty area at alpha>128 is x=913..977. Left tree UV rectangle x=0..942 (u=0..0.531), right tree x=946..1774 (u=0.533..1); use full y=0..887. Match plane aspect ratio to each UV rectangle (left ~1.062, right ~0.934). Trunks reach lower image edge; the right crown reaches the top edge, so clamp sampling and do not repeat the atlas. Tiny alpha fringe can be discarded at alphaTest 0.45.
+Road and grass scans use 1024×1024 JPEGs. Diffuse maps use sRGB; normal/roughness maps use linear/non-color sampling. Normals are OpenGL convention. Textures use repeat wrapping and bounded anisotropy. Road ribbons map UVs by traveled distance; grass is tiled across the ground instead of stretched as one image. Asphalt Track is a smoother racing surface than the superseded cracked Asphalt 02 set.
 
-All downloaded Poly Haven files matched API MD5 checksums. Diffuse, normal, roughness and converted HDR preview were visually inspected. Atlas was visually inspected and alpha distribution measured using ffmpeg raw RGBA decode. Main integrator still needs to check the appearance under game lighting and measure overdraw/frame pacing.
+`src/game/materials.ts` loads the seven surface/foliage textures before world construction. The engine owns them across circuit changes. Worlds must not dispose shared textures. The HDR is loaded separately, converted once to a PMREM environment, and the source HDR texture is disposed afterward.
 
-## Unused research asset
-research/tree_collection_1k.png is a photographic CC0 conifer atlas by rubberduck, 3157x1024, 3,819,864 bytes. Source https://opengameart.org/content/high-res-tree-textures-treecollection1kpng ; direct download https://opengameart.org/sites/default/files/oga-textures/82657/tree_collection_1k.png ; CC0 license linked by source https://creativecommons.org/publicdomain/zero/1.0/ . The atlas has dark winter coloring and snow on multiple trees, so it is excluded from the recommended summer circuit bundle. Original broadleaf generation was used because this photographic option did not fit the summer art direction.
+## Environment lighting
+
+`textures/environment.hdr` is the 1024×512 Sundowner Overlook HDR. It provides static reflection/lighting detail. The visible sky is a procedural shader so clouds, horizon and sunlight can be adjusted for clear, sunset and wet-night conditions without shipping three large HDRs.
+
+## Foliage atlas
+
+`textures/trees.png` is a 1774×887 RGBA atlas. It contains two broadleaf trees with an uneven split. Alpha was inspected and is real transparency; the source is not a checkerboard-backed image.
+
+- Left tree: pixels x=0…942, UV x=0…0.531; full height.
+- Right tree: pixels x=946…1774, UV x=0.533…1; full height.
+- The current runtime uses the left tree only, on crossed instanced planes.
+- Material: alpha test 0.45, alpha-to-coverage, double-sided, opaque rendering with discarded transparent pixels; sRGB map.
+- Trunks reach the lower edge. Clamp the atlas rather than repeat it.
+
+Tree variety and close-range appearance remain visual improvement opportunities. Reusing the second tree or adding a near/far representation should preserve the draw and overdraw budgets.
+
+## Current scenery limitations
+
+Terrain is generated and flat around the track. Distant hills, building facades, roadside surfaces, yachts, and vegetation variety remain comparatively simple. The coastline ground was shortened to reveal the sea plane; further coastal composition/shore detail needs review in moving gameplay. Wet night includes a low-resolution road reflection, rain lines, and pooled tire spray.
+
+Do not introduce unsupported asset licensing or depend on temporary absolute paths when improving the scenery. Asset authoring workers, if used, must be GPT Astra and return files outside the checkout for integration by the main agent.
