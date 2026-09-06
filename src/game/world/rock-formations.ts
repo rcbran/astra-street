@@ -4,59 +4,106 @@ import type { Weather } from '../types';
 import { instanced } from './geometry';
 import { Landscape, terrainNoise } from './landscape';
 
-// Reusable fractured buttresses with a varied crown, ledges, vertical fissures
-// and layered color. Six profiles are instanced into connected canyon walls.
+type Transform = Parameters<typeof instanced>[2][number];
+
+// Fractured sandstone walls use an angular plan, undercut beds and a broken
+// rim. The roof closes across an irregular plateau rather than a round dome.
 function cliffGeometry(seed: number) {
   const rand = seeded(seed),
-    sides = 32,
-    levels = 22;
+    sides = 64,
+    beds = 8;
   const positions: number[] = [],
     colors: number[] = [],
     uvs: number[] = [],
     indices: number[] = [];
-  const phase = rand() * 10;
-  for (let level = 0; level <= levels; level++) {
-    const t = level / levels;
-    const ledge = Math.floor(t * 7 + 0.12) * 0.021;
+  const phase = rand() * 25;
+  const leanX = (rand() - 0.5) * 0.14,
+    leanZ = (rand() - 0.5) * 0.14;
+  // Polygon corners, interpolated in Cartesian space, make broad planes with
+  // discrete joints instead of a rippled cylindrical surface.
+  const corners = Array.from({ length: 16 }, (_, i) => {
+    const a = (i / 16) * Math.PI * 2;
+    const radius = 0.43 + rand() * 0.16;
+    return { x: Math.cos(a) * radius, z: Math.sin(a) * radius };
+  });
+  const rings: { t: number; shelf: number; roof: number }[] = [];
+  const thicknesses = Array.from({ length: beds }, () => 0.5 + rand() * 1.5);
+  const thicknessSum = thicknesses.reduce((a, b) => a + b, 0);
+  let height = 0,
+    retreat = 0;
+  for (let bed = 0; bed < beds; bed++) {
+    const thickness = thicknesses[bed] / thicknessSum;
+    const ledge = 0.009 + rand() * 0.012;
+    rings.push({ t: height, shelf: -retreat + ledge, roof: 1 });
+    rings.push({ t: height + 0.008, shelf: -retreat - ledge, roof: 1 });
+    rings.push({
+      t: height + thickness - 0.008,
+      shelf: -retreat - 0.003,
+      roof: 1,
+    });
+    height += thickness;
+    // Two larger bedding breaks make real horizontal walkable-width terraces.
+    if (bed === 2 || bed === 5) retreat += 0.075 + rand() * 0.035;
+  }
+  rings.push({ t: 1, shelf: -retreat, roof: 1 });
+  for (const roof of [0.8, 0.6, 0.4, 0.2, 0])
+    rings.push({ t: 1, shelf: -retreat, roof });
+  for (const ring of rings) {
+    const t = ring.t;
     for (let side = 0; side <= sides; side++) {
       const a = (side / sides) * Math.PI * 2;
-      const fissure = Math.max(0, Math.sin(a * 7 + phase)) ** 10 * 0.12;
-      const fracture = terrainNoise(
-        Math.cos(a) * 3 + phase,
-        t * 9 + Math.sin(a) * 2,
+      const ca = Math.cos(a),
+        sa = Math.sin(a);
+      const section = (side / sides) * corners.length;
+      const index = Math.floor(section) % corners.length;
+      const next = (index + 1) % corners.length;
+      const f = section - Math.floor(section);
+      const px = THREE.MathUtils.lerp(corners[index].x, corners[next].x, f);
+      const pz = THREE.MathUtils.lerp(corners[index].z, corners[next].z, f);
+      const fissure =
+        Math.max(0, Math.sin(a * 5 + phase + Math.sin(t * 3 + phase) * 0.13)) **
+        12;
+      const chip = terrainNoise(
+        ca * 8 + phase,
+        sa * 8 + Math.floor(t * beds) * 1.2,
       );
+      const taper =
+        1.0 - t * 0.1 + (1 - THREE.MathUtils.smoothstep(t, 0, 0.24)) * 0.16;
       const radius =
-        0.57 - ledge - t * 0.035 + (fracture - 0.5) * 0.12 - fissure;
-      const crown =
-        0.86 + terrainNoise(Math.cos(a) * 2 + phase, Math.sin(a) * 2) * 0.3;
+        (taper +
+          ring.shelf -
+          fissure * 0.045 -
+          Math.max(0, chip - 0.62) * 0.22) *
+        ring.roof;
+      const brokenRim =
+        (terrainNoise(px * ring.roof * 5 + phase, pz * ring.roof * 5) - 0.5) *
+        0.18;
+      const beddingTilt = (ca * 0.018 + sa * 0.025) * ring.roof;
       positions.push(
-        Math.sign(Math.cos(a)) * Math.abs(Math.cos(a)) ** 0.38 * radius +
-          t * 0.065,
-        t * crown,
-        Math.sign(Math.sin(a)) * Math.abs(Math.sin(a)) ** 0.38 * radius,
+        px * radius + t * leanX,
+        t * (1 + brokenRim) + beddingTilt,
+        pz * radius + t * leanZ,
       );
-      uvs.push((side / sides) * 8, t * 10);
-      const strata = 0.73 + terrainNoise(t * 34, phase) * 0.35;
-      const c = new THREE.Color('#c6b6a2').multiplyScalar(
-        strata * (1 - fissure * 1.7),
+      uvs.push((side / sides) * 8, t * 12);
+      const strata =
+        0.84 + terrainNoise(Math.floor(t * beds) * 2.9, phase) * 0.18;
+      const mineral = terrainNoise(ca * 4 + phase, t * 15 + sa * 4);
+      const c = new THREE.Color('#c7b9a5').lerp(
+        new THREE.Color('#8c8c7d'),
+        THREE.MathUtils.smoothstep(mineral, 0.55, 0.85) * 0.35,
+      );
+      c.multiplyScalar(
+        strata * (1 - fissure * 0.2) * (ring.shelf < -0.01 ? 0.83 : 1),
       );
       colors.push(c.r, c.g, c.b);
     }
   }
-  for (let y = 0; y < levels; y++)
+  for (let y = 0; y < rings.length - 1; y++)
     for (let x = 0; x < sides; x++) {
       const a = y * (sides + 1) + x,
         b = a + sides + 1;
       indices.push(a, b, a + 1, a + 1, b, b + 1);
     }
-  const center = positions.length / 3;
-  positions.push(0, 0.98, 0);
-  colors.push(0.48, 0.35, 0.24);
-  uvs.push(0.5, 0.5);
-  for (let x = 0; x < sides; x++) {
-    const a = levels * (sides + 1) + x;
-    indices.push(a, center, a + 1);
-  }
   const geometry = new THREE.BufferGeometry();
   geometry.setAttribute(
     'position',
@@ -69,112 +116,173 @@ function cliffGeometry(seed: number) {
   return geometry;
 }
 
+// Tumbled talus has its own geometry: a short cliff scaled down still looks like
+// a miniature cliff. Rounded fractured boulders ground the wall in its hillside.
+function boulderGeometry(seed: number) {
+  const geometry = new THREE.IcosahedronGeometry(0.6, 3);
+  const p = geometry.getAttribute('position');
+  const colors: number[] = [];
+  for (let i = 0; i < p.count; i++) {
+    const x = p.getX(i),
+      y = p.getY(i),
+      z = p.getZ(i);
+    const n = terrainNoise(x * 6 + seed, z * 6 + y * 3);
+    const r = 0.85 + n * 0.3;
+    p.setXYZ(i, x * r, y * r * 0.76 + 0.3, z * r);
+    const c = new THREE.Color('#b9b5a6').multiplyScalar(0.8 + n * 0.3);
+    colors.push(c.r, c.g, c.b);
+  }
+  geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+  geometry.computeVertexNormals();
+  return geometry;
+}
+
+function addTiles(
+  root: THREE.Group,
+  geometry: THREE.BufferGeometry,
+  material: THREE.Material,
+  transforms: Transform[],
+  label: string,
+) {
+  const tiles = new Map<string, Transform[]>();
+  for (const t of transforms) {
+    const key = `${Math.floor(t.x / 300)},${Math.floor(t.z / 300)}`;
+    const tile = tiles.get(key) ?? [];
+    tile.push(t);
+    tiles.set(key, tile);
+  }
+  for (const transforms of tiles.values()) {
+    const batch = instanced(geometry, material, transforms, true);
+    batch.name = label;
+    root.add(batch);
+  }
+}
+
 export function buildRockFormations(
   root: THREE.Group,
   track: Track,
   weather: Weather,
-  texture: THREE.Texture,
+  textures: {
+    color: THREE.Texture;
+    normal: THREE.Texture;
+    rough: THREE.Texture;
+  },
   landscape: Landscape,
 ) {
   if (track.circuit.id === 'marina') return;
   const coastal = landscape.coastal,
     rand = seeded(coastal ? 842 : 247);
   const material = new THREE.MeshStandardMaterial({
-    map: texture,
-    bumpMap: texture,
-    bumpScale: 0.65,
+    map: textures.color,
+    normalMap: textures.normal,
+    normalScale: new THREE.Vector2(0.8, 0.8),
+    roughnessMap: textures.rough,
     vertexColors: true,
-    color: coastal ? 0xf1dfc4 : 0xadb9a8,
-    roughness: weather === 'rain' ? 0.85 : 1,
-    envMapIntensity: 0.18,
+    color: coastal ? 0xf3eade : 0xc9d4c7,
+    roughness: weather === 'rain' ? 0.83 : 0.98,
+    envMapIntensity: 0.2,
   });
-  const batches: Parameters<typeof instanced>[2][] = Array.from(
-    { length: 6 },
-    () => [],
-  );
-  // Repeated stations make a legible winding canyon; irregular gaps reveal the
-  // mountain range. All footprints remain outside the complete driving corridor.
-  for (let at = 0; at < track.length; at += coastal ? 45 : 100)
+  const walls: Transform[][] = Array.from({ length: 8 }, () => []);
+  const talus: Transform[][] = Array.from({ length: 4 }, () => []);
+  // Clusters alternate enclosed rock cuts with forest glades. Scale varies more
+  // in width than height, avoiding a row of identical upright pillars.
+  for (let at = 0; at < track.length; at += coastal ? 62 : 115)
     for (const side of [-1, 1]) {
-      const f = track.sample(at + rand() * 24);
-      const width = 38 + rand() * 48;
-      const setback = 60 + width * 0.55 + rand() * (coastal ? 45 : 120);
+      const f = track.sample(at + rand() * 35);
+      const exposure = terrainNoise(f.x * 0.006 + side * 10, f.z * 0.006);
+      if (exposure < (coastal ? 0.28 : 0.47)) continue;
+      const width = 95 + rand() * 90;
+      const setback = 55 + width * 0.82 + rand() * (coastal ? 55 : 105);
       const x = f.x + f.nx * side * setback,
         z = f.z + f.nz * side * setback;
-      if (track.nearestDistance(x, z) < width * 1.04 + 25) continue;
-      if (coastal && x + width * 0.8 > 490) continue;
-      const height = (coastal ? 90 : 55) + rand() * (coastal ? 110 : 100);
-      const group = Math.floor(rand() * batches.length);
-      const base = landscape.height(x, z) - 14;
-      batches[group].push({
+      if (
+        track.nearestDistance(x, z) < width * 1.02 + 30 ||
+        (coastal && x + width * 1.02 > 490)
+      )
+        continue;
+      const height = Math.min(
+        width * 0.78,
+        (coastal ? 58 : 34) + rand() * (coastal ? 78 : 57),
+      );
+      const group = Math.floor(rand() * walls.length);
+      const base = landscape.height(x, z) - 18;
+      landscape.registerVegetationObstacle(x, z, width * 1.02);
+      walls[group].push({
         x,
         y: base,
         z,
-        ry: f.heading + rand() * 0.7,
-        sx: width,
+        ry: f.heading + (rand() - 0.5) * 0.24,
+        sx: width * 0.72,
         sy: height,
-        sz: width * (0.85 + rand() * 0.5),
+        sz: width * (1.12 + rand() * 0.13),
         color: new THREE.Color().setHSL(
-          coastal ? 0.08 : 0.12,
-          0.09 + rand() * 0.12,
-          0.75 + rand() * 0.2,
+          coastal ? 0.09 : 0.12,
+          0.035 + rand() * 0.06,
+          0.82 + rand() * 0.16,
         ),
       });
-      // Attached exposed ribs cast deeper crevice shadows across broad faces.
       for (let rib = 0; rib < 3; rib++) {
-        const along = (rib - 1) * width * 0.3;
-        const bx = x - f.nx * side * width * 0.39 + f.tx * along;
-        const bz = z - f.nz * side * width * 0.39 + f.tz * along;
-        const w = width * (0.24 + rand() * 0.13);
-        if (track.nearestDistance(bx, bz) < w + 24) continue;
-        batches[(group + rib + 1) % 6].push({
+        const along = (rib - 1) * width * 0.4;
+        const bx = x - f.nx * side * width * 0.22 + f.tx * along;
+        const bz = z - f.nz * side * width * 0.22 + f.tz * along;
+        const w = width * (0.52 + rand() * 0.16);
+        if (track.nearestDistance(bx, bz) < w * 0.95 + 26) continue;
+        landscape.registerVegetationObstacle(bx, bz, w * 0.95);
+        walls[(group + rib + 1) % walls.length].push({
           x: bx,
-          y: base - 4,
+          y: landscape.height(bx, bz) - 12,
           z: bz,
-          ry: f.heading + rand() * 0.35,
-          rz: (rand() - 0.5) * 0.1,
+          ry: f.heading + (rand() - 0.5) * 0.2,
+          rz: (rand() - 0.5) * 0.13,
           sx: w,
-          sy: height * (0.5 + rand() * 0.45),
-          sz: w * 1.25,
-          color: new THREE.Color().setHSL(0.09, 0.07, 0.78 + rand() * 0.18),
+          sy: height * (0.25 + rand() * 0.29),
+          sz: w * 1.2,
+          color: new THREE.Color(0xd4cfc0),
         });
       }
-      // Smaller broken spires and talus stitch the vertical walls into the slopes.
-      for (let j = 0; j < 6; j++) {
+      for (let j = 0; j < 22; j++) {
         const a = rand() * Math.PI * 2;
-        const bx = x + Math.cos(a) * width * 0.57,
-          bz = z + Math.sin(a) * width * 0.57;
-        const s = 8 + rand() * 18;
-        if (
-          track.nearestDistance(bx, bz) < s * 0.95 + 23 ||
-          (coastal && bx + s > 494)
-        )
+        const bx = x + Math.cos(a) * width * (0.42 + rand() * 0.35);
+        const bz = z + Math.sin(a) * width * (0.42 + rand() * 0.35);
+        const s = 2.5 + rand() ** 2 * 18;
+        if (track.nearestDistance(bx, bz) < s + 24 || (coastal && bx + s > 494))
           continue;
-        batches[(group + j) % 6].push({
+        talus[j % talus.length].push({
           x: bx,
-          y: landscape.height(bx, bz) - 5,
+          y: landscape.height(bx, bz) - s * 0.12,
           z: bz,
+          rx: (rand() - 0.5) * 0.5,
           ry: a,
-          rz: (rand() - 0.5) * 0.24,
+          rz: (rand() - 0.5) * 0.4,
           sx: s,
-          sy: s * (j < 2 ? 2.4 : 0.8),
-          sz: s * 1.4,
-          color: new THREE.Color(0xc6b5a1),
+          sy: s * (0.6 + rand() * 0.5),
+          sz: s * (0.8 + rand() * 0.6),
+          color: new THREE.Color().setHSL(0.1, 0.04, 0.72 + rand() * 0.24),
         });
       }
     }
   let count = 0;
-  batches.forEach((transforms, i) => {
+  walls.forEach((transforms, i) => {
     if (!transforms.length) return;
     count += transforms.length;
-    const batch = instanced(
+    addTiles(
+      root,
       cliffGeometry(73 + i * 29),
       material,
       transforms,
-      true,
+      'eroded rock buttresses',
     );
-    batch.name = 'canyon buttresses';
-    root.add(batch);
+  });
+  talus.forEach((transforms, i) => {
+    if (!transforms.length) return;
+    count += transforms.length;
+    addTiles(
+      root,
+      boulderGeometry(31 + i * 7),
+      material,
+      transforms,
+      'fractured talus boulders',
+    );
   });
   root.userData.rockInstances = count;
 }

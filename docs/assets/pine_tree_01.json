@@ -1,0 +1,257 @@
+{
+  "source": "pine_tree_01",
+  "variants": [
+    {
+      "id": "pine_a",
+      "boundsZUp": [
+        -3.4924726486206055, -3.8408854007720947, 0.0, 4.109367847442627,
+        4.4583892822265625, 20.396811850368977
+      ],
+      "lods": [
+        {
+          "name": "pine_a_LOD0",
+          "parts": [
+            {
+              "name": "pine_a_LOD0_bark",
+              "triangles": 9999,
+              "material": "pine_tree_01_bark_game"
+            },
+            {
+              "name": "pine_a_LOD0_trunk_a",
+              "triangles": 2400,
+              "material": "pine_tree_01_trunk_a_game"
+            },
+            {
+              "name": "pine_a_LOD0_twig",
+              "triangles": 41998,
+              "material": "pine_tree_01_twig_game"
+            },
+            {
+              "name": "pine_a_LOD0_dead_branches",
+              "triangles": 900,
+              "material": "pine_tree_01_dead_branches_game"
+            }
+          ]
+        },
+        {
+          "name": "pine_a_LOD1",
+          "parts": [
+            {
+              "name": "pine_a_LOD1_bark",
+              "triangles": 2430,
+              "material": "pine_tree_01_bark_game"
+            },
+            {
+              "name": "pine_a_LOD1_trunk_a",
+              "triangles": 600,
+              "material": "pine_tree_01_trunk_a_game"
+            },
+            {
+              "name": "pine_a_LOD1_twig",
+              "triangles": 9496,
+              "material": "pine_tree_01_twig_game"
+            },
+            {
+              "name": "pine_a_LOD1_dead_branches",
+              "triangles": 200,
+              "material": "pine_tree_01_dead_branches_game"
+            }
+          ]
+        },
+        {
+          "name": "pine_a_LOD2",
+          "parts": [
+            {
+              "name": "pine_a_LOD2_bark",
+              "triangles": 155,
+              "material": "pine_tree_01_bark_game"
+            },
+            {
+              "name": "pine_a_LOD2_trunk_a",
+              "triangles": 139,
+              "material": "pine_tree_01_trunk_a_game"
+            },
+            {
+              "name": "pine_a_LOD2_twig",
+              "triangles": 6996,
+              "material": "pine_tree_01_twig_game"
+            },
+            {
+              "name": "pine_a_LOD2_dead_branches",
+              "triangles": 40,
+              "material": "pine_tree_01_dead_branches_game"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pine_b",
+      "boundsZUp": [
+        -3.534287452697754, -4.0840911865234375, 0.0, 3.6905746459960938,
+        3.53114652633667, 14.880113810300827
+      ],
+      "lods": [
+        {
+          "name": "pine_b_LOD0",
+          "parts": [
+            {
+              "name": "pine_b_LOD0_bark",
+              "triangles": 9999,
+              "material": "pine_tree_01_bark_game"
+            },
+            {
+              "name": "pine_b_LOD0_trunk_b",
+              "triangles": 2399,
+              "material": "pine_tree_01_trunk_b_game"
+            },
+            {
+              "name": "pine_b_LOD0_twig",
+              "triangles": 41998,
+              "material": "pine_tree_01_twig_game"
+            },
+            {
+              "name": "pine_b_LOD0_dead_branches",
+              "triangles": 900,
+              "material": "pine_tree_01_dead_branches_game"
+            }
+          ]
+        },
+        {
+          "name": "pine_b_LOD1",
+          "parts": [
+            {
+              "name": "pine_b_LOD1_bark",
+              "triangles": 2475,
+              "material": "pine_tree_01_bark_game"
+            },
+            {
+              "name": "pine_b_LOD1_trunk_b",
+              "triangles": 600,
+              "material": "pine_tree_01_trunk_b_game"
+            },
+            {
+              "name": "pine_b_LOD1_twig",
+              "triangles": 9497,
+              "material": "pine_tree_01_twig_game"
+            },
+            {
+              "name": "pine_b_LOD1_dead_branches",
+              "triangles": 200,
+              "material": "pine_tree_01_dead_branches_game"
+            }
+          ]
+        },
+        {
+          "name": "pine_b_LOD2",
+          "parts": [
+            {
+              "name": "pine_b_LOD2_bark",
+              "triangles": 154,
+              "material": "pine_tree_01_bark_game"
+            },
+            {
+              "name": "pine_b_LOD2_trunk_b",
+              "triangles": 139,
+              "material": "pine_tree_01_trunk_b_game"
+            },
+            {
+              "name": "pine_b_LOD2_twig",
+              "triangles": 7000,
+              "material": "pine_tree_01_twig_game"
+            },
+            {
+              "name": "pine_b_LOD2_dead_branches",
+              "triangles": 40,
+              "material": "pine_tree_01_dead_branches_game"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pine_c",
+      "boundsZUp": [
+        -3.2845001220703125, -3.792654037475586, 0.0, 4.336040496826172,
+        4.093779563903809, 17.550711028277874
+      ],
+      "lods": [
+        {
+          "name": "pine_c_LOD0",
+          "parts": [
+            {
+              "name": "pine_c_LOD0_bark",
+              "triangles": 10000,
+              "material": "pine_tree_01_bark_game"
+            },
+            {
+              "name": "pine_c_LOD0_trunk_c",
+              "triangles": 2399,
+              "material": "pine_tree_01_trunk_c_game"
+            },
+            {
+              "name": "pine_c_LOD0_twig",
+              "triangles": 42000,
+              "material": "pine_tree_01_twig_game"
+            },
+            {
+              "name": "pine_c_LOD0_dead_branches",
+              "triangles": 900,
+              "material": "pine_tree_01_dead_branches_game"
+            }
+          ]
+        },
+        {
+          "name": "pine_c_LOD1",
+          "parts": [
+            {
+              "name": "pine_c_LOD1_bark",
+              "triangles": 2448,
+              "material": "pine_tree_01_bark_game"
+            },
+            {
+              "name": "pine_c_LOD1_trunk_c",
+              "triangles": 600,
+              "material": "pine_tree_01_trunk_c_game"
+            },
+            {
+              "name": "pine_c_LOD1_twig",
+              "triangles": 9499,
+              "material": "pine_tree_01_twig_game"
+            },
+            {
+              "name": "pine_c_LOD1_dead_branches",
+              "triangles": 200,
+              "material": "pine_tree_01_dead_branches_game"
+            }
+          ]
+        },
+        {
+          "name": "pine_c_LOD2",
+          "parts": [
+            {
+              "name": "pine_c_LOD2_bark",
+              "triangles": 154,
+              "material": "pine_tree_01_bark_game"
+            },
+            {
+              "name": "pine_c_LOD2_trunk_c",
+              "triangles": 139,
+              "material": "pine_tree_01_trunk_c_game"
+            },
+            {
+              "name": "pine_c_LOD2_twig",
+              "triangles": 6998,
+              "material": "pine_tree_01_twig_game"
+            },
+            {
+              "name": "pine_c_LOD2_dead_branches",
+              "triangles": 40,
+              "material": "pine_tree_01_dead_branches_game"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

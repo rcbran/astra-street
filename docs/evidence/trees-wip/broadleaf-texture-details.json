@@ -1,0 +1,4636 @@
+{
+  "camera": [
+    1.9708815149033219,
+    2.9747066019152943,
+    66.51535271641347
+  ],
+  "materials": [
+    {
+      "uuid": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "name": "tree_small_02_branches_game",
+      "type": "MeshStandardMaterial",
+      "color": [
+        1,
+        1,
+        1
+      ],
+      "emissive": [
+        0,
+        0,
+        0
+      ],
+      "roughness": 0.94,
+      "metalness": 0,
+      "envMapIntensity": 0.3,
+      "alphaTest": 0,
+      "transparent": false,
+      "side": 0,
+      "map": {
+        "uuid": "091a3749-a3a7-4385-b215-3543308cce6f",
+        "name": "tree_small_02_branch_diff",
+        "colorSpace": "srgb",
+        "channel": 0,
+        "flipY": false,
+        "repeat": [
+          1,
+          1
+        ],
+        "offset": [
+          0,
+          0
+        ],
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "minFilter": 1008,
+        "premultiplyAlpha": false,
+        "imageSize": [
+          1024,
+          1024
+        ]
+      },
+      "normal": "c26d165f-25c7-4223-923c-a42366183075",
+      "normalScale": [
+        0.75,
+        -0.75
+      ],
+      "userData": {
+        "alphaCutoff": 0,
+        "foliage": false
+      }
+    },
+    {
+      "uuid": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "name": "tree_small_02_leaves_game",
+      "type": "MeshStandardMaterial",
+      "color": [
+        1,
+        1,
+        1
+      ],
+      "emissive": [
+        0,
+        0,
+        0
+      ],
+      "roughness": 0.94,
+      "metalness": 0,
+      "envMapIntensity": 0.2,
+      "alphaTest": 0.38,
+      "transparent": false,
+      "side": 2,
+      "map": {
+        "uuid": "856a278c-33b0-4546-98a6-fd09fd6440a5",
+        "name": "tree_small_02_leaves_diff",
+        "colorSpace": "srgb",
+        "channel": 0,
+        "flipY": false,
+        "repeat": [
+          1,
+          1
+        ],
+        "offset": [
+          0,
+          0
+        ],
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "minFilter": 1008,
+        "premultiplyAlpha": false,
+        "imageSize": [
+          1024,
+          1024
+        ]
+      },
+      "normal": "2e36cfa7-da83-4e59-a756-45c919894205",
+      "normalScale": [
+        0.45,
+        0.45
+      ],
+      "userData": {
+        "alphaCutoff": 0.38,
+        "foliage": true
+      }
+    },
+    {
+      "uuid": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "name": "tree_small_02_trunk_game",
+      "type": "MeshStandardMaterial",
+      "color": [
+        1,
+        1,
+        1
+      ],
+      "emissive": [
+        0,
+        0,
+        0
+      ],
+      "roughness": 0.94,
+      "metalness": 0,
+      "envMapIntensity": 0.3,
+      "alphaTest": 0,
+      "transparent": false,
+      "side": 0,
+      "map": {
+        "uuid": "d01ae506-b724-40b3-b57d-31b442ddf91c",
+        "name": "tree_small_02_diff",
+        "colorSpace": "srgb",
+        "channel": 0,
+        "flipY": false,
+        "repeat": [
+          1,
+          1
+        ],
+        "offset": [
+          0,
+          0
+        ],
+        "matrix": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "minFilter": 1008,
+        "premultiplyAlpha": false,
+        "imageSize": [
+          1024,
+          1024
+        ]
+      },
+      "normalScale": [
+        1,
+        -1
+      ],
+      "userData": {
+        "alphaCutoff": 0,
+        "foliage": false
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD0",
+      "count": 6,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD0",
+      "count": 6,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD0",
+      "count": 6,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 4,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 4,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 4,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 4,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 4,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 4,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 8,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 8,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 8,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD0",
+      "count": 4,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD0",
+      "count": 4,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD0",
+      "count": 4,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 4,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 4,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 4,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD0",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD0",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD0",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 4,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 4,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 4,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 6,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 6,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 6,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 8,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 8,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 8,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 7,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 7,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 7,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 6,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 6,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 6,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 3,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 3,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 3,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 5,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD1",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 4,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 3,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 2,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "739aad0b-adb4-4485-94f5-ab332a493337",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "c2cd72e6-1e89-4b42-8b1a-77ff8ecebc2c",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    },
+    {
+      "name": "broadleaf_a LOD2",
+      "count": 1,
+      "mat": "cf0524a7-f111-4294-b5da-93e5fe71a64b",
+      "attributes": [
+        "position",
+        "normal",
+        "uv"
+      ]
+    }
+  ]
+}

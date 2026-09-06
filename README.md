@@ -2,7 +2,7 @@
 
 An original arcade street racer for the browser. Drive the Astra S9 through coastal canyons, mountain forests and wet city streets. Handbrake drifts, rechargeable nitro, near-miss bonuses and speed checks reward clean racing. Built with TypeScript, React and Three.js.
 
-**Status:** playable street racer with a denser landscape pass, inspired by the user’s [Street Heat video reference](https://x.com/higgsfield_ai/status/2095916820431827408). Scenery and handling remain work in progress; this does not claim visual parity. Read [the handoff](docs/HANDOFF.md) and [visual direction](docs/STREET-DIRECTION.md).
+**Status:** playable street racer; an in-progress migration checkpoint adds full 3D trees and richer natural scenery, inspired by the user’s [Street Heat video reference](https://x.com/higgsfield_ai/status/2095916820431827408). Scenery and handling remain work in progress; this does not claim visual parity. Read [the handoff](docs/HANDOFF.md) and [visual direction](docs/STREET-DIRECTION.md).
 
 ## Run locally
 
@@ -52,9 +52,9 @@ All three conditions can be selected on each circuit. Layouts, car design, liver
 
 ## Performance
 
-Rendering is capped at 60 FPS during racing, 30 in menus, and 20 when paused or finished. Hidden tabs stop rendering. Balanced caps internal resolution near 1080p; Eco uses a 720p budget and Ultra 1440p. Balanced/Eco can reduce resolution below 42 FPS, preserving visual quality during the user's accepted 40–50 FPS shared-GPU conditions.
+Rendering is capped at **30 FPS** during racing and menus, and 20 when paused or finished. The user chose more detailed graphics over the previous 60 FPS target. Hidden tabs stop rendering. Balanced caps internal resolution near 1080p; Eco uses a 720p budget and Ultra 1440p. Balanced/Eco reduce resolution only after sustained samples below 25 FPS and recover slowly near 30.
 
-The current landscape build held a 60 FPS median in short 25-second headless samples on each default route at a measured 1821×1138 drawing buffer using the M4 Max Metal renderer. These are automated GPU workload samples, not visible-window frame-pacing, full-race or thermal measurements. Earlier visible results are recorded separately. See [performance evidence and limits](docs/PERFORMANCE.md).
+Seven CC0 fir, pine and broadleaf variants use full 3D branching and foliage at all three distance levels. Shared assets, spatial instancing and distance selection keep dense forests bounded. Curved grass, ferns, shrubs, scanned rock surfaces and road furniture add detail around the routes. See [asset provenance](docs/ASSETS.md) and [performance evidence and limits](docs/PERFORMANCE.md). Historical 60 FPS measurements describe earlier, simpler scenery; they do not describe this tree overhaul.
 
 ## Project guide
 

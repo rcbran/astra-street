@@ -54,8 +54,8 @@ export function GameSettings({
             ))}
           </RadioGroup>
           <p className="setting-note">
-            Racing is capped at 60 FPS. Menus run at 30 FPS. Rendering pauses in
-            hidden tabs.
+            Racing and menus are capped at 30 FPS. Rendering pauses in hidden
+            tabs.
           </p>
         </div>
         <label className="setting-row" htmlFor="steering-assist">

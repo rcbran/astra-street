@@ -1,4 +1,8 @@
 import type { Phase, Quality } from './types';
+export const RACING_FPS = 30;
+export function frameTarget(phase: Phase) {
+  return phase === 'paused' || phase === 'finished' ? 20 : RACING_FPS;
+}
 export interface FrameSample {
   fps: number;
   frameP95: number;
@@ -110,8 +114,10 @@ export class ResolutionBudget {
   }
   adapt(sample: FrameSample, quality: Quality): boolean {
     if (sample.phase !== 'racing' || quality === 'ultra') return false;
-    this.slow = sample.fps < 42 ? this.slow + 1 : Math.max(0, this.slow - 1);
-    this.fast = sample.fps > 59 && sample.renderP95 < 9 ? this.fast + 1 : 0;
+    // The visual budget targets 30 FPS. A healthy capped sample must never
+    // trigger the old 60 FPS controller's permanent resolution reduction.
+    this.slow = sample.fps < 25 ? this.slow + 1 : Math.max(0, this.slow - 1);
+    this.fast = sample.fps > 29 && sample.renderP95 < 18 ? this.fast + 1 : 0;
     if (this.slow >= 3 && this.scale > 0.7) {
       this.scale = Math.max(0.7, this.scale - 0.08);
       this.slow = 0;

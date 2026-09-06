@@ -147,7 +147,7 @@ export function RacingGame() {
             aria-label="Toggle performance metrics"
           >
             <i />
-            {data.fps ? `${data.fps} FPS` : '60 FPS TARGET'}
+            {data.fps ? `${data.fps} FPS` : '30 FPS TARGET'}
           </Button>
           <Button
             variant="ghost"

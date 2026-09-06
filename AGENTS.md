@@ -4,7 +4,7 @@ Read `docs/HANDOFF.md` first when resuming, then `docs/TASKS.md` and `docs/ARCHI
 
 ## User intent
 
-Build a visually rich browser street racer with simple fun gameplay, drifting, nitro and several environments/weather choices. The active reference is the Street Heat video linked in `docs/STREET-DIRECTION.md`. Preserve the nominal 60 FPS target and the user’s accepted 40–50 FPS under shared GPU load. Treat the older AAA F1 brief as historical; do not claim the current build matches the new video.
+Build a visually rich browser street racer with simple fun gameplay, drifting, nitro and several environments/weather choices. The active reference is the Street Heat video linked in `docs/STREET-DIRECTION.md`. The user explicitly changed the target to 30 FPS on 2026-09-06 to prioritize substantially better trees and scenery. Preserve bounded rendering and hidden-tab suspension. Treat the older AAA F1 brief as historical; do not claim the current build matches the new video.
 
 Code must remain modular and clear for eventual public GitHub publication. The user initially deferred documentation, then explicitly requested the current documentation and handoff. Maintain concise accurate context at milestones.
 

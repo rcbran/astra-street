@@ -1,0 +1,83 @@
+[
+  {
+    "file": "forrest_ground_01-diff.jpg",
+    "dimensions": [
+      2048,
+      2048
+    ],
+    "sha256Identical": true,
+    "decodedPixelsIdentical": true
+  },
+  {
+    "file": "forrest_ground_01-normal.jpg",
+    "dimensions": [
+      1024,
+      1024
+    ],
+    "sha256Identical": true,
+    "decodedPixelsIdentical": true
+  },
+  {
+    "file": "forrest_ground_01-roughness.jpg",
+    "dimensions": [
+      1024,
+      1024
+    ],
+    "sha256Identical": true,
+    "decodedPixelsIdentical": true
+  },
+  {
+    "file": "cliff_side-diff.jpg",
+    "dimensions": [
+      2048,
+      2048
+    ],
+    "sha256Identical": true,
+    "decodedPixelsIdentical": true
+  },
+  {
+    "file": "cliff_side-normal.jpg",
+    "dimensions": [
+      1024,
+      1024
+    ],
+    "sha256Identical": true,
+    "decodedPixelsIdentical": true
+  },
+  {
+    "file": "cliff_side-roughness.jpg",
+    "dimensions": [
+      1024,
+      1024
+    ],
+    "sha256Identical": true,
+    "decodedPixelsIdentical": true
+  },
+  {
+    "file": "rock_wall_02-diff.jpg",
+    "dimensions": [
+      2048,
+      2048
+    ],
+    "sha256Identical": true,
+    "decodedPixelsIdentical": true
+  },
+  {
+    "file": "rock_wall_02-normal.jpg",
+    "dimensions": [
+      1024,
+      1024
+    ],
+    "sha256Identical": true,
+    "decodedPixelsIdentical": true
+  },
+  {
+    "file": "rock_wall_02-roughness.jpg",
+    "dimensions": [
+      1024,
+      1024
+    ],
+    "sha256Identical": true,
+    "decodedPixelsIdentical": true
+  }
+]

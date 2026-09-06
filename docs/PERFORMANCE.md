@@ -1,6 +1,16 @@
 # Performance evidence
 
-## Current landscape revision — 2026-09-06
+## Current tree overhaul — not yet production-benchmarked
+
+The migration checkpoint changes the target to **30 FPS** and integrates substantially heavier full-3D trees, new terrain/materials, 4096² shadows and a contact-shading trial. **31 tests, typecheck, lint and production build pass**, but final production full-race timing and resource-cycle validation have not run. The modernized `scripts/benchmark.mjs` supports `ASTRA_ALL_WEATHER=1` for nine complete races and owns a dedicated headless context.
+
+Static shape QA captured 434 tree views and 90 undergrowth views in headless Chrome152 on ANGLE/Metal Apple M4 Max with no errors. Static images are not timing evidence. Short development driving captures displayed 30 FPS at CSS1440×900/DPR1; an A/B used an1821×1138 framebuffer at CSS1440×900/DPR2. Neither establishes sustained production performance. Selected evidence is in `evidence/trees-wip/`; reports record the dirty source based on `b647678`, not a clean measured release.
+
+A separate broadleaf atlas filtering defect remains unresolved. See `HANDOFF.md`. Re-measure after that fix and final visual acceptance. The user is migrating to a mini PC: identify its real GPU and distinguish hardware from software rendering. M4 Max figures must not be presented as mini PC performance.
+
+Everything below is historical unless explicitly headed **Current budget policy**.
+
+## Previous landscape revision — 2026-09-06 (60 FPS target)
 
 The user requested headless automation off their screen. Chrome 152.0.7977.76 reports **HeadlessChrome with ANGLE/Metal on Apple M4 Max**, using a separate temporary profile. This is a production-build GPU workload sample, **not a visible-window display-pacing benchmark**. The older visible results below remain distinct.
 
@@ -72,15 +82,15 @@ These are renderer-accounted resources uploaded in the tested views, not total J
 
 ## Current budget policy
 
-- Race/countdown: 60 FPS; menu: 30; pause/results: 20.
+- Race/countdown/menu: 30 FPS; pause/results: 20.
 - Hidden tabs: no rendering. Blur pauses active gameplay and clears input.
 - Eco: 720p pixel budget, no directional shadow casting.
 - Balanced: 1080p ceiling, bounded pixel ratio and adaptive resolution.
 - Ultra: 1440p ceiling, no automatic resolution degradation.
-- Sustained samples below 42 FPS reduce Balanced/Eco scale, down to 70% of their initial ratio. Recovery requires sustained fast samples.
+- Three sustained slow samples below 25 FPS reduce Balanced/Eco scale, down to 70% of their initial ratio. Recovery requires 15 samples above 29 FPS with CPU submission below 18 ms.
 - Wet-road reflection: fixed 640×360 target; spray: a fixed 384-particle pool.
 
-The user accepts 40–50 FPS while other agents use the GPU. Preserve that tolerance; do not degrade the picture merely because it temporarily misses 60.
+The user explicitly changed the target to 30 FPS for richer trees and scenery. Healthy 30 FPS samples must retain full detail; the previous 42 FPS adaptation threshold would have degraded resolution continuously.
 
 ## Limits and next measurements
 

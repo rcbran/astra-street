@@ -2,6 +2,8 @@ import { createWetRoad } from './world/wet-road';
 import { mesh, box, instanced, ribbon, patch } from './world/geometry';
 import { makeSky, buildMountains } from './world/atmosphere';
 import { buildTrees } from './world/vegetation';
+import { buildRuralRoadside } from './world/rural-roadside';
+import type { TreeAssets } from './world/tree-assets';
 import { Landscape, buildLandscape } from './world/landscape';
 import { buildRockFormations } from './world/rock-formations';
 import { buildBuildings } from './world/buildings';
@@ -16,11 +18,13 @@ import * as THREE from 'three';
 import { Track, seeded } from './tracks';
 import {
   canvasTexture,
+  groundSurfaces,
+  rockSurfaces,
   type SurfaceTextures,
   signTexture,
   softShadowTexture,
 } from './materials';
-import type { Weather } from './types';
+import type { Quality, Weather } from './types';
 
 export interface World {
   root: THREE.Group;
@@ -29,13 +33,21 @@ export interface World {
   sun: THREE.DirectionalLight;
   rain: THREE.LineSegments | null;
   rainData: Float32Array | null;
-  update: (dt: number, position: THREE.Vector3, time: number) => void;
+  update: (
+    dt: number,
+    position: THREE.Vector3,
+    time: number,
+    camera: THREE.Vector3,
+    quality: Quality,
+  ) => void;
   dispose: () => void;
 }
 export function buildWorld(
   track: Track,
   weather: Weather,
   textures: SurfaceTextures,
+  treeAssets: TreeAssets,
+  sharedEnvironment: THREE.Texture,
 ): World {
   const root = new THREE.Group(),
     wet = weather === 'rain',
@@ -72,7 +84,13 @@ export function buildWorld(
   const landscape = new Landscape(track);
   buildLandscape(root, landscape, weather, textures);
   buildMountains(root, track, weather);
-  buildRockFormations(root, track, weather, textures.rock, landscape);
+  buildRockFormations(
+    root,
+    track,
+    weather,
+    rockSurfaces(textures, landscape.forest),
+    landscape,
+  );
   const road = new THREE.MeshStandardMaterial({
     map: textures.color,
     normalMap: textures.normal,
@@ -83,25 +101,41 @@ export function buildWorld(
     color: wet ? 0x8e9aaa : 0xffffff,
     envMapIntensity: wet ? 1.5 : 0.45,
   });
-  const runOff = paintedRunoffMaterial(track.circuit.id === 'forest', wet);
+  const runOff = city
+    ? paintedRunoffMaterial(false, wet)
+    : new THREE.MeshStandardMaterial({
+        map: textures.color,
+        normalMap: textures.normal,
+        normalScale: new THREE.Vector2(0.2, 0.2),
+        color: 0xb3aea0,
+        roughness: wet ? 0.4 : 1,
+      });
+  const floor = groundSurfaces(textures, landscape.forest);
   const gravel = new THREE.MeshStandardMaterial({
-    color: 0xa99f87,
+    color: city ? 0xa99f87 : landscape.forest ? 0x99ae7a : 0xe5dfcf,
     roughness: 1,
-    map: textures.color,
+    map: city ? textures.color : floor.color,
+    normalMap: city ? null : floor.normal,
+    normalScale: new THREE.Vector2(0.45, 0.45),
   });
   const white = new THREE.MeshStandardMaterial({
     color: 0xe3e4d9,
     roughness: wet ? 0.35 : 0.8,
   });
+  const shoulderWidth = city ? 4 : 0.9;
+  const vergeWidth = city ? 10 : 8;
   for (let s = 0; s < 512; s += 64) {
     for (const [a, b, m, y] of [
       [-half, half, road, 0],
-      [-half - 4, -half, runOff, -0.016],
-      [half, half + 4, runOff, -0.016],
-      [-half - 10, -half - 4, gravel, -0.045],
-      [half + 4, half + 10, gravel, -0.045],
+      [-half - shoulderWidth, -half, runOff, -0.016],
+      [half, half + shoulderWidth, runOff, -0.016],
+      [-half - vergeWidth, -half - shoulderWidth, gravel, -0.045],
+      [half + shoulderWidth, half + vergeWidth, gravel, -0.045],
     ] as [number, number, THREE.Material, number][]) {
-      const r = mesh(ribbon(track, a, b, y, s, s + 64), m);
+      const r = mesh(
+        ribbon(track, a, b, y, s, s + 64, !city && m === gravel ? 3360 : 2.5),
+        m,
+      );
       r.receiveShadow = true;
       root.add(r);
     }
@@ -122,147 +156,153 @@ export function buildWorld(
       (wearUv.getY(i) * track.circuit.width) / 95,
     );
   root.add(mesh(wear, roadWearMaterial(wet)));
-  const curbRed = new THREE.MeshStandardMaterial({
-    color: 0xd74430,
-    roughness: wet ? 0.34 : 0.75,
-  });
-  const curbWhite = new THREE.MeshStandardMaterial({
-    color: 0xe4dfcc,
-    roughness: wet ? 0.34 : 0.8,
-  });
-  const curbTransforms = [[], []] as Parameters<typeof instanced>[2][];
-  const barriers: Parameters<typeof instanced>[2] = [],
-    posts: Parameters<typeof instanced>[2] = [],
-    fences: Parameters<typeof instanced>[2] = [],
-    rails: Parameters<typeof instanced>[2] = [];
-  const fenceTex = canvasTexture(128, 128, (c) => {
-    c.clearRect(0, 0, 128, 128);
-    c.strokeStyle = 'rgba(169,185,190,.75)';
-    c.lineWidth = 1.3;
-    for (let i = -128; i < 256; i += 16) {
-      c.beginPath();
-      c.moveTo(i, 0);
-      c.lineTo(i + 128, 128);
-      c.stroke();
-      c.beginPath();
-      c.moveTo(i, 0);
-      c.lineTo(i - 128, 128);
-      c.stroke();
-    }
-  });
-  fenceTex.wrapS = fenceTex.wrapT = THREE.RepeatWrapping;
-  fenceTex.repeat.set(2, 1);
-  const fenceMat = new THREE.MeshStandardMaterial({
-    map: fenceTex,
-    transparent: true,
-    alphaTest: 0.15,
-    side: THREE.DoubleSide,
-    roughness: 0.65,
-    depthWrite: false,
-    color: 0x8b9ca0,
-  });
-  const signMat = [
-    new THREE.MeshBasicMaterial({
-      map: signTexture('ASTRA  /  STREET', '#f1d4a1', '#17242d'),
-    }),
-    new THREE.MeshBasicMaterial({
-      map: signTexture('APEX   PERFORMANCE', '#13201c', '#d6dfbd'),
-    }),
-    new THREE.MeshBasicMaterial({
-      map: signTexture('RACE BEYOND.', '#ffffff', '#b43d29'),
-    }),
-  ];
-  for (let s = 0; s < track.length; s += 4) {
-    const f = track.sample(s);
-    for (const side of [-1, 1]) {
-      curbTransforms[Math.floor(s / 4) % 2].push({
-        x: f.x + f.nx * side * (half + 0.5),
-        y: 0.055,
-        z: f.z + f.nz * side * (half + 0.5),
-        ry: f.heading,
-        sx: 1,
-        sy: 1,
-        sz: 1,
-      });
-      const offset = side * (half + 7);
-      barriers.push({
-        x: f.x + f.nx * offset,
-        y: city ? 0.65 : 0.275,
-        z: f.z + f.nz * offset,
-        ry: f.heading,
-        color: new THREE.Color(
-          Math.floor(s / 24) % 5 === 0 ? 0xd5d4c9 : 0x939d97,
-        ),
-      });
-      if (city && Math.floor(s / 4) % 2 === 0) {
-        posts.push({
-          x: f.x + f.nx * (offset + 0.1 * side),
-          y: 2.65,
-          z: f.z + f.nz * (offset + 0.1 * side),
-        });
-        fences.push({
-          x: f.x + f.nx * offset,
-          y: 2.55,
-          z: f.z + f.nz * offset,
-          ry: f.heading + Math.PI / 2,
-        });
+  if (city) {
+    const curbRed = new THREE.MeshStandardMaterial({
+      color: 0xd74430,
+      roughness: wet ? 0.34 : 0.75,
+    });
+    const curbWhite = new THREE.MeshStandardMaterial({
+      color: 0xe4dfcc,
+      roughness: wet ? 0.34 : 0.8,
+    });
+    const curbTransforms = [[], []] as Parameters<typeof instanced>[2][];
+    const barriers: Parameters<typeof instanced>[2] = [],
+      posts: Parameters<typeof instanced>[2] = [],
+      fences: Parameters<typeof instanced>[2] = [],
+      rails: Parameters<typeof instanced>[2] = [];
+    const fenceTex = canvasTexture(128, 128, (c) => {
+      c.clearRect(0, 0, 128, 128);
+      c.strokeStyle = 'rgba(169,185,190,.75)';
+      c.lineWidth = 1.3;
+      for (let i = -128; i < 256; i += 16) {
+        c.beginPath();
+        c.moveTo(i, 0);
+        c.lineTo(i + 128, 128);
+        c.stroke();
+        c.beginPath();
+        c.moveTo(i, 0);
+        c.lineTo(i - 128, 128);
+        c.stroke();
       }
-      if (city && Math.floor(s / 4) % 6 === 0) {
-        rails.push({
+    });
+    fenceTex.wrapS = fenceTex.wrapT = THREE.RepeatWrapping;
+    fenceTex.repeat.set(2, 1);
+    const fenceMat = new THREE.MeshStandardMaterial({
+      map: fenceTex,
+      transparent: true,
+      alphaTest: 0.15,
+      side: THREE.DoubleSide,
+      roughness: 0.65,
+      depthWrite: false,
+      color: 0x8b9ca0,
+    });
+    const signMat = [
+      new THREE.MeshBasicMaterial({
+        map: signTexture('ASTRA  /  STREET', '#f1d4a1', '#17242d'),
+      }),
+      new THREE.MeshBasicMaterial({
+        map: signTexture('APEX   PERFORMANCE', '#13201c', '#d6dfbd'),
+      }),
+      new THREE.MeshBasicMaterial({
+        map: signTexture('RACE BEYOND.', '#ffffff', '#b43d29'),
+      }),
+    ];
+    for (let s = 0; s < track.length; s += 4) {
+      const f = track.sample(s);
+      for (const side of [-1, 1]) {
+        curbTransforms[Math.floor(s / 4) % 2].push({
+          x: f.x + f.nx * side * (half + 0.5),
+          y: 0.055,
+          z: f.z + f.nz * side * (half + 0.5),
+          ry: f.heading,
+          sx: 1,
+          sy: 1,
+          sz: 1,
+        });
+        const offset = side * (half + 7);
+        barriers.push({
           x: f.x + f.nx * offset,
-          y: 4.1,
+          y: city ? 0.65 : 0.275,
           z: f.z + f.nz * offset,
           ry: f.heading,
+          color: new THREE.Color(
+            Math.floor(s / 24) % 5 === 0 ? 0xd5d4c9 : 0x939d97,
+          ),
         });
-      }
-      if (Math.floor(s / 4) % 35 === 0) {
-        const sign = mesh(
-          new THREE.PlaneGeometry(16, 1.55),
-          signMat[Math.floor(s / 60) % 3],
-          f.x + f.nx * (offset - side * 0.38),
-          1.48,
-          f.z + f.nz * (offset - side * 0.38),
-        );
-        sign.rotation.y = f.heading - (side * Math.PI) / 2;
-        root.add(sign);
+        if (city && Math.floor(s / 4) % 2 === 0) {
+          posts.push({
+            x: f.x + f.nx * (offset + 0.1 * side),
+            y: 2.65,
+            z: f.z + f.nz * (offset + 0.1 * side),
+          });
+          fences.push({
+            x: f.x + f.nx * offset,
+            y: 2.55,
+            z: f.z + f.nz * offset,
+            ry: f.heading + Math.PI / 2,
+          });
+        }
+        if (city && Math.floor(s / 4) % 6 === 0) {
+          rails.push({
+            x: f.x + f.nx * offset,
+            y: 4.1,
+            z: f.z + f.nz * offset,
+            ry: f.heading,
+          });
+        }
+        if (Math.floor(s / 4) % 35 === 0) {
+          const sign = mesh(
+            new THREE.PlaneGeometry(16, 1.55),
+            signMat[Math.floor(s / 60) % 3],
+            f.x + f.nx * (offset - side * 0.38),
+            1.48,
+            f.z + f.nz * (offset - side * 0.38),
+          );
+          sign.rotation.y = f.heading - (side * Math.PI) / 2;
+          root.add(sign);
+        }
       }
     }
-  }
-  root.add(
-    instanced(new THREE.BoxGeometry(1, 0.14, 4.1), curbRed, curbTransforms[0]),
-    instanced(
-      new THREE.BoxGeometry(1, 0.14, 4.1),
-      curbWhite,
-      curbTransforms[1],
-    ),
-  );
-  root.add(
-    instanced(
-      new THREE.BoxGeometry(0.6, city ? 1.3 : 0.55, 4.08),
-      concreteBarrierMaterial(wet),
-      barriers,
-      true,
-    ),
-  );
-  root.add(
-    instanced(
-      new THREE.CylinderGeometry(0.045, 0.055, 3.1, 5),
-      new THREE.MeshStandardMaterial({
-        color: 0x889a9d,
-        metalness: 0.55,
-        roughness: 0.5,
-      }),
-      posts,
-    ),
-  );
-  root.add(instanced(new THREE.PlaneGeometry(8.04, 2.9), fenceMat, fences));
-  root.add(
-    instanced(
-      new THREE.BoxGeometry(0.06, 0.06, 24),
-      new THREE.MeshStandardMaterial({ color: 0x8a9e9f }),
-      rails,
-    ),
-  );
+    root.add(
+      instanced(
+        new THREE.BoxGeometry(1, 0.14, 4.1),
+        curbRed,
+        curbTransforms[0],
+      ),
+      instanced(
+        new THREE.BoxGeometry(1, 0.14, 4.1),
+        curbWhite,
+        curbTransforms[1],
+      ),
+    );
+    root.add(
+      instanced(
+        new THREE.BoxGeometry(0.6, city ? 1.3 : 0.55, 4.08),
+        concreteBarrierMaterial(wet),
+        barriers,
+        true,
+      ),
+    );
+    root.add(
+      instanced(
+        new THREE.CylinderGeometry(0.045, 0.055, 3.1, 5),
+        new THREE.MeshStandardMaterial({
+          color: 0x889a9d,
+          metalness: 0.55,
+          roughness: 0.5,
+        }),
+        posts,
+      ),
+    );
+    root.add(instanced(new THREE.PlaneGeometry(8.04, 2.9), fenceMat, fences));
+    root.add(
+      instanced(
+        new THREE.BoxGeometry(0.06, 0.06, 24),
+        new THREE.MeshStandardMaterial({ color: 0x8a9e9f }),
+        rails,
+      ),
+    );
+  } else buildRuralRoadside(root, track, weather);
   // Rubbered-in racing line is transparent and follows the road curvature.
   const rubber = canvasTexture(128, 512, (c) => {
     c.clearRect(0, 0, 128, 512);
@@ -323,7 +363,10 @@ export function buildWorld(
   const poles: Parameters<typeof instanced>[2] = [],
     fixtures: Parameters<typeof instanced>[2] = [],
     glows: Parameters<typeof instanced>[2] = [];
+  const litStations: number[] = [];
   for (let s = 0; s < track.length; s += city ? 65 : 145) {
+    if (!city && s > 110 && s < track.length - 55) continue;
+    litStations.push(s);
     const f = track.sample(s);
     for (const side of [-1, 1]) {
       const o = side * (half + 8);
@@ -374,7 +417,7 @@ export function buildWorld(
       blending: THREE.AdditiveBlending,
       map: softShadowTexture(),
     });
-    for (let s = 0; s < track.length; s += 65)
+    for (const s of litStations)
       root.add(patch(track, s, 0, 10, 20, glowMat, 0.031));
   }
   // Start gantry and its compact red lights.
@@ -436,14 +479,7 @@ export function buildWorld(
     root.add(gate);
   }
   if (track.circuit.id !== 'forest') buildBuildings(root, track, weather);
-  buildTrees(
-    root,
-    track,
-    weather,
-    textures.trees,
-    textures.conifers,
-    landscape,
-  );
+  const vegetation = buildTrees(root, track, weather, treeAssets, landscape);
   // Braking distance boards before stronger corners.
   for (let s = 150; s < track.length; s += 180) {
     const next = track.sample(s + 55);
@@ -500,7 +536,9 @@ export function buildWorld(
     sun,
     rain,
     rainData,
-    update: (dt, pos, time) => {
+    update: (dt, pos, time, camera, quality) => {
+      treeAssets.update(time, wet ? 1.7 : 0.75);
+      vegetation.update(camera, quality);
       wetRoad?.update(time);
       sky.position.copy(pos);
       const sunOffset = wet
@@ -526,6 +564,7 @@ export function buildWorld(
     dispose: () => {
       if (disposed) return;
       disposed = true;
+      vegetation.dispose();
       wetRoad?.mesh.removeFromParent();
       wetRoad?.dispose();
       const geometries = new Set<THREE.BufferGeometry>(),
@@ -533,6 +572,7 @@ export function buildWorld(
         maps = new Set<THREE.Texture>();
       root.traverse((o) => {
         if (o instanceof THREE.Mesh || o instanceof THREE.LineSegments) {
+          if (o instanceof THREE.InstancedMesh) o.dispose();
           geometries.add(o.geometry);
           for (const m of Array.isArray(o.material) ? o.material : [o.material])
             materials.add(m);
@@ -542,6 +582,7 @@ export function buildWorld(
         for (const v of Object.values(m))
           if (
             v instanceof THREE.Texture &&
+            v !== sharedEnvironment &&
             !Object.values(textures).includes(v)
           )
             maps.add(v);

@@ -3,6 +3,7 @@ import { HDRLoader } from 'three/addons/loaders/HDRLoader.js';
 import { Track, CIRCUITS } from './tracks';
 import { loadRoadTextures } from './materials';
 import { buildWorld, type World } from './world';
+import { loadTreeAssets, type TreeAssets } from './world/tree-assets';
 import {
   createCar,
   loadCarAsset,
@@ -14,6 +15,8 @@ import { Input, type ControlInput } from './input';
 import { GpuTimer } from './gpu-timer';
 import { RaceAudio } from './audio';
 import { RaceCamera } from './camera';
+import { ScenePresentation } from './scene-presentation';
+import { bindEnvironmentLighting } from './environment-lighting';
 import { TireSpray } from './tire-spray';
 import { TireMarks } from './tire-marks';
 import {
@@ -23,7 +26,12 @@ import {
   engineRevs,
   type DriverState,
 } from './race-session';
-import { FrameScheduler, FrameMetrics, ResolutionBudget } from './render-loop';
+import {
+  FrameScheduler,
+  FrameMetrics,
+  ResolutionBudget,
+  frameTarget,
+} from './render-loop';
 import {
   INITIAL_TELEMETRY,
   DEFAULT_SETTINGS,
@@ -45,6 +53,7 @@ const STEP = 1 / 120;
 export class RacingEngine {
   readonly renderer: THREE.WebGLRenderer;
   private gpuTimer: GpuTimer;
+  private readonly presentation: ScenePresentation;
   readonly scene = new THREE.Scene();
   readonly input = new Input();
   readonly audio = new RaceAudio();
@@ -67,6 +76,7 @@ export class RacingEngine {
   private spray: TireSpray | null = null;
   private tireMarks: TireMarks | null = null;
   private asset: THREE.Group | null = null;
+  private treeAssets: TreeAssets | null = null;
   private surfaces: Awaited<ReturnType<typeof loadRoadTextures>> | null = null;
   private environment: THREE.WebGLRenderTarget | null = null;
   private playerVisual: CarVisual | null = null;
@@ -114,6 +124,7 @@ export class RacingEngine {
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    this.presentation = new ScenePresentation(this.renderer);
     const canvas = this.renderer.domElement;
     canvas.setAttribute('aria-label', '3D racing circuit');
     Object.assign(canvas.style, {
@@ -158,19 +169,22 @@ export class RacingEngine {
   };
   private async initialize() {
     try {
-      const [surfaces, asset, hdr] = await Promise.all([
+      const [surfaces, asset, hdr, treeAssets] = await Promise.all([
         loadRoadTextures(),
         loadCarAsset(),
         new HDRLoader().loadAsync('/assets/textures/environment.hdr'),
+        loadTreeAssets(),
       ]);
       if (this.disposed) {
         Object.values(surfaces).forEach((t) => t.dispose());
         disposeCarAsset(asset);
         hdr.dispose();
+        treeAssets.dispose();
         return;
       }
       this.surfaces = surfaces;
       this.asset = asset;
+      this.treeAssets = treeAssets;
       const pmrem = new THREE.PMREMGenerator(this.renderer);
       this.environment = pmrem.fromEquirectangular(hdr);
       this.scene.environment = this.environment.texture;
@@ -191,7 +205,7 @@ export class RacingEngine {
   }
   async configure(options: RaceOptions) {
     this.options = { ...options };
-    if (!this.surfaces || !this.asset) return;
+    if (!this.surfaces || !this.asset || !this.treeAssets) return;
     const token = ++this.loadingToken;
     this.phase = 'loading';
     this.emit();
@@ -210,12 +224,18 @@ export class RacingEngine {
     this.removeCars();
     this.session = null;
     this.track = new Track(CIRCUITS.find((c) => c.id === options.circuit)!);
-    this.world = buildWorld(this.track, options.weather, this.surfaces);
+    this.world = buildWorld(
+      this.track,
+      options.weather,
+      this.surfaces,
+      this.treeAssets,
+      this.environment!.texture,
+    );
     this.scene.add(this.world.root);
     const wet = options.weather === 'rain';
     this.scene.fog = new THREE.FogExp2(
       wet ? 0x344653 : options.weather === 'sunset' ? 0xd3b391 : 0xa9c6d2,
-      wet ? 0.00138 : 0.00038,
+      wet ? 0.00138 : 0.00024,
     );
     this.scene.environmentIntensity = wet
       ? 0.24
@@ -235,8 +255,9 @@ export class RacingEngine {
     this.cameraRig.reset();
     this.applyQuality();
     this.draw(0);
+    this.bindSceneEnvironment();
     this.renderer.compile(this.scene, this.camera);
-    this.renderer.render(this.scene, this.camera);
+    this.presentation.render(this.scene, this.camera, this.settings.quality);
     this.emit();
   }
   private removeCars() {
@@ -244,6 +265,15 @@ export class RacingEngine {
     this.playerVisual = null;
     this.opponentVisuals.forEach((v) => v.dispose());
     this.opponentVisuals = [];
+  }
+  private bindSceneEnvironment() {
+    if (this.environment)
+      bindEnvironmentLighting(
+        this.scene,
+        this.environment.texture,
+        this.scene.environmentRotation,
+        this.scene.environmentIntensity,
+      );
   }
   updateSettings(settings: Settings) {
     const qualityChanged = settings.quality !== this.settings.quality,
@@ -261,7 +291,7 @@ export class RacingEngine {
     this.budget.reset();
     this.resize();
     if (this.world) {
-      const size = this.settings.quality === 'eco' ? 1024 : 2048;
+      const size = this.settings.quality === 'eco' ? 1024 : 4096;
       this.world.sun.shadow.mapSize.set(size, size);
       this.world.sun.shadow.map?.dispose();
       this.world.sun.shadow.map = null;
@@ -281,6 +311,8 @@ export class RacingEngine {
     );
     this.renderer.setPixelRatio(this.currentRatio);
     this.renderer.setSize(width, height, false);
+    const buffer = this.renderer.getDrawingBufferSize(new THREE.Vector2());
+    this.presentation.resize(buffer.x, buffer.y);
     this.cameraRig.resize(width / height);
   }
   async start() {
@@ -314,6 +346,7 @@ export class RacingEngine {
       this.scene.add(visual.group);
       return visual;
     });
+    this.bindSceneEnvironment();
     this.phase = 'countdown';
     this.accumulator = 0;
     this.controls = { ...EMPTY_INPUT };
@@ -385,13 +418,7 @@ export class RacingEngine {
       this.scheduler.reset(now);
       return;
     }
-    const target =
-      this.phase === 'paused' || this.phase === 'finished'
-        ? 20
-        : this.phase === 'menu'
-          ? 30
-          : 60;
-    const tick = this.scheduler.tick(now, target);
+    const tick = this.scheduler.tick(now, frameTarget(this.phase));
     if (!tick) return;
     // Rapid DPR round-trips can coalesce matchMedia change events back to the
     // original match. A scalar check also covers that case without layout work.
@@ -425,7 +452,7 @@ export class RacingEngine {
     const start = performance.now();
     this.renderer.info.reset();
     this.gpuTimer.begin();
-    this.renderer.render(this.scene, this.camera);
+    this.presentation.render(this.scene, this.camera, this.settings.quality);
     this.gpuTimer.end();
     const submitTime = performance.now() - start;
     const sample = this.metrics.record(now, tick.interval, submitTime, {
@@ -487,7 +514,13 @@ export class RacingEngine {
       this.session?.boosted ?? false,
     );
     if (this.playerVisual)
-      this.world?.update(dt, this.playerVisual.group.position, this.simTime);
+      this.world?.update(
+        dt,
+        this.playerVisual.group.position,
+        this.simTime,
+        this.camera.position,
+        this.settings.quality,
+      );
   }
   private silence() {
     this.audio.update(0, 0, 0, 0, false);
@@ -610,7 +643,9 @@ export class RacingEngine {
     this.environment?.dispose();
     if (this.surfaces) Object.values(this.surfaces).forEach((t) => t.dispose());
     if (this.asset) disposeCarAsset(this.asset);
+    this.treeAssets?.dispose();
     this.gpuTimer.dispose();
+    this.presentation.dispose();
     this.renderer.dispose();
     this.renderer.domElement.remove();
   }

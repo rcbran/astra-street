@@ -1,26 +1,35 @@
-Astra Street asset provenance
+Astra Street asset notices
 
-Asphalt Track (diffuse, OpenGL normal, roughness; 1K)
-Dimitrios Savva / Poly Haven — CC0 1.0
+Poly Haven assets, CC0 1.0 Universal:
+License: https://polyhaven.com/license
+Legal deed: https://creativecommons.org/publicdomain/zero/1.0/
+
+Fir Tree 01 — Rico Cilliers (modeling), Rob Tuytel (photography)
+https://polyhaven.com/a/fir_tree_01
+Pine Tree 01 — Rico Cilliers (modeling), Rob Tuytel (photography)
+https://polyhaven.com/a/pine_tree_01
+Tree Small 02 — Rico Cilliers
+https://polyhaven.com/a/tree_small_02
+
+Cliff Side — James Ray Cock and Dario Barresi (photography), Jenelle van Heerden (processing)
+https://polyhaven.com/a/cliff_side
+Rock Wall 02 — Rob Tuytel
+https://polyhaven.com/a/rock_wall_02
+Asphalt Track — Dimitrios Savva
 https://polyhaven.com/a/asphalt_track
-
-Sparse Grass (diffuse, OpenGL normal, roughness; 1K)
-Poly Haven — CC0 1.0
+Forest Ground 01 — Rob Tuytel
+https://polyhaven.com/a/forrest_ground_01
+Sparse Grass — Amal Kumar
 https://polyhaven.com/a/sparse_grass
-
-Sundowner Overlook (1K HDR environment)
-Poly Haven — CC0 1.0
+Sundowner Overlook — Dario Barresi
 https://polyhaven.com/a/sundowner_overlook
 
-CC0 legal text: https://creativecommons.org/publicdomain/zero/1.0/
+Tree models are modified for runtime LODs, UV repair and shared textures;
+foliage edge colors are corrected without changing alpha or opaque colors.
+Rock and forest-floor textures are resized/re-encoded. Details: docs/ASSETS.md and docs/assets/.
 
-Astra AF-27 car, circuit geometry, sponsor graphics: original project assets.
-The Blender generation script is in scripts/build_car.py. The original livery
-uses system typeface outlines; no font files are distributed.
-
-trees.png: foliage atlas generated for this project with OpenAI image generation.
-
-Astra S9 coupe: original project mesh; scripts/build_street_car.py.
-cliff-rock.png and conifers.png: original built-in OpenAI image generation.
-Generation prompts and integration notes: docs/STREET-DIRECTION.md.
-The historical AF-27 asset remains in the repository but is not loaded by the street game.
+Astra S9 coupe and historical AF-27: original project models.
+Procedural scenery, undergrowth, road furniture and game graphics: original
+project code. No reference video or research screenshot is shipped.
+The historical AF-27 is retained but is not loaded by the street game.
+The repository's overall source license remains undecided.

@@ -1,0 +1,74 @@
+{
+  "source": "tree_small_02",
+  "variants": [
+    {
+      "id": "broadleaf_a",
+      "boundsZUp": [
+        -1.310724139213562, -2.9096455574035645, 0.0, 1.610710859298706,
+        1.3830231428146362, 4.564037313684821
+      ],
+      "lods": [
+        {
+          "name": "broadleaf_a_LOD0",
+          "parts": [
+            {
+              "name": "broadleaf_a_LOD0_branches",
+              "triangles": 10000,
+              "material": "tree_small_02_branches_game"
+            },
+            {
+              "name": "broadleaf_a_LOD0_leaves",
+              "triangles": 41999,
+              "material": "tree_small_02_leaves_game"
+            },
+            {
+              "name": "broadleaf_a_LOD0_trunk",
+              "triangles": 2400,
+              "material": "tree_small_02_trunk_game"
+            }
+          ]
+        },
+        {
+          "name": "broadleaf_a_LOD1",
+          "parts": [
+            {
+              "name": "broadleaf_a_LOD1_branches",
+              "triangles": 3498,
+              "material": "tree_small_02_branches_game"
+            },
+            {
+              "name": "broadleaf_a_LOD1_leaves",
+              "triangles": 9500,
+              "material": "tree_small_02_leaves_game"
+            },
+            {
+              "name": "broadleaf_a_LOD1_trunk",
+              "triangles": 1199,
+              "material": "tree_small_02_trunk_game"
+            }
+          ]
+        },
+        {
+          "name": "broadleaf_a_LOD2",
+          "parts": [
+            {
+              "name": "broadleaf_a_LOD2_branches",
+              "triangles": 1999,
+              "material": "tree_small_02_branches_game"
+            },
+            {
+              "name": "broadleaf_a_LOD2_leaves",
+              "triangles": 5999,
+              "material": "tree_small_02_leaves_game"
+            },
+            {
+              "name": "broadleaf_a_LOD2_trunk",
+              "triangles": 699,
+              "material": "tree_small_02_trunk_game"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

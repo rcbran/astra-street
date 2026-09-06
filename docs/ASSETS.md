@@ -1,41 +1,39 @@
-# Asset provenance and visual references
+# Asset provenance
 
-All runtime files are local under `public/assets/`. The full file list, byte sizes and SHA-256 hashes are in [environment-provenance.json](environment-provenance.json). The filename is retained from the initial environment handoff, but the manifest now includes the car and all runtime textures.
+All gameplay assets are served locally from `public/assets/`. The complete file sizes and SHA-256 hashes are recorded in [environment-provenance.json](environment-provenance.json). No Poly Haven API request, key or account is needed during gameplay.
 
-## Runtime assets
+| Asset                                                             | Runtime files                    | Source and terms                                                                                            |
+| ----------------------------------------------------------------- | -------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| Astra S9 coupe                                                    | `models/astra-s9.glb`            | Original project mesh; `scripts/build_street_car.py`                                                        |
+| Fir Tree 01: three variants                                       | `models/trees/fir_tree_01.glb`   | [Poly Haven](https://polyhaven.com/a/fir_tree_01), Rico Cilliers / Rob Tuytel; CC0                          |
+| Pine Tree 01: three variants                                      | `models/trees/pine_tree_01.glb`  | [Poly Haven](https://polyhaven.com/a/pine_tree_01), Rico Cilliers / Rob Tuytel; CC0                         |
+| Tree Small 02: broadleaf accent                                   | `models/trees/tree_small_02.glb` | [Poly Haven](https://polyhaven.com/a/tree_small_02), Rico Cilliers; CC0                                     |
+| Cliff Side: sandstone diffuse / normal / roughness                | `textures/cliff_side-*`          | [Poly Haven](https://polyhaven.com/a/cliff_side), James Ray Cock / Dario Barresi / Jenelle van Heerden; CC0 |
+| Rock Wall 02: natural gray/moss rock diffuse / normal / roughness | `textures/rock_wall_02-*`        | [Poly Haven](https://polyhaven.com/a/rock_wall_02), Rob Tuytel; CC0                                         |
+| Asphalt Track: diffuse / normal / roughness                       | `textures/asphalt_track_*`       | [Poly Haven](https://polyhaven.com/a/asphalt_track), Dimitrios Savva; CC0                                   |
+| Forest Ground 01: moss / litter / normal / roughness              | `textures/forrest_ground_01-*`   | [Poly Haven](https://polyhaven.com/a/forrest_ground_01), Rob Tuytel; CC0                                    |
+| Sparse Grass: diffuse / normal / roughness                        | `textures/sparse_grass_*`        | [Poly Haven](https://polyhaven.com/a/sparse_grass), Amal Kumar; CC0                                         |
+| Sundowner Overlook lighting                                       | `textures/environment.hdr`       | [Poly Haven](https://polyhaven.com/a/sundowner_overlook), Dario Barresi; CC0                                |
+| Historical AF-27                                                  | `models/astra-formula.glb`       | Original project mesh, retained but not loaded; `scripts/build_car.py`                                      |
 
-| Asset                                              | Runtime path                      | Source / author                                                         | Terms                                                  |
-| -------------------------------------------------- | --------------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------ |
-| Astra AF-27 car                                    | `models/astra-formula.glb`        | Original Blender generation for this project                            | Original project asset; no third-party mesh            |
-| Asphalt Track, diffuse / OpenGL normal / roughness | `textures/asphalt_track_*_1k.jpg` | [Poly Haven](https://polyhaven.com/a/asphalt_track), Dimitrios Savva    | CC0 1.0                                                |
-| Sparse Grass, diffuse / OpenGL normal / roughness  | `textures/sparse_grass_*_1k.jpg`  | [Poly Haven](https://polyhaven.com/a/sparse_grass), Amal Kumar          | CC0 1.0                                                |
-| Sundowner Overlook HDR                             | `textures/environment.hdr`        | [Poly Haven](https://polyhaven.com/a/sundowner_overlook), Dario Barresi | CC0 1.0                                                |
-| Broadleaf foliage atlas                            | `textures/trees.png`              | Generated for this project with OpenAI image generation                 | Original generated output; no third-party source image |
+Poly Haven's [asset license](https://polyhaven.com/license) is [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/). Keep the bundled [asset notices](../public/assets/NOTICE.txt) with redistributed assets. The repository-wide source license and public GitHub visibility are separate, undecided choices.
 
-Original source also generates circuit geometry, sky, barriers, fences, grandstands, buildings, signs, contact shadows, and surface/effect textures. Fictitious sponsor text and Astra marks are part of the project. The car uses system typeface outlines for livery text; no font file is distributed. The repository's overall source license is still undecided.
+## Tree preparation and visual limits
 
-The historical Formula car is the V2 asset: approximately 36,949 triangles and 1.21 MB. Its construction source is `scripts/build_car.py`. Named nodes include `wheel_FL`, `wheel_FR`, `wheel_RL`, `wheel_RR`, `driver_head`, and `Astra_AF27_body`. Y is up and +Z points toward the nose. Wheels rotate around local X; front wheels steer around local Y. `Livery` is the tintable paint material.
+The seven tree variants each have three levels of real branch and distributed foliage geometry. None uses a whole-tree image or crossed whole-tree cards. Individual needle sprays and leaves use alpha-tested surfaces at many positions and orientations inside the crown, a normal real-time foliage technique; they are not individual modeled needles. The tree family GLBs share embedded textures across variants and levels. Full processing/provenance is in [tree asset notes](assets/trees.md), with authoring tools in `scripts/assets/trees/`.
 
-See [environment implementation notes](environment-assets.md) for color spaces and atlas coordinates. Keep a copy of [the runtime notices](../public/assets/NOTICE.txt) with redistributed assets.
+The source fir UV data required conversion before export. Incorrect source mask colors were removed. Near wood budgets were increased after simplification produced triangular fins. Far foliage now keeps complete source components rather than collapsing leaf shapes. Pine/broadleaf transparent-edge RGB is extended from opaque foliage to reduce white mipmap fringes, while every alpha value and opaque color is preserved. Runtime uses explicit cutouts with hardware MSAA; alpha-to-coverage was rejected after it thinned and brightened needle sprays.
 
-## Research references, excluded from the game
+**Migration limitation:** some broadleaf crowns still show white/cyan contamination when mip-filtered in the full world. The current edge correction does not alter opaque unused white atlas areas. The diagnostic A/B and next corrective work are recorded in `HANDOFF.md`; this is not considered visually resolved.
 
-- F1 23, wet Singapore: [OC3D performance review screenshot](https://overclock3d.net/reviews/software/f1_23_pc_performance_review_and_optimisation_guide/4/). Local reference: `docs/references/f1-23-wet-singapore.jpg`.
-- F1 24, dusk cockpit: [Steam Community screenshots](https://steamcommunity.com/app/2488620/screenshots/). Local reference: `docs/references/f1-24-dusk-cockpit.jpg`.
-- [EA F1 24 overview](https://www.ea.com/games/f1/news/f124-everything-you-need-to-know).
+Far variants remain less detailed and broadleaf coverage is lower than near coverage. They are used only at distance; exact LOD thresholds vary with quality. Native broadleaf height is approximately 4.7 m, so its world placement stays roughly 5–11 m. Conifers are generally 13–28 m, with smaller sapling accents. The broadleaf is a visual accent for fictional places, not a claim about native species.
 
-Reference images remain copyrighted by their owners. They are ignored by Git and are not included in `public/` or the deployment build. The Steam page is a collection rather than a stable single-image attribution; improve the exact reference citation before publishing a research document with that screenshot.
+## Landscape and original graphics
 
-The visual targets are low, consistent camera placement; visible suspension and halo; detailed asphalt/paint/rubber; believable scenery scale and density; atmospheric depth; wet reflections/spray; and a restrained racing HUD. The current game is a playable base for further fidelity work, not evidence of AAA parity.
+[Forest-floor notes](assets/ground.md) and [rock material notes](assets/rocks.md) document 2K diffuse and 1K OpenGL normal/roughness processing. Ground projection blends three texture directions over steep slopes instead of stretching grass across vertical rock. Procedural terrain, eroded cliff variants, boulders, curved grass, fern leaflets, branched shrubs, guardrails, signs and road-wear graphics are original repository code. Shader wind and leaf transmission are original runtime additions.
 
-## Superseded and external working files
+The old generated `trees.png`, `conifers.png` and `cliff-rock.png` were replaced and removed from shipping assets. Their original prompts and historical integration remain in `STREET-DIRECTION.md` and Git history. The current foliage overhaul did not use new image generation.
 
-The first cracked Asphalt 02 maps were replaced with smoother Asphalt Track scans and removed from shipping assets. Old files remain outside the checkout in `/tmp/f1-astra-assets/unused/` on the development machine.
+## Research references
 
-Original car authoring scenes/previews and raw asset handoffs are under `/tmp/f1-astra-assets/`. They are temporary conveniences, not required build inputs. The committed GLB and generator are sufficient to continue development. A CC0 conifer atlas was investigated but was not shipped because its winter/snow appearance did not fit the environment.
-
-## Current street-racing additions
-
-The active car is the original `models/astra-s9.glb`, approximately 15,210 triangles, generated with `scripts/build_street_car.py`. `textures/cliff-rock.png` (1254×1254 RGB) and `textures/conifers.png` (1536×1024 RGBA) are original built-in OpenAI generated assets. See `STREET-DIRECTION.md` for exact prompts, visual reference and limitations; the manifest records their sizes and hashes. The user’s linked video is research only and never shipped as an asset.
-
-The landscape pass adds original procedural terrain, six fractured cliff profiles, three solid conifer variants, grass clumps, mountain relief and a seeded road-wear overlay. These are repo-native geometry/textures; no new image-generation request, external asset, or runtime download was needed. Existing asset files and their provenance hashes are unchanged.
+The user's [Street Heat video](https://x.com/higgsfield_ai/status/2095916820431827408) is a visual reference only. The video and extracted frames remain ignored under `artifacts/reference-street-heat/`; they never ship as runtime assets. Historical F1 screenshots under `docs/references/` are also ignored research, with prior references in `STREET-DIRECTION.md` and `environment-assets.md`. Do not redistribute research screenshots as game art or claim this implementation matches the reference's source, car or rendering fidelity.

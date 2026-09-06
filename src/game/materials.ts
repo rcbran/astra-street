@@ -90,9 +90,15 @@ export interface SurfaceTextures {
   grass: THREE.Texture;
   grassNormal: THREE.Texture;
   grassRough: THREE.Texture;
-  trees: THREE.Texture;
-  conifers: THREE.Texture;
+  forestFloor: THREE.Texture;
+  forestFloorNormal: THREE.Texture;
+  forestFloorRough: THREE.Texture;
   rock: THREE.Texture;
+  rockNormal: THREE.Texture;
+  rockRough: THREE.Texture;
+  forestRock: THREE.Texture;
+  forestRockNormal: THREE.Texture;
+  forestRockRough: THREE.Texture;
 }
 export async function loadRoadTextures(): Promise<SurfaceTextures> {
   const loader = new THREE.TextureLoader();
@@ -103,9 +109,15 @@ export async function loadRoadTextures(): Promise<SurfaceTextures> {
     grass,
     grassNormal,
     grassRough,
-    trees,
-    conifers,
+    forestFloor,
+    forestFloorNormal,
+    forestFloorRough,
     rock,
+    rockNormal,
+    rockRough,
+    forestRock,
+    forestRockNormal,
+    forestRockRough,
   ] = await Promise.all([
     loader.loadAsync('/assets/textures/asphalt_track_diff_1k.jpg'),
     loader.loadAsync('/assets/textures/asphalt_track_nor_gl_1k.jpg'),
@@ -113,11 +125,17 @@ export async function loadRoadTextures(): Promise<SurfaceTextures> {
     loader.loadAsync('/assets/textures/sparse_grass_diff_1k.jpg'),
     loader.loadAsync('/assets/textures/sparse_grass_nor_gl_1k.jpg'),
     loader.loadAsync('/assets/textures/sparse_grass_rough_1k.jpg'),
-    loader.loadAsync('/assets/textures/trees.png'),
-    loader.loadAsync('/assets/textures/conifers.png'),
-    loader.loadAsync('/assets/textures/cliff-rock.png'),
+    loader.loadAsync('/assets/textures/forrest_ground_01-diff.jpg'),
+    loader.loadAsync('/assets/textures/forrest_ground_01-normal.jpg'),
+    loader.loadAsync('/assets/textures/forrest_ground_01-roughness.jpg'),
+    loader.loadAsync('/assets/textures/cliff_side-diff.jpg'),
+    loader.loadAsync('/assets/textures/cliff_side-normal.jpg'),
+    loader.loadAsync('/assets/textures/cliff_side-roughness.jpg'),
+    loader.loadAsync('/assets/textures/rock_wall_02-diff.jpg'),
+    loader.loadAsync('/assets/textures/rock_wall_02-normal.jpg'),
+    loader.loadAsync('/assets/textures/rock_wall_02-roughness.jpg'),
   ]);
-  for (const texture of [color, grass, trees, conifers, rock])
+  for (const texture of [color, grass, forestFloor, rock, forestRock])
     texture.colorSpace = THREE.SRGBColorSpace;
   for (const texture of [
     color,
@@ -126,15 +144,28 @@ export async function loadRoadTextures(): Promise<SurfaceTextures> {
     grass,
     grassNormal,
     grassRough,
+    forestFloor,
+    forestFloorNormal,
+    forestFloorRough,
     rock,
+    rockNormal,
+    rockRough,
+    forestRock,
+    forestRockNormal,
+    forestRockRough,
   ]) {
     texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
     texture.anisotropy = 8;
   }
-  for (const texture of [grass, grassNormal, grassRough])
+  for (const texture of [
+    grass,
+    grassNormal,
+    grassRough,
+    forestFloor,
+    forestFloorNormal,
+    forestFloorRough,
+  ])
     texture.repeat.set(1200, 1200);
-  trees.anisotropy = 4;
-  conifers.anisotropy = 4;
   return {
     color,
     normal,
@@ -142,8 +173,30 @@ export async function loadRoadTextures(): Promise<SurfaceTextures> {
     grass,
     grassNormal,
     grassRough,
-    trees,
-    conifers,
+    forestFloor,
+    forestFloorNormal,
+    forestFloorRough,
     rock,
+    rockNormal,
+    rockRough,
+    forestRock,
+    forestRockNormal,
+    forestRockRough,
+  };
+}
+
+export function groundSurfaces(textures: SurfaceTextures, forest: boolean) {
+  return {
+    color: forest ? textures.forestFloor : textures.grass,
+    normal: forest ? textures.forestFloorNormal : textures.grassNormal,
+    rough: forest ? textures.forestFloorRough : textures.grassRough,
+  };
+}
+
+export function rockSurfaces(textures: SurfaceTextures, forest: boolean) {
+  return {
+    color: forest ? textures.forestRock : textures.rock,
+    normal: forest ? textures.forestRockNormal : textures.rockNormal,
+    rough: forest ? textures.forestRockRough : textures.rockRough,
   };
 }

@@ -4,23 +4,24 @@ The current product is Astra Street; the F1 predecessor remains in Git history. 
 
 ## Modules
 
-| Area              | Entry                                                  | Responsibility                                                             |
-| ----------------- | ------------------------------------------------------ | -------------------------------------------------------------------------- |
-| Application shell | `app/page.tsx`, `src/ui/RacingGame.tsx`                | Mount engine, connect telemetry/settings/UI, handle load failures          |
-| Engine            | `src/game/engine.ts`                                   | Compose subsystems, manage scene/session transitions and lifecycle         |
-| Simulation        | `src/game/race-session.ts`                             | Player dynamics, AI, collisions, laps, boost, countdown and results        |
-| Circuit data      | `src/game/tracks.ts`                                   | Layout definitions, arc-length track samples and local coordinate frames   |
-| Frame budgets     | `src/game/render-loop.ts`                              | Render deadlines, measurements and adaptive pixel budget                   |
-| Camera            | `src/game/camera.ts`                                   | Menu orbit, chase rig and attached bonnet viewpoint                        |
-| Vehicles          | `src/game/vehicle.ts`                                  | GLTF loading, material variants, wheel animation and small car effects     |
-| World             | `src/game/world.ts`, `src/game/world/*`                | Road, furniture, terrain, vegetation, buildings, sky, rain and reflections |
-| Wet effects       | `src/game/tire-spray.ts`, `src/game/world/wet-road.ts` | Bounded spray pool and low-resolution planar reflection                    |
-| Input             | `src/game/input.ts`                                    | Keyboard, gamepad and touch input state, blur handling                     |
-| Audio             | `src/game/audio.ts`                                    | Synthesized engine, wind, tire feedback and countdown cues                 |
-| GPU measurements  | `src/game/gpu-timer.ts`                                | Sparse asynchronous WebGL timer queries                                    |
-| Materials         | `src/game/materials.ts`, `src/game/shaders/*`          | Texture loading, generated surface graphics and shader sources             |
-| UI                | `src/ui/*`                                             | Race setup, HUD, settings, session overlay, map and touch controls         |
-| Styles            | `src/ui/styles/*`, `app/globals.css`                   | Menu, HUD, dialogs, responsive rules and shared tokens                     |
+| Area              | Entry                                                                | Responsibility                                                             |
+| ----------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| Application shell | `app/page.tsx`, `src/ui/RacingGame.tsx`                              | Mount engine, connect telemetry/settings/UI, handle load failures          |
+| Engine            | `src/game/engine.ts`                                                 | Compose subsystems, manage scene/session transitions and lifecycle         |
+| Simulation        | `src/game/race-session.ts`                                           | Player dynamics, AI, collisions, laps, boost, countdown and results        |
+| Circuit data      | `src/game/tracks.ts`                                                 | Layout definitions, arc-length track samples and local coordinate frames   |
+| Frame budgets     | `src/game/render-loop.ts`                                            | Render deadlines, measurements and adaptive pixel budget                   |
+| Presentation      | `src/game/scene-presentation.ts`, `src/game/environment-lighting.ts` | Contact shading, output conversion and material environment response       |
+| Camera            | `src/game/camera.ts`                                                 | Menu orbit, chase rig and attached bonnet viewpoint                        |
+| Vehicles          | `src/game/vehicle.ts`                                                | GLTF loading, material variants, wheel animation and small car effects     |
+| World             | `src/game/world.ts`, `src/game/world/*`                              | Road, furniture, terrain, vegetation, buildings, sky, rain and reflections |
+| Wet effects       | `src/game/tire-spray.ts`, `src/game/world/wet-road.ts`               | Bounded spray pool and low-resolution planar reflection                    |
+| Input             | `src/game/input.ts`                                                  | Keyboard, gamepad and touch input state, blur handling                     |
+| Audio             | `src/game/audio.ts`                                                  | Synthesized engine, wind, tire feedback and countdown cues                 |
+| GPU measurements  | `src/game/gpu-timer.ts`                                              | Sparse asynchronous WebGL timer queries                                    |
+| Materials         | `src/game/materials.ts`, `src/game/shaders/*`                        | Texture loading, generated surface graphics and shader sources             |
+| UI                | `src/ui/*`                                                           | Race setup, HUD, settings, session overlay, map and touch controls         |
+| Styles            | `src/ui/styles/*`, `app/globals.css`                                 | Menu, HUD, dialogs, responsive rules and shared tokens                     |
 
 `components/ui/` is the scaffold's shared component library. Compose those primitives from `src/ui/`; avoid mixing engine logic into them. Owned-source lint covers `src`, `app`, and configuration files. It intentionally excludes vendored UI components.
 
@@ -50,24 +51,36 @@ The chase rig carries car translation before smoothing its relative pose. The st
 
 ## Resource ownership
 
-- The engine owns the renderer, input/audio, resize observer, animation callback, HDR-derived environment target, loaded surface textures, shared car asset, current world, car visuals, and spray pool.
-- The source GLB's geometry is immutable and shared by cloned cars. Each visual owns its cloned materials, contact-shadow resources, brake-light geometry/material and shared-per-car nitro cone resources. Disposing one car must not dispose shared GLTF geometry.
-- World builders own the geometry/materials/textures they create. Loaded road/grass/tree textures are shared and excluded from world disposal.
-- Wet-road disposal explicitly releases its reflector target and geometry. Original concrete and runoff maps in `world/track-surfaces.ts` belong to the world and are disposed with its materials. The rock/conifer textures are engine-owned and excluded from world disposal. Six reusable fractured rock profiles are world-owned. Three solid conifer variants and their trunks cover the roadside; four distant tree kinds use two atlases. Vegetation is grouped into spatial tiles for frustum culling. The 251×251 terrain field provides one shared height function during world construction, with flat road clearance and rising hills beyond it. Mountain geometry fills the far horizon. The road-wear overlay owns one texture and geometry. Tree textures are preloaded; scene construction does not leave asynchronous callbacks capable of reviving disposed worlds.
-- Track changes dispose the previous world/cars before replacing them. Engine disposal cancels animation, unregisters listeners, and releases shared resources.
+- The engine owns the renderer, presentation targets, input/audio, resize observer, animation callback, prefiltered HDR environment, loaded road/ground/rock textures, shared car and tree libraries, current world, car visuals and effects.
+- Car geometry is immutable and shared. Each visual owns cloned materials, contact-shadow resources, brake lights and nitro effects. Car material disposal never releases the shared environment or source geometry.
+- `world/tree-assets.ts` loads seven CC0 tree variants with three LODs each. It bakes complete GLTF transforms once, owns the immutable geometries/materials/textures and matching wind-aware depth materials, and survives world changes. `world/tree-batches.ts` owns only spatial instance buffers. Those batches are removed and disposed before generic world traversal, keeping the library alive.
+- World builders own generated geometry, materials, instance buffers and generated maps. Engine-owned surface and environment textures are explicitly excluded from world disposal. Wet-road teardown releases its reflector target and geometry. The terrain, eight terraced cliff profiles, four boulder variants, mineral-detail map, road wear and rural furniture are world-owned.
+- Scene changes release the previous world, car visuals, smoke/spray and skid marks. Engine teardown cancels animation, unregisters listeners and releases all shared resources. No asynchronous tree loads run after world construction.
 
-`tire-spray.ts` owns one 384-particle pool: wet spray or dry drift smoke. `tire-marks.ts` owns one fixed 768-segment ring buffer. Both are disposed on scene changes and engine teardown.
+`tire-spray.ts` retains one 384-particle pool; `tire-marks.ts` retains one 768-segment ring. Repeated world/quality/target changes are checked with renderer-accounted resource counts; those counts do not measure every JavaScript allocation.
 
-Measured resource counts returned to the same values over three full track-switch cycles. See `docs/evidence/landscape-render-check.json`.
+## Landscape and vegetation
+
+The 251×251 terrain field has a 12 m grid. Paved corridors stay flat and clear; foothills rise outside them. Height queries interpolate the same two triangles as the rendered grid so roots and groundcover meet sloped ground. Finite-difference slopes guide placement and exposed-rock blending. Cliff footprints are indexed spatially to keep vegetation out of solid rock. Distant mountain ridges stay at least 650 m from the route and use layered coherent relief with atmospheric haze.
+
+`vegetation.ts` controls species, scale, clearings and crown spacing; `clustered-groundcover.ts` places grass, ferns and shrubs in small roadside colonies. `undergrowth-geometry.ts` creates curved blades and branched plants with individual shaped leaf surfaces. Canyon uses dry soil; Pinecrest uses scanned moss/litter terrain. The ground repeats at 2.8 m; steep faces blend triplanar rock color, correctly oriented normals and roughness.
+
+Tree batches are partitioned by species in 160 m tiles. Near/middle cutoffs are 100/270 m in Balanced, 65/185 in Eco and 130/350 in Ultra, with hysteresis. All distances use full 3D models: individual cutout foliage surfaces occur throughout branching crowns, with no whole-tree billboards. Camera movement beyond 4 m triggers distance selection; only tiles changing LOD upload new matrices. Near/middle trees cast shadows. Small crown sway and leaf flutter share the same displacement in beauty and depth passes.
+
+`rural-roadside.ts` supplies corrugated steel guardrails, posts, delineators and worn center dashes. Rural routes have narrow asphalt shoulders and soil verges. Harbor City retains its existing circuit furniture and buildings.
 
 ## Rendering and power choices
 
-WebGL2 uses ACES tone mapping, bounded pixel ratio, PBR surfaces, a prefiltered HDR environment, hemisphere fill, and one nearby directional shadow map. Scenery and spectators are instanced; repeated geometry is merged where useful. Distant vegetation uses alpha-tested crossed cards; nearby conifers have solid branch geometry and cast shadows. Wet reflections use a 640×360 target with normal distortion and Fresnel blending; tire spray is one 384-particle draw call.
+WebGL2 uses ACES tone mapping, bounded resolution, PBR surfaces, a shared HDR environment, hemisphere fill and one local 4096² directional shadow map in Balanced/Ultra. Eco disables directional shadow casting. `environment-lighting.ts` binds the shared map explicitly, because Three.js otherwise replaces material environment intensity with scene intensity. Authored leaf, ground, stone and paint settings are multiplied by weather strength once, without compounding on repeated world changes.
 
-The frame scheduler retains deadlines across display refresh rates instead of quantizing 144 Hz down to 48 FPS. Resolution budgeting reacts to sustained low frame rates and recovers slowly. A re-armed resolution media query catches DPR changes even when the CSS viewport stays the same. A scalar DPR check on rendered frames also catches rapid round-trips whose media-query events Chrome can coalesce; the engine removes its listener on disposal. Diagnostics record CSS dimensions, device DPR and effective pixel ratio separately. GPU timing samples every eighth render without `gl.finish()` or synchronous readback.
+Balanced/Ultra use an MSAA4 half-float beauty target and half-resolution depth-derived contact shading, followed by a depth-aware composite. Real alpha-tested foliage and wet-road reflection participate in the beauty pass. The effect adds two fullscreen draws; Eco or unsupported float targets bypass it. Targets follow physical drawing-buffer dimensions, restore renderer state and are engine-owned. It is modest contact darkening, not global illumination. Wet reflections retain a 640×360 target with normal distortion and Fresnel blending.
+
+Rendering is capped at 30 FPS for racing/countdown/menu and 20 for pause/results. The scheduler retains deadlines across refresh rates. Balanced/Eco lower resolution only after sustained samples below 25 FPS, with slow recovery near 30; Ultra retains its pixel cap without automatic degradation. Hidden tabs do not render, and blur clears input and pauses gameplay.
+
+DPR-only changes are handled by a re-armed resolution media query and a scalar rendered-frame check for coalesced transitions. Diagnostics separate CSS size, device DPR and effective ratio. Sparse GPU timer queries run every eighth render without `gl.finish()` or synchronous readback; CPU submission and GPU timing remain separate measurements.
 
 ## Storage and hosting
 
 Settings: `astra-settings-v1`. Street best laps: `astra-street-best-v1:<circuit>:<weather>`, kept separate from historical Formula laps. Score is session-local. Settings are normalized before restoration. There is no backend save, multiplayer, telemetry upload, or external asset request during gameplay.
 
-The Sites/Vinext scaffold builds a Cloudflare-compatible Worker plus static assets. `.openai/hosting.json` identifies the existing private project; no runtime bindings are configured. Source remains a normal local Git repository and can later be published on GitHub after licensing/documentation review.
+The Sites/Vinext scaffold builds a Cloudflare-compatible Worker plus static assets. `.openai/hosting.json` identifies the existing private project; no runtime bindings are configured. Source remains a normal local Git repository and is mirrored in the personal private GitHub repository `rcbran/astra-street`. Public visibility and a source license remain separate decisions.

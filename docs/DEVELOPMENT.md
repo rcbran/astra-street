@@ -17,11 +17,11 @@ npm run start -- --port 8788
 
 ## Verification levels
 
-1. `npm test`: 26 deterministic checks for race completion, freeze behavior, control effects, track wrapping, time trial, camera attachment, settings validation, and frame scheduling/resolution budgets.
+1. `npm test`: 31 deterministic checks for race completion, freeze behavior, control effects, track wrapping, time trial, camera attachment, settings validation, frame scheduling/resolution budgets, terrain root support, tree LOD ownership and repeatable material lighting.
 2. `npm run typecheck` and `npm run lint`: strict TypeScript and owned-source static checks.
 3. `npm run build`: production bundle; it is not a gameplay test.
 4. `scripts/browser-check.mjs`: actual keyboard and UI actions in the dedicated browser, followed by responsive menu bounds and obstruction checks.
-5. `scripts/benchmark.mjs`: complete races on all three circuits, timing samples, screenshots and repeated scene-resource counts.
+5. `scripts/benchmark.mjs`: complete two-lap races, frozen-result checks, full per-second timing snapshots, screenshots and repeated scene-resource counts. `ASTRA_ALL_WEATHER=1` covers all nine route/weather combinations.
 
 Browser checks cover 390×844, 844×390, 932×430, 1024×600 and 1440×900. They assert start-button bounds and test that menu/header control centers are not obscured. Driving waits use simulation time so the same behavior assertions can run on slow software renderers; they retain finite timeouts. JSON reports and screenshots are written to ignored `artifacts/`.
 
@@ -36,12 +36,12 @@ node scripts/launch-browser.mjs
 ASTRA_RECORD_VIDEO=1 node scripts/browser-check.mjs
 node scripts/render-check.mjs
 node scripts/touch-check.mjs
-ASTRA_OUTPUT=artifacts/landscape-mac node scripts/scenery-check.mjs
+ASTRA_CDP=http://localhost:9224 ASTRA_ALL_WEATHER=1 ASTRA_OUTPUT=artifacts/trees-full-races node scripts/benchmark.mjs
 ```
 
 Run GPU checks sequentially with the build unchanged. The keyboard check can record a WebM under `artifacts/control-video/`. Scenery captures record wall-clock timestamps, simulation time, distance, actual framebuffer, GPU renderer and capture mode. The scenery harness changes routes through the UI, keeping HUD/minimap labels in sync. Each script releases its inputs and closes its owned page/context.
 
-Headless GPU timings describe that renderer workload, not visible-window display pacing or sustained thermals. The historical visible benchmarks remain separate. If the user explicitly requests a visible capture later, `ASTRA_HEADLESS=0 node scripts/launch-browser.mjs` is the opt-in override. Attach `scripts/benchmark.mjs` to the dedicated CDP browser; its standalone path is historical and can open a window.
+Headless GPU timings describe that renderer workload, not visible-window display pacing or sustained thermals. The historical visible benchmarks remain separate. If the user explicitly requests a visible capture later, `ASTRA_HEADLESS=0 node scripts/launch-browser.mjs` is the opt-in override. `scripts/benchmark.mjs` also launches a dedicated headless browser when no CDP endpoint is supplied. Its hardware assertions reject software renderers; use the other functional checks on SwiftShader.
 
 For gengar-db functional checks, bundled headless Chromium is available. The host exposes no rendering GPU or desktop display; Chromium uses SwiftShader. Missing Ubuntu browser libraries were extracted into the user's cache because this account cannot install system packages:
 
@@ -72,6 +72,10 @@ blender -b --python scripts/build_car.py
 Output defaults to ignored `artifacts/car/`. Add `-- --preview` for optional studio/cockpit renders, or `-- --output-dir PATH` to choose another directory. The generator writes a GLB, editable Blender scene and report. Copy only the reviewed GLB into `public/assets/models/astra-formula.glb`. Preview rendering is off by default to avoid unnecessary GPU/CPU work.
 
 The formatted generator passed Python syntax compilation after its command-line cleanup. Regeneration with the new options has not yet been rerun; the runtime GLB is the already validated original V2 export.
+
+The shipped CC0 tree and ground/rock models do not require Blender to run. Offline authoring commands and source manifests are in [the tree pipeline](../scripts/assets/trees/README.md), [rock notes](assets/rocks.md) and [forest-floor notes](assets/ground.md).
+
+`node scripts/tree-angle-check.mjs` uses the tracked [gallery fixtures](../scripts/fixtures/tree-gallery/README.md) against the development server. Set `ASTRA_ALL_LODS=1` for all seven variants and three LODs (434 views), or `ASTRA_GALLERY=undergrowth` for grass/fern/shrub inspection (90 views). It uses the actual runtime loader and shader callbacks in controlled lighting. These static images verify geometry/material behavior, not frame pacing. All frames, contact sheets, asset hashes and reports are saved under ignored `artifacts/`.
 
 ## Source control
 

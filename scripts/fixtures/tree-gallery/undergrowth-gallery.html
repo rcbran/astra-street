@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Astra undergrowth inspection</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #c1cbd0;
+      }
+      canvas {
+        display: block;
+      }
+      #label {
+        position: absolute;
+        bottom: 18px;
+        left: 22px;
+        font: 14px monospace;
+        color: #111;
+        background: #ffffffcc;
+        padding: 8px 12px;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="label"></div>
+    <script type="module" src="./undergrowth-gallery.js"></script>
+  </body>
+</html>

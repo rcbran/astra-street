@@ -1,0 +1,257 @@
+{
+  "source": "fir_tree_01",
+  "variants": [
+    {
+      "id": "fir_a",
+      "boundsZUp": [
+        -3.2415592670440674, -2.907454490661621, 0.0, 3.3415348529815674,
+        3.5599477291107178, 18.95704684406519
+      ],
+      "lods": [
+        {
+          "name": "fir_a_LOD0",
+          "parts": [
+            {
+              "name": "fir_a_LOD0_bark",
+              "triangles": 10000,
+              "material": "fir_tree_01_bark_game"
+            },
+            {
+              "name": "fir_a_LOD0_trunk_a",
+              "triangles": 2399,
+              "material": "fir_tree_01_trunk_a_game"
+            },
+            {
+              "name": "fir_a_LOD0_twig",
+              "triangles": 33753,
+              "material": "fir_tree_01_twig_game"
+            },
+            {
+              "name": "fir_a_LOD0_dead_branches",
+              "triangles": 900,
+              "material": "fir_tree_01_dead_branches_game"
+            }
+          ]
+        },
+        {
+          "name": "fir_a_LOD1",
+          "parts": [
+            {
+              "name": "fir_a_LOD1_bark",
+              "triangles": 2489,
+              "material": "fir_tree_01_bark_game"
+            },
+            {
+              "name": "fir_a_LOD1_trunk_a",
+              "triangles": 599,
+              "material": "fir_tree_01_trunk_a_game"
+            },
+            {
+              "name": "fir_a_LOD1_twig",
+              "triangles": 9500,
+              "material": "fir_tree_01_twig_game"
+            },
+            {
+              "name": "fir_a_LOD1_dead_branches",
+              "triangles": 199,
+              "material": "fir_tree_01_dead_branches_game"
+            }
+          ]
+        },
+        {
+          "name": "fir_a_LOD2",
+          "parts": [
+            {
+              "name": "fir_a_LOD2_bark",
+              "triangles": 158,
+              "material": "fir_tree_01_bark_game"
+            },
+            {
+              "name": "fir_a_LOD2_trunk_a",
+              "triangles": 140,
+              "material": "fir_tree_01_trunk_a_game"
+            },
+            {
+              "name": "fir_a_LOD2_twig",
+              "triangles": 4200,
+              "material": "fir_tree_01_twig_game"
+            },
+            {
+              "name": "fir_a_LOD2_dead_branches",
+              "triangles": 43,
+              "material": "fir_tree_01_dead_branches_game"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fir_b",
+      "boundsZUp": [
+        -2.5891804695129395, -2.9264464378356934, 0.0, 3.042766571044922,
+        3.1580493450164795, 14.077526301145554
+      ],
+      "lods": [
+        {
+          "name": "fir_b_LOD0",
+          "parts": [
+            {
+              "name": "fir_b_LOD0_bark",
+              "triangles": 8088,
+              "material": "fir_tree_01_bark_game"
+            },
+            {
+              "name": "fir_b_LOD0_trunk_b",
+              "triangles": 2400,
+              "material": "fir_tree_01_trunk_b_game"
+            },
+            {
+              "name": "fir_b_LOD0_twig",
+              "triangles": 17920,
+              "material": "fir_tree_01_twig_game"
+            },
+            {
+              "name": "fir_b_LOD0_dead_branches",
+              "triangles": 899,
+              "material": "fir_tree_01_dead_branches_game"
+            }
+          ]
+        },
+        {
+          "name": "fir_b_LOD1",
+          "parts": [
+            {
+              "name": "fir_b_LOD1_bark",
+              "triangles": 2494,
+              "material": "fir_tree_01_bark_game"
+            },
+            {
+              "name": "fir_b_LOD1_trunk_b",
+              "triangles": 600,
+              "material": "fir_tree_01_trunk_b_game"
+            },
+            {
+              "name": "fir_b_LOD1_twig",
+              "triangles": 9500,
+              "material": "fir_tree_01_twig_game"
+            },
+            {
+              "name": "fir_b_LOD1_dead_branches",
+              "triangles": 200,
+              "material": "fir_tree_01_dead_branches_game"
+            }
+          ]
+        },
+        {
+          "name": "fir_b_LOD2",
+          "parts": [
+            {
+              "name": "fir_b_LOD2_bark",
+              "triangles": 154,
+              "material": "fir_tree_01_bark_game"
+            },
+            {
+              "name": "fir_b_LOD2_trunk_b",
+              "triangles": 139,
+              "material": "fir_tree_01_trunk_b_game"
+            },
+            {
+              "name": "fir_b_LOD2_twig",
+              "triangles": 4200,
+              "material": "fir_tree_01_twig_game"
+            },
+            {
+              "name": "fir_b_LOD2_dead_branches",
+              "triangles": 40,
+              "material": "fir_tree_01_dead_branches_game"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fir_c",
+      "boundsZUp": [
+        -2.761598587036133, -2.982006311416626, 0.0, 3.5883054733276367,
+        3.023411273956299, 14.552308432757854
+      ],
+      "lods": [
+        {
+          "name": "fir_c_LOD0",
+          "parts": [
+            {
+              "name": "fir_c_LOD0_bark",
+              "triangles": 8050,
+              "material": "fir_tree_01_bark_game"
+            },
+            {
+              "name": "fir_c_LOD0_twig",
+              "triangles": 5016,
+              "material": "fir_tree_01_twig_game"
+            },
+            {
+              "name": "fir_c_LOD0_dead_branches",
+              "triangles": 898,
+              "material": "fir_tree_01_dead_branches_game"
+            },
+            {
+              "name": "fir_c_LOD0_trunk_c",
+              "triangles": 2400,
+              "material": "fir_tree_01_trunk_c_game"
+            }
+          ]
+        },
+        {
+          "name": "fir_c_LOD1",
+          "parts": [
+            {
+              "name": "fir_c_LOD1_bark",
+              "triangles": 2493,
+              "material": "fir_tree_01_bark_game"
+            },
+            {
+              "name": "fir_c_LOD1_twig",
+              "triangles": 5016,
+              "material": "fir_tree_01_twig_game"
+            },
+            {
+              "name": "fir_c_LOD1_dead_branches",
+              "triangles": 200,
+              "material": "fir_tree_01_dead_branches_game"
+            },
+            {
+              "name": "fir_c_LOD1_trunk_c",
+              "triangles": 599,
+              "material": "fir_tree_01_trunk_c_game"
+            }
+          ]
+        },
+        {
+          "name": "fir_c_LOD2",
+          "parts": [
+            {
+              "name": "fir_c_LOD2_bark",
+              "triangles": 158,
+              "material": "fir_tree_01_bark_game"
+            },
+            {
+              "name": "fir_c_LOD2_twig",
+              "triangles": 4200,
+              "material": "fir_tree_01_twig_game"
+            },
+            {
+              "name": "fir_c_LOD2_dead_branches",
+              "triangles": 40,
+              "material": "fir_tree_01_dead_branches_game"
+            },
+            {
+              "name": "fir_c_LOD2_trunk_c",
+              "triangles": 139,
+              "material": "fir_tree_01_trunk_c_game"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

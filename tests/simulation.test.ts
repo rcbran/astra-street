@@ -8,6 +8,7 @@ import { DEFAULT_SETTINGS } from '../src/game/types';
 import { normalizeSettings } from '../src/game/settings';
 import {
   FrameScheduler,
+  frameTarget,
   ResolutionBudget,
   type FrameSample,
 } from '../src/game/render-loop';
@@ -25,17 +26,18 @@ const session = (mode: 'race' | 'time-trial' = 'time-trial') =>
   new RaceSession(tracks[0], { circuit: 'riviera', weather: 'clear', mode });
 
 for (const hz of [60, 75, 90, 120, 144, 165]) {
-  test(`60 FPS limiter preserves deadlines on a ${hz} Hz display`, () => {
+  test(`30 FPS limiter preserves deadlines on a ${hz} Hz display`, () => {
     const scheduler = new FrameScheduler();
     scheduler.reset(1000);
     let rendered = 0;
     for (let i = 0; i < hz * 10; i++)
-      if (scheduler.tick(1000 + (i * 1000) / hz, 60)) rendered++;
-    assert.ok(Math.abs(rendered - 600) <= 1, `${rendered} frames`);
+      if (scheduler.tick(1000 + (i * 1000) / hz, frameTarget('racing')))
+        rendered++;
+    assert.ok(Math.abs(rendered - 300) <= 1, `${rendered} frames`);
   });
 }
 
-test('pixel budgets are bounded on Retina screens and tolerate 45 FPS contention', () => {
+test('pixel budgets retain detail at 30 FPS, reduce sustained misses and recover slowly', () => {
   const budget = new ResolutionBudget();
   for (const [quality, limit] of [
     ['eco', 1280 * 720],
@@ -45,12 +47,20 @@ test('pixel budgets are bounded on Retina screens and tolerate 45 FPS contention
     const ratio = budget.pixelRatio(1728, 1117, 2, quality);
     assert.ok(1728 * 1117 * ratio ** 2 <= limit + 1);
   }
-  const sample = { phase: 'racing', fps: 45, renderP95: 3 } as FrameSample;
+  const sample = { phase: 'racing', fps: 30, renderP95: 3 } as FrameSample;
   for (let i = 0; i < 20; i++)
     assert.equal(budget.adapt(sample, 'balanced'), false);
   assert.equal(budget.scale, 1);
-  for (let i = 0; i < 3; i++) budget.adapt({ ...sample, fps: 35 }, 'balanced');
+  for (let i = 0; i < 3; i++) budget.adapt({ ...sample, fps: 23 }, 'balanced');
   assert.ok(budget.scale < 1);
+  const reduced = budget.scale;
+  for (let i = 0; i < 14; i++) budget.adapt(sample, 'balanced');
+  assert.equal(budget.scale, reduced);
+  assert.equal(budget.adapt(sample, 'balanced'), true);
+  assert.ok(budget.scale > reduced);
+  assert.equal(frameTarget('countdown'), 30);
+  assert.equal(frameTarget('menu'), 30);
+  assert.equal(frameTarget('paused'), 20);
 });
 
 for (const track of tracks) {

@@ -10,6 +10,49 @@
     "third_party_geometry": false
   },
   {
+    "file": "models/astra-s9.glb",
+    "bytes": 1009472,
+    "sha256": "6f4cc18b1e7812630089101198c28b74a604dc3435ebbc54e530185777bc79b9",
+    "source": "Original project asset",
+    "generator": "scripts/build_street_car.py",
+    "revision": "Astra S9 street coupe",
+    "triangles": 15210,
+    "third_party_geometry": false
+  },
+  {
+    "file": "models/trees/fir_tree_01.glb",
+    "bytes": 11097264,
+    "sha256": "14a6d7696c7550e99f2d858c2a1f204661441e1bec7e0b1e338a6d65b871e073",
+    "source": "https://polyhaven.com/a/fir_tree_01",
+    "license": "CC0 1.0 Universal",
+    "license_url": "https://polyhaven.com/license",
+    "preparation": "scripts/assets/trees/",
+    "notes": "docs/assets/trees.md",
+    "lod_count": 3
+  },
+  {
+    "file": "models/trees/pine_tree_01.glb",
+    "bytes": 11697304,
+    "sha256": "be32206a9244f3eaedc5305622c0cbb45fa91323debc778686f1c1ed0df0aab4",
+    "source": "https://polyhaven.com/a/pine_tree_01",
+    "license": "CC0 1.0 Universal",
+    "license_url": "https://polyhaven.com/license",
+    "preparation": "scripts/assets/trees/",
+    "notes": "docs/assets/trees.md",
+    "lod_count": 3
+  },
+  {
+    "file": "models/trees/tree_small_02.glb",
+    "bytes": 6015076,
+    "sha256": "df43f1ae17a7dc187de957f430f18ff221ede9be202d49ab5b2efcacca757034",
+    "source": "https://polyhaven.com/a/tree_small_02",
+    "license": "CC0 1.0 Universal",
+    "license_url": "https://polyhaven.com/license",
+    "preparation": "scripts/assets/trees/",
+    "notes": "docs/assets/trees.md",
+    "lod_count": 3
+  },
+  {
     "file": "textures/asphalt_track_diff_1k.jpg",
     "bytes": 858925,
     "sha256": "05c4e79cd99160075969d37bfc6ef72be262153a410bb45510b2c23f7303894c",
@@ -40,6 +83,36 @@
     "download": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/asphalt_track/asphalt_track_rough_1k.jpg"
   },
   {
+    "file": "textures/cliff_side-diff.jpg",
+    "bytes": 1076956,
+    "sha256": "71879ed4adfa4bcf4031de73cedf5c85b248b20299550a07e4e18ff10e2716dc",
+    "source": "https://polyhaven.com/a/cliff_side",
+    "license": "CC0 1.0 Universal",
+    "license_url": "https://polyhaven.com/license",
+    "preparation": "scripts/assets/rocks/prepare.py",
+    "notes": "docs/assets/rocks.md"
+  },
+  {
+    "file": "textures/cliff_side-normal.jpg",
+    "bytes": 623967,
+    "sha256": "0439253b3a9107015f5dda4ca2d1fa07c59477935a6774bee46cd92895955f19",
+    "source": "https://polyhaven.com/a/cliff_side",
+    "license": "CC0 1.0 Universal",
+    "license_url": "https://polyhaven.com/license",
+    "preparation": "scripts/assets/rocks/prepare.py",
+    "notes": "docs/assets/rocks.md"
+  },
+  {
+    "file": "textures/cliff_side-roughness.jpg",
+    "bytes": 108630,
+    "sha256": "05aaca1b2d1a4b462493465f4a6258fdcd565e6d766fb1e3712e535aad694a0b",
+    "source": "https://polyhaven.com/a/cliff_side",
+    "license": "CC0 1.0 Universal",
+    "license_url": "https://polyhaven.com/license",
+    "preparation": "scripts/assets/rocks/prepare.py",
+    "notes": "docs/assets/rocks.md"
+  },
+  {
     "file": "textures/environment.hdr",
     "bytes": 1677419,
     "sha256": "e7d80054b4f0fb98104386ffd3765ae94e10221c7ae0cb6ed3566eb7431933f7",
@@ -50,6 +123,69 @@
     "license": "CC0 1.0 Universal",
     "license_url": "https://polyhaven.com/license",
     "source_md5_verified": "d313a75d829a2123b163f7b41d4aa0db"
+  },
+  {
+    "file": "textures/forrest_ground_01-diff.jpg",
+    "bytes": 1469800,
+    "sha256": "84fa8b602cd05212b02647920fbdd827aeee8e9c4230ad254283b8659faf68f5",
+    "source": "https://polyhaven.com/a/forrest_ground_01",
+    "author": "Rob Tuytel",
+    "license": "CC0 1.0 Universal",
+    "license_url": "https://polyhaven.com/license",
+    "preparation": "scripts/assets/ground/prepare.py",
+    "notes": "docs/assets/ground.md"
+  },
+  {
+    "file": "textures/forrest_ground_01-normal.jpg",
+    "bytes": 1313995,
+    "sha256": "1a8a6a09b66793485ef22aa4d8bf6dc5c65311cf8edd354053ceb56175dd432b",
+    "source": "https://polyhaven.com/a/forrest_ground_01",
+    "author": "Rob Tuytel",
+    "license": "CC0 1.0 Universal",
+    "license_url": "https://polyhaven.com/license",
+    "preparation": "scripts/assets/ground/prepare.py",
+    "notes": "docs/assets/ground.md"
+  },
+  {
+    "file": "textures/forrest_ground_01-roughness.jpg",
+    "bytes": 167127,
+    "sha256": "2b371fb6821b06a3b7c7e455494808e83c675fcfb9c3d68f932c9c001a0e4322",
+    "source": "https://polyhaven.com/a/forrest_ground_01",
+    "author": "Rob Tuytel",
+    "license": "CC0 1.0 Universal",
+    "license_url": "https://polyhaven.com/license",
+    "preparation": "scripts/assets/ground/prepare.py",
+    "notes": "docs/assets/ground.md"
+  },
+  {
+    "file": "textures/rock_wall_02-diff.jpg",
+    "bytes": 1258402,
+    "sha256": "c4048bf1a5afc2de3c191d036dbd1b8e5917bb5bc6f0ca3dc4643c6a1d703022",
+    "source": "https://polyhaven.com/a/rock_wall_02",
+    "license": "CC0 1.0 Universal",
+    "license_url": "https://polyhaven.com/license",
+    "preparation": "scripts/assets/rocks/prepare.py",
+    "notes": "docs/assets/rocks.md"
+  },
+  {
+    "file": "textures/rock_wall_02-normal.jpg",
+    "bytes": 402210,
+    "sha256": "4c531139f322badca24d511a0407664a2efe2c564ddd959756fa4198a406066d",
+    "source": "https://polyhaven.com/a/rock_wall_02",
+    "license": "CC0 1.0 Universal",
+    "license_url": "https://polyhaven.com/license",
+    "preparation": "scripts/assets/rocks/prepare.py",
+    "notes": "docs/assets/rocks.md"
+  },
+  {
+    "file": "textures/rock_wall_02-roughness.jpg",
+    "bytes": 296279,
+    "sha256": "b1c4ac5f142d6610f99b7115eeae1a8ec9fda7205eb5476053ea900fac26f1ee",
+    "source": "https://polyhaven.com/a/rock_wall_02",
+    "license": "CC0 1.0 Universal",
+    "license_url": "https://polyhaven.com/license",
+    "preparation": "scripts/assets/rocks/prepare.py",
+    "notes": "docs/assets/rocks.md"
   },
   {
     "file": "textures/sparse_grass_diff_1k.jpg",
@@ -86,50 +222,5 @@
     "license": "CC0 1.0 Universal",
     "license_url": "https://polyhaven.com/license",
     "source_md5_verified": "acf2fd7e352e7635f67f24ecda01e485"
-  },
-  {
-    "file": "textures/trees.png",
-    "bytes": 2490543,
-    "sha256": "a189715eaa20c17718acaea1aa31afc093d623baca0ab6fb2abe591f403209ec",
-    "source": "OpenAI built-in imagegen, generated specifically for Astra Formula 2026-09-05",
-    "third_party_license": "No third-party source asset; original AI-generated output",
-    "dimensions": [
-      1774,
-      887
-    ],
-    "alpha_verified": true
-  },
-  {
-    "file": "models/astra-s9.glb",
-    "bytes": 1009472,
-    "sha256": "6f4cc18b1e7812630089101198c28b74a604dc3435ebbc54e530185777bc79b9",
-    "source": "Original project asset",
-    "generator": "scripts/build_street_car.py",
-    "revision": "Astra S9 street coupe",
-    "triangles": 15210,
-    "third_party_geometry": false
-  },
-  {
-    "file": "textures/cliff-rock.png",
-    "bytes": 3297746,
-    "sha256": "c10f9c56a0a3f50785624d5c3cb2dbf03c5752ac7893b9113e85b95afeb068ca",
-    "source": "Original OpenAI built-in image generation",
-    "dimensions": [
-      1254,
-      1254
-    ],
-    "prompt": "docs/STREET-DIRECTION.md#rock"
-  },
-  {
-    "file": "textures/conifers.png",
-    "bytes": 2735229,
-    "sha256": "0bb634996f59f0a3bcc5576efe7ed80cebac23a749d6fc11f4b2acd890b035f0",
-    "source": "Original OpenAI built-in image generation",
-    "dimensions": [
-      1536,
-      1024
-    ],
-    "alpha": true,
-    "prompt": "docs/STREET-DIRECTION.md#conifers"
   }
 ]
