@@ -1,10 +1,10 @@
-# Astra Formula
+# Astra Street
 
-Read `docs/HANDOFF.md` first when resuming, then `docs/TASKS.md` and `docs/ARCHITECTURE.md`. The user requested a pause, Git push and handoff on 2026-09-06 to resume on the MacBook. Resume substantive work only when the new session asks to continue.
+Read `docs/HANDOFF.md` first when resuming, then `docs/TASKS.md` and `docs/ARCHITECTURE.md`. The user resumed on the MacBook and explicitly pivoted to street racing on 2026-09-06. Continue the new direction; do not restore the F1 brief as the active target.
 
 ## User intent
 
-Build a high-fidelity F1-style browser racing game with simple fun gameplay, several environments/weather choices, and a nominal 60 FPS target. The user accepts 40–50 FPS while other agents use the laptop GPU. Target the visual language of AAA F1 games from 2020 onward; do not claim the current build matches them.
+Build a visually rich browser street racer with simple fun gameplay, drifting, nitro and several environments/weather choices. The active reference is the Street Heat video linked in `docs/STREET-DIRECTION.md`. Preserve the nominal 60 FPS target and the user’s accepted 40–50 FPS under shared GPU load. Treat the older AAA F1 brief as historical; do not claim the current build matches the new video.
 
 Code must remain modular and clear for eventual public GitHub publication. The user initially deferred documentation, then explicitly requested the current documentation and handoff. Maintain concise accurate context at milestones.
 

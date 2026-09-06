@@ -5,6 +5,7 @@
 @import '../src/ui/styles/hud.css';
 @import '../src/ui/styles/dialogs.css';
 @import '../src/ui/styles/responsive.css';
+@import '../src/ui/styles/street.css';
 @custom-variant dark (&:is(.dark *));
 @theme inline {
   --color-background: var(--background);
@@ -30,15 +31,15 @@
 }
 :root,
 .dark {
-  --background: #101817;
+  --background: #10151b;
   --foreground: #f1f1e9;
-  --primary: #ed6246;
+  --primary: #f59c46;
   --primary-foreground: #fff9ef;
   --secondary: #283630;
   --muted: #21302b;
   --muted-foreground: #a7b3a9;
   --accent: #32423a;
-  --popover: #14211e;
+  --popover: #142129;
   --border: #ffffff20;
   --input: #ffffff2c;
   --ring: #ff9d81;

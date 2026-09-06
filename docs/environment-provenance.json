@@ -93,7 +93,43 @@
     "sha256": "a189715eaa20c17718acaea1aa31afc093d623baca0ab6fb2abe591f403209ec",
     "source": "OpenAI built-in imagegen, generated specifically for Astra Formula 2026-09-05",
     "third_party_license": "No third-party source asset; original AI-generated output",
-    "dimensions": [1774, 887],
+    "dimensions": [
+      1774,
+      887
+    ],
     "alpha_verified": true
+  },
+  {
+    "file": "models/astra-s9.glb",
+    "bytes": 1009472,
+    "sha256": "6f4cc18b1e7812630089101198c28b74a604dc3435ebbc54e530185777bc79b9",
+    "source": "Original project asset",
+    "generator": "scripts/build_street_car.py",
+    "revision": "Astra S9 street coupe",
+    "triangles": 15210,
+    "third_party_geometry": false
+  },
+  {
+    "file": "textures/cliff-rock.png",
+    "bytes": 3297746,
+    "sha256": "c10f9c56a0a3f50785624d5c3cb2dbf03c5752ac7893b9113e85b95afeb068ca",
+    "source": "Original OpenAI built-in image generation",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "prompt": "docs/STREET-DIRECTION.md#rock"
+  },
+  {
+    "file": "textures/conifers.png",
+    "bytes": 2735229,
+    "sha256": "0bb634996f59f0a3bcc5576efe7ed80cebac23a749d6fc11f4b2acd890b035f0",
+    "source": "Original OpenAI built-in image generation",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "alpha": true,
+    "prompt": "docs/STREET-DIRECTION.md#conifers"
   }
 ]

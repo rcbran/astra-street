@@ -12,7 +12,13 @@ import {
 } from '../src/game/render-loop';
 
 const dt = 1 / 120;
-const neutral = { steer: 0, throttle: 0, brake: 0, boost: false };
+const neutral = {
+  steer: 0,
+  throttle: 0,
+  brake: 0,
+  boost: false,
+  handbrake: false,
+};
 const tracks = CIRCUITS.map((c) => new Track(c));
 const session = (mode: 'race' | 'time-trial' = 'time-trial') =>
   new RaceSession(tracks[0], { circuit: 'riviera', weather: 'clear', mode });
@@ -133,7 +139,7 @@ test('cars remain physically adjacent across the finish line and across lap coun
   assert.equal(trackGap(2998, 2, 1000), -4);
 });
 
-test('the cockpit eye remains attached at high speed', () => {
+test('the bonnet camera remains attached at high speed', () => {
   const race = session(),
     rig = new RaceCamera();
   const settings = { ...DEFAULT_SETTINGS, camera: 'cockpit' as const };
@@ -142,9 +148,9 @@ test('the cockpit eye remains attached at high speed', () => {
     rig.update(1 / 60, race.player, tracks[0], 'racing', settings, 0, false);
     const f = tracks[0].sample(race.player.distance);
     const expected = {
-      x: f.x + f.nx * race.player.offset - f.tx * 0.2,
-      y: f.y + 0.04 + 0.85,
-      z: f.z + f.nz * race.player.offset - f.tz * 0.2,
+      x: f.x + f.nx * race.player.offset + f.tx * 0.9,
+      y: f.y + 0.04 + 0.98,
+      z: f.z + f.nz * race.player.offset + f.tz * 0.9,
     };
     assert.ok(
       Math.hypot(
@@ -191,7 +197,7 @@ test('chase-camera distance does not grow with speed on a straight', () => {
     );
     const f = tracks[0].sample(race.player.distance);
     assert.ok(
-      Math.hypot(rig.camera.position.x - f.x, rig.camera.position.z - f.z) < 7,
+      Math.hypot(rig.camera.position.x - f.x, rig.camera.position.z - f.z) < 12,
     );
   }
 });

@@ -15,6 +15,7 @@ import { GpuTimer } from './gpu-timer';
 import { RaceAudio } from './audio';
 import { RaceCamera } from './camera';
 import { TireSpray } from './tire-spray';
+import { TireMarks } from './tire-marks';
 import {
   RaceSession,
   createDriver,
@@ -37,6 +38,7 @@ const EMPTY_INPUT: ControlInput = {
   throttle: 0,
   brake: 0,
   boost: false,
+  handbrake: false,
 };
 const STEP = 1 / 120;
 /** Composition root: owns browser resources and connects the independent racing systems. */
@@ -63,6 +65,7 @@ export class RacingEngine {
   private menuDriver = createDriver(-45, 0);
   private world: World | null = null;
   private spray: TireSpray | null = null;
+  private tireMarks: TireMarks | null = null;
   private asset: THREE.Group | null = null;
   private surfaces: Awaited<ReturnType<typeof loadRoadTextures>> | null = null;
   private environment: THREE.WebGLRenderTarget | null = null;
@@ -79,6 +82,7 @@ export class RacingEngine {
   private menuTime = 0;
   private hudAt = 0;
   private currentRatio = 1;
+  private deviceRatio = 1;
   private controls: ControlInput = { ...EMPTY_INPUT };
   private resumePhase: Phase = 'racing';
   private starting = false;
@@ -198,7 +202,10 @@ export class RacingEngine {
     this.world?.root.removeFromParent();
     this.world?.dispose();
     this.spray?.dispose();
-    this.spray = options.weather === 'rain' ? new TireSpray() : null;
+    this.tireMarks?.dispose();
+    this.tireMarks = new TireMarks();
+    this.scene.add(this.tireMarks.mesh);
+    this.spray = new TireSpray(options.weather === 'rain');
     if (this.spray) this.scene.add(this.spray.points);
     this.removeCars();
     this.session = null;
@@ -265,10 +272,11 @@ export class RacingEngine {
     if (this.disposed) return;
     const width = Math.max(1, this.container.clientWidth),
       height = Math.max(1, this.container.clientHeight);
+    this.deviceRatio = window.devicePixelRatio;
     this.currentRatio = this.budget.pixelRatio(
       width,
       height,
-      window.devicePixelRatio,
+      this.deviceRatio,
       this.settings.quality,
     );
     this.renderer.setPixelRatio(this.currentRatio);
@@ -317,7 +325,7 @@ export class RacingEngine {
     this.emit();
   }
   private recordKey() {
-    return `astra-best-v1:${this.options.circuit}:${this.options.weather}`;
+    return `astra-street-best-v1:${this.options.circuit}:${this.options.weather}`;
   }
   pause() {
     if (this.phase === 'racing' || this.phase === 'countdown') {
@@ -385,6 +393,10 @@ export class RacingEngine {
           : 60;
     const tick = this.scheduler.tick(now, target);
     if (!tick) return;
+    // Rapid DPR round-trips can coalesce matchMedia change events back to the
+    // original match. A scalar check also covers that case without layout work.
+    if (window.devicePixelRatio !== this.deviceRatio)
+      this.onPixelDensityChange();
     this.controls = this.input.read();
     this.simTime += tick.delta;
     if (
@@ -441,20 +453,30 @@ export class RacingEngine {
         dt,
         this.simTime,
         wet,
-        this.controls.brake,
+        Math.max(this.controls.brake, this.controls.handbrake ? 1 : 0),
         this.controls.throttle,
         cockpit,
       );
+    if (this.playerVisual)
+      this.playerVisual.nitro.visible =
+        this.phase === 'racing' && !!this.session?.boosted;
     this.opponentVisuals.forEach((visual, i) =>
       updateCar(visual, this.opponents[i], this.track, dt, this.simTime, wet),
     );
-    if (this.phase === 'racing')
+    if (this.phase === 'racing') {
       this.spray?.update(
         dt,
         [this.player, ...this.opponents],
         this.track,
         this.renderer.domElement.height,
       );
+      this.tireMarks?.update(
+        dt,
+        this.player,
+        this.track,
+        !!this.session?.score.drifting,
+      );
+    }
     this.cameraRig.update(
       dt,
       this.player,
@@ -508,6 +530,10 @@ export class RacingEngine {
       racers: this.options.mode === 'race' ? 8 : 1,
       boost: s?.battery ?? 100,
       boosting: s?.boosted ?? false,
+      score: s?.score.total ?? 0,
+      chain: Math.floor(s?.score.chain ?? 0),
+      multiplier: s?.score.multiplier ?? 1,
+      drifting: s?.score.drifting ?? false,
       progress: (((p.distance / this.track.length) % 1) + 1) % 1,
       fps: stats ? Math.round(stats.fps) : 0,
       frameMs: stats?.frameP95 ?? 0,
@@ -529,7 +555,7 @@ export class RacingEngine {
       quality: this.settings.quality,
       finishedPosition: s?.finishedPosition ?? 0,
       newBest: s?.newBest ?? false,
-      message: '',
+      message: s?.score.message ?? '',
     };
     this.onTelemetry(this.telemetry);
   }
@@ -580,6 +606,7 @@ export class RacingEngine {
     this.removeCars();
     this.world?.dispose();
     this.spray?.dispose();
+    this.tireMarks?.dispose();
     this.environment?.dispose();
     if (this.surfaces) Object.values(this.surfaces).forEach((t) => t.dispose());
     if (this.asset) disposeCarAsset(this.asset);

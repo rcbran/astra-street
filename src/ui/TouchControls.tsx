@@ -16,7 +16,7 @@ export function TouchControls({
     onInput(key, value);
   };
   const release = (key: keyof ControlInput) =>
-    onInput(key, key === 'boost' ? false : 0);
+    onInput(key, key === 'boost' || key === 'handbrake' ? false : 0);
   return (
     <div className="touch-controls">
       <div>
@@ -39,12 +39,20 @@ export function TouchControls({
       </div>
       <div>
         <Button
-          aria-label="Overtake boost"
+          aria-label="Nitro"
           onPointerDown={(e) => press(e, 'boost', true)}
           onPointerUp={() => release('boost')}
           onPointerCancel={() => release('boost')}
         >
-          BOOST
+          NITRO
+        </Button>
+        <Button
+          aria-label="Handbrake drift"
+          onPointerDown={(e) => press(e, 'handbrake', true)}
+          onPointerUp={() => release('handbrake')}
+          onPointerCancel={() => release('handbrake')}
+        >
+          DRIFT
         </Button>
         <Button
           aria-label="Brake"

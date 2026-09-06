@@ -1,32 +1,29 @@
 # Task tracker
 
-Updated 2026-09-06. Paused for a Git push and MacBook handoff; the original fidelity goal remains open.
+Updated 2026-09-06. Active direction: Astra Street, following the user's Street Heat reference and explicit gameplay pivot.
 
-## Implemented and verified
+## Current pass
 
-- [x] Modular TypeScript/React/Three.js application, original car and three circuits.
-- [x] Racing against seven AI cars, time trial, boost, audio, menus and input mappings.
-- [x] Fixed simulation, frame caps, adaptive pixel budgets, hidden-tab suspension and disposal.
-- [x] Production build, strict TypeScript, lint and 19 deterministic regression checks.
-- [x] Historical full production races on all three default environments on M4 Max.
-- [x] Fixed 844×390 landscape menu, including header/tab overlap found in screenshot review.
-- [x] Reproduced and fixed DPR-only changes; quality budgets and fullscreen verified in Chromium.
-- [x] Inspected the moving chase view after its translation fix; software timing recorded separately.
-- [x] First roadside material refinement: concrete wear/grime and textured painted runoff.
-- [x] Loaded/rendered all nine circuit/weather worlds, with stable resources across three cycles.
-- [x] Updated development setup for Linux without a rendering GPU; kept the lockfile intact.
+- [x] Pull the existing Sites source on the MacBook and preserve project/history.
+- [x] Recheck the inherited landscape menu and display-scaling fixes in visible hardware Chrome.
+- [x] Inspect the video and document concrete visual targets.
+- [x] Create an original S9 sports coupe with working wheels and nitro exhaust.
+- [x] Generate/integrate rock and conifer textures with prompts and provenance.
+- [x] Add bounded instanced cliff scenery, foliage variety and lower rural barriers.
+- [x] Add handbrake slip, drift smoke, skid marks, score chains, near misses and speed checks.
+- [x] Adapt the menu/HUD, route identity and chase/bonnet cameras.
+- [x] Verify 24 deterministic tests, typecheck, owned-source lint and production build.
+- [x] Production keyboard/UI check including drift/scoring and five menu sizes.
+- [x] DPR/quality/fullscreen checks and nine route/weather world builds with stable resource cycles.
+- [x] Corrected-resolution hardware timing: three short visible M4 Max samples at 1821×1138, median 60 FPS.
+- [x] Emulated multi-touch and compact landscape HUD verification.
+- [ ] Private publishing; see handoff for current status.
 
-## Next, in order
+## Next refinements
 
-1. [x] Final production keyboard/UI check passed: all five viewports, obstruction assertions and zero page errors; evidence saved.
-2. [ ] On the MacBook, verify the corrected menu/DPR in visible Chrome and take a short hardware timing sample. Site deployment is paused until the user resumes it.
-3. [ ] Continue fidelity work: terrain/horizon, building variety, foliage variation and coastal detail. Judge moving views before increasing cost.
-4. [ ] Review handling/fun through human laps; tune only with evidence.
-5. [ ] Resume private Sites publishing only after the user resumes work; reuse the existing project. No version/deployment has been created.
-6. [ ] Nine complete circuit/weather races and additional browsers/devices as practical. The current nine-world check is a load/render smoke test.
-7. [ ] Test actual touch controls and a physical controller when available.
-8. [ ] Choose a source license and review public-repository contents before creating/publishing GitHub.
-
-## Known gaps
-
-The game is a playable visual foundation, not AAA parity. No measured fan-RPM/package-power claim, physical-controller test, actual mobile-device test or cross-browser qualification exists. See `HANDOFF.md` and `PERFORMANCE.md` for exact context and limits.
+1. Have the user drive laps and describe steering/handbrake feel. Tune from feedback; the pilot only validates behavior.
+2. Improve cliff profiles, varied roadside composition and car surface detail against the video. This first pass remains simpler than the reference.
+3. Improve city silhouettes, facade density and lighting composition.
+4. Test physical controller, real touch devices and Safari. Browser emulation does not establish physical-device quality.
+5. Extend coverage to nine complete route/weather races. The nine-world test is a load/render check, not nine completed races.
+6. Choose a source license and review contents before public GitHub publication.

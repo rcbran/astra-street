@@ -1,6 +1,6 @@
 # Architecture
 
-The React application owns menus and the HUD. An imperative Three.js engine owns the game loop and browser resources. Simulation is separated from rendering so racing rules can be checked without a canvas or audio context.
+The current product is Astra Street; the F1 predecessor remains in Git history. The React application owns menus and the HUD. An imperative Three.js engine owns the game loop and browser resources. Simulation is separated from rendering so racing rules can be checked without a canvas or audio context.
 
 ## Modules
 
@@ -11,7 +11,7 @@ The React application owns menus and the HUD. An imperative Three.js engine owns
 | Simulation        | `src/game/race-session.ts`                             | Player dynamics, AI, collisions, laps, boost, countdown and results        |
 | Circuit data      | `src/game/tracks.ts`                                   | Layout definitions, arc-length track samples and local coordinate frames   |
 | Frame budgets     | `src/game/render-loop.ts`                              | Render deadlines, measurements and adaptive pixel budget                   |
-| Camera            | `src/game/camera.ts`                                   | Menu orbit, chase rig and attached cockpit viewpoint                       |
+| Camera            | `src/game/camera.ts`                                   | Menu orbit, chase rig and attached bonnet viewpoint                        |
 | Vehicles          | `src/game/vehicle.ts`                                  | GLTF loading, material variants, wheel animation and small car effects     |
 | World             | `src/game/world.ts`, `src/game/world/*`                | Road, furniture, terrain, vegetation, buildings, sky, rain and reflections |
 | Wet effects       | `src/game/tire-spray.ts`, `src/game/world/wet-road.ts` | Bounded spray pool and low-resolution planar reflection                    |
@@ -30,7 +30,7 @@ A closed Catmull–Rom spline describes each flat circuit. A `Track` precomputes
 
 Drivers use an unwrapped distance along the track, a lateral offset, speed, and heading error. Unwrapped distance determines standings and lap completion; physical proximity uses a wrapped signed gap so cars can collide across a finish line or when lapping one another.
 
-The engine advances `RaceSession` in fixed 1/120-second steps. Throttle, braking, drag, steering rate, yaw damping, off-track drag, barriers, and boost create approachable arcade handling. Assistance compensates for part of the track curvature; it does not eliminate steering. Rain lowers grip and braking force. Opponents choose a curvature-dependent target speed and adjust lanes around nearby cars.
+The engine advances `RaceSession` in fixed 1/120-second steps. `street-score.ts` owns bankable chains, multipliers and bonus messages; simulation calls it for drifting, close forward passes and speed-check crossings. Handbrake slip is separate from velocity heading, so the body can rotate into a recoverable slide while the assisted trajectory remains steerable. Space is handbrake; S/down remains service braking. Throttle, braking, drag, steering rate, yaw damping, off-track drag, barriers, and boost create approachable arcade handling. Assistance compensates for part of the track curvature; it does not eliminate steering. Rain lowers grip and braking force. Opponents choose a curvature-dependent target speed and adjust lanes around nearby cars.
 
 A quick race ends after the player's second completed lap. The result position and all simulated drivers freeze. Time trials have no opponents and end through the HUD action. The benchmark pilot is test-only and must remain opt-in.
 
@@ -44,28 +44,30 @@ The HUD receives snapshots about ten times per second. High-frequency simulation
 
 ## Camera contract
 
-The GLB is Y-up with its nose along +Z. The cockpit eye is approximately `(0, 0.85, -0.20)` in car-local coordinates; the head group is hidden in cockpit mode. The cockpit must move with the chassis: world-space positional damping previously placed the eye inside the engine cover at speed.
+The original Astra S9 GLB is Y-up with its nose along +Z. Four wheel objects have baked rest transforms and animate around local X. The alternate camera is a bonnet view at `(0, 0.98, 0.9)` relative to the car; its legacy settings key is `cockpit` for compatibility. It is rigidly attached at speed.
 
-The chase rig carries car translation before smoothing its relative pose. This avoids adding `speed / damping` meters to the chase distance. Both behaviors have regression checks. The moving production chase view is checked by `scripts/render-check.mjs`; keep software-renderer timing separate from visible hardware benchmarks.
+The chase rig carries car translation before smoothing its relative pose. The street view is intentionally farther back, roughly 9–11 m, to expose the slide and surrounding road. Distance stability and bonnet attachment have regression checks. `scripts/render-check.mjs` checks the moving rig in production.
 
 ## Resource ownership
 
 - The engine owns the renderer, input/audio, resize observer, animation callback, HDR-derived environment target, loaded surface textures, shared car asset, current world, car visuals, and spray pool.
-- The source GLB's geometry is immutable and shared by cloned cars. Each visual owns its cloned materials, contact-shadow resources, and brake-light geometry/material. Disposing one car must not dispose shared GLTF geometry.
+- The source GLB's geometry is immutable and shared by cloned cars. Each visual owns its cloned materials, contact-shadow resources, brake-light geometry/material and shared-per-car nitro cone resources. Disposing one car must not dispose shared GLTF geometry.
 - World builders own the geometry/materials/textures they create. Loaded road/grass/tree textures are shared and excluded from world disposal.
-- Wet-road disposal explicitly releases its reflector target and geometry. Original concrete and runoff maps in `world/track-surfaces.ts` belong to the world and are disposed with its materials. Tree textures are preloaded; scene construction does not leave asynchronous callbacks capable of reviving disposed worlds.
+- Wet-road disposal explicitly releases its reflector target and geometry. Original concrete and runoff maps in `world/track-surfaces.ts` belong to the world and are disposed with its materials. The rock/conifer textures are engine-owned and excluded from world disposal. Three reusable eroded rock geometries are world-owned; four tree batches use two atlas maps. Tree textures are preloaded; scene construction does not leave asynchronous callbacks capable of reviving disposed worlds.
 - Track changes dispose the previous world/cars before replacing them. Engine disposal cancels animation, unregisters listeners, and releases shared resources.
 
-Measured resource counts returned to the same values over three full track-switch cycles. See `docs/evidence/performance.json`.
+`tire-spray.ts` owns one 384-particle pool: wet spray or dry drift smoke. `tire-marks.ts` owns one fixed 768-segment ring buffer. Both are disposed on scene changes and engine teardown.
+
+Measured resource counts returned to the same values over three full track-switch cycles. See `docs/evidence/street-render-check.json`.
 
 ## Rendering and power choices
 
 WebGL2 uses ACES tone mapping, bounded pixel ratio, PBR surfaces, a prefiltered HDR environment, hemisphere fill, and one nearby directional shadow map. Scenery and spectators are instanced; repeated geometry is merged where useful. Vegetation uses alpha-tested crossed cards. Wet reflections use a 640×360 target with normal distortion and Fresnel blending; tire spray is one 384-particle draw call.
 
-The frame scheduler retains deadlines across display refresh rates instead of quantizing 144 Hz down to 48 FPS. Resolution budgeting reacts to sustained low frame rates and recovers slowly. A re-armed resolution media query catches DPR changes even when the CSS viewport stays the same; the engine removes its listener on disposal. Diagnostics record CSS dimensions, device DPR and effective pixel ratio separately. GPU timing samples every eighth render without `gl.finish()` or synchronous readback.
+The frame scheduler retains deadlines across display refresh rates instead of quantizing 144 Hz down to 48 FPS. Resolution budgeting reacts to sustained low frame rates and recovers slowly. A re-armed resolution media query catches DPR changes even when the CSS viewport stays the same. A scalar DPR check on rendered frames also catches rapid round-trips whose media-query events Chrome can coalesce; the engine removes its listener on disposal. Diagnostics record CSS dimensions, device DPR and effective pixel ratio separately. GPU timing samples every eighth render without `gl.finish()` or synchronous readback.
 
 ## Storage and hosting
 
-Settings: `astra-settings-v1`. Best laps: `astra-best-v1:<circuit>:<weather>`. Settings are normalized before restoration. There is no backend save, multiplayer, telemetry upload, or external asset request during gameplay.
+Settings: `astra-settings-v1`. Street best laps: `astra-street-best-v1:<circuit>:<weather>`, kept separate from historical Formula laps. Score is session-local. Settings are normalized before restoration. There is no backend save, multiplayer, telemetry upload, or external asset request during gameplay.
 
 The Sites/Vinext scaffold builds a Cloudflare-compatible Worker plus static assets. `.openai/hosting.json` identifies the existing private project; no runtime bindings are configured. Source remains a normal local Git repository and can later be published on GitHub after licensing/documentation review.

@@ -17,7 +17,7 @@ npm run start -- --port 8788
 
 ## Verification levels
 
-1. `npm test`: 19 deterministic checks for race completion, freeze behavior, control effects, track wrapping, time trial, camera attachment, settings validation, and frame scheduling/resolution budgets.
+1. `npm test`: 24 deterministic checks for race completion, freeze behavior, control effects, track wrapping, time trial, camera attachment, settings validation, and frame scheduling/resolution budgets.
 2. `npm run typecheck` and `npm run lint`: strict TypeScript and owned-source static checks.
 3. `npm run build`: production bundle; it is not a gameplay test.
 4. `scripts/browser-check.mjs`: actual keyboard and UI actions in the dedicated browser, followed by responsive menu bounds and obstruction checks.
@@ -85,3 +85,11 @@ The formatted generator passed Python syntax compilation after its command-line 
 Branch `main` has a normal initial commit. Use the repository's local author settings. Do not alter global Git configuration. No GitHub remote has been added.
 
 Codex once reported a missing `refs/t3/checkpoints/.../turn/0` diff baseline because the folder had no Git repository at the start of the turn. `turn/1` existed and `git fsck` found no corruption. A normal initial commit was saved afterward. Do not fabricate or rewrite internal Codex checkpoint refs to conceal that missing baseline.
+
+## Street-racing verification
+
+The MacBook uses the installed visible Chrome channel. Run the browser and render checks sequentially, then `ASTRA_OUTPUT=artifacts/street-mac node scripts/scenery-check.mjs` for a 25-second sample per route. The scenery script explicitly emulates DPR 2 at 1440×900 CSS in visible hardware Chrome, records actual framebuffer/renderer/focus, and fails on software renderers. These samples are not full races or a thermal test. It clears its pilot and closes its owned browser context on exit.
+
+`node scripts/touch-check.mjs` checks simultaneous emulated throttle/steering/handbrake, released input and portrait/landscape views. It closes its owned context afterward; physical touch devices remain untested.
+
+Browser control checks now cover Space handbrake/score and S service braking. The alternate camera uses a bonnet view. `tests/street-score.test.ts` verifies slide recovery, banking, contact losses, near misses, gate thresholds and finish/reset behavior. Regenerate the original S9 with `blender -b --python scripts/build_street_car.py`; reviewed output belongs at `public/assets/models/astra-s9.glb`.

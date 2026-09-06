@@ -1,25 +1,12 @@
 # Decisions and constraints
 
-1. **Browser-first renderer.** Use Three.js/WebGL2 inside the existing Sites/Vinext shell. Installing Unreal does not directly produce the portable, low-power browser experience requested. Blender is used for original assets; no Unreal or Photoshop installation was needed.
-
-2. **Original content with licensed supporting scans.** Cars, layouts and sponsor marks are original. Poly Haven scans/HDR are CC0. F1 23/24 screenshots are visual research only, ignored by Git and excluded from the runtime build.
-
-3. **Rendering budget before expensive effects.** Bound render resolution and frame rate; use instancing, merged geometry, alpha-tested foliage, PBR textures, a static prefiltered environment and one localized shadow light. Wet roads use a small planar-reflection target rather than ray tracing. Spray uses one fixed-capacity pool.
-
-4. **Shared laptop tolerance.** The nominal target is 60 FPS, but the user accepts 40–50 while other GPU work runs. Adaptive resolution only reacts below 42 FPS. Menus run at 30, paused/results at 20, hidden tabs stop rendering. Do not infer quiet fans from a frame-rate counter.
-
-5. **Approachable simulation.** Use a deterministic 120 Hz track-coordinate arcade model with steering assistance, automatic gears, short races and rechargeable boost. Keep simulation independent of React, rendering and audio. Preserve meaningful lateral steering/braking and off-track penalties.
-
-6. **Modular ownership.** Engine composes the lifecycle; smaller modules own racing, camera, input/audio, materials, GPU timing, world elements and UI. Immutable GLTF geometry is shared; per-car effects/materials are owned and disposed separately. Never allow async asset callbacks to revive an old world.
-
-7. **Native collaboration only.** User expressly prohibited Orca orchestration. All asset/review workers used GPT Astra. Future delegated agents must also use `gpt-6-astra`; main agent integrates source and owns Site operations. Temporary worker outputs are not runtime dependencies.
-
-8. **Documentation timing.** The user initially deferred public docs, then explicitly requested all docs updated and a handoff before starting a new session. The current documentation describes the actual paused state, including remaining issues.
-
-9. **Personal project identity.** Codex CLI and private Site ownership were verified against the personal account. The global Git author was the company address, so only this repository received a personal author override. Do not change global authentication or Git settings for this project.
-
-10. **Publish state.** A single owner-private Site was registered early; it remains unpublished, with version count zero. No GitHub remote exists. Reuse `.openai/hosting.json` when work resumes. Credentials must remain ephemeral and outside source/configuration.
-
-11. **Honest evidence.** Build success does not establish gameplay, high FPS does not establish visual fidelity, and a CPU submission time is not GPU time. The full-race measurements precede the last chase-camera correction. Record the tested revision and framebuffer size when adding evidence.
-
-12. **Checkpoint recovery.** Codex's start-of-turn Git checkpoint was absent because the original folder was not a repository. A later internal checkpoint was present; Git integrity checks passed. Normal Git history was initialized with a project commit. The missing internal reference was not fabricated.
+1. **Street racing is the active direction.** On 2026-09-06 the user shared the Street Heat clip and explicitly chose street gameplay. Astra Street succeeds the Formula prototype in the same checkout and Site. The earlier F1 source/assets remain in Git history; no scaffold replacement occurred.
+2. **Playable interpretation.** Original S9 coupe, canyon/forest/city routes, handbrake slides, nitro, bankable score chains, near misses and speed checks. Do not claim the clip's exact source or visual fidelity has been reproduced.
+3. **Browser renderer.** Keep Three.js/WebGL2 inside Sites/Vinext. Blender creates original meshes; built-in image generation supplies original rock and conifer textures. Reference video/screenshots never ship as game assets. Asset provenance and prompts are documented.
+4. **Bounded cost.** Fixed 120 Hz simulation; 60 FPS racing cap, 30 menu, 20 paused/results; hidden tabs stop rendering. Pixel budgets and delayed adaptation preserve the user's accepted 40–50 FPS shared-GPU range. Static HDR environment, one localized shadow light, instancing, a 384-particle pool and 768-segment tire-mark buffer bound rendering resources.
+5. **Separate responsibilities.** Engine composes lifecycle; simulation, street scoring, camera, render budgets, input/audio, car visuals and world builders stay separate. Shared assets are immutable; car/world/effect owners dispose their resources.
+6. **Simple arcade controls.** WASD/arrows drive, Space handbrake, Shift nitro, C chase/bonnet camera. Steering assistance is optional. Bank a chain after two clean seconds; contact/off-road/reset loses the current chain, while finish banks it. Nitro cannot fire with the handbrake held.
+7. **Evidence limits.** A build is not gameplay validation. Pilot runs cannot establish human feel. Record actual framebuffer, GPU renderer, foreground state and sample duration. Historical Formula and SwiftShader measurements do not describe the street revision; short samples do not establish sustained thermals or all-device performance.
+8. **Personal ownership.** Keep repository-only personal Git author configuration. Reuse the one owner-private Site and credential-free `sites` remote. Tokens stay ephemeral. Source pushes and saved/deployed Site versions are distinct. Public GitHub/license selection is separate.
+9. **Collaboration.** No Orca. No delegation without an active instruction authorizing it; authorized workers must use `gpt-6-astra`. The Site owner alone edits the checkout and handles hosting. The image worker returned assets outside the checkout.
+10. **Accurate resumption context.** Keep handoff/tasks current at milestones. Do not fabricate missing Codex checkpoint refs; the old warning arose before initial Git history and is not corruption.

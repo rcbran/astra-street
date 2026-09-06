@@ -2,6 +2,7 @@ import { MathUtils } from 'three';
 import { Track, clamp } from './tracks';
 import type { ControlInput } from './input';
 import type { RaceOptions, Settings } from './types';
+import { SPEED_TRAPS, StreetScore } from './street-score';
 
 export interface DriverState {
   distance: number;
@@ -9,6 +10,7 @@ export interface DriverState {
   speed: number;
   headingError: number;
   steer: number;
+  slipAngle: number;
   name: string;
   color: string;
   pace: number;
@@ -26,7 +28,7 @@ export const createDriver = (
   distance: number,
   offset: number,
   name = 'YOU',
-  color = '#d44731',
+  color = '#0cb0bd',
   pace = 1,
 ): DriverState => ({
   distance,
@@ -37,6 +39,7 @@ export const createDriver = (
   speed: 0,
   headingError: 0,
   steer: 0,
+  slipAngle: 0,
 });
 export const gearForSpeed = (speed: number) =>
   clamp(Math.floor((speed * 3.6) / 43) + 1, 1, 8);
@@ -48,6 +51,9 @@ export const trackGap = (a: number, b: number, length: number) =>
 
 /** Deterministic racing rules and arcade dynamics. No renderer, DOM or audio ownership. */
 export class RaceSession {
+  private contact = false;
+  readonly score = new StreetScore();
+  private passGaps = new Map<DriverState, number>();
   player: DriverState;
   opponents: DriverState[] = [];
   phase: 'countdown' | 'racing' | 'finished' = 'countdown';
@@ -98,14 +104,17 @@ export class RaceSession {
       offset: 0,
       headingError: 0,
       steer: 0,
+      slipAngle: 0,
       speed: Math.min(this.player.speed, 18),
     });
+    this.score.breakChain();
   }
   finish() {
     if (this.phase === 'finished') return;
     this.finishedPosition = this.position;
     this.phase = 'finished';
     this.boosted = false;
+    this.score.bank();
   }
   step(dt: number, controls: ControlInput, settings: Settings) {
     if (this.phase === 'finished') return;
@@ -124,9 +133,16 @@ export class RaceSession {
       return;
     }
     this.raceTime += dt;
+    this.contact = false;
     this.advancePlayer(dt, controls, settings);
     if (this.finishedPosition > 0) return;
     this.advanceOpponents(dt);
+    this.score.update(
+      dt,
+      this.player.speed,
+      this.contact ? 0 : this.player.slipAngle,
+      this.offTrack,
+    );
   }
   private advancePlayer(
     dt: number,
@@ -142,6 +158,7 @@ export class RaceSession {
       this.battery > 1 &&
       controls.throttle > 0.1 &&
       p.speed > 12 &&
+      !controls.handbrake &&
       !this.offTrack;
     this.battery = clamp(
       this.battery + (this.boosted ? -22 : controls.brake > 0.1 ? 11 : 5) * dt,
@@ -152,6 +169,7 @@ export class RaceSession {
       controls.throttle * (17.8 - p.speed * 0.044) +
       (this.boosted ? 9.5 : 0) -
       controls.brake * (wet ? 27 : 35) -
+      (controls.handbrake ? 9 : 0) -
       1 -
       p.speed * p.speed * 0.00176;
     if (this.offTrack) acceleration -= p.speed * 0.42;
@@ -159,12 +177,19 @@ export class RaceSession {
     p.speed = clamp(p.speed + acceleration * dt, 0, this.boosted ? 96 : 86);
     const grip = wet ? 0.81 : 1,
       assistance = settings.assists ? 0.87 : 0;
+    const sliding = controls.handbrake && p.speed > 12;
+    p.slipAngle = MathUtils.damp(
+      p.slipAngle,
+      sliding ? p.steer * (wet ? 0.72 : 0.62) : 0,
+      sliding ? 5 : 2.7,
+      dt,
+    );
     const steeringRate =
       p.steer * (0.36 + 22 / (p.speed + 36)) * grip * Math.min(1, p.speed / 7);
     p.headingError +=
       (steeringRate -
         frame.curvature * p.speed * (1 - assistance) -
-        p.headingError * (settings.assists ? 2.6 : 1.3)) *
+        p.headingError * (sliding ? 1.2 : settings.assists ? 2.6 : 1.3)) *
       dt;
     if (settings.assists && Math.abs(controls.steer) < 0.05)
       p.headingError -= clamp(p.offset * 0.0045, -0.028, 0.028) * dt;
@@ -175,9 +200,23 @@ export class RaceSession {
       p.offset = Math.sign(p.offset) * barrier;
       p.headingError *= -0.3;
       p.speed *= 0.86;
+      p.slipAngle *= -0.25;
+      this.contact = true;
+      this.score.breakChain();
     }
     const previousDistance = p.distance;
     p.distance += p.speed * Math.cos(p.headingError) * dt;
+    for (const fraction of SPEED_TRAPS) {
+      const gate =
+        (Math.floor(Math.max(0, previousDistance) / this.track.length) +
+          fraction) *
+        this.track.length;
+      if (previousDistance < gate && p.distance >= gate && p.speed * 3.6 >= 120)
+        this.score.award(
+          `SPEED CHECK ${Math.round(p.speed * 3.6)} KM/H`,
+          Math.round(p.speed * 3.6),
+        );
+    }
     if (previousDistance < 0 && p.distance >= 0) this.lapStart = this.raceTime;
     this.checkLap();
   }
@@ -230,12 +269,29 @@ export class RaceSession {
       }
       ai.offset = MathUtils.damp(ai.offset, lane, 1, dt);
       ai.distance += ai.speed * dt;
+      const gap = trackGap(ai.distance, p.distance, length);
+      const previousGap = this.passGaps.get(ai);
+      const lateral = Math.abs(ai.offset - p.offset);
+      if (
+        previousGap !== undefined &&
+        previousGap > 0 &&
+        previousGap < 3 &&
+        gap <= 0 &&
+        gap > -3 &&
+        lateral > 1.95 &&
+        lateral < 3.5 &&
+        p.speed > 18
+      )
+        this.score.award('NEAR MISS', 150);
+      this.passGaps.set(ai, gap);
       if (
         Math.abs(trackGap(ai.distance, p.distance, length)) < 4.2 &&
-        Math.abs(ai.offset - p.offset) < 1.6
+        Math.abs(ai.offset - p.offset) < 1.95
       ) {
         p.speed = Math.min(p.speed, Math.max(8, ai.speed * 0.91));
         p.offset += Math.sign(p.offset - ai.offset || 1) * dt * 3;
+        this.contact = true;
+        this.score.breakChain();
       }
     }
   }
@@ -266,6 +322,7 @@ export class RaceSession {
       throttle: p.speed < target ? 1 : 0.15,
       brake: p.speed > target + 2 ? 0.4 : 0,
       boost: false,
+      handbrake: false,
     };
   }
 }

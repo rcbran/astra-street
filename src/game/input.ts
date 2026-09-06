@@ -4,10 +4,11 @@ export interface ControlInput {
   throttle: number;
   brake: number;
   boost: boolean;
+  handbrake: boolean;
 }
 export class Input {
   keys = new Set<string>();
-  touch = { steer: 0, throttle: 0, brake: 0, boost: false };
+  touch = { steer: 0, throttle: 0, brake: 0, boost: false, handbrake: false };
   enabled = false;
   gamepadConnected = false;
   private disposers: (() => void)[] = [];
@@ -60,11 +61,10 @@ export class Input {
         ? 1
         : this.touch.throttle;
     let brake =
-      this.keys.has('KeyS') ||
-      this.keys.has('ArrowDown') ||
-      this.keys.has('Space')
+      this.keys.has('KeyS') || this.keys.has('ArrowDown')
         ? 1
         : this.touch.brake;
+    let handbrake = this.keys.has('Space') || this.touch.handbrake;
     let boost =
       this.keys.has('ShiftLeft') ||
       this.keys.has('ShiftRight') ||
@@ -79,6 +79,7 @@ export class Input {
       throttle = Math.max(throttle, pad.buttons[7]?.value ?? 0);
       brake = Math.max(brake, pad.buttons[6]?.value ?? 0);
       boost ||= !!pad.buttons[0]?.pressed;
+      handbrake ||= !!pad.buttons[1]?.pressed;
       for (const [index, action] of [
         [9, 'pause'],
         [3, 'camera'],
@@ -89,11 +90,17 @@ export class Input {
         this.lastButtons[index] = b;
       }
     }
-    return { steer: clamp(steer, -1, 1), throttle, brake, boost };
+    return { steer: clamp(steer, -1, 1), throttle, brake, boost, handbrake };
   }
   clear() {
     this.keys.clear();
-    this.touch = { steer: 0, throttle: 0, brake: 0, boost: false };
+    this.touch = {
+      steer: 0,
+      throttle: 0,
+      brake: 0,
+      boost: false,
+      handbrake: false,
+    };
   }
   dispose() {
     this.disposers.forEach((d) => d());

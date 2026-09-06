@@ -90,7 +90,9 @@ export function GameSettings({
             <kbd>A D / ← →</kbd>
             <span>Steer</span>
             <kbd>SHIFT</kbd>
-            <span>Overtake boost</span>
+            <span>Nitro</span>
+            <kbd>SPACE</kbd>
+            <span>Handbrake · steer to drift</span>
             <kbd>C</kbd>
             <span>Camera</span>
             <kbd>R</kbd>
@@ -101,8 +103,9 @@ export function GameSettings({
             <span>Mute audio</span>
           </div>
           <p>
-            Controller: left stick to steer, RT / LT for pedals, A for boost, Y
-            for camera.
+            Controller: left stick to steer, RT / LT for pedals, A for nitro, B
+            for handbrake, Y for camera. Link drifts, then drive cleanly for two
+            seconds to bank the chain. Contact loses unbanked points.
           </p>
         </div>
       </DialogContent>

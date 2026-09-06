@@ -35,6 +35,10 @@ export interface Telemetry {
   racers: number;
   boost: number;
   boosting: boolean;
+  score: number;
+  chain: number;
+  multiplier: number;
+  drifting: boolean;
   progress: number;
   fps: number;
   frameMs: number;
@@ -73,6 +77,10 @@ export const INITIAL_TELEMETRY: Telemetry = {
   racers: 8,
   boost: 100,
   boosting: false,
+  score: 0,
+  chain: 0,
+  multiplier: 1,
+  drifting: false,
   progress: 0,
   fps: 0,
   frameMs: 0,

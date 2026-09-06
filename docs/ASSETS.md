@@ -14,7 +14,7 @@ All runtime files are local under `public/assets/`. The full file list, byte siz
 
 Original source also generates circuit geometry, sky, barriers, fences, grandstands, buildings, signs, contact shadows, and surface/effect textures. Fictitious sponsor text and Astra marks are part of the project. The car uses system typeface outlines for livery text; no font file is distributed. The repository's overall source license is still undecided.
 
-The committed runtime car is the V2 asset: approximately 36,949 triangles and 1.21 MB. Its construction source is `scripts/build_car.py`. Named nodes include `wheel_FL`, `wheel_FR`, `wheel_RL`, `wheel_RR`, `driver_head`, and `Astra_AF27_body`. Y is up and +Z points toward the nose. Wheels rotate around local X; front wheels steer around local Y. `Livery` is the tintable paint material.
+The historical Formula car is the V2 asset: approximately 36,949 triangles and 1.21 MB. Its construction source is `scripts/build_car.py`. Named nodes include `wheel_FL`, `wheel_FR`, `wheel_RL`, `wheel_RR`, `driver_head`, and `Astra_AF27_body`. Y is up and +Z points toward the nose. Wheels rotate around local X; front wheels steer around local Y. `Livery` is the tintable paint material.
 
 See [environment implementation notes](environment-assets.md) for color spaces and atlas coordinates. Keep a copy of [the runtime notices](../public/assets/NOTICE.txt) with redistributed assets.
 
@@ -33,3 +33,7 @@ The visual targets are low, consistent camera placement; visible suspension and 
 The first cracked Asphalt 02 maps were replaced with smoother Asphalt Track scans and removed from shipping assets. Old files remain outside the checkout in `/tmp/f1-astra-assets/unused/` on the development machine.
 
 Original car authoring scenes/previews and raw asset handoffs are under `/tmp/f1-astra-assets/`. They are temporary conveniences, not required build inputs. The committed GLB and generator are sufficient to continue development. A CC0 conifer atlas was investigated but was not shipped because its winter/snow appearance did not fit the environment.
+
+## Current street-racing additions
+
+The active car is the original `models/astra-s9.glb`, approximately 15,210 triangles, generated with `scripts/build_street_car.py`. `textures/cliff-rock.png` (1254×1254 RGB) and `textures/conifers.png` (1536×1024 RGBA) are original built-in OpenAI generated assets. See `STREET-DIRECTION.md` for exact prompts, visual reference and limitations; the manifest records their sizes and hashes. The user’s linked video is research only and never shipped as an asset.

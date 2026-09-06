@@ -15,10 +15,10 @@ export interface Circuit {
 export const CIRCUITS: Circuit[] = [
   {
     id: 'riviera',
-    name: 'Riviera',
-    country: 'MEDITERRANEAN COAST',
-    subtitle: 'The golden hour Grand Prix',
-    character: 'Fast sweepers. Sea air. No looking back.',
+    name: 'Canyon Run',
+    country: 'SUNSET COAST',
+    subtitle: 'Between the cliffs and the sea',
+    character: 'Golden cliffs. Fast sweepers. Long slides.',
     defaultWeather: 'sunset',
     accent: '#ff6a3d',
     width: 14.5,
@@ -46,8 +46,8 @@ export const CIRCUITS: Circuit[] = [
   },
   {
     id: 'forest',
-    name: 'Black Forest',
-    country: 'GERMAN HIGHLANDS',
+    name: 'Pinecrest',
+    country: 'HIGHLAND PASS',
     subtitle: 'Into the green',
     character: 'High-speed straights. Technical corners.',
     defaultWeather: 'clear',
@@ -79,8 +79,8 @@ export const CIRCUITS: Circuit[] = [
   },
   {
     id: 'marina',
-    name: 'Marina Bay',
-    country: 'PACIFIC METROPOLIS',
+    name: 'Harbor City',
+    country: 'DOWNTOWN AFTER DARK',
     subtitle: 'After dark, everything changes',
     character: 'City lights. Wet asphalt. Close racing.',
     defaultWeather: 'rain',

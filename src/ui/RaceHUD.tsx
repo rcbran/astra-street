@@ -16,16 +16,6 @@ export function RaceHUD({
   onCamera: () => void;
   onFinish: () => void;
 }) {
-  const rows = data.opponents.map((o) => ({
-    name: o.name,
-    color: o.color,
-    you: false,
-  }));
-  rows.splice(data.position - 1, 0, {
-    name: 'YOU',
-    color: '#f25b40',
-    you: true,
-  });
   const circuit = CIRCUITS.find((c) => c.id === options.circuit)!;
   return (
     <div className="race-hud">
@@ -37,19 +27,31 @@ export function RaceHUD({
             <small>/ {String(data.racers).padStart(2, '0')}</small>
           </strong>
         </div>
-        {options.mode === 'race' && (
-          <div className="leaderboard">
-            {rows.map((r, i) => (
-              <div key={r.name} className={r.you ? 'you' : ''}>
-                <span>{i + 1}</span>
-                <i style={{ background: r.color }} />
-                <b>{r.name}</b>
-                {r.you ? <span className="you-tag">AF27</span> : null}
-              </div>
-            ))}
-          </div>
-        )}
       </div>
+      <div className={`street-score ${data.drifting ? 'is-drifting' : ''}`}>
+        <span className="eyebrow">STREET SCORE</span>
+        <strong>{data.score.toLocaleString('en-US')}</strong>
+        <div className="score-chain">
+          <span>
+            {data.chain
+              ? `+${data.chain.toLocaleString('en-US')}`
+              : 'LINK YOUR DRIFTS'}
+          </span>
+          <b>×{data.multiplier}</b>
+        </div>
+        <small>
+          {data.drifting
+            ? 'DRIFTING'
+            : data.chain
+              ? 'HOLD IT CLEAN TO BANK'
+              : 'SPACE + STEER TO DRIFT'}
+        </small>
+      </div>
+      {data.message && !data.offTrack && (
+        <output className="score-event" aria-live="polite">
+          {data.message}
+        </output>
+      )}
       <div className="lap-readout">
         <span className="eyebrow">
           {options.mode === 'race' ? 'LAP' : 'TIME TRIAL'}
@@ -110,9 +112,7 @@ export function RaceHUD({
       </div>
       <div className="mini-map">
         <TrackMap circuit={options.circuit} telemetry={data} />
-        <span>
-          {circuit.name.toUpperCase()} <b>GP</b>
-        </span>
+        <span>{circuit.name.toUpperCase()}</span>
       </div>
       <div className={`speedometer ${data.boosting ? 'boosting' : ''}`}>
         <div className="rpm-lights">
@@ -147,7 +147,7 @@ export function RaceHUD({
         </div>
         <div className="boost-readout">
           <Zap size={13} />
-          <span>OVERTAKE</span>
+          <span>NITRO</span>
           <div>
             <i style={{ width: `${data.boost}%` }} />
           </div>
@@ -176,8 +176,8 @@ export function RaceHUD({
         </div>
       )}
       <div className="race-bottom-hint">
-        <kbd>WASD</kbd> DRIVE <span>·</span> <kbd>SHIFT</kbd> BOOST{' '}
-        <span>·</span> <kbd>C</kbd> CAMERA
+        <kbd>WASD</kbd> DRIVE <span>·</span> <kbd>SPACE</kbd> DRIFT{' '}
+        <span>·</span> <kbd>SHIFT</kbd> NITRO <span>·</span> <kbd>C</kbd> CAMERA
       </div>
     </div>
   );

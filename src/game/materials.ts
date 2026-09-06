@@ -91,20 +91,33 @@ export interface SurfaceTextures {
   grassNormal: THREE.Texture;
   grassRough: THREE.Texture;
   trees: THREE.Texture;
+  conifers: THREE.Texture;
+  rock: THREE.Texture;
 }
 export async function loadRoadTextures(): Promise<SurfaceTextures> {
   const loader = new THREE.TextureLoader();
-  const [color, normal, rough, grass, grassNormal, grassRough, trees] =
-    await Promise.all([
-      loader.loadAsync('/assets/textures/asphalt_track_diff_1k.jpg'),
-      loader.loadAsync('/assets/textures/asphalt_track_nor_gl_1k.jpg'),
-      loader.loadAsync('/assets/textures/asphalt_track_rough_1k.jpg'),
-      loader.loadAsync('/assets/textures/sparse_grass_diff_1k.jpg'),
-      loader.loadAsync('/assets/textures/sparse_grass_nor_gl_1k.jpg'),
-      loader.loadAsync('/assets/textures/sparse_grass_rough_1k.jpg'),
-      loader.loadAsync('/assets/textures/trees.png'),
-    ]);
-  for (const texture of [color, grass, trees])
+  const [
+    color,
+    normal,
+    rough,
+    grass,
+    grassNormal,
+    grassRough,
+    trees,
+    conifers,
+    rock,
+  ] = await Promise.all([
+    loader.loadAsync('/assets/textures/asphalt_track_diff_1k.jpg'),
+    loader.loadAsync('/assets/textures/asphalt_track_nor_gl_1k.jpg'),
+    loader.loadAsync('/assets/textures/asphalt_track_rough_1k.jpg'),
+    loader.loadAsync('/assets/textures/sparse_grass_diff_1k.jpg'),
+    loader.loadAsync('/assets/textures/sparse_grass_nor_gl_1k.jpg'),
+    loader.loadAsync('/assets/textures/sparse_grass_rough_1k.jpg'),
+    loader.loadAsync('/assets/textures/trees.png'),
+    loader.loadAsync('/assets/textures/conifers.png'),
+    loader.loadAsync('/assets/textures/cliff-rock.png'),
+  ]);
+  for (const texture of [color, grass, trees, conifers, rock])
     texture.colorSpace = THREE.SRGBColorSpace;
   for (const texture of [
     color,
@@ -113,6 +126,7 @@ export async function loadRoadTextures(): Promise<SurfaceTextures> {
     grass,
     grassNormal,
     grassRough,
+    rock,
   ]) {
     texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
     texture.anisotropy = 8;
@@ -120,5 +134,16 @@ export async function loadRoadTextures(): Promise<SurfaceTextures> {
   for (const texture of [grass, grassNormal, grassRough])
     texture.repeat.set(1200, 1200);
   trees.anisotropy = 4;
-  return { color, normal, rough, grass, grassNormal, grassRough, trees };
+  conifers.anisotropy = 4;
+  return {
+    color,
+    normal,
+    rough,
+    grass,
+    grassNormal,
+    grassRough,
+    trees,
+    conifers,
+    rock,
+  };
 }

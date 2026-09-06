@@ -1,6 +1,28 @@
 # Performance evidence
 
-Measured on 2026-09-05 in production-build gameplay on an Apple M4 Max MacBook Pro: 14 CPU cores, 32 GPU cores, 36 GB RAM. Chrome 152.0.7977.76 used ANGLE's Metal renderer. Other GPU work was permitted on the same laptop.
+## Current street revision — 2026-09-06
+
+Visible foreground Chrome 152.0.7977.76 on Apple M4 Max using ANGLE/Metal, production build, Balanced chase camera and an automated pilot. Each route ran about 25 seconds. The owned browser context emulated DPR 2 with a **1440×900 CSS viewport and measured 1821×1138 drawing buffer**, effective ratio 1.264911. That is about 2.07 million pixels under the 1080p pixel-count ceiling; it is neither native Retina nor a 1920×1080 framebuffer.
+
+| Route / weather     | Observed run | Median FPS | Tenth-percentile FPS | Ending rolling GPU p95 | Highest per-second CPU-submit p95 |
+| ------------------- | -----------: | ---------: | -------------------: | ---------------------: | --------------------------------: |
+| Canyon Run / sunset |      25.72 s |      60.00 |                59.95 |                3.05 ms |                           3.70 ms |
+| Pinecrest / clear   |      25.75 s |      60.00 |                59.51 |                2.65 ms |                           2.80 ms |
+| Harbor City / rain  |      25.60 s |      60.00 |                59.54 |                3.69 ms |                           3.80 ms |
+
+The FPS values summarize the final sixteen per-second racing samples, excluding startup and the first capture. GPU values are the ending rolling-window p95, not whole-run p95 or maximum. CPU submission excludes some simulation/draw preparation and GPU completion. No captured runtime errors. Report and samples: `evidence/street-mac.json`. The report honestly records the dirty street working tree based on `a711012`; it is not evidence for unchanged upstream source. These short pilot runs do not establish full-race coverage, human driving feel, low-end performance, power use or sustained thermals.
+
+The production render check passed DPR-only changes, rapid return to DPR 1, quality ceilings, fullscreen entry/exit and the farther moving chase camera (10.32 m horizontal / 2.95 m high at a 226 km/h sample). All nine route/weather worlds loaded/rendered. At Eco/960×540, all three resource cycles returned Canyon 86 geometries / 19 textures, Pinecrest 80 / 20, Harbor 92 / 25. These are renderer-accounted uploads in that sequence, not total heap usage or a proof against every leak. See `evidence/street-render-check.json`.
+
+Production keyboard/UI and emulated multi-touch checks passed, alongside 24 deterministic tests, strict typecheck, owned-source lint and build. Physical controllers, touch devices and Safari remain untested. The final landscape touch layout was separately inspected. See `evidence/street-browser-check.json` and `evidence/street-touch-check.json`.
+
+The engine retains the existing frame/pixel policy below; the new dry drift smoke shares the bounded 384-particle pool, and skid marks use a 768-segment ring buffer. The user accepts 40–50 FPS under shared GPU load. Do not repeat heavy timing runs without relevant changes or an unresolved concern.
+
+## Historical Formula evidence
+
+These older measurements use different vehicles, scenery, camera or rendering revisions. They remain useful history but do not describe the street build.
+
+The following historical Formula revision was measured on 2026-09-05 in production-build gameplay on an Apple M4 Max MacBook Pro: 14 CPU cores, 32 GPU cores, 36 GB RAM. Chrome 152.0.7977.76 used ANGLE's Metal renderer. Other GPU work was permitted on the same laptop.
 
 ## Full race measurements
 
@@ -16,7 +38,7 @@ Each race completed two laps. Results froze correctly afterward. There were no c
 
 GPU values above are the timer's rolling-window p95 at the end of the run, not whole-race maximum or whole-race p95. CPU submission excludes some simulation/draw preparation and does not measure GPU completion. A 60 FPS median does not imply every display interval is exactly 16.67 ms, particularly with variable-refresh timing.
 
-The full-race run preceded the latest chase-camera translation correction. That correction passed unit, type, lint and build checks. Moving chase-view verification on gengar-db is described separately below; no fresh hardware timing is available. A short earlier wet test measured about 2.6 ms rolling GPU p95 with reflections. Do not merge measurements from different camera revisions into a single claimed benchmark.
+The full-race run preceded the latest chase-camera translation correction. That correction passed unit, type, lint and build checks. Moving chase-view verification on gengar-db is described separately below; no fresh hardware timing was available at that handoff. A short earlier wet test measured about 2.6 ms rolling GPU p95 with reflections. Do not merge measurements from different camera revisions into a single claimed benchmark.
 
 ## Resource cycling
 
@@ -46,7 +68,7 @@ The user accepts 40–50 FPS while other agents use the GPU. Preserve that toler
 
 - No fan RPM, total package power, or sustained thermal measurement was taken. `pmset -g therm` showed no recorded thermal/performance warning at one inspection; that does not establish quiet operation.
 - Physical controllers, real mobile devices, Safari and integrated/low-end GPUs remain untested.
-- The DPR-only resize bug was reproduced and fixed on gengar-db. It is consistent with the old ratio-1 symptom, but the original Mac run cannot be conclusively explained retrospectively. A fresh visible Mac/Retina run is still needed.
+- The DPR-only resize bug was reproduced and fixed on gengar-db. It is consistent with the old ratio-1 symptom, but the original Mac run cannot be conclusively explained retrospectively. The current street measurements above now provide a fresh visible Mac run with explicit DPR and framebuffer accounting.
 - Do not run multiple heavy benchmarks/render jobs at once on a shared machine. Re-measure only when rendering changes justify it.
 
 ## Gengar-db verification — 2026-09-06

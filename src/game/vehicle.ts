@@ -11,10 +11,11 @@ export interface CarVisual {
   wheels: THREE.Object3D[];
   frontWheels: Set<THREE.Object3D>;
   brakeLight: THREE.Mesh;
+  nitro: THREE.Group;
   dispose: () => void;
 }
 export async function loadCarAsset(): Promise<THREE.Group> {
-  return (await new GLTFLoader().loadAsync('/assets/models/astra-formula.glb'))
+  return (await new GLTFLoader().loadAsync('/assets/models/astra-s9.glb'))
     .scene;
 }
 /** Each car shares immutable GLTF geometry and owns only its cloned materials and small effects. */
@@ -54,7 +55,7 @@ export function createCar(
       : cloneMaterial(object.material);
   });
   const shadowTexture = softShadowTexture(),
-    shadowGeometry = new THREE.PlaneGeometry(2.9, 6.4);
+    shadowGeometry = new THREE.PlaneGeometry(2.7, 5.4);
   const shadowMaterial = new THREE.MeshBasicMaterial({
     map: shadowTexture,
     transparent: true,
@@ -64,11 +65,27 @@ export function createCar(
   const shadow = new THREE.Mesh(shadowGeometry, shadowMaterial);
   shadow.rotation.x = -Math.PI / 2;
   shadow.position.set(0, 0.028, 0);
-  const brakeGeometry = new THREE.BoxGeometry(0.14, 0.12, 0.03),
+  const brakeGeometry = new THREE.BoxGeometry(1.62, 0.07, 0.035),
     brakeMaterial = new THREE.MeshBasicMaterial({ color: 0xff442e });
   const brakeLight = new THREE.Mesh(brakeGeometry, brakeMaterial);
-  brakeLight.position.set(0, 0.38, -2.7);
-  group.add(model, shadow, brakeLight);
+  brakeLight.position.set(0, 0.67, -2.25);
+  const nitro = new THREE.Group();
+  const flameGeometry = new THREE.ConeGeometry(0.075, 0.95, 7);
+  flameGeometry.rotateX(-Math.PI / 2);
+  const flameMaterial = new THREE.MeshBasicMaterial({
+    color: 0x85e7ff,
+    transparent: true,
+    opacity: 0.85,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false,
+  });
+  for (const x of [-0.6, 0.6]) {
+    const flame = new THREE.Mesh(flameGeometry, flameMaterial);
+    flame.position.set(x, 0.35, -2.7);
+    nitro.add(flame);
+  }
+  nitro.visible = false;
+  group.add(model, shadow, brakeLight, nitro);
   let disposed = false;
   return {
     group,
@@ -77,6 +94,7 @@ export function createCar(
     wheels,
     frontWheels,
     brakeLight,
+    nitro,
     dispose: () => {
       if (disposed) return;
       disposed = true;
@@ -87,6 +105,8 @@ export function createCar(
       shadowMaterial.dispose();
       brakeGeometry.dispose();
       brakeMaterial.dispose();
+      flameGeometry.dispose();
+      flameMaterial.dispose();
     },
   };
 }
@@ -107,7 +127,8 @@ export function updateCar(
     frame.y + 0.04,
     frame.z + frame.nz * driver.offset,
   );
-  visual.group.rotation.y = frame.heading + driver.headingError;
+  visual.group.rotation.y =
+    frame.heading + driver.headingError + driver.slipAngle;
   visual.model.rotation.z = THREE.MathUtils.damp(
     visual.model.rotation.z,
     -driver.steer * driver.speed * 0.0008,
@@ -129,9 +150,8 @@ export function updateCar(
       'YXZ',
     );
   if (visual.head) visual.head.visible = !cockpit;
-  visual.brakeLight.visible = wet
-    ? Math.floor(time * 3) % 2 === 0
-    : brake > 0.1;
+  visual.brakeLight.visible = wet || brake > 0.1;
+  visual.nitro.scale.z = 0.9 + Math.sin(time * 47) * 0.14;
 }
 export function disposeCarAsset(asset: THREE.Group) {
   const geometry = new Set<THREE.BufferGeometry>(),

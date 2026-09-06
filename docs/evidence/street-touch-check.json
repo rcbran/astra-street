@@ -1,0 +1,13 @@
+{
+  "date": "2026-09-06T01:33:43.567Z",
+  "kind": "emulated multi-touch; not a physical device",
+  "errors": [],
+  "inputAfterRelease": {
+    "steer": 0,
+    "throttle": 0,
+    "brake": 0,
+    "boost": false,
+    "handbrake": false
+  },
+  "status": "passed"
+}

@@ -131,12 +131,12 @@ export function RacingGame() {
             />
           </svg>
           <span>
-            ASTRA<small>F O R M U L A</small>
+            ASTRA<small>S T R E E T</small>
           </span>
         </div>
         {!playing && (
           <span className="header-edition">
-            AF / 27 <i /> RACING CLUB
+            S9 / 01 <i /> AFTER HOURS
           </span>
         )}
         <div className="header-controls">
@@ -203,12 +203,12 @@ export function RacingGame() {
             <kbd>W A S D</kbd>
             <span>DRIVE</span>
             <kbd>SHIFT</kbd>
-            <span>BOOST</span>
-            <kbd>C</kbd>
-            <span>CAMERA</span>
+            <span>NITRO</span>
+            <kbd>SPACE</kbd>
+            <span>DRIFT</span>
           </div>
           <span>
-            AUTOMATIC GEARS <i /> PURE RACING
+            AUTOMATIC GEARS <i /> CHASE THE RUSH
           </span>
         </footer>
       )}

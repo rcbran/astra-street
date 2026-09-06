@@ -5,7 +5,9 @@ import { hostname } from 'node:os';
 const browser = await chromium.connectOverCDP(
   process.env.ASTRA_CDP ?? 'http://localhost:9224',
 );
-const page = browser.contexts()[0].pages()[0];
+const context =
+  browser.contexts().find((c) => c.pages().length) ?? browser.contexts()[0];
+const page = context.pages()[0] ?? (await context.newPage());
 await mkdir('artifacts', { recursive: true });
 page.setDefaultTimeout(120_000);
 const errors = [];
@@ -35,6 +37,7 @@ try {
   await page.goto(
     `${process.env.ASTRA_BASE_URL ?? 'http://localhost:8788'}/?debug=1`,
   );
+  await page.bringToFront();
   await page.waitForFunction(
     () => window.__ASTRA__?.telemetry.phase === 'menu',
   );
@@ -69,15 +72,32 @@ try {
   assert.ok(
     (await page.evaluate(() => window.__ASTRA__.player.offset)) > offset + 0.1,
   );
+  await page.keyboard.down('Space');
+  await page.keyboard.down('d');
+  await driveFor(0.4);
+  await page.keyboard.up('d');
+  await page.keyboard.up('Space');
+  assert.ok(
+    await page.evaluate(
+      () => Math.abs(window.__ASTRA__.player.slipAngle) > 0.2,
+    ),
+  );
+  assert.ok(await page.evaluate(() => window.__ASTRA__.telemetry.chain > 0));
+  await page.screenshot({ path: 'artifacts/drift-production.png' });
+  await page.keyboard.press('r');
+  assert.equal(
+    await page.evaluate(() => window.__ASTRA__.session.score.chain),
+    0,
+  );
   await page.keyboard.down('Shift');
   await driveFor(0.7);
   await page.keyboard.up('Shift');
   assert.ok((await page.evaluate(() => window.__ASTRA__.telemetry.boost)) < 99);
   await page.keyboard.up('w');
   const speed = await page.evaluate(() => window.__ASTRA__.player.speed);
-  await page.keyboard.down('Space');
+  await page.keyboard.down('s');
   await driveFor(1.0);
-  await page.keyboard.up('Space');
+  await page.keyboard.up('s');
   assert.ok(
     (await page.evaluate(() => window.__ASTRA__.player.speed)) < speed - 15,
   );
@@ -180,7 +200,7 @@ try {
   assert.deepEqual(errors, []);
   report.status = 'passed';
   console.log(
-    'PASS: real keyboard driving, boost/braking, pause/blur, reset, restart, time trial, settings/persistence and responsive menus.',
+    'PASS: keyboard driving, handbrake drift/scoring, nitro/braking, pause/blur, reset, restart, time trial, settings/persistence and responsive menus.',
   );
 } catch (error) {
   report.status = 'failed';

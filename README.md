@@ -1,8 +1,8 @@
-# Astra Formula
+# Astra Street
 
-An original open-wheel racing game for the browser. Three fictional circuits, seven AI rivals, two-lap sprints, and a time-trial mode. Built with TypeScript, React, and Three.js.
+An original arcade street racer for the browser. Drive the Astra S9 through coastal canyons, mountain forests and wet city streets. Handbrake drifts, rechargeable nitro, near-miss bonuses and speed checks reward clean racing. Built with TypeScript, React and Three.js.
 
-**Status:** playable and locally tested; still a work in progress. F1 games released since 2020 are the visual reference. The current scenery and material detail do not yet match AAA fidelity. Development is paused for a move from gengar-db back to the MacBook. Read [the handoff](docs/HANDOFF.md) before continuing.
+**Status:** first playable street-racing pass, inspired by the user’s [Street Heat video reference](https://x.com/higgsfield_ai/status/2095916820431827408). Scenery and handling remain work in progress; this does not claim visual parity. Read [the handoff](docs/HANDOFF.md) and [visual direction](docs/STREET-DIRECTION.md).
 
 ## Run locally
 
@@ -22,30 +22,31 @@ npm run build
 npm run start -- --port 8788
 ```
 
-No account, API key, or external service is required for local gameplay. Runtime assets are served from this repository. A private Sites project has been registered, but nothing has been deployed. No GitHub remote exists yet.
+No account, API key, or external service is required for local gameplay. Runtime assets are served from this repository. The existing owner-private Sites project is reused. See the handoff for publishing status. Source transfer uses its private Git repository; public GitHub publication remains pending.
 
 ## Play
 
-Choose a circuit and conditions, then press **Go racing** or **Enter**. Quick races last two laps; time trials continue until you finish the session. Gears are automatic. Steering assistance is enabled by default. Boost drains a rechargeable battery; braking helps replenish it.
+Choose a circuit and conditions, then press **Go racing** or **Enter**. Quick races last two laps; time trials continue until you finish the session. Gears are automatic. Steering assistance is enabled by default. Nitro drains a rechargeable charge; braking helps replenish it. Hold Space while steering at speed to slide. Link drifts and bonuses to build a chain, then drive cleanly for two seconds to bank it. Contact or leaving the road loses unbanked points. Finish banks the remaining clean chain.
 
-| Action         | Keyboard      | Controller |
-| -------------- | ------------- | ---------- |
-| Accelerate     | W / ↑         | RT         |
-| Brake          | S / ↓ / Space | LT         |
-| Steer          | A / D / ← / → | Left stick |
-| Overtake boost | Shift         | A          |
-| Change camera  | C             | Y          |
-| Reset to track | R             | X          |
-| Pause          | Escape / P    | Start      |
-| Mute           | M             | —          |
+| Action          | Keyboard      | Controller |
+| --------------- | ------------- | ---------- |
+| Accelerate      | W / ↑         | RT         |
+| Brake           | S / ↓         | LT         |
+| Handbrake drift | Space + steer | B + stick  |
+| Steer           | A / D / ← / → | Left stick |
+| Nitro           | Shift         | A          |
+| Change camera   | C             | Y          |
+| Reset to track  | R             | X          |
+| Pause           | Escape / P    | Start      |
+| Mute            | M             | —          |
 
 Touch controls are implemented for coarse-pointer devices, but actual touch-device testing is pending. Controller mappings are implemented; a physical controller has not been tested.
 
-| Circuit      | Setting             | Length  | Default conditions |
-| ------------ | ------------------- | ------- | ------------------ |
-| Riviera      | Mediterranean coast | 2.84 km | Golden hour        |
-| Black Forest | German highlands    | 3.43 km | Clear sky          |
-| Marina Bay   | Pacific metropolis  | 3.10 km | Wet night          |
+| Circuit     | Setting          | Length  | Default conditions |
+| ----------- | ---------------- | ------- | ------------------ |
+| Canyon Run  | Coastal canyon   | 2.84 km | Golden hour        |
+| Pinecrest   | Highland pass    | 3.43 km | Clear sky          |
+| Harbor City | Downtown streets | 3.10 km | Wet night          |
 
 All three conditions can be selected on each circuit. Layouts, car design, livery, and sponsor names are original; the game is not affiliated with Formula 1 or its teams.
 
@@ -53,7 +54,7 @@ All three conditions can be selected on each circuit. Layouts, car design, liver
 
 Rendering is capped at 60 FPS during racing, 30 in menus, and 20 when paused or finished. Hidden tabs stop rendering. Balanced caps internal resolution near 1080p; Eco uses a 720p budget and Ultra 1440p. Balanced/Eco can reduce resolution below 42 FPS, preserving visual quality during the user's accepted 40–50 FPS shared-GPU conditions.
 
-Three complete production-build races held a 60 FPS median on the development laptop. These measurements used a 1440×900 drawing buffer and do not establish the same performance on every device. See [performance evidence and limits](docs/PERFORMANCE.md).
+The current street build held a 60 FPS median in short 25-second samples on each default route at a measured 1821×1138 drawing buffer on the M4 Max. These are automated pilot samples, not full-race or thermal measurements. Historical Formula results are recorded separately. See [performance evidence and limits](docs/PERFORMANCE.md).
 
 ## Project guide
 

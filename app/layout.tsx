@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import './globals.css';
 export const metadata: Metadata = {
-  title: 'Astra Formula — Browser Racing',
+  title: 'Astra Street — Canyon Racing',
   description:
-    'An original open-wheel browser racer. Three circuits, changing conditions, and your next apex.',
+    'Drive the Astra S9 through coastal canyons, mountain forests and city nights. Drift, build your score and hit the nitro.',
   icons: { icon: '/favicon.svg' },
 };
 export default function RootLayout({

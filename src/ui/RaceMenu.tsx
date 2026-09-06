@@ -38,17 +38,17 @@ export function RaceMenu({
     <div className="race-menu">
       <div className="session-heading">
         <span className="eyebrow">
-          <span className="live-dot" /> OPEN-WHEEL RACING
+          <span className="live-dot" /> STREET RACING
         </span>
         <h1>
-          YOUR NEXT
+          CHASE THE
           <br />
-          <span>APEX.</span>
+          <span>RUSH.</span>
         </h1>
         <p>
-          One car. An open track.
+          Link the corners. Build your score.
           <br />
-          Make every corner count.
+          Space to drift. Shift for nitro.
         </p>
       </div>
       <section className="session-panel" aria-label="Race setup">
@@ -74,7 +74,7 @@ export function RaceMenu({
           </TabsList>
         </Tabs>
         <div className="circuit-heading">
-          <span className="eyebrow">CHOOSE YOUR CIRCUIT</span>
+          <span className="eyebrow">CHOOSE YOUR ROUTE</span>
           <span>03</span>
         </div>
         <RadioGroup
@@ -173,8 +173,8 @@ export function RaceMenu({
       </div>
       <div className="car-name">
         <span className="eyebrow">YOUR MACHINE</span>
-        <strong>AF–27</strong>
-        <span>ASTRA FORMULA</span>
+        <strong>S9</strong>
+        <span>ASTRA / TWIN TURBO</span>
       </div>
     </div>
   );

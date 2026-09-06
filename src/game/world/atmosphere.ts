@@ -44,7 +44,7 @@ export function buildMountains(
   weather: Weather,
 ) {
   const rand = seeded(77),
-    geo = new THREE.PlaneGeometry(6500, 6500, 96, 96);
+    geo = new THREE.PlaneGeometry(6500, 6500, 128, 128);
   geo.rotateX(-Math.PI / 2);
   const p = geo.getAttribute('position'),
     colors = [];
@@ -61,12 +61,13 @@ export function buildMountains(
     const x = p.getX(i),
       z = p.getZ(i),
       r = Math.hypot(x - 150, z);
-    const edge = Math.max(0, (r - 780) / 1500);
+    const edge = THREE.MathUtils.smoothstep(r, 720, 1700);
     const waves =
       Math.sin(x * 0.004 + 1) * Math.cos(z * 0.003) +
-      Math.sin(x * 0.009) * Math.sin(z * 0.008) * 0.4 +
-      Math.sin(x * 0.027 + Math.sin(z * 0.019)) * 0.08;
-    let y = -0.5 + Math.max(0, edge) * (180 + waves * 170);
+      Math.sin(x * 0.011 + z * 0.004) * Math.sin(z * 0.008) * 0.45 +
+      Math.sin(x * 0.035 + Math.sin(z * 0.021)) * 0.14;
+    const ridges = 1 - Math.abs(Math.sin(x * 0.0035 + z * 0.002));
+    let y = -0.5 + edge * Math.max(16, 100 + waves * 65 + ridges * 90);
     if (track.circuit.id === 'riviera' && x > 520) y = -12;
     p.setY(i, y);
     const c = base.clone().multiplyScalar(0.7 + rand() * 0.3 + y / 1900);

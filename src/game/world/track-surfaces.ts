@@ -58,7 +58,7 @@ export function concreteBarrierMaterial(wet: boolean) {
 export function paintedRunoffMaterial(forest: boolean, wet: boolean) {
   const aggregate = noiseTexture(128);
   return new THREE.MeshStandardMaterial({
-    color: forest ? 0x696953 : 0x458c85,
+    color: forest ? 0x696953 : 0x898374,
     map: aggregate,
     bumpMap: aggregate,
     bumpScale: 0.012,

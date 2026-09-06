@@ -44,9 +44,9 @@ const report = {
   errors,
 };
 for (const [circuit, name, weather] of [
-  ['riviera', 'Riviera', 'sunset'],
-  ['forest', 'Black Forest', 'clear'],
-  ['marina', 'Marina Bay', 'rain'],
+  ['riviera', 'Canyon Run', 'sunset'],
+  ['forest', 'Pinecrest', 'clear'],
+  ['marina', 'Harbor City', 'rain'],
 ]) {
   await page.getByText(name, { exact: true }).click();
   await page.waitForFunction(

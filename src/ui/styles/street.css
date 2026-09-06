@@ -1,0 +1,243 @@
+/* Street-racing presentation; structural menu breakpoints stay in responsive.css. */
+.session-panel {
+  background: linear-gradient(120deg, #162227f2, #11171cef);
+  border-color: #dae8e528;
+  border-top-color: #f1b46599;
+}
+.session-heading h1 span {
+  color: #ffc477;
+}
+.brand > svg {
+  color: #ffad55;
+}
+.game-vignette {
+  background: radial-gradient(
+    ellipse at 53% 45%,
+    transparent 45%,
+    #080d1538 100%
+  );
+}
+.menu-shade {
+  background:
+    linear-gradient(
+      90deg,
+      #09131bd6,
+      #11222b44 34%,
+      transparent 62%,
+      #08101766
+    ),
+    linear-gradient(
+      0deg,
+      #090f16e6,
+      transparent 30%,
+      transparent 80%,
+      #11172477
+    );
+}
+.start-race {
+  background: #f59c46 !important;
+  color: #18171a !important;
+}
+.start-race:hover {
+  background: #ffb15e !important;
+}
+.mode-tabs button[data-active] {
+  background: #f1b46525 !important;
+}
+.circuit-option.selected {
+  border-color: #f1b46599;
+}
+.live-dot,
+.fps-badge i {
+  background: #f4bb6b;
+}
+.street-score {
+  position: absolute;
+  left: 32px;
+  bottom: 269px;
+  width: 199px;
+  padding: 13px 15px;
+  border-left: 3px solid #ffb765;
+  background: linear-gradient(90deg, #10151be0, #10151b44);
+  font-variant-numeric: tabular-nums;
+}
+.street-score .eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.13em;
+}
+.street-score > strong {
+  display: block;
+  color: #fff0d1;
+  font-size: 2.4rem;
+  line-height: 1.1;
+  font-weight: 850;
+  margin: 5px 0;
+}
+.score-chain {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.score-chain > span {
+  font-size: 12px;
+  color: #d8dada;
+}
+.score-chain > b {
+  font-size: 1.25rem;
+  color: #ffb765;
+}
+.street-score > small {
+  display: block;
+  margin-top: 7px;
+  font-size: 11px;
+  color: #bfc9ce;
+}
+.street-score.is-drifting {
+  border-color: #79e4e4;
+}
+.street-score.is-drifting .score-chain {
+  color: #79e4e4;
+}
+.score-event {
+  position: absolute;
+  top: 23%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: clamp(1rem, 2vw, 1.65rem);
+  font-weight: 850;
+  font-style: italic;
+  color: #ffcf86;
+  text-shadow: 0 2px 14px #0c101b;
+  white-space: nowrap;
+}
+.speedometer,
+.timing-panel {
+  background: linear-gradient(90deg, #10171aba, #10171a40);
+}
+.boost-readout {
+  color: #b7e8ec;
+}
+.boost-readout > div > i {
+  background: #77e2ef;
+}
+.race-standing .position-readout strong {
+  font-size: 2.5rem;
+}
+.touch-controls button {
+  min-width: 45px;
+}
+.touch-controls > div {
+  gap: 5px;
+}
+@media (max-width: 1050px) {
+  .street-score {
+    left: 21px;
+    bottom: 237px;
+    width: 165px;
+  }
+  .street-score > strong {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 570px) {
+  .street-score {
+    top: 164px;
+    left: 15px;
+    bottom: auto;
+    width: 148px;
+    padding: 9px 10px;
+  }
+  .street-score > strong {
+    font-size: 1.75rem;
+  }
+  .score-chain {
+    gap: 3px;
+  }
+  .score-chain > span {
+    font-size: 10px;
+  }
+  .street-score .eyebrow {
+    font-size: 10px;
+  }
+  .street-score > small {
+    font-size: 9px;
+  }
+  .score-event {
+    top: 40%;
+  }
+  .touch-controls {
+    left: 12px;
+    right: 12px;
+  }
+}
+@media (max-height: 650px) and (orientation: landscape) {
+  .street-score {
+    left: 20px;
+    top: 143px;
+    bottom: auto;
+    width: 150px;
+    padding: 8px 10px;
+  }
+  .street-score > strong {
+    font-size: 1.7rem;
+  }
+  .street-score > small {
+    display: none;
+  }
+  .street-score .eyebrow {
+    font-size: 10px;
+  }
+  .score-event {
+    top: 23%;
+  }
+}
+@media (pointer: coarse) and (max-height: 650px) and (orientation: landscape) {
+  .speedometer {
+    width: 195px;
+    right: 20px;
+    bottom: 91px;
+    padding: 8px 10px;
+  }
+  .speed-readout > strong {
+    font-size: 2.7rem;
+  }
+  .speed-readout {
+    gap: 8px;
+  }
+  .gear {
+    width: 28px;
+    height: 35px;
+  }
+  .gear > b {
+    font-size: 1.5rem;
+  }
+  .rpm-lights {
+    margin-bottom: 5px;
+    gap: 3px;
+  }
+  .rpm-lights i {
+    width: 8px;
+  }
+  .pedal-bars {
+    display: none;
+  }
+  .boost-readout {
+    margin-top: 6px;
+  }
+  .boost-readout kbd {
+    display: none;
+  }
+  .mini-map {
+    left: 145px;
+    bottom: 16px;
+    width: 95px;
+  }
+  .mini-map svg {
+    width: 90px;
+    height: 90px;
+  }
+  .mini-map > span {
+    font-size: 9px;
+  }
+}

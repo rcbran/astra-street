@@ -8,7 +8,9 @@ import { chromium } from '@playwright/test';
 const browser = await chromium.connectOverCDP(
   process.env.ASTRA_CDP ?? 'http://localhost:9224',
 );
-const page = browser.contexts()[0].pages()[0];
+const context =
+  browser.contexts().find((c) => c.pages().length) ?? browser.contexts()[0];
+const page = context.pages()[0] ?? (await context.newPage());
 page.setDefaultTimeout(120_000);
 const cdp = await page.context().newCDPSession(page);
 const errors = [];
@@ -89,6 +91,7 @@ try {
   await page.goto(
     `${process.env.ASTRA_BASE_URL ?? 'http://localhost:8788'}/?debug=1`,
   );
+  await page.bringToFront();
   await page.waitForFunction(() => window.__ASTRA__?.phase === 'menu');
   report.graphics = await page.evaluate(() => {
     const gl = window.__ASTRA__.renderer.getContext(),
@@ -140,7 +143,7 @@ try {
     window.__pilot = setInterval(() => window.__ASTRA__.debugDrive(true), 25);
   });
   await page.waitForFunction(() => window.__ASTRA__.telemetry.raceTime > 8);
-  await page.screenshot({ path: 'artifacts/chase-gengar.png' });
+  await page.screenshot({ path: 'artifacts/chase-render-check.png' });
   report.chase = await page.evaluate(() => {
     clearInterval(window.__pilot);
     window.__ASTRA__.debugDrive(false);
@@ -165,8 +168,8 @@ try {
   });
   assert.ok(report.chase.telemetry.speed > 130);
   assert.ok(
-    report.chase.cameraHorizontalDistance > 4 &&
-      report.chase.cameraHorizontalDistance < 8,
+    report.chase.cameraHorizontalDistance > 8 &&
+      report.chase.cameraHorizontalDistance < 13,
   );
   console.log(
     'PASS: moving chase camera distance at',
@@ -231,6 +234,9 @@ try {
 } catch (error) {
   report.status = 'failed';
   report.failure = error.message;
+  report.failureRenderer = await page
+    .evaluate(() => window.__ASTRA__?.diagnostics().renderer)
+    .catch(() => null);
   throw error;
 } finally {
   await page

@@ -61,8 +61,8 @@ export class RaceCamera {
       this.targetLook.y += 0.58;
       this.camera.fov = 43;
     } else if (settings.camera === 'cockpit') {
-      this.targetPosition.copy(this.origin).addScaledVector(this.forward, -0.2);
-      this.targetPosition.y += 0.85;
+      this.targetPosition.copy(this.origin).addScaledVector(this.forward, 0.9);
+      this.targetPosition.y += 0.98;
       this.targetLook.copy(this.origin).addScaledVector(this.forward, 28);
       this.targetLook.y += 0.69;
       this.camera.fov = 65;
@@ -72,8 +72,8 @@ export class RaceCamera {
       );
       this.targetPosition
         .copy(this.origin)
-        .addScaledVector(this.forward, -5.9 - driver.speed * 0.006);
-      this.targetPosition.y += 1.95 + driver.speed * 0.002;
+        .addScaledVector(this.forward, -9.2 - driver.speed * 0.018);
+      this.targetPosition.y += 2.7 + driver.speed * 0.004;
       this.targetLook.set(
         ahead.x + ahead.nx * driver.offset * 0.75,
         1.02,

@@ -1,4 +1,4 @@
-Astra Formula asset provenance
+Astra Street asset provenance
 
 Asphalt Track (diffuse, OpenGL normal, roughness; 1K)
 Dimitrios Savva / Poly Haven — CC0 1.0
@@ -19,3 +19,8 @@ The Blender generation script is in scripts/build_car.py. The original livery
 uses system typeface outlines; no font files are distributed.
 
 trees.png: foliage atlas generated for this project with OpenAI image generation.
+
+Astra S9 coupe: original project mesh; scripts/build_street_car.py.
+cliff-rock.png and conifers.png: original built-in OpenAI image generation.
+Generation prompts and integration notes: docs/STREET-DIRECTION.md.
+The historical AF-27 asset remains in the repository but is not loaded by the street game.

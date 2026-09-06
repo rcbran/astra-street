@@ -46,7 +46,7 @@ export function SessionOverlay({
             ? data.finishedPosition === 1
               ? 'Victory.'
               : 'Race complete.'
-            : 'In the pits.'}
+            : 'Catch your breath.'}
         </DialogTitle>
         <DialogDescription>
           {finished
@@ -66,8 +66,8 @@ export function SessionOverlay({
               <strong>{formatTime(data.bestLap)}</strong>
             </div>
             <div>
-              <span>RACE TIME</span>
-              <strong>{formatTime(data.raceTime)}</strong>
+              <span>STREET SCORE</span>
+              <strong>{data.score.toLocaleString('en-US')}</strong>
             </div>
           </div>
         )}

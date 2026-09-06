@@ -1,69 +1,58 @@
-# Session handoff — Astra Formula
+# Session handoff — Astra Street
 
-**Updated 2026-09-06. Read this first.** The user requested a pause, Git push and handoff to respawn on the MacBook. Implementation and Site deployment are paused. Resume only when the next session asks to continue. The original high-fidelity goal remains open.
+**Updated 2026-09-06. Read this first**, then `TASKS.md` and `ARCHITECTURE.md`. The user resumed on the MacBook, supplied the correct private Sites Git repository, shared a Street Heat video and explicitly said **“move toward street racing.”** The former implementation pause is over. Continue the street direction; do not restore the old F1 brief.
 
-## Current environment and constraints
+## Current state
 
-- Checkout: `/home/dev/workspace/repos/f1-racing-astra` on Linux host `gengar-db`. Node 24.19.0; `npm ci` completed with the committed lockfile unchanged and zero reported vulnerabilities.
-- Gengar-db has 16 logical CPUs, 15 GiB RAM (about 11 GiB available at inspection), zero swap use and 257 GiB free disk. Builds are fast; software rendering is the bottleneck.
-- This host has no exposed rendering GPU or desktop display. Dedicated headless Chromium uses SwiftShader. Missing browser libraries are in `/home/dev/.cache/astra-browser-libs/`; see `DEVELOPMENT.md` for the launcher. Do not compare its FPS with the Mac baseline.
-- The game still targets a browser on the player's device. Nominal 60 FPS; 40–50 FPS is acceptable under shared laptop GPU load. Keep frame/pixel caps, hidden-tab suspension and blur input clearing.
-- Personal project, modular Three.js/React/Vinext scaffold. Preserve resource ownership and original/licensed assets. AAA F1 games since 2020 are the reference, not an achieved fidelity claim.
-- Do not use Orca. Do not delegate unless the active instructions authorize it; any authorized worker must use `gpt-6-astra`. No workers were used in this resumption.
+- Checkout: `/Users/rcbranham/git/personal/f1-racing-astra`, Apple M4 Max, Node 24.19.0. The existing project and lockfile are preserved.
+- `main` was fast-forwarded from `0269613` to `a711012` through the `sites` remote. The initially supplied unrelated GitHub repository was never merged.
+- The product is now **Astra Street**: original S9 coupe, Canyon Run / Pinecrest / Harbor City, handbrake slip, drift smoke/skid marks, bankable chains, near-miss bonuses, speed checks and nitro. Two-lap AI races and unlimited time trial remain.
+- Space: handbrake drift; W/A/S/D or arrows: drive/service brake; Shift: nitro. Gamepad and touch have dedicated drift controls. The alternate camera is bonnet view; its internal settings key remains `cockpit`.
+- The video is reference material only. Original Blender car and generated rock/conifer textures are committed with provenance and exact image prompts in `STREET-DIRECTION.md`. No video frame is a runtime asset.
+- This is a first playable interpretation. Car detail, cliff shapes, foliage depth, city composition and flat closed-circuit geometry remain simpler than the reference. Human handling feedback is still needed.
 
-## Resumption changes
+## Engineering and verification
 
-1. Expanded the short-landscape menu rule beyond 800px, reset conflicting desktop positioning, corrected weather spacing and moved menu header controls below the logo. The final fix also shortens the invisible header hit area so it cannot intercept session-tab clicks. These header changes are scoped to menus so they do not move racing controls over the HUD.
-2. Strengthened the production browser check: same driving assertions now wait for game time (with finite timeouts); repeatable initial settings; five viewport sizes; start-button bounds plus center-point obstruction checks; JSON evidence and cleanup on failure.
-3. Reproduced a DPR-only change bug: 1440×900 at DPR 2 stayed at ratio 1 until the CSS size changed. Added a re-armed resolution media query and disposal; diagnostics now include CSS size, device DPR and effective ratio.
-4. Added small original concrete/grime and runoff-aggregate textures in `src/game/world/track-surfaces.ts`. Two world-owned textures, no additional draw calls/lights. This is an incremental material pass; terrain, buildings and foliage still need work.
-5. Added `scripts/launch-browser.mjs` and `scripts/render-check.mjs` for reproducible browser setup and resolution/world/camera checks.
+Simulation, score rules, camera, render budgeting, world building and UI remain separate. Car geometry is immutable/shared. World resources, car effects, the 384-particle spray/smoke pool and 768-segment skid buffer have explicit ownership/disposal. Keep hidden-tab suspension, input clearing and frame/pixel caps. Street best laps use `astra-street-best-v1` so historical Formula records do not mix.
 
-## Verification and evidence
+The inherited DPR listener missed rapid round-trips when Chrome coalesced media-query events. The render loop now checks the DPR scalar on accepted render frames; it reads layout only when a change occurs. Production resolution/quality/fullscreen checks passed after this fix.
 
-- Production build, strict typecheck, owned-source lint and all **19 tests** pass.
-- `scripts/render-check.mjs`: DPR-only transitions, all quality ceilings, return to DPR 1, fullscreen entry/exit, moving chase-camera distance, all nine circuit/weather world builds, three stable resource cycles and no browser errors. Compact report: `docs/evidence/render-check.json`.
-- Moving chase view inspected: `docs/evidence/chase-gengar.png`. Following sample: 233 km/h, 6.30 m horizontal camera distance and 2.08 m camera height. Software timing was about 3 FPS with adaptive resolution; **not a hardware performance claim**.
-- The nine-world sweep loads/renders menu worlds; it does not complete nine races. Physical controller, actual touch device, Safari and human handling evaluation remain pending.
-- The old M4 Max measurements remain historical evidence for the prior renderer/camera revision: three complete default races, median 60 FPS, **1440×900 drawing buffer** despite reported DPR 2. Do not call that native Retina or full 1080p. A fresh visible hardware run is required after the DPR fix.
-- Final production keyboard/UI check passed on the latest build, including all five viewport sizes, unobscured menu/header controls and zero accumulated page errors. Exact viewport bounds are recorded in `docs/evidence/browser-check.json`. Raw reports and additional screenshots are in ignored `artifacts/` on gengar-db. Selected current screenshots are copied into `docs/evidence/` for the MacBook handoff.
+- Strict typecheck, owned-source lint, **24 deterministic tests** and production build pass.
+- Production keyboard/UI check passed, including actual handbrake/score, service braking and unobscured menus at five sizes.
+- Nine route/weather worlds load/render; three repeated resource cycles return stable counts. This does not establish nine full-race completion or universal leak freedom.
+- Emulated multi-touch simultaneously accelerates, steers and drifts, then releases all input. Portrait and landscape captures were inspected; the compact landscape HUD now clears the pedals and map. This is not physical-device evidence.
+- Short visible M4 Max hardware samples are documented in `PERFORMANCE.md`. Read exact framebuffer sizes and limitations before quoting performance. The older full-race Formula and Linux SwiftShader reports are historical.
+- Current portable evidence has `street-` prefixes under `docs/evidence/`. Raw captures remain ignored under `artifacts/`. Evidence gathered before committing honestly records parent `a711012` with a dirty working tree; it is not a benchmark of unchanged upstream source.
 
-## Next substantive work
+## Next refinements
 
-1. On the MacBook, use the existing checkout at `/Users/rcbranham/git/personal/f1-racing-astra` if present. Check for local changes before fetching/fast-forwarding `main`; do not overwrite them. Install from the unchanged lockfile only as needed.
-2. Launch a dedicated visible Chrome, verify the five menu sizes and inspect a moving chase view at the corrected DPR. Run a short hardware timing check; keep CSS size, actual drawing buffer and GPU renderer in the evidence.
-3. Improve terrain/horizon and city/coastal composition, building silhouettes and repeated foliage. Use driving screenshots to judge each change, keeping measured budgets and ownership/disposal intact.
-4. Have the user drive manual laps to assess fun and handling. The automated pilot proves behavior/completion, not driving feel.
-5. Extend real-device coverage to touch/controller and other browsers; finish all nine full circuit/weather races as practical.
-6. Public GitHub publication and source-license selection remain separate pending work.
+1. User-drive the coupe and tune steering, countersteer/recovery and handbrake timing from feedback. The pilot proves behavior, not fun.
+2. Refine canyon faces, varied roadside composition and coupe materials against the reference, judging moving chase views.
+3. Improve Harbor City's silhouettes and lighting; consider a stronger street-route layout in a separate change.
+4. Test a physical controller, touch devices and Safari. Extend to nine complete route/weather races as practical.
+5. Choose a source license and review contents before public GitHub publication.
 
-## Hosting and source control
+## Hosting and Git
 
-The Git transfer target is the existing private Sites source repository:
+Reuse `.openai/hosting.json` verbatim: `appgprj_6a9c96484ab081919378a4aa6684a3f3`. Never create a second Site.
 
-- Local remote name: `sites`.
-- Remote URL: `https://git.chatgpt-team.site/55cfd5d9-5d0c-44b9-9b4c-a37c7926c6a7/appgprj_6a9c96484ab081919378a4aa6684a3f3.git`.
-- Remote branch: `main`.
-- This is the project's private source Git repository, not a newly published GitHub project.
+- Remote: `sites`; branch: `main`.
+- URL: `https://git.chatgpt-team.site/55cfd5d9-5d0c-44b9-9b4c-a37c7926c6a7/appgprj_6a9c96484ab081919378a4aa6684a3f3.git`.
+- This is private Sites source Git. No public GitHub remote exists.
+- Access was inspected: personal owner only, no groups or external viewers.
+- Private publishing of this pass is being finalized; a follow-up documentation commit will record the confirmed playable URL and exact deployed source.
 
-On the MacBook, add the same credential-free `sites` remote if missing, obtain a fresh repository-scoped credential for the existing Site through the Sites connector, and use per-command authentication to fetch. If the checkout is clean, fast-forward `main` from `sites/main`. Never save the token in Git config or the remote URL. Inspect `git status` first; preserve any local Mac changes.
+Inspect local changes before fetching. Use a fresh repository-scoped Sites credential as a per-command HTTP header; never persist or print it. Keep repository-local personal author settings; do not change global Git configuration. Preserve the source lockfile.
 
-Reuse `.openai/hosting.json` verbatim: `appgprj_6a9c96484ab081919378a4aa6684a3f3`. Never create a second Site. Private owner-only access was rechecked for the personal account, with no groups or external viewers. No version was saved and no deployment was started. The latest user request pauses publishing again for the MacBook handoff. Do not confuse a source Git push with a saved Site version or a playable deployment.
-
-Branch `main` began with `826ced8` (source) and `0269613` (original handoff). Inspect `git log` for the current revision. Local author remains RC Branham / personal email; do not change global Git settings. No public GitHub remote has been created. Credentials must remain ephemeral and absent from docs, remote URLs and Git config.
-
-The historical missing `refs/t3/checkpoints/.../turn/0` warning came from the folder starting without Git. `git fsck` found no corruption. Do not fabricate internal checkpoint refs.
-
-## Starting and stopping
+## Running and stopping
 
 ```sh
 npm run dev -- --host 0.0.0.0
 npm run build
 npm run start -- --port 8788
+node scripts/launch-browser.mjs
 ```
 
-All test processes owned by this session are stopped before handoff; no pilot should remain. Use the actual printed server URL. A build replaces `dist/`; restart a production server afterward. See `DEVELOPMENT.md` for dedicated CDP browser commands and Linux library setup. Check current ports/processes rather than reusing old session IDs or attaching to unrelated browser jobs.
+A new build replaces `dist/`; restart the production server afterward. `DEVELOPMENT.md` documents browser, rendering, short hardware and touch checks. Use a dedicated visible Chrome and run heavy checks sequentially. Normal URLs do not expose the `?debug=1` diagnostic interface. Always clear pilots and held inputs afterward. Session-owned servers/browser are stopped after publishing; inspect current processes rather than reusing old IDs.
 
-`?debug=1` exposes `window.__ASTRA__`. Normal URLs do not. Always clear pilot intervals and release held inputs after checks. Test best laps/settings belong to the temporary browser profile.
-
-Runtime assets and editable car generator are committed. Older ignored screenshots migrated with this checkout; timestamps/filenames distinguish historical Mac evidence from `*-gengar.png`. Temporary `/tmp/f1-astra-assets/` authoring outputs are not required and should not be assumed present.
+Do not use Orca. Do not delegate unless active instructions authorize it; every authorized worker must use `gpt-6-astra`. The Sites skill required one asset worker this session; it returned two generated PNGs outside the checkout and is finished. Only the owner integrated files and performed Site operations.

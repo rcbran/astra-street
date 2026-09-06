@@ -2,7 +2,9 @@ import { createWetRoad } from './world/wet-road';
 import { mesh, box, instanced, ribbon, patch } from './world/geometry';
 import { makeSky, buildMountains } from './world/atmosphere';
 import { buildTrees } from './world/vegetation';
-import { buildGrandstands, buildBuildings } from './world/buildings';
+import { buildRockFormations } from './world/rock-formations';
+import { buildBuildings } from './world/buildings';
+import { SPEED_TRAPS } from './street-score';
 import {
   concreteBarrierMaterial,
   paintedRunoffMaterial,
@@ -35,6 +37,7 @@ export function buildWorld(
 ): World {
   const root = new THREE.Group(),
     wet = weather === 'rain',
+    city = track.circuit.id === 'marina',
     sunset = weather === 'sunset',
     half = track.circuit.width / 2,
     rand = seeded(412);
@@ -43,7 +46,7 @@ export function buildWorld(
   const hemi = new THREE.HemisphereLight(
     wet ? 0x88a7ce : sunset ? 0xe6d7c1 : 0xd7ecff,
     wet ? 0x39404d : 0x6b7452,
-    wet ? 1.15 : 1.8,
+    wet ? 1.15 : 1.3,
   );
   root.add(hemi);
   const sun = new THREE.DirectionalLight(
@@ -87,6 +90,7 @@ export function buildWorld(
   ground.receiveShadow = true;
   root.add(ground);
   buildMountains(root, track, weather);
+  buildRockFormations(root, track, weather, textures.rock);
   const road = new THREE.MeshStandardMaterial({
     map: textures.color,
     normalMap: textures.normal,
@@ -168,7 +172,7 @@ export function buildWorld(
   });
   const signMat = [
     new THREE.MeshBasicMaterial({
-      map: signTexture('ASTRA  /  FORMULA', '#f1f0df', '#172d2b'),
+      map: signTexture('ASTRA  /  STREET', '#f1d4a1', '#17242d'),
     }),
     new THREE.MeshBasicMaterial({
       map: signTexture('APEX   PERFORMANCE', '#13201c', '#d6dfbd'),
@@ -192,14 +196,14 @@ export function buildWorld(
       const offset = side * (half + 7);
       barriers.push({
         x: f.x + f.nx * offset,
-        y: 0.65,
+        y: city ? 0.65 : 0.275,
         z: f.z + f.nz * offset,
         ry: f.heading,
         color: new THREE.Color(
           Math.floor(s / 24) % 5 === 0 ? 0xd5d4c9 : 0x939d97,
         ),
       });
-      if (Math.floor(s / 4) % 2 === 0) {
+      if (city && Math.floor(s / 4) % 2 === 0) {
         posts.push({
           x: f.x + f.nx * (offset + 0.1 * side),
           y: 2.65,
@@ -212,7 +216,7 @@ export function buildWorld(
           ry: f.heading + Math.PI / 2,
         });
       }
-      if (Math.floor(s / 4) % 6 === 0) {
+      if (city && Math.floor(s / 4) % 6 === 0) {
         rails.push({
           x: f.x + f.nx * offset,
           y: 4.1,
@@ -220,7 +224,7 @@ export function buildWorld(
           ry: f.heading,
         });
       }
-      if (Math.floor(s / 4) % 15 === 0) {
+      if (Math.floor(s / 4) % 35 === 0) {
         const sign = mesh(
           new THREE.PlaneGeometry(16, 1.55),
           signMat[Math.floor(s / 60) % 3],
@@ -243,7 +247,7 @@ export function buildWorld(
   );
   root.add(
     instanced(
-      new THREE.BoxGeometry(0.6, 1.3, 4.08),
+      new THREE.BoxGeometry(0.6, city ? 1.3 : 0.55, 4.08),
       concreteBarrierMaterial(wet),
       barriers,
       true,
@@ -328,7 +332,7 @@ export function buildWorld(
   const poles: Parameters<typeof instanced>[2] = [],
     fixtures: Parameters<typeof instanced>[2] = [],
     glows: Parameters<typeof instanced>[2] = [];
-  for (let s = 0; s < track.length; s += 65) {
+  for (let s = 0; s < track.length; s += city ? 65 : 145) {
     const f = track.sample(s);
     for (const side of [-1, 1]) {
       const o = side * (half + 8);
@@ -401,7 +405,7 @@ export function buildWorld(
   const gantrySign = mesh(
     new THREE.PlaneGeometry(track.circuit.width + 5, 1.65),
     new THREE.MeshBasicMaterial({
-      map: signTexture('A S T R A  /  F O R M U L A', '#edede2', '#122b2c'),
+      map: signTexture('A S T R A  /  S T R E E T', '#ffc477', '#152129'),
     }),
     0,
     7.3,
@@ -423,10 +427,26 @@ export function buildWorld(
         -0.5,
       ),
     );
-  buildGrandstands(root, track, weather);
+  const gateMaterial = new THREE.MeshBasicMaterial({
+    map: signTexture('S P E E D   C H E C K', '#20252a', '#edbc78'),
+    side: THREE.DoubleSide,
+  });
+  for (const fraction of SPEED_TRAPS) {
+    const f = track.sample(track.length * fraction);
+    const gate = new THREE.Group();
+    gate.position.set(f.x, 0, f.z);
+    gate.rotation.y = f.heading;
+    gate.add(
+      box(0.18, 6.5, 0.18, metal, -half - 1, 3.25),
+      box(0.18, 6.5, 0.18, metal, half + 1, 3.25),
+      box(track.circuit.width + 2, 0.15, 0.15, metal, 0, 6.5),
+      mesh(new THREE.PlaneGeometry(8, 0.9), gateMaterial, 0, 6.0),
+    );
+    root.add(gate);
+  }
   if (track.circuit.id !== 'forest') buildBuildings(root, track, weather);
   if (track.circuit.id !== 'marina')
-    buildTrees(root, track, weather, textures.trees);
+    buildTrees(root, track, weather, textures.trees, textures.conifers);
   // Braking distance boards before stronger corners.
   for (let s = 150; s < track.length; s += 180) {
     const next = track.sample(s + 55);
